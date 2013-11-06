@@ -1,0 +1,27 @@
+ADDRESS_BLOCK bootrom1 RAMB16 [0x40000000:0x40001fff]
+	BUS_BLOCK
+                monitor_rom_3 [31:24] LOC=X4Y8;
+                monitor_rom_2 [23:16] LOC=X4Y9;
+                monitor_rom_1 [15:8] LOC=X4Y10;
+                monitor_rom_0 [7:0] LOC=X4Y11;
+	END_BUS_BLOCK;
+END_ADDRESS_BLOCK;
+
+ADDRESS_BLOCK bootrom2 RAMB16 [0x40002000:0x40003fff]
+	BUS_BLOCK
+                monitor_rom_7 [31:24] LOC=X4Y4;
+                monitor_rom_6 [23:16] LOC=X4Y5;
+                monitor_rom_5 [15:8] LOC=X4Y6;
+                monitor_rom_4 [7:0] LOC=X4Y7;
+	END_BUS_BLOCK;
+END_ADDRESS_BLOCK;
+
+ADDRESS_BLOCK bootrom3 RAMB16 [0x40004000:0x40005fff]
+	BUS_BLOCK
+                monitor_rom_11 [31:24] LOC=X4Y0;
+                monitor_rom_10 [23:16] LOC=X4Y1;
+                monitor_rom_9 [15:8] LOC=X4Y2;
+                monitor_rom_8 [7:0] LOC=X4Y3;
+	END_BUS_BLOCK;
+END_ADDRESS_BLOCK;
+

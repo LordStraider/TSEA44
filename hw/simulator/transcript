@@ -1,0 +1,17 @@
+# //  ModelSim SE 6.5c Aug 27 2009 Linux 2.6.32-358.23.2.el6.x86_64
+# //
+# //  Copyright 1991-2009 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+# vsim -lib /nobackup/local/paune415/work -t 1ps lab0_tb 
+# Loading sv_std.std
+# Loading /nobackup/local/paune415/work.lab0_tb
+# Loading /nobackup/local/paune415/work.lab0
+add wave -r /*
+run
+run

@@ -1,0 +1,2 @@
+simfiles:
+	make -C .. simfiles

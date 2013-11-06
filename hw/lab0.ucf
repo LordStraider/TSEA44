@@ -1,0 +1,24 @@
+NET "clk_i"       LOC = "AK19"; // 40 MHz in this lab
+NET "rst_i"       LOC = "C2";   // SW1 (red) on green flexo
+NET "send_i"      LOC = "B3";   // SW2 (black) on green flexo
+// blue DIP switch
+NET "switch_i<7>" LOC = "AL3";  // SWITCH 1
+NET "switch_i<6>" LOC = "AK3";	// SWITCH 2 
+NET "switch_i<5>" LOC = "AJ5";	// SWITCH 3
+NET "switch_i<4>" LOC = "AH6";	// SWITCH 4
+NET "switch_i<3>" LOC = "AG7";	// SWITCH 5
+NET "switch_i<2>" LOC = "AF7";	// SWITCH 6
+NET "switch_i<1>" LOC = "AF11";	// SWITCH 7
+NET "switch_i<0>" LOC = "AE11";	// SWITCH 8
+// row of LEDs
+NET "led_o<7>"    LOC = "N9";   // LED D4
+NET "led_o<6>"    LOC = "P8";	// LED D5
+NET "led_o<5>"    LOC = "N8";	// LED D6
+NET "led_o<4>"    LOC = "N7";	// LED D7
+NET "led_o<3>"    LOC = "M6";	// LED D8
+NET "led_o<2>"    LOC = "M3";	// LED D9
+NET "led_o<1>"    LOC = "L6";	// LED D10
+NET "led_o<0>"    LOC = "L3";	// LED D11
+// rainbow flat cable
+NET "rx_i"        LOC = "M9";
+NET "tx_o"        LOC = "K5";

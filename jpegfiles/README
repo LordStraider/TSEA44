@@ -1,0 +1,12 @@
+This directory contains a simple JPEG encoder. It is based on libjpeg
+(see README_FROM_LIBJPEG), but only the bare necessities from libjpeg
+has been included.
+
+The core of the DCT and Huffman/RLE encoder are still here in somewhat
+modified form, but nothing else is left of libjpeg. The idea is to
+keep only the interesting parts of libjpeg (interesting for the TSEA44
+course) and not worry about initialization, color images, buffering,
+etc.
+
+The modifications were done by Andreas Ehliar, Per Karlström, Olle
+Seger, and Simon Törner.

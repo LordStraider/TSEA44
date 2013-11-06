@@ -1,0 +1,252 @@
+#######################################################################
+# Define Device, Package, And Speed Grade
+#######################################################################
+#
+CONFIG PART = XC2V4000-FF1152-4 ;
+
+CONFIG PROHIBIT = "AK7";
+CONFIG PROHIBIT = "AK8";
+CONFIG PROHIBIT = "AM4";
+CONFIG PROHIBIT = "AL5";
+CONFIG PROHIBIT = "AG10";
+CONFIG PROHIBIT = "AH11";
+CONFIG PROHIBIT = "AG24";
+CONFIG PROHIBIT = "AG25";
+CONFIG PROHIBIT = "AL30";
+CONFIG PROHIBIT = "AM31";
+CONFIG PROHIBIT = "AK28";
+CONFIG PROHIBIT = "AL29";
+
+#######################################################################
+# Boot Monitor
+#######################################################################
+# Place the block ram for the boot monitor
+# To allow the use of the data2mem program to update
+# the monitor without having to resynthesize everything
+INST "rom0_boot_prog_bram/monitor_rom_11" LOC = "RAMB16_X4Y0" ;
+INST "rom0_boot_prog_bram/monitor_rom_10" LOC = "RAMB16_X4Y1" ;
+INST "rom0_boot_prog_bram/monitor_rom_9" LOC = "RAMB16_X4Y2" ;
+INST "rom0_boot_prog_bram/monitor_rom_8" LOC = "RAMB16_X4Y3" ;
+INST "rom0_boot_prog_bram/monitor_rom_7" LOC = "RAMB16_X4Y4" ;
+INST "rom0_boot_prog_bram/monitor_rom_6" LOC = "RAMB16_X4Y5" ;
+INST "rom0_boot_prog_bram/monitor_rom_5" LOC = "RAMB16_X4Y6" ;
+INST "rom0_boot_prog_bram/monitor_rom_4" LOC = "RAMB16_X4Y7" ;
+INST "rom0_boot_prog_bram/monitor_rom_3" LOC = "RAMB16_X4Y8" ;
+INST "rom0_boot_prog_bram/monitor_rom_2" LOC = "RAMB16_X4Y9" ;
+INST "rom0_boot_prog_bram/monitor_rom_1" LOC = "RAMB16_X4Y10" ;
+INST "rom0_boot_prog_bram/monitor_rom_0" LOC = "RAMB16_X4Y11" ;
+
+#######################################################################
+# clk, rst
+#######################################################################
+NET "rst_i" LOC = "C2";
+NET "clk_i" LOC = "AK19";
+
+NET "clk_i" TNM_NET = "clk_i";
+TIMESPEC "TS_clk_i" = PERIOD "clk_i" 20 ns HIGH 50 %;
+
+
+# Honestly? This one is left here due to laziness. It is either that
+# or creating a new sys_sig_gen, something I'd rather avoid
+NET "sdram_clk" LOC = "L7"| IOSTANDARD = LVTTL ;
+
+#######################################################################
+# Switches SW1-6
+#######################################################################
+#NET  "sw_pad_i<6>"                  LOC = "A5"  ;
+#NET  "sw_pad_i<5>"                  LOC = "A4"  ;
+#NET  "sw_pad_i<4>"                  LOC = "B5"  ;
+#NET  "sw_pad_i<3>"                  LOC = "B4"  ;
+#NET  "sw_pad_i<2>"                  LOC = "B3"  ;
+#NET  "sw_pad_i<1>"                  LOC = "C2"  ;
+
+#######################################################################
+# Parallell Port
+#######################################################################
+// blue DIP switch
+NET "in_pad_i<7>" LOC = "AL3";  // SWITCH 1
+NET "in_pad_i<6>" LOC = "AK3";	// SWITCH 2 
+NET "in_pad_i<5>" LOC = "AJ5";	// SWITCH 3
+NET "in_pad_i<4>" LOC = "AH6";	// SWITCH 4
+NET "in_pad_i<3>" LOC = "AG7";	// SWITCH 5
+NET "in_pad_i<2>" LOC = "AF7";	// SWITCH 6
+NET "in_pad_i<1>" LOC = "AF11";	// SWITCH 7
+NET "in_pad_i<0>" LOC = "AE11";	// SWITCH 8
+// row of LEDs
+NET "out_pad_o<7>"    LOC = "N9";	// LED D4
+NET "out_pad_o<6>"    LOC = "P8";	// LED D5
+NET "out_pad_o<5>"    LOC = "N8";	// LED D6
+NET "out_pad_o<4>"    LOC = "N7";	// LED D7
+NET "out_pad_o<3>"    LOC = "M6";	// LED D8
+NET "out_pad_o<2>"    LOC = "M3";	// LED D9
+NET "out_pad_o<1>"    LOC = "L6";	// LED D10
+NET "out_pad_o<0>"    LOC = "L3";	// LED D11
+
+#######################################################################
+# UART
+#######################################################################
+NET "srx_pad_i" LOC = "M9";
+NET "stx_pad_o" LOC = "K5";
+INST "stx_pad_o" IOB=true;
+INST "srx_pad_i" IOB=true;
+
+#######################################################################
+# PKMC Memory Controller
+#######################################################################
+NET "mabuf_oe" LOC = "AE23";
+NET "mc_addr_pad_o<0>"  LOC = "AM26" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<10>"  LOC = "AF24" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<11>"  LOC = "AL25" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<12>"  LOC = "AM23" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<13>"  LOC = "AK24" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<14>"  LOC = "AJ23" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<15>"  LOC = "AM24" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<16>"  LOC = "AF23" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<17>"  LOC = "AG23" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<18>"  LOC = "AL22" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<19>"  LOC = "AH23" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<1>"  LOC = "AH24" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<20>"  LOC = "AJ22" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<21>"  LOC = "AL23" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<22>"  LOC = "AH22" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<23>"  LOC = "AF22" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<2>"  LOC = "AH25" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<3>"  LOC = "AM27" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<4>"  LOC = "AJ25" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<5>"  LOC = "AL27" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<6>"  LOC = "AK25" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<7>"  LOC = "AK26" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<8>"  LOC = "AL24" | IOSTANDARD = LVTTL ;
+NET "mc_addr_pad_o<9>"  LOC = "AJ24" | IOSTANDARD = LVTTL ;
+NET "mc_cas_pad_o_" LOC = "J4"| IOSTANDARD = LVTTL ;
+NET "mc_cke_pad_o_" LOC = "H4"| IOSTANDARD = LVTTL ;
+NET "mc_cs_pad_o_<0>" LOC = "K6"| IOSTANDARD = LVTTL ;
+NET "mc_cs_pad_o_<1>" LOC = "E4"| IOSTANDARD = LVTTL ;
+NET "mc_cs_pad_o_<2>" LOC = "J5"| IOSTANDARD = LVTTL ;
+NET "mc_dio<0>"  LOC = "AE12" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<10>"  LOC = "AG11" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<11>"  LOC = "AH12" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<12>"  LOC = "AJ11" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<13>"  LOC = "AG12" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<14>"  LOC = "AM11" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<15>"  LOC = "AL11" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<16>"  LOC = "AK10" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<17>"  LOC = "AK11" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<18>"  LOC = "AL10" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<19>"  LOC = "AH10" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<1>"  LOC = "AG14" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<20>"  LOC = "AJ10" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<21>"  LOC = "AL9" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<22>"  LOC = "AM9" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<23>"  LOC = "AJ9" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<24>"  LOC = "AK9" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<25>"  LOC = "AL8" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<26>"  LOC = "AH9" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<27>"  LOC = "AJ8" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<28>"  LOC = "AM8" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<29>"  LOC = "AM7" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<2>"  LOC = "AF12" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<30>"  LOC = "AL6" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<31>"  LOC = "AM6" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<3>"  LOC = "AE13" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<4>"  LOC = "AG13" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<5>"  LOC = "AF13" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<6>"  LOC = "AH13" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<7>"  LOC = "AJ12" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<8>"  LOC = "AL13" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dio<9>"  LOC = "AL12" | IOSTANDARD = LVTTL  | DRIVE = 8 ;
+NET "mc_dqm_pad_o<0>" LOC = "L5"| IOSTANDARD = LVTTL ;
+NET "mc_dqm_pad_o<1>" LOC = "L4"| IOSTANDARD = LVTTL ;
+NET "mc_dqm_pad_o<2>" LOC = "K7"| IOSTANDARD = LVTTL ;
+NET "mc_dqm_pad_o<3>" LOC = "J7"| IOSTANDARD = LVTTL ;
+NET "mc_oe_pad_o_" LOC = "K4"| IOSTANDARD = LVTTL ;
+NET "mc_ras_pad_o_" LOC = "H5"| IOSTANDARD = LVTTL ;
+NET "mc_rp_pad_o_" LOC = "L10"| IOSTANDARD = LVTTL ;
+NET "mc_we_pad_o_" LOC = "J6"| IOSTANDARD = LVTTL ;
+NET "mdbuf_dir" LOC = "L9"| IOSTANDARD = LVTTL ;
+NET "mdbuf_oe" LOC = "AJ26"| IOSTANDARD = LVTTL ;
+NET "sdram_clk" LOC = "L7"| IOSTANDARD = LVTTL ;
+
+NET "flashCE"  LOC = "H7" | IOSTANDARD = LVTTL;
+NET "kboomFlashCE"  LOC = "AE22" | IOSTANDARD = LVTTL;
+NET "pmcBuffOE"  LOC = "AL26"  | IOSTANDARD = LVTTL ;
+
+TIMEGRP "del" OFFSET = OUT 35 ns AFTER "clk_i"  ;
+INST "sdram_clk" TNM = "del" | IOB=true;
+
+TIMEGRP "mc" OFFSET = IN 4 ns BEFORE "clk_i"  ;
+TIMEGRP "mc" OFFSET = OUT 7 ns AFTER "clk_i"  ;
+
+INST "mabuf_oe" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<0>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<1>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<2>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<3>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<4>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<5>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<6>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<7>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<8>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<9>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<10>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<11>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<12>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<13>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<14>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<15>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<16>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<17>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<18>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<19>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<20>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<21>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<22>" TNM = "mc" | IOB=true;
+INST "mc_addr_pad_o<23>" TNM = "mc" | IOB=true;
+INST "mc_cas_pad_o_" TNM = "mc" | IOB=true;
+INST "mc_cke_pad_o_" TNM = "mc" | IOB=true;
+INST "mc_cs_pad_o_<0>" TNM = "mc" | IOB=true;
+INST "mc_cs_pad_o_<1>" TNM = "mc" | IOB=true;
+INST "mc_cs_pad_o_<2>" TNM = "mc" | IOB=true;
+INST "mc_dio<0>" TNM = "mc" | IOB=true;
+INST "mc_dio<1>" TNM = "mc" | IOB=true;
+INST "mc_dio<2>" TNM = "mc" | IOB=true;
+INST "mc_dio<3>" TNM = "mc" | IOB=true;
+INST "mc_dio<4>" TNM = "mc" | IOB=true;
+INST "mc_dio<5>" TNM = "mc" | IOB=true;
+INST "mc_dio<6>" TNM = "mc" | IOB=true;
+INST "mc_dio<7>" TNM = "mc" | IOB=true;
+INST "mc_dio<8>" TNM = "mc" | IOB=true;
+INST "mc_dio<9>" TNM = "mc" | IOB=true;
+INST "mc_dio<10>" TNM = "mc" | IOB=true;
+INST "mc_dio<11>" TNM = "mc" | IOB=true;
+INST "mc_dio<12>" TNM = "mc" | IOB=true;
+INST "mc_dio<13>" TNM = "mc" | IOB=true;
+INST "mc_dio<14>" TNM = "mc" | IOB=true;
+INST "mc_dio<15>" TNM = "mc" | IOB=true;
+INST "mc_dio<16>" TNM = "mc" | IOB=true;
+INST "mc_dio<17>" TNM = "mc" | IOB=true;
+INST "mc_dio<18>" TNM = "mc" | IOB=true;
+INST "mc_dio<19>" TNM = "mc" | IOB=true;
+INST "mc_dio<20>" TNM = "mc" | IOB=true;
+INST "mc_dio<21>" TNM = "mc" | IOB=true;
+INST "mc_dio<22>" TNM = "mc" | IOB=true;
+INST "mc_dio<23>" TNM = "mc" | IOB=true;
+INST "mc_dio<24>" TNM = "mc" | IOB=true;
+INST "mc_dio<25>" TNM = "mc" | IOB=true;
+INST "mc_dio<26>" TNM = "mc" | IOB=true;
+INST "mc_dio<27>" TNM = "mc" | IOB=true;
+INST "mc_dio<28>" TNM = "mc" | IOB=true;
+INST "mc_dio<29>" TNM = "mc" | IOB=true;
+INST "mc_dio<30>" TNM = "mc" | IOB=true;
+INST "mc_dio<31>" TNM = "mc" | IOB=true;
+INST "mc_dqm_pad_o<0>" TNM = "mc" | IOB=true;
+INST "mc_dqm_pad_o<1>" TNM = "mc" | IOB=true;
+INST "mc_dqm_pad_o<2>" TNM = "mc" | IOB=true;  
+INST "mc_dqm_pad_o<3>" TNM = "mc" | IOB=true;
+INST "mc_oe_pad_o_" TNM = "mc" | IOB=true;
+INST "mc_ras_pad_o_" TNM = "mc" | IOB=true;
+INST "mc_rp_pad_o_" TNM = "mc" | IOB=true;
+INST "mc_we_pad_o_" TNM = "mc" | IOB=true;
+INST "mdbuf_dir" TNM = "mc" | IOB=true;
+INST "mdbuf_oe" TNM = "mc" | IOB=true;
+
