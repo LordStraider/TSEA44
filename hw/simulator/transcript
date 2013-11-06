@@ -14,4 +14,3 @@
 # Loading /nobackup/local/paune415/work.lab0
 add wave -r /*
 run
-run

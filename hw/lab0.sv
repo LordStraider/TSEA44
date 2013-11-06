@@ -61,11 +61,14 @@ begin
 		end else if (counter == 8*8680 + 4340) begin
 			shift_enable <= 1'b1;
 		end else if (counter == 9*8680 + 4340) begin
-			shift_enable <= 1'b1;	
-			count_enable <= 1'b0;			
+			shift_enable <= 1'b0;	
+			count_enable <= 1'b0;
+			counter <= 0;
 		end else begin
 			shift_enable <= 1'b0;
 		end
+	end else begin
+		shift_enable <= 1'b0;
 	end
 
 	if (~rx_i) 
@@ -91,12 +94,14 @@ assign led_o = shift_register;
 // counter send
 always @(posedge clk_i)
 begin
+	if (send_i)
+		enable_send_counter = 1'b1;
 
-	if (sent_bits == 4'd9)
+	else if (sent_bits == 4'd9)
 		enable_send_counter = 1'b0;
 
 
-	if (enable_send_counter)	begin
+	if (enable_send_counter) begin
  		send_counter++;
 
 		if (sent_bits == 4'd9)
@@ -110,12 +115,6 @@ begin
 	end else 
 		sent_bits = 4'd9;
 
-end
-
-always @(posedge clk_i)
-begin
-	if (send_i)
-		enable_send_counter = 1'b1;
 end
 
 // mux
