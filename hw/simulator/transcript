@@ -12,5 +12,5 @@
 # Loading sv_std.std
 # Loading /nobackup/local/paune415/work.lab0_tb
 # Loading /nobackup/local/paune415/work.lab0
-add wave -r /*
+add wave -r sim:/lab0_tb/*
 run

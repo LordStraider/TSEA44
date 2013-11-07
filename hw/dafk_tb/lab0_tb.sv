@@ -32,6 +32,12 @@ module lab0_tb();
         send_i = 1'b0; 
         #1000 send_i = 1'b1;
         #110000 send_i = 1'b0;
+
+				#3000000
+        switch_i = 8'h22;  // transmit/receive 'bajs'
+        send_i = 1'b0; 
+        #1000 send_i = 1'b1;
+        #710000 send_i = 1'b0;
      end
    
 endmodule

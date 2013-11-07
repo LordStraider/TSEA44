@@ -39,23 +39,23 @@ begin
 		count_enable <= 1'b0;
 	end else if (count_enable && ~send_i)	begin
  		counter <= counter + 1;
-		if (counter == 8680 + 4340) begin
+		if (counter == 347 + 173) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 2*8680 + 4340) begin
+		end else if (counter == 2*347 + 173) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 3*8680 + 4340) begin
+		end else if (counter == 3*347 + 173) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 4*8680 + 4340) begin
+		end else if (counter == 4*347 + 173) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 5*8680 + 4340) begin
+		end else if (counter == 5*347 + 173) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 6*8680 + 4340) begin
+		end else if (counter == 6*347 + 173) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 7*8680 + 4340) begin
+		end else if (counter == 7*347 + 173) begin
 			shift_enable <= 1'b1;			
-		end else if (counter == 8*8680 + 4340) begin
+		end else if (counter == 8*347 + 173) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 9*8680 + 4340) begin
+		end else if (counter == 9*347 + 173) begin
 			shift_enable <= 1'b0;	
 			count_enable <= 1'b0;
 			counter <= 20'h0;
@@ -99,7 +99,7 @@ begin
 		send_counter <= 20'h0;
 		enable_send_counter <= 1'b0;
 		sent_bits <= 4'd10;
-	end else if (~send_dff_1 && send_dff_2) begin
+	end else if (~send_dff_1 && send_dff_2 && ~enable_send_counter) begin
 		enable_send_counter <= 1'b1;
 		send_counter <= 20'h0;
 		sent_bits <= 4'd0;
@@ -108,7 +108,7 @@ begin
 	end else if (enable_send_counter) begin
  		send_counter <= send_counter + 1;
 
-		if (send_counter == 8680) begin
+		if (send_counter == 347) begin
 			sent_bits <= sent_bits + 1;
 			send_counter <= 20'h0;
 		end
