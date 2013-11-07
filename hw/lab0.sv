@@ -39,23 +39,23 @@ begin
 		count_enable <= 1'b0;
 	end else if (count_enable && ~send_i)	begin
  		counter <= counter + 1;
-		if (counter == 8680) begin
+		if (counter == 8680 + 4340) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 2*8680) begin
+		end else if (counter == 2*8680 + 4340) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 3*8680) begin
+		end else if (counter == 3*8680 + 4340) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 4*8680) begin
+		end else if (counter == 4*8680 + 4340) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 5*8680) begin
+		end else if (counter == 5*8680 + 4340) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 6*8680) begin
+		end else if (counter == 6*8680 + 4340) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 7*8680) begin
+		end else if (counter == 7*8680 + 4340) begin
 			shift_enable <= 1'b1;			
-		end else if (counter == 8*8680) begin
+		end else if (counter == 8*8680 + 4340) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 9*8680) begin
+		end else if (counter == 9*8680 + 4340) begin
 			shift_enable <= 1'b0;	
 			count_enable <= 1'b0;
 			counter <= 20'h0;
