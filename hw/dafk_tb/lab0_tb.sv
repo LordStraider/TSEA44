@@ -20,12 +20,18 @@ module lab0_tb();
    initial
      begin
         clk_i = 1'b0;
-        switch_i = 8'h41;  // transmit/receive 'A'
+        switch_i = 8'h43;  // transmit/receive 'A'
         rst_i = 1'b1;
         send_i = 1'b0;
         #100 rst_i = 1'b0; 
         #1000 send_i = 1'b1;
-        #1100 send_i = 1'b0;
+        #500100 send_i = 1'b0;
+
+				#3000000
+        switch_i = 8'h32;  // transmit/receive 'bajs'
+        send_i = 1'b0; 
+        #1000 send_i = 1'b1;
+        #110000 send_i = 1'b0;
      end
    
 endmodule

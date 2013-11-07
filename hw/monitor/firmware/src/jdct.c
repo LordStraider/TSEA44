@@ -33,7 +33,6 @@ void init_image(unsigned int image_width, unsigned int image_height)
   width = image_width;
   height = image_height;
 
-#endif
 }
 
 /*

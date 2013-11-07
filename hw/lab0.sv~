@@ -20,18 +20,9 @@ reg shift_enable;
 reg synced_rx_i;
 reg tx_var;
 reg enable_send_counter;
+reg send_dff_1;
+reg send_dff_2;
 
-
-//initierar massa skit.
-always @(posedge clk_i)
-begin
-	if (rst_i) begin
-		shift_register[7:0] <= 8'h0;
-		counter = 0;
-		send_counter = 0;
-		sent_bits = 4'h0;
-	end
-end
 
 //sync_rx_i
 always @(posedge clk_i)
@@ -42,27 +33,32 @@ end
 // counter block
 always @(posedge clk_i)
 begin
-	if (count_enable)	begin
- 		counter++;
-		if (counter == 8680 + 4340) begin
+	if(rst_i) begin
+		shift_enable <= 1'b0;
+		counter <= 20'h0;
+		count_enable <= 1'b0;
+	end else if (count_enable && ~send_i)	begin
+ 		counter <= counter + 1;
+		if (counter == 8680) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 2*8680 + 4340) begin
+		end else if (counter == 2*8680) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 3*8680 + 4340) begin
+		end else if (counter == 3*8680) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 4*8680 + 4340) begin
+		end else if (counter == 4*8680) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 5*8680 + 4340) begin
+		end else if (counter == 5*8680) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 6*8680 + 4340) begin
+		end else if (counter == 6*8680) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 7*8680 + 4340) begin
+		end else if (counter == 7*8680) begin
 			shift_enable <= 1'b1;			
-		end else if (counter == 8*8680 + 4340) begin
+		end else if (counter == 8*8680) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 9*8680 + 4340) begin
+		end else if (counter == 9*8680) begin
+			shift_enable <= 1'b0;	
 			count_enable <= 1'b0;
-			counter <= 0;
+			counter <= 20'h0;
 		end else begin
 			shift_enable <= 1'b0;
 		end
@@ -70,7 +66,7 @@ begin
 		shift_enable <= 1'b0;
 	end
 
-	if (~rx_i) 
+	if (~synced_rx_i) 
 		count_enable <= 1'b1;
 
 end
@@ -78,7 +74,9 @@ end
 //shift_reg block
 always @(posedge clk_i)
 begin
-	if (shift_enable) begin
+	if (rst_i) begin
+		shift_register <= 8'h0;
+	end else if (shift_enable) begin
 		shift_register[7] <= synced_rx_i;
 		shift_register[6:0] <= shift_register[7:1];
 	end
@@ -93,26 +91,34 @@ assign led_o = shift_register;
 // counter send
 always @(posedge clk_i)
 begin
-	if (send_i)
-		enable_send_counter = 1'b1;
+	send_dff_1 <= send_i;
+	send_dff_2 <= send_dff_1;
 
-	else if (sent_bits == 4'd9)
-		enable_send_counter = 1'b0;
 
+	if (rst_i) begin
+		send_counter <= 20'h0;
+		enable_send_counter <= 1'b0;
+		sent_bits <= 4'd10;
+	end else if (send_i) begin
+		enable_send_counter <= 1'b1;
+		send_counter <= 20'h0;
+
+	end else if (sent_bits == 4'd10)
+		enable_send_counter <= 1'b0;
+
+	if (~send_dff_1 && send_dff_2 && enable_send_counter)
+		sent_bits <= 4'd0;
 
 	if (enable_send_counter) begin
- 		send_counter++;
-
-		if (sent_bits == 4'd9)
-			sent_bits <= 4'd0;
+ 		send_counter <= send_counter + 1;
 
 		if (send_counter == 8680) begin
-			sent_bits = sent_bits + 1;
-			send_counter = 0;
+			sent_bits <= sent_bits + 1;
+			send_counter <= 20'h0;
 		end
 	
 	end else 
-		sent_bits = 4'd9;
+		sent_bits <= 4'd10;
 
 end
 
