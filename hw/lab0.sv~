@@ -44,7 +44,6 @@ begin
 		counter <= 20'h0;
 		count_enable <= 1'b0;
 		end_char <= 1'b0;
-		ack <= 1'b0;
 	end else if (count_enable) begin //tidigare ~send_i, verkade illa
  		counter <= counter + 1;
 	    end_char <= 1'b0;
@@ -68,7 +67,7 @@ begin
 			shift_enable <= 1'b0;	
 			count_enable <= 1'b0;
 			counter <= 20'h0;
-			end_char <= 1'b1;
+			 
 		end else begin
 			shift_enable <= 1'b0;
 		end

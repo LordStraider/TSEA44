@@ -46,7 +46,6 @@ begin
 		end_char <= 1'b0;
 	end else if (count_enable) begin //tidigare ~send_i, verkade illa
  		counter <= counter + 1;
-	    end_char <= 1'b0;
 		if (counter == MULTIPLIER + MULTIPLIER_HALF) begin
 			shift_enable <= 1'b1;
 		end else if (counter == 2*MULTIPLIER + MULTIPLIER_HALF) begin
@@ -73,6 +72,7 @@ begin
 		end
 	end else begin
 		shift_enable <= 1'b0;
+	    end_char <= 1'b0;
 	end
 
 	if (~synced_rx_i) 
