@@ -8,9 +8,13 @@
 # //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
 # //  AND IS SUBJECT TO LICENSE TERMS.
 # //
-# vsim -lib /nobackup/local/paune415/work -t 1ps lab0_tb 
+# vsim -lib /nobackup/local/jonka293/work -t 1ps lab0_tb 
 # Loading sv_std.std
-# Loading /nobackup/local/paune415/work.lab0_tb
-# Loading /nobackup/local/paune415/work.lab0
-add wave -r sim:/lab0_tb/*
+# Loading /nobackup/local/jonka293/work.lab0_tb
+# Loading /nobackup/local/jonka293/work.lab0
+# ** Warning: (vsim-3017) ../dafk_tb/lab0_tb.sv(17): [TFMPC] - Too few port connections. Expected 9, found 7.
+#         Region: /lab0_tb/uart
+# ** Warning: (vsim-3722) ../dafk_tb/lab0_tb.sv(17): [TFMPC] - Missing connection for port 'end_char_rx'.
+# ** Warning: (vsim-3722) ../dafk_tb/lab0_tb.sv(17): [TFMPC] - Missing connection for port 'ack_o'.
+add wave -r /*
 run

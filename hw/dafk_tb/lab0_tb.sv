@@ -8,6 +8,7 @@ module lab0_tb();
    reg rst_i;
    reg  send_i;
    reg [7:0] switch_i;
+   
    wire [7:0] led_o;
    wire jumper;
    

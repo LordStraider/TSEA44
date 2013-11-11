@@ -8,7 +8,9 @@ module lab0(
     output tx_o,
     output [7:0] led_o,
     input [7:0] switch_i,
-    input send_i);
+    input send_i, 
+    output end_char_rx, 
+    output ack_o);
 
 reg [7:0] shift_register;
 reg [20:0] counter;
@@ -22,7 +24,11 @@ reg tx_var;
 reg enable_send_counter;
 reg send_dff_1;
 reg send_dff_2;
+reg ack;
+reg end_char;
 
+const int MULTIPLIER = 217;	 //lab0 = 347, lab1 = 217
+const int MULTIPLIER_HALF = 108; //lab0 = 173, lab1 = 108
 
 //sync_rx_i
 always @(posedge clk_i)
@@ -37,28 +43,31 @@ begin
 		shift_enable <= 1'b0;
 		counter <= 20'h0;
 		count_enable <= 1'b0;
-	end else if (count_enable && ~send_i)	begin
+		end_char <= 1'b0;
+	end else if (count_enable) begin //tidigare ~send_i, verkade illa
  		counter <= counter + 1;
-		if (counter == 347 + 173) begin
+	    end_char <= 1'b0;
+		if (counter == MULTIPLIER + MULTIPLIER_HALF) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 2*347 + 173) begin
+		end else if (counter == 2*MULTIPLIER + MULTIPLIER_HALF) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 3*347 + 173) begin
+		end else if (counter == 3*MULTIPLIER + MULTIPLIER_HALF) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 4*347 + 173) begin
+		end else if (counter == 4*MULTIPLIER + MULTIPLIER_HALF) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 5*347 + 173) begin
+		end else if (counter == 5*MULTIPLIER + MULTIPLIER_HALF) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 6*347 + 173) begin
+		end else if (counter == 6*MULTIPLIER + MULTIPLIER_HALF) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 7*347 + 173) begin
+		end else if (counter == 7*MULTIPLIER + MULTIPLIER_HALF) begin
 			shift_enable <= 1'b1;			
-		end else if (counter == 8*347 + 173) begin
+		end else if (counter == 8*MULTIPLIER + MULTIPLIER_HALF) begin
 			shift_enable <= 1'b1;
-		end else if (counter == 9*347 + 173) begin
+		end else if (counter == 9*MULTIPLIER + MULTIPLIER_HALF) begin
 			shift_enable <= 1'b0;	
 			count_enable <= 1'b0;
 			counter <= 20'h0;
+			end_char <= 1'b1;
 		end else begin
 			shift_enable <= 1'b0;
 		end
@@ -99,16 +108,19 @@ begin
 		send_counter <= 20'h0;
 		enable_send_counter <= 1'b0;
 		sent_bits <= 4'd10;
-	end else if (~send_dff_1 && send_dff_2 && ~enable_send_counter) begin
+		ack <= 1'b0;
+	end else if (send_dff_1 && ~send_dff_2 && ~enable_send_counter) begin
 		enable_send_counter <= 1'b1;
 		send_counter <= 20'h0;
 		sent_bits <= 4'd0;
+		ack <= 1'b0;
 	end else if (sent_bits == 4'd10) begin
 		enable_send_counter <= 1'b0;
+		ack <= 1'b1;
 	end else if (enable_send_counter) begin
  		send_counter <= send_counter + 1;
 
-		if (send_counter == 347) begin
+		if (send_counter == MULTIPLIER) begin
 			sent_bits <= sent_bits + 1;
 			send_counter <= 20'h0;
 		end
@@ -117,6 +129,9 @@ begin
 		sent_bits <= 4'd10;
 
 end
+
+assign ack_o = ack;
+assign end_char_rx = end_char;
 
 // mux
 always_comb begin
