@@ -9,7 +9,7 @@ module lab0(
     output [7:0] led_o,
     input [7:0] switch_i,
     input send_i, 
-    input end_char_rx, 
+    output end_char_rx, 
     output ack_o);
 
 reg [7:0] shift_register;
@@ -25,6 +25,7 @@ reg enable_send_counter;
 reg send_dff_1;
 reg send_dff_2;
 reg ack;
+reg end_char;
 
 const int MULTIPLIER = 217;	 //lab0 = 347, lab1 = 217
 const int MULTIPLIER_HALF = 108; //lab0 = 173, lab1 = 108
@@ -42,8 +43,11 @@ begin
 		shift_enable <= 1'b0;
 		counter <= 20'h0;
 		count_enable <= 1'b0;
+		end_char <= 1'b0;
+		ack <= 1'b0;
 	end else if (count_enable) begin //tidigare ~send_i, verkade illa
  		counter <= counter + 1;
+	    end_char <= 1'b0;
 		if (counter == MULTIPLIER + MULTIPLIER_HALF) begin
 			shift_enable <= 1'b1;
 		end else if (counter == 2*MULTIPLIER + MULTIPLIER_HALF) begin
@@ -64,6 +68,7 @@ begin
 			shift_enable <= 1'b0;	
 			count_enable <= 1'b0;
 			counter <= 20'h0;
+			end_char <= 1'b1;
 		end else begin
 			shift_enable <= 1'b0;
 		end
@@ -101,6 +106,8 @@ begin
 
 
 	if (rst_i) begin
+	    send_dff_1 <= 1'b0;
+	    send_dff_2 <= 1'b0;
 		send_counter <= 20'h0;
 		enable_send_counter <= 1'b0;
 		sent_bits <= 4'd10;
@@ -110,23 +117,27 @@ begin
 		send_counter <= 20'h0;
 		sent_bits <= 4'd0;
 		ack <= 1'b0;
-	end else if (sent_bits == 4'd10) begin
-		enable_send_counter <= 1'b0;
-		ack <= 1'b1;
 	end else if (enable_send_counter) begin
  		send_counter <= send_counter + 1;
 
-		if (send_counter == MULTIPLIER) begin
+        if (sent_bits == 4'd10) begin
+		    ack <= 1'b1;
+       		enable_send_counter <= 1'b0;
+        end else if (send_counter == MULTIPLIER) begin
 			sent_bits <= sent_bits + 1;
 			send_counter <= 20'h0;
 		end
 	
-	end else 
+	end else if (sent_bits == 4'd10) begin
+	    ack <= 1'b0;
+   		enable_send_counter <= 1'b0;
+	end else
 		sent_bits <= 4'd10;
 
 end
 
 assign ack_o = ack;
+assign end_char_rx = end_char;
 
 // mux
 always_comb begin

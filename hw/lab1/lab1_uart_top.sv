@@ -35,14 +35,21 @@ module lab1_uart_top (
     reg ack;
     reg uart_ack;
     reg [31:0] tx_reg;
-    reg [31:0] rx_reg;
+    reg [31:0] rx_reg;  
+    reg [7:0] last_8_rx_bits;
     
-    lab0 uart(wb.clk, wb.rst, srx_pad_i, stx_pad_o, tx_reg[31:24], rx_reg[31:24], wr_o, end_char, uart_ack);
+    lab0 uart(wb.clk, wb.rst, srx_pad_i, stx_pad_o, last_8_rx_bits, tx_reg[31:24], wr_o, end_char, uart_ack);
     
     always @(posedge wb.clk)
     begin
-        rd <= wb.stb && ~wb.we && wb.sel[3] && ~wb.adr[2];
-        wr <= wb.stb && wb.we && wb.sel[3] && ~wb.adr[2];
+        if (wb.rst) begin
+            rd <= 1'b0;
+            wr <= 1'b0;
+            wr_o <= 1'b0;
+        end else begin
+            rd <= wb.stb && ~wb.we && wb.sel[3] && ~wb.adr[2];
+            wr <= wb.stb && wb.we && wb.sel[3] && ~wb.adr[2];
+        end
         
         wr_o <= wr;
     end
@@ -50,24 +57,22 @@ module lab1_uart_top (
     always @(posedge wb.clk)
     begin
         //rx_full
+        rx_reg[31:24] <= last_8_rx_bits;
+        
         if (wb.rst) 
             rx_reg[16] <= 1'b0;
         else if (end_char)
             rx_reg[16] <= 1'b1;
         else if (rd)
-            rx_reg[16] <= 1'b0;
-        else 
-            rx_reg[16] <= rx_reg[16];
+            rx_reg[16] <= 1'b0;        
         
         //tx_empty
         if (wb.rst)
-            rx_reg[22:21] <= 2'b0;
+            tx_reg[22:21] <= 2'b0;
         else if (wr)
-            rx_reg[22:21] <= 2'b0;
+            tx_reg[22:21] <= 2'b0;
         else if (uart_ack)
-            rx_reg[22:21] <= 2'b1;
-        else 
-            rx_reg[22:21] <= rx_reg[22:21];
+            tx_reg[22:21] <= 2'b1;
         
         if (wr)
             tx_reg[31:24] <= wb.dat_o[31:24];
@@ -77,12 +82,14 @@ module lab1_uart_top (
     //set ack
     always @(posedge wb.clk)
     begin
-        if (wb.stb && wb.we)
-            ack = uart_ack;
-        else if (wb.stb && ~wb.we)
-            ack = 1'b1;    
+        if (wb.rst)
+            ack <= 1'b0;
+        else if (wr)
+            ack <= uart_ack;
+        else if (rd)
+            ack <= 1'b1;
         else
-            ack = 1'b0;
+            ack <= 1'b0;
     end
     
     assign wb.ack = ack;

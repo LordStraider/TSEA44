@@ -105,6 +105,8 @@ begin
 
 
 	if (rst_i) begin
+	    send_dff_1 <= 1'b0;
+	    send_dff_2 <= 1'b0;
 		send_counter <= 20'h0;
 		enable_send_counter <= 1'b0;
 		sent_bits <= 4'd10;
@@ -114,18 +116,21 @@ begin
 		send_counter <= 20'h0;
 		sent_bits <= 4'd0;
 		ack <= 1'b0;
-	end else if (sent_bits == 4'd10) begin
-		enable_send_counter <= 1'b0;
-		ack <= 1'b1;
 	end else if (enable_send_counter) begin
  		send_counter <= send_counter + 1;
 
-		if (send_counter == MULTIPLIER) begin
+        if (sent_bits == 4'd10) begin
+		    ack <= 1'b1;
+       		enable_send_counter <= 1'b0;
+        end else if (send_counter == MULTIPLIER) begin
 			sent_bits <= sent_bits + 1;
 			send_counter <= 20'h0;
 		end
 	
-	end else 
+	end else if (sent_bits == 4'd10) begin
+	    ack <= 1'b0;
+   		enable_send_counter <= 1'b0;
+	end else
 		sent_bits <= 4'd10;
 
 end
