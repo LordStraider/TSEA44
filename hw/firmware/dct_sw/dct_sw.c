@@ -1,4 +1,6 @@
 #include "printf.h"
+#include <common.h>
+
 
 /* Precalculated constants */
 #define FIX_0_298631336  ((int)  2446)	/* FIX(0.298631336) */
@@ -50,7 +52,7 @@ void dct1(int *a, int *p);
 
 int main()
 {
-  int i, j, temp, rval, rnd, bits, pos;
+  int i, j, temp, rval, rnd, bits, pos, ctr1, ctr2, ctr3, ctr4;
 
   printf("\na=\n");
   for (i=0; i<8; i++) {
@@ -58,8 +60,17 @@ int main()
       printf("%5d ", image[j+8*i]=j+8*i+1);
     printf("\n");
   }
-
+    
+  ctr1 = REG32(0x99000000);
+  ctr2 = REG32(0x99000000);
+  ctr3 = REG32(0x99000000);
+  ctr4 = REG32(0x99000000);
   dct2(image);
+  ctr1 = REG32(0x99000000) - ctr1;
+  ctr2 = REG32(0x99000000) - ctr2;
+  ctr3 = REG32(0x99000000) - ctr3;
+  ctr4 = REG32(0x99000000) - ctr4;
+  
   image[0] -= 8192;
 
   printf("\n8xDCT[a-128]=\n");
@@ -68,6 +79,7 @@ int main()
       printf("%5d ", image[j+8*i]);
     printf("\n");
   }
+
 
   // Quantization
   printf("\nRND(8xDCT[a-128]/(8xQx1/2))=\n");
@@ -90,6 +102,9 @@ int main()
     }
     printf("\n");
   }
+     
+  printf("\Clk cycles for ctr1: %d, ctr2: %d, ctr3: %d, ctr4: %d\n", ctr1, ctr2, ctr3, ctr4);
+
 
 
   return(0);
