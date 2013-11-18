@@ -5,22 +5,22 @@ module transpose(
     input t_rd,
     input t_wr,
     input [7:0][11:0] data_in,
-    output [7:0][11:0] data_out,
+    output [7:0][11:0] data_out
 );
     reg [7:0][7:0][11:0] memory;
-    reg out_reg[7:0][11:0];
-    reg col_count[7:0];
-    reg row_count[7:0];
+    reg [7:0][11:0] out_reg;
+    reg [7:0] col_count;
+    reg [7:0] row_count;
 
 
 always @(posedge clk) begin
     if (rst) begin
-        row_count[7:0] <= 8'b0;
+        row_count[7:0] <= 8'd0;
     end else if(t_wr) begin
-        memory[row_count][7:0][11:0] <= data_in;
-        row_count++;
+        //memory[(row_count+1)*96:row_count*96] <= data_in;
+        row_count <= row_count + 1;
         if (row_count == 8'd8)
-            row_count = 8'd0;
+            row_count <= 8'd0;
     end
 end
 
@@ -29,14 +29,14 @@ always @(posedge clk) begin
         out_reg <= 96'b0;
         col_count[7:0] <= 8'b0;
     end else if(t_rd) begin
-        out_reg <= memory[7:0][col_count][11:0];
-        col_count++;
+        //out_reg <= memory[7:0][col_count][11:0];
+        col_count <= col_count + 1;
         if (col_count == 8'd8)
             col_count = 8'b0;
     end
 end
 
-assign data_out <= out_reg;
+assign data_out = out_reg;
 
 endmodule
 

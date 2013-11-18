@@ -132,32 +132,42 @@
    reg [31:0] dflipflop;
    reg read_enable;
    reg [7:0] DC2_ctrl_counter;
-   reg dct_clk;
+   reg clk_div2;
+   reg clk_div4;
+   reg mux2_enable;
+   reg [1:0] mux2_counter;
+   reg [31:0] mux2_out;
 
    // You must create the signals to the block ram somewhere...
 
    always @(posedge wb.clk) begin
+      dflipflop <= dob;
       if (wb.rst) begin
          read_enable <= 1'b0;
          bram_data <= 32'b0;
          bram_addr <= 32'b0;
          bram_ce <= 1'b0;
          bram_we <= 1'b0;
-         in_counter <= 5'b0;
          rdc <= 5'b0;
+         dflipflop <= 32'b0;
+
+      // if write is finished and we are reading from the memory
       end else if (read_enable) begin
-         dflipflop <= dob;
-         if (dct_clk) begin
+         // count up address memory on every second clock cycle
+         if (clk_div2) begin
             rdc++;
             if (rdc == 5'd16) begin
                rdc <= 5'd0;
                read_enable <= 1'b0;
             end
          end
+      // if we want to write to the in block memory
       end else if (ce_in) begin
-         bram_we <= wb.wr;
+         bram_we <= wb.we;
          bram_ce <= 1'b1;
          in_counter++;
+
+         // when the write is finished
          if (in_counter == 5'd16) begin
             in_counter <= 5'd0;
             read_enable <= 1'b1;
@@ -170,9 +180,9 @@
    //Mux till dct
    always_comb begin
       if (mmem.mux1) begin
-         x[95:64] <= 32'b0;
-         x[63:32] <= dflipflop;
-         x[31:0] <= dob;
+         x[64:95] <= 32'b0;
+         x[32:63] <= dflipflop;
+         x[0:31] <= dob;
       end else begin
          x <= ut;
       end
@@ -188,15 +198,27 @@
       end
    end
 
-   //setting dct_clk...
-   always @(posedge clk) begin
+   //setting clk_div2...
+   always @(posedge wb.clk) begin
       if (wb.rst)
-         dct_clk <= 1'b0;
+         clk_div2 <= 1'b0;
 
-      if(dct_clk == 1'b0) begin
-         dct_clk <= 1'b1;
-      end else if(dct_clk == 1'b1) begin
-         dct_clk <= 1'b0;
+      if(clk_div2 == 1'b0) begin
+         clk_div2 <= 1'b1;
+      end else if(clk_div2 == 1'b1) begin
+         clk_div2 <= 1'b0;
+      end
+   end
+
+    //setting clk_div2...
+   always @(posedge clk_div2) begin
+      if (wb.rst)
+         clk_div4 <= 1'b0;
+
+      if(clk_div4 == 1'b0) begin
+         clk_div4 <= 1'b1;
+      end else if(clk_div4 == 1'b1) begin
+         clk_div4 <= 1'b0;
       end
    end
 
@@ -250,55 +272,101 @@
    assign wb.dat_i = ut_doa;
 
    // You must also create the control logic...
-   always @(posedge wb.clk) begin
-      if(rst) begin
+   always @(posedge clk_div4) begin
+      if(wb.rst) begin
          mmem.rden <= 1'b0;
          mmem.reg1en <= 1'b0;
          mmem.mux1 <= 1'b0;
          mmem.dcten <= 1'b0;
          mmem.twr <= 1'b0;
          mmem.trd <= 1'b0;
-         mmem.mux2 <= 2'b0;
          mmem.wren <= 1'b0;
+         mux2_enable <= 1'b1;
          DC2_ctrl_counter <= 8'b0;
       end else begin
          DC2_ctrl_counter++;
-
-         if(DC2_ctrl_counter == 8'd2) begin
+         if(DC2_ctrl_counter == 8'd1) begin
+            // Enable DCT and get its input from block RAM
             mmem.dcten <= 1'b1;
             mmem.mux1 <= 1'b0;
-         end else if (DC2_ctrl_counter == 8'd10) begin
+
+         // DCT takes 4 cs, so when ready...
+         end else if (DC2_ctrl_counter == 8'd5) begin
+            // ...begin write to transpose memory
             mmem.twr <= 1'b1;
-         end else if (DC2_ctrl_counter == 8'd15) begin
+
+         // transpose write takes 8 cs
+         end else if (DC2_ctrl_counter == 8'd13) begin
+            // stop write, begin read
             mmem.twr <= 1'b0;
             mmem.trd <= 1'b1;
+            // send transpose memory output to DCT
             mmem.mux1 <= 1'b1;
-         end else if (DC2_ctrl_counter == 8'd20) begin
-            mmem.mux2 <= 2'b0;
-         end else if (DC2_ctrl_counter == 8'd23) begin
+
+         // the first row transpose arrives out from DCT
+         end else if (DC2_ctrl_counter == 8'd17) begin
+            // begin writing result
+            mux2_enable <= 1'b1;
+
+         // 8 cs later, all rows are out of transpose memory
+         end else if (DC2_ctrl_counter == 8'd25) begin
+            // stop reading from transpose
             mmem.trd <= 1'b0;
-            mmem.mux1 <= 1'b0;
-         end else if (DC2_ctrl_counter == 8'd28) begin
+
+         end else if (DC2_ctrl_counter == 8'd29) begin
+            // turn off DCT
             mmem.dcten <= 1'b0;
          end
+      end
+   end
+
+   always_comb begin
+      case(mmem.mux2)
+         2'd1:    mux2_out = y[32:63];
+         2'd2:    mux2_out = y[64:95];
+         2'd3:    mux2_out = y[96:127];
+         default: mux2_out = y[0:31];
+      endcase
+   end
+
+
+   always @(posedge wb.clk) begin
+      if(wb.rst) begin
+         mmem.mux2 <= 2'd0;
+         mux2_counter <= 2'd0;
+         wrc <= 1'b0;
+      end else if(mux2_enable) begin
+         mux2_counter++;
+         wrc++;
+         case(mux2_counter)
+            2'd0:    mmem.mux2 = 2'd0;
+            2'd1:    mmem.mux2 = 2'd1;
+            2'd2:    mmem.mux2 = 2'd2;
+            2'd3:    mmem.mux2 = 2'd3;
+            default: mmem.mux2 = 2'd0;
+         endcase
       end
    end
    // 8 point DCT
    // control: dcten //ändrat ny långsammare klocka.
    dct dct0
      (.y(y), .x(x),
-      .clk_i(dct_clk), .en(mmem.dcten)
+      .clk_i(clk_div4), .en(mmem.dcten)
    );
 
+   q2 Q2 (
+      .x_i(mux2_out), .x_o(q),
+      .rec_i(mux2_out) // !! TODO, rec_i shoud be something better
+   );
 
    // transpose memory
    // control: trd, twr
 
    transpose tmem
-     (.clk(wb.clk), .rst(wb.rst),
+     (.clk(clk_div4), .rst(wb.rst),
       .t_wr(mmem.twr) , .t_rd(mmem.trd),
       .data_in({y[7][11:0],y[6][11:0],y[5][11:0],y[4][11:0],y[3][11:0],y[2][11:0],y[1][11:0],y[0][11:0]}),
-      .data_ut(ut));
+      .data_out(ut));
 
 
 
