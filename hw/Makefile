@@ -107,7 +107,8 @@ DAFK_FILES = dafk.sv $(COMMON_FILES) $(DCT_FILES) $(VGA_FILES) $(ETHERNET_FILES)
 LAB0_FILES = lab0.sv
 LAB1_FILES = lab1.sv $(LAB0_FILES) lab1/lab1_uart_top.sv $(PROCESSOR_FILES) \
 	$(MONITOR_FILES) $(DCM_FILES) $(PARPORT_FILES) $(WB_FILES) $(PERF_FILES) \
-	$(PKMC_FILES)	
+	$(PKMC_FILES)
+LAB2_FILES = lab2.sv $(LAB1_FILES) lab2/transpose_top.sv
 
 VERILOG_HEADERS=include/dafk_defines.v include/pkmc_flash_defines.v	\
 	include/pkmc_memctrl_defines.v					\
@@ -155,6 +156,7 @@ all: dafk
 # built before dafk.bit
 
 dafk: | check_workdirs fw buildnum dafk.bit
+lab2: | check_workdirs fw buildnum lab2.bit
 lab1: | check_workdirs fw buildnum lab1.bit
 lab0: | check_workdirs fw buildnum lab0.bit
 
@@ -181,6 +183,8 @@ $(WD)/lab0.scr: $(LAB0_FILES)
 $(WD)/lab1.scr: VERILOGFILES= $(LAB1_FILES) 
 $(WD)/lab1.scr: $(LAB1_FILES) $(VERILOG_HEADERS) monitor/firmware/src/mon_prog_bram_contents.v
 
+$(WD)/lab2.scr: VERILOGFILES= $(LAB2_FILES) 
+$(WD)/lab2.scr: $(LAB2_FILES) $(VERILOG_HEADERS) monitor/firmware/src/mon_prog_bram_contents.v
 
 ###################################################################################
 # There are no user servicable parts below this line...
@@ -331,6 +335,8 @@ prog_lab0:
 prog_lab1:
 	utils/download.sh lab1.bit
 
+prog_lab2:
+	utils/download.sh lab2.bit
 
 ##################################################################################
 # Useful to see if we forgot to remove the complete solutions before creating a
