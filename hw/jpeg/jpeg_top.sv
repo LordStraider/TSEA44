@@ -63,10 +63,10 @@
    logic [6:0] 		 mpc;
    logic [31:0] 	 dout_res;
    logic 		 ce_in, ce_ut;
-   logic [5:0] 		 rdc;
+   logic [8:0] 		 rdc;
    logic [4:0] 		 wrc;
 
-   logic [31:0] 	 dob, ut_doa;
+   logic [31:0] 	 dob, dob2, ut_doa;
 
    logic [0:7][11:0] 	 x, in, ut;
 
@@ -81,13 +81,17 @@
    logic 		 clr;
    mmem_t 	mmem;
 
-   logic 		 dmaen;
-
+   logic 		 dmaen, ctrl_control;
+   logic [15:0] rec_o2;
+   logic [15:0] rec_o1;
    logic 		 dct_busy;
    logic 		 dma_start_dct;
    logic [31:0]  reciprocal_counter;
-
-    reg rd, wr, ack;
+   logic         dff1;
+   logic         dff2;
+   logic         dff1rst;
+   logic         dff2rst;
+    reg 	ack;
    // ********************************************
    // *          Wishbone interface              *
    // ********************************************
@@ -97,20 +101,42 @@
    assign csren = wb.stb && (wb.adr[12:11]==2'b10); // Control reg
    assign dmaen = wb.stb && (wb.adr[12:11]==2'b11); // DMA control
 
-
+/*
+81  82  83  84
+10000001    10000010    10000011    10000100
+10000101    10000110    10000111    10001000
+10001001    10001010    10001011    10001100
+*/
    // ack FSM
    // You must create the wb.ack signal somewhere...
    //set ack
    always @(posedge wb.clk)
    begin
      if (wb.rst)
-         ack <= 1'b0;
+        ack <= 1'b0;
+     else if (~dff1rst && dff2rst)
+        ack <= 1'b0;
      else if (wb.stb)
-         ack <= 1'b1;
+        ack <= 1'b1;
      else
-         ack <= 1'b0;
+        ack <= 1'b0;
    end
 
+    always @(posedge wb.clk)
+    begin
+        if (wb.rst)
+            dff1 <= 1'b0;
+        else 
+            dff1 <= wb.we;
+        dff2 <= dff1;
+    end
+    
+    always @(posedge wb.clk)
+    begin
+        dff1rst <= wb.rst;
+        dff2rst <= dff1rst;
+    end    
+    
    assign wb.ack = ack;
 
    assign int_o = 1'b0;  // Interrupt, not used in this lab
@@ -128,7 +154,8 @@
    logic        bram_ce;
 
    logic [31:0] wb_dma_dat;
-
+   logic [8:0] clock_counter;
+   
    reg [5:0] in_counter;
    reg [31:0] dflipflop;
    reg read_enable;
@@ -138,41 +165,56 @@
    reg mux2_enable;
    reg [1:0] mux2_counter;
    reg [31:0] mux2_out;
+   reg [31:0] shofres;
+   reg [31:0] shofres1;
+   reg [31:0] shofres2;
    
-   int reciprocals [] = {2048,	2979,	2731,	2731,	2341,	2521,	2341,	1928,
+   
+   int reciprocals [] = {2048,	1820,	3277,	819,	512,	819,	585,	290,
+2979,	1489,	2048,	1489,	405,	643,	377,	356,
+2731,	1365,	1365,	1130,	420,	537,	410,	271,
+2731,	936,	2341,	643,	377,	565,	529,	273,
+2341,	669,	1725,	886,	318,	546,	301,	324,
+2521,	512,	1260,	585,	345,	596,	318,	328,
+2341,	455,	2048,	482,	334,	575,	426,	318,
+1928,	356,	1365,	596,	293,	475,	315,	331};
+
+/*2048,	2979,	2731,	2731,	2341,	2521,	2341,	1928,
     1820,	1489,	1365,	936,	669,	512,	455,	356,
     3277,	2048,	1365,	2341,	1725,	1260,	2048,	1365,
     819,	1489,	1130,	643,	886,	585,	482,	596,
     512,	405,	420,	377,	318,	345,	334,	293,
     819,	643,	537,	565,	546,	596,	575,	475,
     585,	377,	410,	529,	301,	318,	426,	315,
-    290,	356,	271,	273,	324,	328,	318,	331};
+    290,	356,	271,	273,	324,	328,	318,	331};*/
+    
 
    // You must create the signals to the block ram somewhere...
 
    always @(posedge wb.clk) begin
-      dflipflop <= dob;
       if (wb.rst) begin
          read_enable <= 1'b0;
          bram_data <= 32'b0;
          bram_addr <= 32'b0;
-         bram_ce <= 1'b0;
+         bram_ce <= 1'b0;  
          bram_we <= 1'b0;
-         rdc <= 5'b0;
+         rdc <= 9'b0;
+         in_counter <= 5'h0;
          dflipflop <= 32'b0;
 
       // if write is finished and we are reading from the memory
       end else if (read_enable) begin
          // count up address memory on every second clock cycle
          if (clk_div2) begin
-            rdc++;
-            if (rdc == 5'd16) begin
-               rdc <= 5'd0;
+            rdc <= rdc + 4;
+            dflipflop <= dob;
+            if (rdc == 9'h40) begin
+               rdc <= 9'd0;
                read_enable <= 1'b0;
             end
          end
       // if we want to write to the in block memory
-      end else if (ce_in) begin
+      end else if (dff1 && ~dff2 && ce_in) begin
          bram_we <= wb.we;
          bram_ce <= 1'b1;
          in_counter++;
@@ -181,6 +223,8 @@
          if (in_counter == 5'd16) begin
             in_counter <= 5'd0;
             read_enable <= 1'b1;
+             bram_we <= 1'b0;
+             bram_ce <= 1'b0;
          end
          bram_data <= wb.dat_o;
          bram_addr <= wb.adr;
@@ -189,13 +233,10 @@
 
    //Mux till dct
    always_comb begin
-      if (mmem.mux1) begin
-         x[64:95] <= 32'b0;
-         x[32:63] <= dflipflop;
-         x[0:31] <= dob;
-      end else begin
-         x <= ut;
-      end
+        if (~mmem.mux1)
+            x = {dflipflop,dob,32'd0};
+        else 
+            x = ut;
    end
 
    always @(posedge wb.clk) begin
@@ -220,16 +261,24 @@
       end
    end
 
+    always @(posedge wb.clk) begin
+        if(clock_counter == 2'h3) 
+            clock_counter <= 2'h0;
+        else
+            clock_counter++;
+    end
     //setting clk_div2...
-   always @(posedge clk_div2) begin
-      if (wb.rst)
-         clk_div4 <= 1'b0;
+    always @(posedge wb.clk) begin
+        if(clk_div2) begin
+          if (wb.rst)
+             clk_div4 <= 1'b0;
 
-      if(clk_div4 == 1'b0) begin
-         clk_div4 <= 1'b1;
-      end else if(clk_div4 == 1'b1) begin
-         clk_div4 <= 1'b0;
-      end
+          if(clk_div4 == 1'b0) begin
+             clk_div4 <= 1'b1;
+          end else if(clk_div4 == 1'b1) begin
+             clk_div4 <= 1'b0;
+          end
+       end
    end
 
    jpeg_dma dma
@@ -261,11 +310,11 @@
       .DOA(doa), .DOPA(),
       // DCT read
       .CLKB(wb.clk), .SSRB(wb.rst),
-      .ADDRB({3'h0,rdc}),
+      .ADDRB(rdc),
       .DIB(32'h0), .DIPB(4'h0),
       .ENB(1'b1),.WEB(1'b0),
-      .DOB(dob), .DOPB());
-
+      .DOB(dob2), .DOPB());
+    assign dob = dob2;
    RAMB16_S36_S36 #(.SIM_COLLISION_CHECK("NONE")) utmem
      (// DCT write
       .CLKA(wb.clk), .SSRA(wb.rst),
@@ -281,8 +330,15 @@
    // You must create the wb.dat_i signal somewhere...
    assign wb.dat_i = ut_doa;
 
+    always @(posedge wb.clk) begin
+        if (wb.rst)
+            ctrl_control <= 1'b0;
+        else if (read_enable)
+            ctrl_control <= 1'b1;
+    end
+
    // the control logic
-   always @(posedge clk_div4) begin
+   always @(posedge wb.clk) begin
       if(wb.rst) begin
          mmem.rden <= 1'b0;
          mmem.reg1en <= 1'b0;
@@ -291,9 +347,9 @@
          mmem.twr <= 1'b0;
          mmem.trd <= 1'b0;
          mmem.wren <= 1'b0;
-         mux2_enable <= 1'b1;
+         mux2_enable <= 1'b0;
          DC2_ctrl_counter <= 8'b0;
-      end else begin
+      end else if (ctrl_control) begin
          DC2_ctrl_counter++;
          if(DC2_ctrl_counter == 8'd1) begin
             // Enable DCT and get its input from block RAM
@@ -317,15 +373,18 @@
          end else if (DC2_ctrl_counter == 8'd17) begin
             // begin writing result
             mux2_enable <= 1'b1;
+            mmem.wren <= 1'b1;
 
          // 8 cc later, all rows are out of transpose memory
          end else if (DC2_ctrl_counter == 8'd25) begin
             // stop reading from transpose
             mmem.trd <= 1'b0;
+            
 
          end else if (DC2_ctrl_counter == 8'd29) begin
             // turn off DCT
             mmem.dcten <= 1'b0;
+            
          end
       end
    end
@@ -334,12 +393,13 @@
       if (wb.rst) 
         reciprocal_counter <= 0;
       else if(mux2_enable)
-        reciprocal_counter += 1;
-      else
-        reciprocal
+        reciprocal_counter += 2;
+      else if(reciprocal_counter == 32'h40)
+        reciprocal_counter <= 0;
         
    end 
     
+   //mux2
    always_comb begin
       case(mmem.mux2)
          2'd1:    mux2_out = y[32:63];
@@ -350,35 +410,46 @@
    end
 
     
-
+   //count mux2 counter and output memory.
    always @(posedge wb.clk) begin
       if(wb.rst) begin
-         mmem.mux2 <= 2'd0;
+    
          mux2_counter <= 2'd0;
          wrc <= 1'b0;
       end else if(mux2_enable) begin
          mux2_counter++;
          wrc++;
-         case(mux2_counter)
-            2'd0:    mmem.mux2 = 2'd0;
-            2'd1:    mmem.mux2 = 2'd1;
-            2'd2:    mmem.mux2 = 2'd2;
-            2'd3:    mmem.mux2 = 2'd3;
-            default: mmem.mux2 = 2'd0;
-         endcase
       end
    end
+   
+   //mux2 styrsignal
+   always_comb begin
+        case(mux2_counter)
+        2'd1:    mmem.mux2 = 2'd1;
+        2'd2:    mmem.mux2 = 2'd2;
+        2'd3:    mmem.mux2 = 2'd3;
+        default: mmem.mux2 = 2'd0;
+     endcase
+
+   end
+   
+   //set reciprocals
+   always_comb begin
+        rec_o1 = reciprocals[reciprocal_counter];
+        rec_o2 = reciprocals[reciprocal_counter+1];
+   end
+   
    // 8 point DCT
    // control: dcten //ändrat ny långsammare klocka.
    dct dct0
      (.y(y), .x(x),
       .clk_i(clk_div4), .en(mmem.dcten)
    );
-
+//Paul: Jag gillar inte eclipse.
    q2 Q2 (
       .x_i(mux2_out), .x_o(q),
-      .rec_i1(reciprocals[reciprocal_counter],
-      .rec_i2(reciprocals[reciprocal_counter+1]) // !! TODO, rec_i shoud be something better
+      .rec_i1(rec_o1),
+      .rec_i2(rec_o2) // !! TODO, rec_i shoud be something better
    );
 
    // transpose memory

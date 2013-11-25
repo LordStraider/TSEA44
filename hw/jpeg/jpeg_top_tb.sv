@@ -54,7 +54,7 @@ module jpeg_top_tb();
    wishbone wbm(clk,rst);
  
    initial begin
-      #75 rst = 1'b0;
+      #200 rst = 1'b0;
    end
    
    always #20 clk = ~clk;
