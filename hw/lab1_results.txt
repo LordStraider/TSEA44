@@ -35,36 +35,40 @@ ICache enabled
 > 3
 DCache enabled
 > g 2000
-Clk cycles for ctr1: 762, ctr2: 762, ctr3: 770, ctr4: 772
-Clk cycles for ctr1: 340, ctr2: 340, ctr3: 340, ctr4: 340
-Clk cycles for ctr1: 333, ctr2: 333, ctr3: 333, ctr4: 333
+Clk cycles for ctr1: 797, ctr2: 155, ctr3: 964, ctr4: 271
+Clk cycles for ctr1: 367, ctr2: 76, ctr3: 480, ctr4: 159
+Clk cycles for ctr1: 367, ctr2: 76, ctr3: 480, ctr4: 159
+
 
 > 1
 ICache enabled
 > 4
 DCache disabled
 > g 2000
-Clk cycles for ctr1: 771, ctr2: 779, ctr3: 785, ctr4: 811
-Clk cycles for ctr1: 421, ctr2: 421, ctr3: 421, ctr4: 421
-Clk cycles for ctr1: 429, ctr2: 429, ctr3: 429, ctr4: 429
+Clk cycles for ctr1: 802, ctr2: 162, ctr3: 989, ctr4: 309
+Clk cycles for ctr1: 447, ctr2: 80, ctr3: 954, ctr4: 309
+Clk cycles for ctr1: 446, ctr2: 80, ctr3: 955, ctr4: 309
+
 
 > 2
 ICache disabled
 > 3
 DCache enabled
 > g 2000
-Clk cycles for ctr1: 8625, ctr2: 8629, ctr3: 8633, ctr4: 8645
-Clk cycles for ctr1: 7878, ctr2: 7882, ctr3: 7886, ctr4: 7898
-Clk cycles for ctr1: 7878, ctr2: 7882, ctr3: 7886, ctr4: 7898
+Clk cycles for ctr1: 8639, ctr2: 1764, ctr3: 2254, ctr4: 270
+Clk cycles for ctr1: 7887, ctr2: 1748, ctr3: 1127, ctr4: 158
+Clk cycles for ctr1: 7887, ctr2: 1748, ctr3: 1127, ctr4: 158
+
 
 > 2
 ICache disabled
 > 4
 DCache disabled
 > g 2000
-Clk cycles for ctr1: 8718, ctr2: 8726, ctr3: 8726, ctr4: 8751
-Clk cycles for ctr1: 8718, ctr2: 8726, ctr3: 8726, ctr4: 8751
-Clk cycles for ctr1: 8718, ctr2: 8726, ctr3: 8726, ctr4: 8751
+Clk cycles for ctr1: 8728, ctr2: 1751, ctr3: 2533, ctr4: 309
+Clk cycles for ctr1: 8728, ctr2: 1751, ctr3: 2533, ctr4: 309
+Clk cycles for ctr1: 8728, ctr2: 1751, ctr3: 2533, ctr4: 309
+
 
 
 

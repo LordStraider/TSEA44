@@ -85,6 +85,7 @@
 
    logic 		 dct_busy;
    logic 		 dma_start_dct;
+   logic [31:0]  reciprocal_counter;
 
     reg rd, wr, ack;
    // ********************************************
@@ -137,6 +138,15 @@
    reg mux2_enable;
    reg [1:0] mux2_counter;
    reg [31:0] mux2_out;
+   
+   int reciprocals [] = {2048,	2979,	2731,	2731,	2341,	2521,	2341,	1928,
+    1820,	1489,	1365,	936,	669,	512,	455,	356,
+    3277,	2048,	1365,	2341,	1725,	1260,	2048,	1365,
+    819,	1489,	1130,	643,	886,	585,	482,	596,
+    512,	405,	420,	377,	318,	345,	334,	293,
+    819,	643,	537,	565,	546,	596,	575,	475,
+    585,	377,	410,	529,	301,	318,	426,	315,
+    290,	356,	271,	273,	324,	328,	318,	331};
 
    // You must create the signals to the block ram somewhere...
 
@@ -271,7 +281,7 @@
    // You must create the wb.dat_i signal somewhere...
    assign wb.dat_i = ut_doa;
 
-   // You must also create the control logic...
+   // the control logic
    always @(posedge clk_div4) begin
       if(wb.rst) begin
          mmem.rden <= 1'b0;
@@ -308,7 +318,7 @@
             // begin writing result
             mux2_enable <= 1'b1;
 
-         // 8 cs later, all rows are out of transpose memory
+         // 8 cc later, all rows are out of transpose memory
          end else if (DC2_ctrl_counter == 8'd25) begin
             // stop reading from transpose
             mmem.trd <= 1'b0;
@@ -319,7 +329,17 @@
          end
       end
    end
-
+    //reciprocal_counter!!!
+    always @(posedge wb.clk) begin
+      if (wb.rst) 
+        reciprocal_counter <= 0;
+      else if(mux2_enable)
+        reciprocal_counter += 1;
+      else
+        reciprocal
+        
+   end 
+    
    always_comb begin
       case(mmem.mux2)
          2'd1:    mux2_out = y[32:63];
@@ -329,6 +349,7 @@
       endcase
    end
 
+    
 
    always @(posedge wb.clk) begin
       if(wb.rst) begin
@@ -356,7 +377,8 @@
 
    q2 Q2 (
       .x_i(mux2_out), .x_o(q),
-      .rec_i(mux2_out) // !! TODO, rec_i shoud be something better
+      .rec_i1(reciprocals[reciprocal_counter],
+      .rec_i2(reciprocals[reciprocal_counter+1]) // !! TODO, rec_i shoud be something better
    );
 
    // transpose memory
