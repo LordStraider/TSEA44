@@ -304,7 +304,9 @@
       .DIB(32'h0), .DIPB(4'h0),
       .ENB(1'b1),.WEB(1'b0),
       .DOB(dob2), .DOPB());
+      
     assign dob = dob2;
+    
     RAMB16_S36_S36 #(.SIM_COLLISION_CHECK("NONE")) utmem
      (// DCT write
       .CLKA(wb.clk), .SSRA(wb.rst),
@@ -318,7 +320,7 @@
       .WEB(wb.we), .DOB(dout_res), .DOPB());
 
     // You must create the wb.dat_i signal somewhere...
-    assign wb.dat_i = ut_doa;
+    assign wb.dat_i = dout_res;
 
     always @(posedge wb.clk) begin
         if (wb.rst)
