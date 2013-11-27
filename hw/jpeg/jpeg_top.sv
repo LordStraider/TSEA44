@@ -166,9 +166,6 @@
     reg mux2_enable;
     reg [1:0] mux2_counter;
     reg [31:0] mux2_out;
-    reg [31:0] shofres;
-    reg [31:0] shofres1;
-    reg [31:0] shofres2;
 
 
     int reciprocals [] = {2048,	1820,	3277,	819,	512,	819,	585,	290,
@@ -234,7 +231,7 @@
     //Mux till dct
     always_comb begin
         if (~mmem.mux1 && divcounter == 3'h3)
-            x = {dflipflop,dob,32'd0};
+            x = {32'd0,dflipflop,dob};
         else if (mmem.mux1)
             x = ut;
     end
@@ -328,6 +325,8 @@
             ctrl_control <= 1'b0;
         else if (read_enable)
             ctrl_control <= 1'b1;
+        else if (DC2_ctrl_counter == 8'd29) 
+            ctrl_control <= 1'b0;
     end
 
     // the control logic
@@ -348,7 +347,7 @@
          if(divcounter == 3'h3) begin
             // Enable DCT and get its input from block RAM
             mmem.dcten <= 1'b1;
-            mmem.mux1 <= 1'b0;
+            //mmem.mux1 <= 1'b0;
 
          // DCT takes 4 cs, so when ready...
          end else if (DC2_ctrl_counter == 8'd5) begin
@@ -373,6 +372,7 @@
          end else if (DC2_ctrl_counter == 8'd25) begin
             // stop reading from transpose
             mmem.trd <= 1'b0;
+            mmem.wren <= 1'b0;
             
 
          end else if (DC2_ctrl_counter == 8'd29) begin
@@ -380,6 +380,16 @@
             mmem.dcten <= 1'b0;
             
          end
+      end else begin
+         mmem.rden <= 1'b0;
+         mmem.reg1en <= 1'b0;
+         mmem.mux1 <= 1'b0;
+         mmem.dcten <= 1'b0;
+         mmem.twr <= 1'b0;
+         mmem.trd <= 1'b0;
+         mmem.wren <= 1'b0;
+         mux2_enable <= 1'b0;
+         DC2_ctrl_counter <= 8'b0;
       end
     end
     //reciprocal_counter!!!
@@ -387,7 +397,7 @@
       if (wb.rst) 
         reciprocal_counter <= 0;
       else if(mux2_enable)
-        reciprocal_counter += 2;
+        reciprocal_counter <= reciprocal_counter + 2;
       else if(reciprocal_counter == 32'h40)
         reciprocal_counter <= 0;
         
@@ -396,10 +406,10 @@
     //mux2
     always_comb begin
       case(mmem.mux2)
-         2'd1:    mux2_out = y[32:63];
-         2'd2:    mux2_out = y[64:95];
-         2'd3:    mux2_out = y[96:127];
-         default: mux2_out = y[0:31];
+         2'h1:    mux2_out = y[2:3];
+         2'h2:    mux2_out = y[4:5];
+         2'h3:    mux2_out = y[6:7];
+         default: mux2_out = y[0:1];
       endcase
     end
 
@@ -413,6 +423,9 @@
       end else if(mux2_enable) begin
          mux2_counter <= mux2_counter + 1;
          wrc <= wrc + 1;
+      end else begin
+         mux2_counter <= 2'd0;
+         wrc <= 1'b0;
       end
     end
 
@@ -450,7 +463,7 @@
     // control: trd, twr
 
     transpose tmem
-     (.clk(clk_div4), .rst(wb.rst),
+     (.clk(wb.clk), .rst(wb.rst),
       .t_wr(mmem.twr) , .t_rd(mmem.trd),
       .data_in({y[7][11:0],y[6][11:0],y[5][11:0],y[4][11:0],y[3][11:0],y[2][11:0],y[1][11:0],y[0][11:0]}),
       .data_out(ut));

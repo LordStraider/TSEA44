@@ -13,10 +13,10 @@ module q2(output[31:0] x_o,
     
     always_comb begin 
         r1 = x_i[31:16] * rec_i1;
-        if (r1[16] == 1) begin 
+        if (r1[16] == 1'b1) begin 
             r1[16:0] = r1[31:15];
             r1[31:15] = 17'd0;
-            r1 +=1;
+            r1 = r1 +1;
         end else begin 
             r1[16:0] = r1[31:15];
             r1[31:15] = 17'd0;
@@ -25,20 +25,18 @@ module q2(output[31:0] x_o,
     
     always_comb begin 
         r2 = x_i[15:0] * rec_i2;
-        if (r2[16] == 1) begin 
+        if (r2[16] == 1'b1) begin 
             r2[16:0] = r2[31:15];
             r2[31:15] = 17'd0;
-            r2 +=1;
+            r2 = r2 +1;
         end else begin 
             r2[16:0] = r2[31:15];
             r2[31:15] = 17'd0;
         end
     end           
-        
-   
 
-   assign x_o[31:16] = r1;
-   assign x_o[15:0] = r2;
+    assign x_o[31:16] = r1;
+    assign x_o[15:0] = r2;
 
 endmodule //
 // Local Variables:
