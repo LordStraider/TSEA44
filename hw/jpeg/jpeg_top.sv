@@ -68,7 +68,7 @@
 
     logic [31:0] 	 dob, dob2, ut_doa;
 
-    logic [0:7][11:0] 	 x, in, ut;
+    logic [0:7][11:0] 	 x, ut;
 
     logic [0:7][15:0] 	 y;
 
@@ -86,7 +86,7 @@
     logic [15:0] rec_o1;
     logic 		 dct_busy;
     logic 		 dma_start_dct;
-    logic [31:0]  reciprocal_counter;
+    logic [7:0]  reciprocal_counter;
     logic         dff1;
     logic         dff2;
     logic         dff1rst;
@@ -394,8 +394,8 @@
       if (wb.rst)
         reciprocal_counter <= 0;
       else if(mux2_enable)
-        reciprocal_counter <= reciprocal_counter + 2;
-      else if(reciprocal_counter == 32'h40)
+        reciprocal_counter <= reciprocal_counter + 8'd2;
+      else if(reciprocal_counter == 8'h40)
         reciprocal_counter <= 0;
 
     end
@@ -440,7 +440,7 @@
     //set reciprocals
     always_comb begin
         rec_o1 = reciprocals[reciprocal_counter];
-        rec_o2 = reciprocals[reciprocal_counter+1];
+        rec_o2 = reciprocals[reciprocal_counter + 8'd1];
     end
 
     // 8 point DCT
