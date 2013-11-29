@@ -60,8 +60,6 @@ void init_image(unsigned char *t,unsigned int image_width, unsigned int image_he
    width = image_width;
    height = image_height;
 
-#endif
-
 }
 
 

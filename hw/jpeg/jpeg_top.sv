@@ -126,7 +126,7 @@
     begin
         if (wb.rst)
             dff1 <= 1'b0;
-        else 
+        else
             dff1 <= wb.we;
         dff2 <= dff1;
     end
@@ -135,7 +135,7 @@
     begin
         dff1rst <= wb.rst;
         dff2rst <= dff1rst;
-    end    
+    end
 
     assign wb.ack = ack;
 
@@ -168,14 +168,14 @@
     reg [31:0] mux2_out;
 
 
-    int reciprocals [] = {2048,	1820,	3277,	819,	512,	819,	585,	290,
-        2979,	1489,	2048,	1489,	405,	643,	377,	356,
-        2731,	1365,	1365,	1130,	420,	537,	410,	271,
-        2731,	936,	2341,	643,	377,	565,	529,	273,
-        2341,	669,	1725,	886,	318,	546,	301,	324,
-        2521,	512,	1260,	585,	345,	596,	318,	328,
-        2341,	455,	2048,	482,	334,	575,	426,	318,
-        1928,	356,	1365,	596,	293,	475,	315,	331};
+    const reg [63:0][15:0] reciprocals = '{16'd2048,	16'd1820,	16'd3277,	16'd819,	16'd512,	16'd819,	16'd585,	16'd290,
+        16'd2979,	16'd1489,	16'd2048,	16'd1489,	16'd405,	16'd643,	16'd377,	16'd356,
+        16'd2731,	16'd1365,	16'd1365,	16'd1130,	16'd420,	16'd537,	16'd410,	16'd271,
+        16'd2731,	16'd936,	16'd2341,	16'd643,	16'd377,	16'd565,	16'd529,	16'd273,
+        16'd2341,	16'd669,	16'd1725,	16'd886,	16'd318,	16'd546,	16'd301,	16'd324,
+        16'd2521,	16'd512,	16'd1260,	16'd585,	16'd345,	16'd596,	16'd318,	16'd328,
+        16'd2341,	16'd455,	16'd2048,	16'd482,	16'd334,	16'd575,	16'd426,	16'd318,
+        16'd1928,	16'd356,	16'd1365,	16'd596,	16'd293,	16'd475,	16'd315,	16'd331};
 
     /*2048,	2979,	2731,	2731,	2341,	2521,	2341,	1928,
     1820,	1489,	1365,	936,	669,	512,	455,	356,
@@ -194,7 +194,7 @@
          read_enable <= 1'b0;
          bram_data <= 32'b0;
          bram_addr <= 32'b0;
-         bram_ce <= 1'b0;  
+         bram_ce <= 1'b0;
          bram_we <= 1'b0;
          rdc <= 9'b0;
          in_counter <= 5'h0;
@@ -225,7 +225,12 @@
          read_enable <= 1'b1;
          bram_we <= 1'b0;
          bram_ce <= 1'b0;
+      end else if (ce_ut) begin
+         bram_data <= wb.dat_o;
+         bram_addr <= wb.adr;
       end
+
+
     end
 
     //Mux till dct
@@ -234,16 +239,6 @@
             x = {32'd0,dflipflop,dob};
         else if (mmem.mux1)
             x = ut;
-    end
-
-    always @(posedge wb.clk) begin
-      if (wb.rst) begin
-         bram_data <= 32'b0;
-         bram_addr <= 32'b0;
-      end else if (ce_ut) begin
-         bram_data <= wb.dat_o;
-         bram_addr <= wb.adr;
-      end
     end
 
     //setting clk_div2...
@@ -265,12 +260,12 @@
     end
 
     always @(posedge wb.clk) begin
-        if(clock_counter == 2'h3) 
+        if(clock_counter == 2'h3)
             clock_counter <= 2'h0;
         else
             clock_counter <= clock_counter + 1;
     end
-    
+
     jpeg_dma dma
      (
       .clk_i(wb.clk), .rst_i(wb.rst),
@@ -304,9 +299,9 @@
       .DIB(32'h0), .DIPB(4'h0),
       .ENB(1'b1),.WEB(1'b0),
       .DOB(dob2), .DOPB());
-      
+
     assign dob = dob2;
-    
+
     RAMB16_S36_S36 #(.SIM_COLLISION_CHECK("NONE")) utmem
      (// DCT write
       .CLKA(wb.clk), .SSRA(wb.rst),
@@ -327,7 +322,7 @@
             ctrl_control <= 1'b0;
         else if (read_enable)
             ctrl_control <= 1'b1;
-        else if (DC2_ctrl_counter == 8'd29) 
+        else if (DC2_ctrl_counter == 8'd29)
             ctrl_control <= 1'b0;
     end
 
@@ -344,7 +339,7 @@
          mux2_enable <= 1'b0;
          DC2_ctrl_counter <= 8'b0;
       end else if (ctrl_control) begin
-         if (clk_div4) 
+         if (clk_div4)
             DC2_ctrl_counter <= DC2_ctrl_counter + 1;
          if(divcounter == 3'h3) begin
             // Enable DCT and get its input from block RAM
@@ -375,12 +370,12 @@
             // stop reading from transpose
             mmem.trd <= 1'b0;
             mmem.wren <= 1'b0;
-            
+
 
          end else if (DC2_ctrl_counter == 8'd29) begin
             // turn off DCT
             mmem.dcten <= 1'b0;
-            
+
          end
       end else begin
          mmem.rden <= 1'b0;
@@ -396,14 +391,14 @@
     end
     //reciprocal_counter!!!
     always @(posedge wb.clk) begin
-      if (wb.rst) 
+      if (wb.rst)
         reciprocal_counter <= 0;
       else if(mux2_enable)
         reciprocal_counter <= reciprocal_counter + 2;
       else if(reciprocal_counter == 32'h40)
         reciprocal_counter <= 0;
-        
-    end 
+
+    end
 
     //mux2
     always_comb begin

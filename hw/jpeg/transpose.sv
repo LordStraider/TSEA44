@@ -18,7 +18,7 @@ module transpose(
             clk_counter <= 0;
         end else begin
             clk_counter <= clk_counter + 1;
-            if (clk_counter == 3'h3) 
+            if (clk_counter == 3'h3)
                 clk_counter <= 3'h0;
         end
     end
@@ -38,12 +38,12 @@ module transpose(
         if (rst) begin
             col_count[7:0] <= 8'b0;
         end else if(t_rd && clk_counter == 3'h3) begin
-        
+
         //({y[7][11:0],y[6][11:0],y[5][11:0],y[4][11:0],y[3][11:0],y[2][11:0],y[1][11:0],y[0][11:0]})
           //  out_reg <= memory[7:0][col_count][11:0];
             col_count <= col_count + 1;
             if (col_count == 8'd8)
-                col_count = 8'b0;
+                col_count <= 8'b0;
         end
     end
 
