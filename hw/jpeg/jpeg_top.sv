@@ -77,7 +77,7 @@
     logic [31:0] 	 q, dia;
     logic [31:0] 	 doa;
     logic 		 csren;
-    logic [7:0] 		 csr;
+    logic [31:0] 		 csr;
     logic 		 clr;
     mmem_t 	mmem;
 
@@ -314,8 +314,18 @@
       .DIB(wb.dat_o), .DIPB(4'h0), .ENB(ce_ut),
       .WEB(wb.we), .DOB(dout_res), .DOPB());
 
+    reg [31:0] toDatI;
     // You must create the wb.dat_i signal somewhere...
-    assign wb.dat_i = dout_res;
+    assign wb.dat_i = toDatI;
+
+    //outmux
+    always_comb begin
+      if(csren)
+        toDatI = csr;
+      else
+        toDatI = dout_res;
+    end
+
 
     always @(posedge wb.clk) begin
         if (wb.rst)
@@ -329,6 +339,7 @@
     // the control logic
     always @(posedge wb.clk) begin
       if(wb.rst) begin
+         csr <= 32'd0;
          mmem.rden <= 1'b0;
          mmem.reg1en <= 1'b0;
          mmem.mux1 <= 1'b0;
@@ -378,6 +389,7 @@
 
          end
       end else begin
+         csr <= 32'd128;
          mmem.rden <= 1'b0;
          mmem.reg1en <= 1'b0;
          mmem.mux1 <= 1'b0;
@@ -414,7 +426,6 @@
     //count mux2 counter and output memory.
     always @(posedge wb.clk) begin
       if(wb.rst) begin
-
          mux2_counter <= 2'd0;
          wrc <= 1'b0;
       end else if(mux2_enable) begin

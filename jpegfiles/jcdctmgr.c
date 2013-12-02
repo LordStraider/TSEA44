@@ -78,7 +78,7 @@ void forward_DCT (short coef_block[DCTSIZE2])
   int *pim = (int *) pb;
   int *pr=reciprocals;
   short *pc=coef_block;
-  int y,x; // The current position within the MCU
+  int y, x, j; // The current position within the MCU
   int temp, i,rval;
   unsigned int startcycle = gettimer();
 
@@ -90,11 +90,50 @@ void forward_DCT (short coef_block[DCTSIZE2])
   #endif
 #else
   #ifdef HW_DCT
+
+    int prbplus = 0x96000000;
+    int prbplusread = 0x96000800;
+    char compress[2];
+    short *pc_tmp;
+    for (y = 0; y < DCTSIZE; y++, pb += (width - DCTSIZE)) {
+      for (x = 0; x < DCTSIZE; x += 4) {
+        REG32(prbplus) = *pb ^ 0x80808080;
+        prbplus += 4;
+        pb += 4;
+      }
+    }
+    col += DCTSIZE;
+    if (col >= width){
+      col = 0;
+      row += DCTSIZE;
+    }
+    perf_copy += gettimer() - startcycle;
+
+    while (REG32(0x96001000) != 128) { REG32(0x96001000) = 0; } 
+
+    //read
+    for (y = 0; y < DCTSIZE; y++, pb += (width - DCTSIZE)) {
+      for (x = 0; x < DCTSIZE; x += 2) {
+
+        *pc_tmp = REG32(prbplusread);
+        prbplusread += 2;
+        pc_tmp += 2;
+      }
+    }
+
+    //transpose
+    for (y = 0; y < DCTSIZE; y++) {
+      for (x = 0; x < DCTSIZE; x++) {
+        *(pc + (y + x*sizeof(char))) = *(pc_tmp + (x + y*sizeof(char)));
+      }
+    }
+    
   // 1) copy values from image to block RAM instead
   // 2) subtract 128 in SW
   // 3) start DCT_Q
   // 4) wait for it to finish
   // 5) read out, transpose, convert from 16 to 32 bit 
+
   #else
   // 1) Load data into workspace, applying unsigned->signed conversion
   // 2) subtract 128 (JPEG)
