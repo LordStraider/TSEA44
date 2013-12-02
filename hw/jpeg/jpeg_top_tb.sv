@@ -109,7 +109,7 @@ endmodule // mem
 program test_jpeg();
    int result = 0;
    int d = 32'h81828384;	// subtract 128 => d = {-127,-126,-125,-124}
-
+   //int d = 32'h7f818283;
    initial begin
 
 

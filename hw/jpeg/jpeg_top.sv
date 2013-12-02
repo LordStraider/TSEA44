@@ -239,8 +239,7 @@
 
     //Mux till dct
     always_comb begin
-        if (~mmem.mux1 && divcounter == 3'h3) begin
-            //x = {32'd0,dflipflop,dob};
+        if (~mmem.mux1 && divcounter == 3'h2) begin
             x = {4'd0, dflipflop[31:24],
                  4'd0, dflipflop[23:16],
                  4'd0, dflipflop[15:8],
@@ -275,7 +274,7 @@
 
      //div4clk
     always @(posedge wb.clk) begin
-      clk_div4 <= ~divcounter[1] && ~divcounter[0];
+      clk_div4 <= ~divcounter[1] && divcounter[0];
     end
 
     always @(posedge wb.clk) begin
@@ -371,16 +370,14 @@
       end else if (ctrl_control) begin
          if (clk_div4)
             DC2_ctrl_counter <= DC2_ctrl_counter + 1;
-         if(divcounter == 3'h3) begin
+         if(divcounter == 3'h2) begin
             // Enable DCT and get its input from block RAM
             mmem.dcten <= 1'b1;
+            //fulhaxfulhaxheladan!!
+            if(mmem.dcten == 1'b1 && DC2_ctrl_counter < 8'd8)
+              mmem.twr <= 1'b1;
 
-            //mmem.mux1 <= 1'b0;
 
-         // DCT takes 4 cs, so when ready...
-         end else if (DC2_ctrl_counter == 8'd3) begin
-            // ...begin write to transpose memory
-            mmem.twr <= 1'b1;
 
          // transpose write takes 8 cs
          end else if (DC2_ctrl_counter == 8'd10) begin
@@ -391,19 +388,19 @@
             mmem.mux1 <= 1'b1;
 
          // the first row transpose arrives out from DCT
-         end else if (DC2_ctrl_counter == 8'd17) begin
+         end else if (DC2_ctrl_counter == 8'd19) begin
             // begin writing result
             mux2_enable <= 1'b1;
             mmem.wren <= 1'b1;
 
          // 8 cc later, all rows are out of transpose memory
-         end else if (DC2_ctrl_counter == 8'd25) begin
+         end else if (DC2_ctrl_counter == 8'd26) begin
             // stop reading from transpose
             mmem.trd <= 1'b0;
             mmem.wren <= 1'b0;
 
 
-         end else if (DC2_ctrl_counter == 8'd29) begin
+         end else if (DC2_ctrl_counter == 8'd34) begin
             // turn off DCT
             mmem.dcten <= 1'b0;
 
@@ -484,7 +481,7 @@
     q2 Q2 (
       .x_i(mux2_out), .x_o(q),
       .rec_i1(rec_o1),
-      .rec_i2(rec_o2) // !! TODO, rec_i shoud be something better
+      .rec_i2(rec_o2)
     );
 
     // transpose memory
