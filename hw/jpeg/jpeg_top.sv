@@ -69,6 +69,10 @@
     logic [31:0] 	 dob, dob2, ut_doa;
 
     logic [0:7][11:0] 	 x, ut;
+    logic [23:0] x1;
+    logic [23:0] x2;
+    logic [23:0] dflipflophalf1;
+    logic [23:0] dflipflophalf2;
 
     logic [0:7][15:0] 	 y;
 
@@ -162,7 +166,7 @@
     reg [7:0] DC2_ctrl_counter;
     reg clk_div2;
     reg clk_div4;
-    reg [2:0] divcounter;
+    reg [1:0] divcounter;
     reg mux2_enable;
     reg [1:0] mux2_counter;
     reg [31:0] mux2_out;
@@ -235,13 +239,24 @@
 
     //Mux till dct
     always_comb begin
-        if (~mmem.mux1 && divcounter == 3'h3)
-            x = {32'd0,dflipflop,dob};
-        else if (mmem.mux1)
+        if (~mmem.mux1 && divcounter == 3'h3) begin
+            //x = {32'd0,dflipflop,dob};
+            x = {4'd0, dflipflop[31:24],
+                 4'd0, dflipflop[23:16],
+                 4'd0, dflipflop[15:8],
+                 4'd0, dflipflop[7:0],
+                 4'd0, dob[31:24],
+                 4'd0, dob[23:16],
+                 4'd0, dob[15:8],
+                 4'd0, dob[7:0]};
+
+
+        end else if (mmem.mux1)
             x = ut;
     end
 
     //setting clk_div2...
+
     always @(posedge wb.clk) begin
         if (wb.rst) begin
             clk_div2 <= 1'b0;
@@ -249,14 +264,18 @@
             divcounter <= 3'b0;
         end else begin
             divcounter <= divcounter + 1;
-            clk_div2 <= ~clk_div2;
-            if (divcounter == 3'h3) begin
-                clk_div4 <= 1'b1;
-                divcounter <= 3'b0;
-            end else begin
-                clk_div4 <= 1'b0;
-            end
+
         end
+    end
+
+    //div2clk
+    always @(posedge wb.clk) begin
+      clk_div2 <= divcounter[0];
+    end
+
+     //div4clk
+    always @(posedge wb.clk) begin
+      clk_div4 <= ~divcounter[1] && ~divcounter[0];
     end
 
     always @(posedge wb.clk) begin
@@ -355,15 +374,16 @@
          if(divcounter == 3'h3) begin
             // Enable DCT and get its input from block RAM
             mmem.dcten <= 1'b1;
+
             //mmem.mux1 <= 1'b0;
 
          // DCT takes 4 cs, so when ready...
-         end else if (DC2_ctrl_counter == 8'd5) begin
+         end else if (DC2_ctrl_counter == 8'd3) begin
             // ...begin write to transpose memory
             mmem.twr <= 1'b1;
 
          // transpose write takes 8 cs
-         end else if (DC2_ctrl_counter == 8'd13) begin
+         end else if (DC2_ctrl_counter == 8'd10) begin
             // stop write, begin read
             mmem.twr <= 1'b0;
             mmem.trd <= 1'b1;
@@ -458,7 +478,7 @@
     // control: dcten //ändrat ny långsammare klocka.
     dct dct0
      (.y(y), .x(x),
-      .clk_i(clk_div4), .en(mmem.dcten)
+      .clk_i(wb.clk), .en(mmem.dcten)
     );
     //Paul: Jag gillar inte eclipse.
     q2 Q2 (

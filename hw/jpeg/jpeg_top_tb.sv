@@ -52,19 +52,19 @@ module jpeg_top_tb();
    logic       rst = 1'b1;
    wishbone wb(clk,rst);
    wishbone wbm(clk,rst);
- 
+
    initial begin
       #200 rst = 1'b0;
    end
-   
+
    always #20 clk = ~clk;
 
    // Instantiate the DUT
    jpeg_top dut(.*);
    mem mem0(.*);
-   
+
    wishbone_tasks wb0(wb);
-   
+
    // Instantiate the tester
    test_jpeg tester0();
 endmodule // jpeg_top_tb
@@ -74,7 +74,7 @@ module mem(wishbone.slave wbm);
    logic [1:0]	state;
    logic [8:0] adr;
    integer     blockx, blocky, x, y, i;
-   
+
    initial begin
   // A test image, same as dma_dct_hw.c
   for (blocky=0; blocky<`HEIGHT; blocky++)
@@ -83,25 +83,25 @@ module mem(wishbone.slave wbm);
 	for (x=0; x<8; x++)
 	  rom[blockx*8+x+(blocky*8+y)*`PITCH] = i++;
    end
-   
+
    assign wbm.err = 1'b0;
    assign wbm.rty = 1'b0;
 
    always_ff @(posedge wbm.clk)
      if (wbm.rst)
 	state <= 2'h0;
-     else 
+     else
 	case (state)
 	  2'h0: if (wbm.stb) state <= 2'h1;
 	  2'h1: state <= 2'h2;
 	  2'h2: state <= 2'h0;
 	endcase
-	  
+
    assign wbm.ack = state[1];
 
    always_ff @(posedge wbm.clk)
      adr <= wbm.adr[8:0];
-   
+
    assign wbm.dat_i = {rom[adr], rom[adr+1], rom[adr+2], rom[adr+3]};
 endmodule // mem
 
@@ -112,14 +112,14 @@ program test_jpeg();
 
    initial begin
 
-     
+
       for (int i=0; i<16; i++) begin
 	 jpeg_top_tb.wb0.m_write(32'h96000000 + 4*i, d);
 	 d += 32'h04040404;
-      end 
+      end
 
       jpeg_top_tb.wb0.m_write(32'h96001000, 32'h01000000);
-      
+
       while (result != 32'h80000000)
 	jpeg_top_tb.wb0.m_read(32'h96001000,result);
 
@@ -148,7 +148,7 @@ program test_jpeg();
 	      jpeg_top_tb.wb0.m_read(32'h96001810, result);
 
 	    $display("blocky=%5d blockx=%5d", blocky, blockx);
-	    
+
 	    for (int j=0; j<8; j++) begin
 	       for (int i=0; i<4; i++) begin
 		  jpeg_top_tb.wb0.m_read(32'h96000800 + 4*i + j*16, result);
@@ -165,7 +165,7 @@ program test_jpeg();
    end
 
 endprogram // tester
-   
+
 
 // Local Variables:
 // verilog-library-directories:("." ".." "../or1200" "../jpeg" "../pkmc" "../dvga" "../uart" "../monitor" "../lab1" "../dafk_tb" "../eth" "../wb" "../leela")
