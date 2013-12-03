@@ -187,7 +187,10 @@ void encode_image(void)
    {
       forward_DCT(MCU_block);
       encode_mcu_huff(MCU_block);
+      printf("i: %d , mcu_count: %d\n", i, MCU_count);
    }
+
+   printf("10000 german gays have arrived...\n");
 }
 
 /* Initialize the encoder */
