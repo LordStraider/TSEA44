@@ -240,14 +240,14 @@
     //Mux till dct
     always_comb begin
         if (~mmem.mux1 && divcounter == 3'h2) begin
-            x = {4'd0, dflipflop[31:24],
-                 4'd0, dflipflop[23:16],
-                 4'd0, dflipflop[15:8],
-                 4'd0, dflipflop[7:0],
-                 4'd0, dob[31:24],
-                 4'd0, dob[23:16],
-                 4'd0, dob[15:8],
-                 4'd0, dob[7:0]};
+            x = {{4{dflipflop[31]}}, dflipflop[31:24],
+                 {4{dflipflop[23]}}, dflipflop[23:16],
+                 {4{dflipflop[15]}}, dflipflop[15:8],
+                 {4{dflipflop[7]}}, dflipflop[7:0],
+                 {4{dob[31]}}, dob[31:24],
+                 {4{dob[23]}}, dob[23:16],
+                 {4{dob[15]}}, dob[15:8],
+                 {4{dob[7]}}, dob[7:0]};
 
 
         end else if (mmem.mux1)
@@ -394,13 +394,13 @@
             mmem.wren <= 1'b1;
 
          // 8 cc later, all rows are out of transpose memory
-         end else if (DC2_ctrl_counter == 8'd26) begin
+         end else if (DC2_ctrl_counter == 8'd27) begin
             // stop reading from transpose
             mmem.trd <= 1'b0;
             mmem.wren <= 1'b0;
 
 
-         end else if (DC2_ctrl_counter == 8'd34) begin
+         end else if (DC2_ctrl_counter == 8'd31) begin
             // turn off DCT
             mmem.dcten <= 1'b0;
 
