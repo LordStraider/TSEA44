@@ -1,4 +1,4 @@
-# //  ModelSim SE 6.5c Aug 27 2009 Linux 2.6.32-431.el6.x86_64
+# //  ModelSim SE 6.5c Aug 27 2009 Linux 2.6.32-358.23.2.el6.x86_64
 # //
 # //  Copyright 1991-2009 Mentor Graphics Corporation
 # //              All Rights Reserved.
@@ -24,35 +24,7 @@
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
 # Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 20us
-# Loading sv_std.std
-# Loading /nobackup/local/nicol271/work.jpeg_top_tb
-# Loading /nobackup/local/nicol271/work.wishbone
-# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
-# Loading /nobackup/local/nicol271/work.jpeg_top
-# Loading /nobackup/local/nicol271/work.jpeg_dma
-# Loading /nobackup/local/nicol271/work.addrgen
-# Loading /nobackup/local/nicol271/work.dct
-# Loading /nobackup/local/nicol271/work.q2
-# Loading /nobackup/local/nicol271/work.transpose
-# Loading /nobackup/local/nicol271/work.mem
-# Loading /nobackup/local/nicol271/work.wishbone_tasks
-# Loading /nobackup/local/nicol271/work.test_jpeg
-# Loading /nobackup/local/nicol271/work.glbl
-restart
-# Loading sv_std.std
-# Loading /nobackup/local/nicol271/work.jpeg_top_tb
-# Loading /nobackup/local/nicol271/work.wishbone
-# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
-# Loading /nobackup/local/nicol271/work.jpeg_top
-# Loading /nobackup/local/nicol271/work.jpeg_dma
-# Loading /nobackup/local/nicol271/work.addrgen
-# Loading /nobackup/local/nicol271/work.dct
-# Loading /nobackup/local/nicol271/work.q2
-# Loading /nobackup/local/nicol271/work.transpose
-# Loading /nobackup/local/nicol271/work.mem
-# Loading /nobackup/local/nicol271/work.wishbone_tasks
-# Loading /nobackup/local/nicol271/work.test_jpeg
+run
 restart
 # Loading sv_std.std
 # Loading /nobackup/local/nicol271/work.jpeg_top_tb
@@ -68,7 +40,22 @@ restart
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
 run
-make simfiles; restart -f; run 20us
+restart
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+run
+make simfiles; restart -f; run 10us;
 # Loading sv_std.std
 # Loading /nobackup/local/nicol271/work.jpeg_top_tb
 # Loading /nobackup/local/nicol271/work.wishbone
@@ -83,7 +70,7 @@ make simfiles; restart -f; run 20us
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
 # Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 20us
+make simfiles; restart -f; run 10us;
 # Loading sv_std.std
 # Loading /nobackup/local/nicol271/work.jpeg_top_tb
 # Loading /nobackup/local/nicol271/work.wishbone
@@ -98,3 +85,1258 @@ make simfiles; restart -f; run 20us
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
 # Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# make[1]: Entering directory `/edu/nicol271/TSEA44/hw/simulator'
+# make -C .. simfiles
+# make[2]: Entering directory `/edu/nicol271/TSEA44/hw'
+# cd simulator;vlib /nobackup/local/nicol271/work;vlog -work /nobackup/local/nicol271/work +acc /sw/xilinx/ise_11.1i/ISE/verilog/mti_se/../src/glbl.v;for i in dafk_tb/128Kx8.v dafk_tb/adv_bb.v dafk_tb/eth_phy.v dafk_tb/flash.v dafk_tb/mt48lc16m16a2.v dafk_tb/sdram.v dafk_tb/sram_1MB.v dafk_tb/uart_tasks.sv dafk_tb/dafk_tb.sv dafk_tb/wishbone_tasks.sv or1200/or1200_alu.sv or1200/or1200_except.v or1200/or1200_mem2reg.v or1200/or1200_amultp2_32x32.v or1200/or1200_freeze.v or1200/or1200_mult_mac.v or1200/or1200_sprs.sv or1200/or1200_cfgr.v or1200/or1200_genpc.v or1200/or1200_operandmuxes.v or1200/or1200_top.sv or1200/or1200_cpu.v or1200/or1200_gmultp2_32x32.v or1200/or1200_pic.v or1200/or1200_tt.v or1200/or1200_ctrl.sv or1200/or1200_ic_fsm.v or1200/or1200_pm.v or1200/or1200_dc_fsm.v or1200/or1200_ic_ram.v or1200/or1200_qmem_top.v or1200/or1200_dc_ram.v or1200/or1200_ic_tag.v or1200/or1200_reg2mem.v or1200/or1200_wb_biu.v or1200/or1200_dc_tag.v or1200/or1200_ic_top.v or1200/or1200_wbmux.v or1200/or1200_dc_top.v or1200/or1200_if.v or1200/or1200_rf.v or1200/or1200_dmmu_tlb.v or1200/or1200_immu_tlb.v or1200/or1200_sb_fifo.v  or1200/or1200_dmmu_top.v or1200/or1200_immu_top.v or1200/or1200_sb.v or1200/or1200_dpram_32x32.v or1200/or1200_iwb_biu.v or1200/or1200_du.v or1200/or1200_lsu.sv or1200/or1200_spram_2048x32.v or1200/or1200_spram_2048x32_bw.v or1200/or1200_spram_512x20.v or1200/or1200_vlx_ctrl.sv or1200/or1200_vlx_dp.sv or1200/or1200_vlx_su.sv or1200/or1200_vlx_top.sv monitor/mon_prog_bram.sv  monitor/romram.sv wb/wb_arb_rr.sv wb/wb_arb_prio.sv wb/wb_top.sv interfaces/wishbone.sv parport.sv perf_top.sv uart/raminfr.v uart/uart_receiver.v uart/uart_rfifo.v uart/uart_top.sv uart/uart_wb.v uart/uart_debug_if.v uart/uart_regs.v uart/uart_tfifo.v uart/uart_transmitter.v clk/clkdel.v  clk/clkdiv.v  clk/sys_sig_gen.v jpeg/dct.sv jpeg/q2.sv jpeg/jpeg_dma.sv jpeg/jpeg_top.sv jpeg/transpose.sv jpeg/addrgen.sv pkmc/pkmc_sdramctrl_addgen.v pkmc/pkmc_sdramctrl_refcount.v pkmc/pkmc_commanddecoder.v 
+# pkmc/pkmc_sdramctrl_centralctrl.v pkmc/pkmc_sdramctrl_top.v pkmc/pkmc_flashctrl.v pkmc/pkmc_sdramctrl_fsm_all_one.v pkmc/pkmc_sramctrl.v pkmc/pkmc_mem_fpga_board_if.v pkmc/pkmc_sdramctrl_fsm_command.v pkmc/pkmc_top.sv pkmc/pkmc_rowcheck.v pkmc/pkmc_sdramctrl_fsm_sdramIRQ.v pkmc/pkmc_wbmemctrl_addrdecoder.v pkmc/pkmc_sdramctrl_ackgen.v pkmc/pkmc_sdramctrl_fsm.v pkmc/pkmc_wbmemctrl.v pkmc/pkmc_sdramctrl_activebanks.v pkmc/pkmc_sdramctrl_initcount.v eth/eth_clockgen.v eth/eth_outputcontrol.v eth/eth_rxethmac.v eth/eth_txethmac.v eth/eth_cop.v eth/eth_random.v eth/eth_rxstatem.v eth/eth_txstatem.v eth/eth_crc.v eth/eth_receivecontrol.v eth/eth_shiftreg.v eth/eth_wishbone.v eth/eth_fifo.v eth/eth_registers.v eth/eth_spram_256x32.v eth/timescale.v eth/eth_maccontrol.v eth/eth_register.v eth/eth_top.sv eth/xilinx_dist_ram_16x32.v eth/eth_macstatus.v eth/eth_rxaddrcheck.v eth/eth_transmitcontrol.v eth/eth_miim.v eth/eth_rxcounters.v eth/eth_txcounters.v dvga/dpram512w.v dvga/dvga_reg.v dvga/dvga_sprite_post.v dvga/dvga_sprite_rend.v dvga/dvga_top.sv dvga/dvga_fifo64x32.v dvga/dvga_renderer.v dvga/dvga_sprite_pre.v dvga/dvga_sprite.v leela/generic_dpram.v leela/leela_cam_cam.v leela/leela_cam_sprite.v leela/leela_mc.v leela/leela_top.sv leela/generic_fifo_sc_a.v leela/leela_cam_sim.v leela/leela_cam.v leela/leela_reg.v dafk.sv jpeg/jpeg_top_tb.sv lab1.sv dafk_tb/lab1_tb.sv lab1/lab1_uart_top.sv lab1/uart_tb.sv dafk_tb/lab0_tb.sv lab0.sv; do if ! vlog -work /nobackup/local/nicol271/work +acc -sv +incdir+.. ../$i; then exit 1;fi;done
+# ** Warning: (vlib-34) Library already exists at "/nobackup/local/nicol271/work".
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module A128Kx8
+# 
+# Top level modules:
+# 	A128Kx8
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module fl28f16
+# 
+# Top level modules:
+# 	fl28f16
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_phy
+# 
+# Top level modules:
+# 	eth_phy
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module flash
+# 
+# Top level modules:
+# 	flash
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module mt48lc16m16a2
+# 
+# Top level modules:
+# 	mt48lc16m16a2
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module sdram
+# 
+# Top level modules:
+# 	sdram
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module sram_1MB
+# 
+# Top level modules:
+# 	sram_1MB
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_tasks
+# 
+# Top level modules:
+# 	uart_tasks
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module dafk_tb
+# -- Compiling program testcomputer
+# -- Compiling module computer
+# 
+# Top level modules:
+# 	dafk_tb
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module wishbone_tasks
+# 
+# Top level modules:
+# 	wishbone_tasks
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_alu
+# 
+# Top level modules:
+# 	or1200_alu
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_except
+# 
+# Top level modules:
+# 	or1200_except
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_mem2reg
+# 
+# Top level modules:
+# 	or1200_mem2reg
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_freeze
+# 
+# Top level modules:
+# 	or1200_freeze
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_mult_mac
+# 
+# Top level modules:
+# 	or1200_mult_mac
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_sprs
+# 
+# Top level modules:
+# 	or1200_sprs
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_cfgr
+# 
+# Top level modules:
+# 	or1200_cfgr
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_genpc
+# 
+# Top level modules:
+# 	or1200_genpc
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_operandmuxes
+# 
+# Top level modules:
+# 	or1200_operandmuxes
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_top
+# 
+# Top level modules:
+# 	or1200_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_cpu
+# 
+# Top level modules:
+# 	or1200_cpu
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_gmultp2_32x32
+# 
+# Top level modules:
+# 	or1200_gmultp2_32x32
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_pic
+# 
+# Top level modules:
+# 	or1200_pic
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_tt
+# 
+# Top level modules:
+# 	or1200_tt
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_ctrl
+# 
+# Top level modules:
+# 	or1200_ctrl
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_ic_fsm
+# 
+# Top level modules:
+# 	or1200_ic_fsm
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_pm
+# 
+# Top level modules:
+# 	or1200_pm
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_dc_fsm
+# 
+# Top level modules:
+# 	or1200_dc_fsm
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_ic_ram
+# 
+# Top level modules:
+# 	or1200_ic_ram
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_qmem_top
+# 
+# Top level modules:
+# 	or1200_qmem_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_dc_ram
+# 
+# Top level modules:
+# 	or1200_dc_ram
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_ic_tag
+# 
+# Top level modules:
+# 	or1200_ic_tag
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_reg2mem
+# 
+# Top level modules:
+# 	or1200_reg2mem
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_wb_biu
+# 
+# Top level modules:
+# 	or1200_wb_biu
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_dc_tag
+# 
+# Top level modules:
+# 	or1200_dc_tag
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_ic_top
+# 
+# Top level modules:
+# 	or1200_ic_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_wbmux
+# 
+# Top level modules:
+# 	or1200_wbmux
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_dc_top
+# 
+# Top level modules:
+# 	or1200_dc_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_if
+# 
+# Top level modules:
+# 	or1200_if
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_rf
+# 
+# Top level modules:
+# 	or1200_rf
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_dmmu_tlb
+# 
+# Top level modules:
+# 	or1200_dmmu_tlb
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_immu_tlb
+# 
+# Top level modules:
+# 	or1200_immu_tlb
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_sb_fifo
+# 
+# Top level modules:
+# 	or1200_sb_fifo
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_dmmu_top
+# 
+# Top level modules:
+# 	or1200_dmmu_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_immu_top
+# 
+# Top level modules:
+# 	or1200_immu_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_sb
+# 
+# Top level modules:
+# 	or1200_sb
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_dpram_32x32
+# 
+# Top level modules:
+# 	or1200_dpram_32x32
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_iwb_biu
+# 
+# Top level modules:
+# 	or1200_iwb_biu
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_du
+# 
+# Top level modules:
+# 	or1200_du
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_lsu
+# 
+# Top level modules:
+# 	or1200_lsu
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_spram_2048x32
+# 
+# Top level modules:
+# 	or1200_spram_2048x32
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_spram_2048x32_bw
+# 
+# Top level modules:
+# 	or1200_spram_2048x32_bw
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_spram_512x20
+# 
+# Top level modules:
+# 	or1200_spram_512x20
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_vlx_ctrl
+# 
+# Top level modules:
+# 	or1200_vlx_ctrl
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_vlx_dp
+# 
+# Top level modules:
+# 	or1200_vlx_dp
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_vlx_su
+# 
+# Top level modules:
+# 	or1200_vlx_su
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_vlx_top
+# 
+# Top level modules:
+# 	or1200_vlx_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module mon_prog_bram
+# 
+# Top level modules:
+# 	mon_prog_bram
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module romram
+# 
+# Top level modules:
+# 	romram
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module wb_arb_rr
+# 
+# Top level modules:
+# 	wb_arb_rr
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module wb_arb_prio
+# 
+# Top level modules:
+# 	wb_arb_prio
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module wb_top
+# 
+# Top level modules:
+# 	wb_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling interface wishbone
+# -- Compiling module dummy_slave
+# -- Compiling module dummy_master
+# 
+# Top level modules:
+# 	dummy_slave
+# 	dummy_master
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module parport
+# 
+# Top level modules:
+# 	parport
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module perf_top
+# 
+# Top level modules:
+# 	perf_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module raminfr
+# 
+# Top level modules:
+# 	raminfr
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_receiver
+# 
+# Top level modules:
+# 	uart_receiver
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_rfifo
+# 
+# Top level modules:
+# 	uart_rfifo
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_top
+# 
+# Top level modules:
+# 	uart_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_wb
+# 
+# Top level modules:
+# 	uart_wb
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_debug_if
+# 
+# Top level modules:
+# 	uart_debug_if
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_regs
+# 
+# Top level modules:
+# 	uart_regs
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_tfifo
+# 
+# Top level modules:
+# 	uart_tfifo
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_transmitter
+# 
+# Top level modules:
+# 	uart_transmitter
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module clkdel
+# 
+# Top level modules:
+# 	clkdel
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module clkdiv
+# 
+# Top level modules:
+# 	clkdiv
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module sys_sig_gen
+# 
+# Top level modules:
+# 	sys_sig_gen
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module dct
+# 
+# Top level modules:
+# 	dct
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module q2
+# ** Error: ../jpeg/q2.sv(15): near "x_i": syntax error, unexpected "IDENTIFIER", expecting '''
+# make[2]: Leaving directory `/edu/nicol271/TSEA44/hw'
+# make[1]: Leaving directory `/edu/nicol271/TSEA44/hw/simulator'
+# make[2]: *** [simfiles] Error 1
+# make[1]: *** [simfiles] Error 2
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+# Warning in wave window restart: (vish-4014) No objects found matching '/jpeg_top_tb/dut/Q2/x_signed'. 
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us; f
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+# ambiguous command name "f": fblocked fconfigure fcopy fcover fcoverClearAll fcoverClearTriggers fcoverContextTracking fcoverDefineMenus fcoverDragVerifyItems fcoverDropHandler fcoverFooter fcoverPopupMenu fcoverPropertyCmd fcoverSetTriggers fcoverUpdateAll fcoverUpdateBrowser fcoverViewDecl fcover_dir_image fe_rename file fileUCDBBrowserSave file_image fileevent filelist find findExec findWidth findWindow find_HDL findwidget flatfsmlist flatlist flatmemlist flush flush_msg_buffer focus font for force foreach foreachGridWindow foreachSignalsWindow foreachTree foreachVariablesWindow foreachWaveWindow foreachWindow format formatTime format_vsim_error frame funcActiveCursorChangedCB function_image
+make simfiles; restart -f; run 10us; f
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+# ambiguous command name "f": fblocked fconfigure fcopy fcover fcoverClearAll fcoverClearTriggers fcoverContextTracking fcoverDefineMenus fcoverDragVerifyItems fcoverDropHandler fcoverFooter fcoverPopupMenu fcoverPropertyCmd fcoverSetTriggers fcoverUpdateAll fcoverUpdateBrowser fcoverViewDecl fcover_dir_image fe_rename file fileUCDBBrowserSave file_image fileevent filelist find findExec findWidth findWindow find_HDL findwidget flatfsmlist flatlist flatmemlist flush flush_msg_buffer focus font for force foreach foreachGridWindow foreachSignalsWindow foreachTree foreachVariablesWindow foreachWaveWindow foreachWindow format formatTime format_vsim_error frame funcActiveCursorChangedCB function_image
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# make[1]: Entering directory `/edu/nicol271/TSEA44/hw/simulator'
+# make -C .. simfiles
+# make[2]: Entering directory `/edu/nicol271/TSEA44/hw'
+# cd simulator;vlib /nobackup/local/nicol271/work;vlog -work /nobackup/local/nicol271/work +acc /sw/xilinx/ise_11.1i/ISE/verilog/mti_se/../src/glbl.v;for i in dafk_tb/128Kx8.v dafk_tb/adv_bb.v dafk_tb/eth_phy.v dafk_tb/flash.v dafk_tb/mt48lc16m16a2.v dafk_tb/sdram.v dafk_tb/sram_1MB.v dafk_tb/uart_tasks.sv dafk_tb/dafk_tb.sv dafk_tb/wishbone_tasks.sv or1200/or1200_alu.sv or1200/or1200_except.v or1200/or1200_mem2reg.v or1200/or1200_amultp2_32x32.v or1200/or1200_freeze.v or1200/or1200_mult_mac.v or1200/or1200_sprs.sv or1200/or1200_cfgr.v or1200/or1200_genpc.v or1200/or1200_operandmuxes.v or1200/or1200_top.sv or1200/or1200_cpu.v or1200/or1200_gmultp2_32x32.v or1200/or1200_pic.v or1200/or1200_tt.v or1200/or1200_ctrl.sv or1200/or1200_ic_fsm.v or1200/or1200_pm.v or1200/or1200_dc_fsm.v or1200/or1200_ic_ram.v or1200/or1200_qmem_top.v or1200/or1200_dc_ram.v or1200/or1200_ic_tag.v or1200/or1200_reg2mem.v or1200/or1200_wb_biu.v or1200/or1200_dc_tag.v or1200/or1200_ic_top.v or1200/or1200_wbmux.v or1200/or1200_dc_top.v or1200/or1200_if.v or1200/or1200_rf.v or1200/or1200_dmmu_tlb.v or1200/or1200_immu_tlb.v or1200/or1200_sb_fifo.v  or1200/or1200_dmmu_top.v or1200/or1200_immu_top.v or1200/or1200_sb.v or1200/or1200_dpram_32x32.v or1200/or1200_iwb_biu.v or1200/or1200_du.v or1200/or1200_lsu.sv or1200/or1200_spram_2048x32.v or1200/or1200_spram_2048x32_bw.v or1200/or1200_spram_512x20.v or1200/or1200_vlx_ctrl.sv or1200/or1200_vlx_dp.sv or1200/or1200_vlx_su.sv or1200/or1200_vlx_top.sv monitor/mon_prog_bram.sv  monitor/romram.sv wb/wb_arb_rr.sv wb/wb_arb_prio.sv wb/wb_top.sv interfaces/wishbone.sv parport.sv perf_top.sv uart/raminfr.v uart/uart_receiver.v uart/uart_rfifo.v uart/uart_top.sv uart/uart_wb.v uart/uart_debug_if.v uart/uart_regs.v uart/uart_tfifo.v uart/uart_transmitter.v clk/clkdel.v  clk/clkdiv.v  clk/sys_sig_gen.v jpeg/dct.sv jpeg/q2.sv jpeg/jpeg_dma.sv jpeg/jpeg_top.sv jpeg/transpose.sv jpeg/addrgen.sv pkmc/pkmc_sdramctrl_addgen.v pkmc/pkmc_sdramctrl_refcount.v pkmc/pkmc_commanddecoder.v 
+# pkmc/pkmc_sdramctrl_centralctrl.v pkmc/pkmc_sdramctrl_top.v pkmc/pkmc_flashctrl.v pkmc/pkmc_sdramctrl_fsm_all_one.v pkmc/pkmc_sramctrl.v pkmc/pkmc_mem_fpga_board_if.v pkmc/pkmc_sdramctrl_fsm_command.v pkmc/pkmc_top.sv pkmc/pkmc_rowcheck.v pkmc/pkmc_sdramctrl_fsm_sdramIRQ.v pkmc/pkmc_wbmemctrl_addrdecoder.v pkmc/pkmc_sdramctrl_ackgen.v pkmc/pkmc_sdramctrl_fsm.v pkmc/pkmc_wbmemctrl.v pkmc/pkmc_sdramctrl_activebanks.v pkmc/pkmc_sdramctrl_initcount.v eth/eth_clockgen.v eth/eth_outputcontrol.v eth/eth_rxethmac.v eth/eth_txethmac.v eth/eth_cop.v eth/eth_random.v eth/eth_rxstatem.v eth/eth_txstatem.v eth/eth_crc.v eth/eth_receivecontrol.v eth/eth_shiftreg.v eth/eth_wishbone.v eth/eth_fifo.v eth/eth_registers.v eth/eth_spram_256x32.v eth/timescale.v eth/eth_maccontrol.v eth/eth_register.v eth/eth_top.sv eth/xilinx_dist_ram_16x32.v eth/eth_macstatus.v eth/eth_rxaddrcheck.v eth/eth_transmitcontrol.v eth/eth_miim.v eth/eth_rxcounters.v eth/eth_txcounters.v dvga/dpram512w.v dvga/dvga_reg.v dvga/dvga_sprite_post.v dvga/dvga_sprite_rend.v dvga/dvga_top.sv dvga/dvga_fifo64x32.v dvga/dvga_renderer.v dvga/dvga_sprite_pre.v dvga/dvga_sprite.v leela/generic_dpram.v leela/leela_cam_cam.v leela/leela_cam_sprite.v leela/leela_mc.v leela/leela_top.sv leela/generic_fifo_sc_a.v leela/leela_cam_sim.v leela/leela_cam.v leela/leela_reg.v dafk.sv jpeg/jpeg_top_tb.sv lab1.sv dafk_tb/lab1_tb.sv lab1/lab1_uart_top.sv lab1/uart_tb.sv dafk_tb/lab0_tb.sv lab0.sv; do if ! vlog -work /nobackup/local/nicol271/work +acc -sv +incdir+.. ../$i; then exit 1;fi;done
+# ** Warning: (vlib-34) Library already exists at "/nobackup/local/nicol271/work".
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module A128Kx8
+# 
+# Top level modules:
+# 	A128Kx8
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module fl28f16
+# 
+# Top level modules:
+# 	fl28f16
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_phy
+# 
+# Top level modules:
+# 	eth_phy
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module flash
+# 
+# Top level modules:
+# 	flash
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module mt48lc16m16a2
+# 
+# Top level modules:
+# 	mt48lc16m16a2
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module sdram
+# 
+# Top level modules:
+# 	sdram
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module sram_1MB
+# 
+# Top level modules:
+# 	sram_1MB
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_tasks
+# 
+# Top level modules:
+# 	uart_tasks
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module dafk_tb
+# -- Compiling program testcomputer
+# -- Compiling module computer
+# 
+# Top level modules:
+# 	dafk_tb
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module wishbone_tasks
+# 
+# Top level modules:
+# 	wishbone_tasks
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_alu
+# 
+# Top level modules:
+# 	or1200_alu
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_except
+# 
+# Top level modules:
+# 	or1200_except
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_mem2reg
+# 
+# Top level modules:
+# 	or1200_mem2reg
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_freeze
+# 
+# Top level modules:
+# 	or1200_freeze
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_mult_mac
+# 
+# Top level modules:
+# 	or1200_mult_mac
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_sprs
+# 
+# Top level modules:
+# 	or1200_sprs
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_cfgr
+# 
+# Top level modules:
+# 	or1200_cfgr
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_genpc
+# 
+# Top level modules:
+# 	or1200_genpc
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_operandmuxes
+# 
+# Top level modules:
+# 	or1200_operandmuxes
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_top
+# 
+# Top level modules:
+# 	or1200_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_cpu
+# 
+# Top level modules:
+# 	or1200_cpu
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_gmultp2_32x32
+# 
+# Top level modules:
+# 	or1200_gmultp2_32x32
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_pic
+# 
+# Top level modules:
+# 	or1200_pic
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_tt
+# 
+# Top level modules:
+# 	or1200_tt
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_ctrl
+# 
+# Top level modules:
+# 	or1200_ctrl
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_ic_fsm
+# 
+# Top level modules:
+# 	or1200_ic_fsm
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_pm
+# 
+# Top level modules:
+# 	or1200_pm
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_dc_fsm
+# 
+# Top level modules:
+# 	or1200_dc_fsm
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_ic_ram
+# 
+# Top level modules:
+# 	or1200_ic_ram
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_qmem_top
+# 
+# Top level modules:
+# 	or1200_qmem_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_dc_ram
+# 
+# Top level modules:
+# 	or1200_dc_ram
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_ic_tag
+# 
+# Top level modules:
+# 	or1200_ic_tag
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_reg2mem
+# 
+# Top level modules:
+# 	or1200_reg2mem
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_wb_biu
+# 
+# Top level modules:
+# 	or1200_wb_biu
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_dc_tag
+# 
+# Top level modules:
+# 	or1200_dc_tag
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_ic_top
+# 
+# Top level modules:
+# 	or1200_ic_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_wbmux
+# 
+# Top level modules:
+# 	or1200_wbmux
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_dc_top
+# 
+# Top level modules:
+# 	or1200_dc_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_if
+# 
+# Top level modules:
+# 	or1200_if
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_rf
+# 
+# Top level modules:
+# 	or1200_rf
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_dmmu_tlb
+# 
+# Top level modules:
+# 	or1200_dmmu_tlb
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_immu_tlb
+# 
+# Top level modules:
+# 	or1200_immu_tlb
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_sb_fifo
+# 
+# Top level modules:
+# 	or1200_sb_fifo
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_dmmu_top
+# 
+# Top level modules:
+# 	or1200_dmmu_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_immu_top
+# 
+# Top level modules:
+# 	or1200_immu_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_sb
+# 
+# Top level modules:
+# 	or1200_sb
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_dpram_32x32
+# 
+# Top level modules:
+# 	or1200_dpram_32x32
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_iwb_biu
+# 
+# Top level modules:
+# 	or1200_iwb_biu
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_du
+# 
+# Top level modules:
+# 	or1200_du
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_lsu
+# 
+# Top level modules:
+# 	or1200_lsu
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_spram_2048x32
+# 
+# Top level modules:
+# 	or1200_spram_2048x32
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_spram_2048x32_bw
+# 
+# Top level modules:
+# 	or1200_spram_2048x32_bw
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_spram_512x20
+# 
+# Top level modules:
+# 	or1200_spram_512x20
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_vlx_ctrl
+# 
+# Top level modules:
+# 	or1200_vlx_ctrl
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_vlx_dp
+# 
+# Top level modules:
+# 	or1200_vlx_dp
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_vlx_su
+# 
+# Top level modules:
+# 	or1200_vlx_su
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_vlx_top
+# 
+# Top level modules:
+# 	or1200_vlx_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module mon_prog_bram
+# 
+# Top level modules:
+# 	mon_prog_bram
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module romram
+# 
+# Top level modules:
+# 	romram
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module wb_arb_rr
+# 
+# Top level modules:
+# 	wb_arb_rr
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module wb_arb_prio
+# 
+# Top level modules:
+# 	wb_arb_prio
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module wb_top
+# 
+# Top level modules:
+# 	wb_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling interface wishbone
+# -- Compiling module dummy_slave
+# -- Compiling module dummy_master
+# 
+# Top level modules:
+# 	dummy_slave
+# 	dummy_master
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module parport
+# 
+# Top level modules:
+# 	parport
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module perf_top
+# 
+# Top level modules:
+# 	perf_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module raminfr
+# 
+# Top level modules:
+# 	raminfr
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_receiver
+# 
+# Top level modules:
+# 	uart_receiver
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_rfifo
+# 
+# Top level modules:
+# 	uart_rfifo
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_top
+# 
+# Top level modules:
+# 	uart_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_wb
+# 
+# Top level modules:
+# 	uart_wb
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_debug_if
+# 
+# Top level modules:
+# 	uart_debug_if
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_regs
+# 
+# Top level modules:
+# 	uart_regs
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_tfifo
+# 
+# Top level modules:
+# 	uart_tfifo
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_transmitter
+# 
+# Top level modules:
+# 	uart_transmitter
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module clkdel
+# 
+# Top level modules:
+# 	clkdel
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module clkdiv
+# 
+# Top level modules:
+# 	clkdiv
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module sys_sig_gen
+# 
+# Top level modules:
+# 	sys_sig_gen
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module dct
+# 
+# Top level modules:
+# 	dct
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module q2
+# ** Error: ../jpeg/q2.sv(22): Undefined variable: rnd.
+# ** Error: ../jpeg/q2.sv(23): Undefined variable: bits.
+# ** Error: ../jpeg/q2.sv(24): Undefined variable: pos.
+# make[2]: Leaving directory `/edu/nicol271/TSEA44/hw'
+# make[1]: Leaving directory `/edu/nicol271/TSEA44/hw/simulator'
+# make[2]: *** [simfiles] Error 1
+# make[1]: *** [simfiles] Error 2
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+make simfiles; restart -f; run 10us;
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+restart
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+run

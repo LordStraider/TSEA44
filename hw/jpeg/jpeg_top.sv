@@ -172,14 +172,24 @@
     reg [31:0] mux2_out;
 
 
-    const reg [63:0][15:0] reciprocals = '{16'd2048,	16'd1820,	16'd3277,	16'd819,	16'd512,	16'd819,	16'd585,	16'd290,
+    const reg [63:0][15:0] reciprocals = '{16'd2048,   16'd2731,   16'd2341,   16'd2341,   16'd1820,   16'd1365,  16'd669,   16'd455,
+        16'd2979,   16'd2731,   16'd2521,   16'd1928,   16'd1489,   16'd936,   16'd512,   16'd356,
+        16'd3277,   16'd2341,   16'd2048,   16'd1489,   16'd886,    16'd596,   16'd420,   16'd345,
+        16'd2048,   16'd1725,   16'd1365,   16'd1130,   16'd585,    16'd512,   16'd377,   16'd334,
+        16'd1365,   16'd1260,   16'd819,    16'd643,    16'd482,    16'd405,   16'd318,   16'd293,
+        16'd819,    16'd565,    16'd575,    16'd377,    16'd301,    16'd315,   16'd271,   16'd328,
+        16'd643,    16'd546,    16'd475,    16'd410,    16'd318,    16'd290,   16'd273,   16'd318,
+        16'd537,    16'd596,    16'd585,    16'd529,    16'd426,    16'd356,   16'd324,   16'd331};
+
+
+/*        16'd2048,	16'd1820,	16'd3277,	16'd819,	16'd512,	16'd819,	16'd585,	16'd290,
         16'd2979,	16'd1489,	16'd2048,	16'd1489,	16'd405,	16'd643,	16'd377,	16'd356,
         16'd2731,	16'd1365,	16'd1365,	16'd1130,	16'd420,	16'd537,	16'd410,	16'd271,
         16'd2731,	16'd936,	16'd2341,	16'd643,	16'd377,	16'd565,	16'd529,	16'd273,
         16'd2341,	16'd669,	16'd1725,	16'd886,	16'd318,	16'd546,	16'd301,	16'd324,
         16'd2521,	16'd512,	16'd1260,	16'd585,	16'd345,	16'd596,	16'd318,	16'd328,
         16'd2341,	16'd455,	16'd2048,	16'd482,	16'd334,	16'd575,	16'd426,	16'd318,
-        16'd1928,	16'd356,	16'd1365,	16'd596,	16'd293,	16'd475,	16'd315,	16'd331};
+        16'd1928,	16'd356,	16'd1365,	16'd596,	16'd293,	16'd475,	16'd315,	16'd331};*/
 
     /*2048,	2979,	2731,	2731,	2341,	2521,	2341,	1928,
     1820,	1489,	1365,	936,	669,	512,	455,	356,
@@ -350,7 +360,7 @@
             ctrl_control <= 1'b0;
         else if (read_enable)
             ctrl_control <= 1'b1;
-        else if (DC2_ctrl_counter == 8'd29)
+        else if (DC2_ctrl_counter == 8'd20)
             ctrl_control <= 1'b0;
     end
 
@@ -372,7 +382,8 @@
             DC2_ctrl_counter <= DC2_ctrl_counter + 1;
          if(divcounter == 3'h2) begin
             // Enable DCT and get its input from block RAM
-            mmem.dcten <= 1'b1;
+            if(DC2_ctrl_counter < 8'd18)
+              mmem.dcten <= 1'b1;
             //fulhaxfulhaxheladan!!
             if(mmem.dcten == 1'b1 && DC2_ctrl_counter < 8'd8)
               mmem.twr <= 1'b1;
@@ -388,21 +399,19 @@
             mmem.mux1 <= 1'b1;
 
          // the first row transpose arrives out from DCT
-         end else if (DC2_ctrl_counter == 8'd19) begin
+         end else if (DC2_ctrl_counter == 8'd12) begin
             // begin writing result
             mux2_enable <= 1'b1;
             mmem.wren <= 1'b1;
 
          // 8 cc later, all rows are out of transpose memory
-         end else if (DC2_ctrl_counter == 8'd27) begin
+         end else if (DC2_ctrl_counter == 8'd20) begin
             // stop reading from transpose
             mmem.trd <= 1'b0;
-            mmem.wren <= 1'b0;
 
-
-         end else if (DC2_ctrl_counter == 8'd31) begin
             // turn off DCT
             mmem.dcten <= 1'b0;
+            mmem.wren <= 1'b0;
 
          end
       end else begin
@@ -421,11 +430,11 @@
     //reciprocal_counter!!!
     always @(posedge wb.clk) begin
       if (wb.rst)
-        reciprocal_counter <= 0;
+        reciprocal_counter <= 8'd63;
       else if(mux2_enable)
-        reciprocal_counter <= reciprocal_counter + 8'd2;
-      else if(reciprocal_counter == 8'h40)
-        reciprocal_counter <= 0;
+        reciprocal_counter <= reciprocal_counter - 8'd2;
+      else
+        reciprocal_counter <= 8'd63;
 
     end
 
@@ -468,7 +477,7 @@
     //set reciprocals
     always_comb begin
         rec_o1 = reciprocals[reciprocal_counter];
-        rec_o2 = reciprocals[reciprocal_counter + 8'd1];
+        rec_o2 = reciprocals[reciprocal_counter - 8'd1];
     end
 
     // 8 point DCT
