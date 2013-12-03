@@ -268,8 +268,6 @@
 
     always @(posedge wb.clk) begin
         if (wb.rst) begin
-            clk_div2 <= 1'b0;
-            clk_div4 <= 1'b0;
             divcounter <= 3'b0;
         end else begin
             divcounter <= divcounter + 1;
@@ -279,12 +277,18 @@
 
     //div2clk
     always @(posedge wb.clk) begin
+      if (wb.rst)
+        clk_div2 <= 1'b0;
+      else
       clk_div2 <= divcounter[0];
     end
 
      //div4clk
     always @(posedge wb.clk) begin
-      clk_div4 <= ~divcounter[1] && divcounter[0];
+      if (wb.rst)
+          clk_div4 <= 1'b0;
+      else
+        clk_div4 <= ~divcounter[1] && divcounter[0];
     end
 
     always @(posedge wb.clk) begin
