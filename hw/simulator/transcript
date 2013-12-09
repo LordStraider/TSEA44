@@ -25,6 +25,126 @@
 # Loading /nobackup/local/nicol271/work.test_jpeg
 # Loading /nobackup/local/nicol271/work.glbl
 run
+run
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -2     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# 1
+# Simulation stop requested.
+run
+restart -f; run 40 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -2     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# 1
+# Simulation stop requested.
+restart -f; run 40 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -2     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# 1
+# Simulation stop requested.
+make simfiles; restart -f; run 40 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#    -2     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# 1
+# Simulation stop requested.
 restart
 # Loading sv_std.std
 # Loading /nobackup/local/nicol271/work.jpeg_top_tb
@@ -39,6 +159,136 @@ restart
 # Loading /nobackup/local/nicol271/work.mem
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
+run
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#    -2     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# 1
+# Simulation stop requested.
+restart
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+run
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#    -2     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# 1
+# Simulation stop requested.
+restart
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+run
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#    -2     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# 1
+# Simulation stop requested.
+restart
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+run
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#    -2     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# 1
+# Simulation stop requested.
 run
 restart
 # Loading sv_std.std
@@ -55,7 +305,28 @@ restart
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
 run
-make simfiles; restart -f; run 10us;
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#    -2     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# 1
+# Simulation stop requested.
+make simfiles; restart -f; run 48 us
 # Loading sv_std.std
 # Loading /nobackup/local/nicol271/work.jpeg_top_tb
 # Loading /nobackup/local/nicol271/work.wishbone
@@ -70,7 +341,65 @@ make simfiles; restart -f; run 10us;
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
 # Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# 1
+# Simulation stop requested.
+run
+restart
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+run
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# 1
+# Simulation stop requested.
+make simfiles; restart -f; run 48 us
 # Loading sv_std.std
 # Loading /nobackup/local/nicol271/work.jpeg_top_tb
 # Loading /nobackup/local/nicol271/work.wishbone
@@ -85,7 +414,102 @@ make simfiles; restart -f; run 10us;
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
 # Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -----
+# new run
+# 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -----
+# in inmem
+#           0
+#            0
+#            0
+#            0
+#            0
+#            0
+#            0
+#            0
+#            0
+#            0
+#            0
+#            0
+#            0
+#            0
+#            0
+#            0
+# 1
+# Simulation stop requested.
+ run
+restart
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+run
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -----
+# new run
+# 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -16962 -16448 -16962 -16448 -16962 -16448 -16962 -16448 
+# -----
+# in inmem
+#           0
+#            0
+#            0
+#            0
+#            0
+#            0
+#            0
+#            0
+#            0
+#            0
+#            0
+#            0
+#            0
+#            0
+#            0
+#            0
+# 1
+# Simulation stop requested.
+ run
+make simfiles; restart -f; run 48 us
 # Loading sv_std.std
 # Loading /nobackup/local/nicol271/work.jpeg_top_tb
 # Loading /nobackup/local/nicol271/work.wishbone
@@ -100,7 +524,47 @@ make simfiles; restart -f; run 10us;
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
 # Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# in inmem
+# -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+# 1
+# Simulation stop requested.
+ run
+make simfiles; restart -f; run 48 us
 # Loading sv_std.std
 # Loading /nobackup/local/nicol271/work.jpeg_top_tb
 # Loading /nobackup/local/nicol271/work.wishbone
@@ -115,7 +579,154 @@ make simfiles; restart -f; run 10us;
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
 # Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# in inmem
+# -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+# 1
+# Simulation stop requested.
+ restart
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+run
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# in inmem
+# -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+# 1
+# Simulation stop requested.
+ restart
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+run
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# in inmem
+# -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+#  -1111572544
+# 1
+# Simulation stop requested.
+ make simfiles; restart -f; run 48 us
 # Loading sv_std.std
 # Loading /nobackup/local/nicol271/work.jpeg_top_tb
 # Loading /nobackup/local/nicol271/work.wishbone
@@ -130,7 +741,318 @@ make simfiles; restart -f; run 10us;
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
 # Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# in inmem
+#           0
+#  -2122153084
+#  -2054781048
+#  -1987409012
+#  -1920036976
+#  -1852664940
+#  -1785292904
+#  -1717920868
+#  -1650548832
+#  -1583176796
+#  -1515804760
+#  -1448432724
+#  -1381060688
+#  -1313688652
+#  -1246316616
+#  -1178944580
+# 1
+# Simulation stop requested.
+ make simfiles; restart -f; run 58 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#  -118     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# in inmem
+#           0
+#  -1987409012
+#  -1987409012
+#  -1987409012
+#  -1987409012
+#  -1987409012
+#  -1987409012
+#  -1987409012
+#  -1987409012
+#  -1987409012
+#  -1987409012
+#  -1987409012
+#  -1987409012
+#  -1987409012
+#  -1987409012
+#  -1987409012
+# 1
+# Simulation stop requested.
+ make simfiles; restart -f; run 58 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# in inmem
+#           0
+#  -2122153084
+#  -2054781048
+#  -1987409012
+#  -1920036976
+#  -1852664940
+#  -1785292904
+#  -1717920868
+#  -1650548832
+#  -1583176796
+#  -1515804760
+#  -1448432724
+#  -1381060688
+#  -1313688652
+#  -1246316616
+#  -1178944580
+# 1
+# Simulation stop requested.
+ make simfiles; restart -f; run 58 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+#   -99    -1    12     9     7     3     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#  -106   -16     0    -1     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# in inmem
+#           0
+#  -2122153084
+#  -2054781048
+#  -1987409012
+#  -1920036976
+#  -1852664940
+#  -1785292904
+#  -1717920868
+#  -1650548832
+#  -1583176796
+#  -1515804760
+#  -1448432724
+#  -1381060688
+#  -1313688652
+#  -1246316616
+#  -1178944580
+# 1
+# Simulation stop requested.
+ make simfiles; restart -f; run 58 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# in inmem
+#           0
+#  -2122153084
+#  -2054781048
+#  -1987409012
+#  -1920036976
+#  -1852664940
+#  -1785292904
+#  -1717920868
+#  -1650548832
+#  -1583176796
+#  -1515804760
+#  -1448432724
+#  -1381060688
+#  -1313688652
+#  -1246316616
+#  -1178944580
+# 1
+# Simulation stop requested.
+ run
+restart
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+run
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# in inmem
+#           0
+#  -2122153084
+#  -2054781048
+#  -1987409012
+#  -1920036976
+#  -1852664940
+#  -1785292904
+#  -1717920868
+#  -1650548832
+#  -1583176796
+#  -1515804760
+#  -1448432724
+#  -1381060688
+#  -1313688652
+#  -1246316616
+#  -1178944580
+# 1
+# Simulation stop requested.
+ run
+make simfiles; restart -f; run 58 us
 # make[1]: Entering directory `/edu/nicol271/TSEA44/hw/simulator'
 # make -C .. simfiles
 # make[2]: Entering directory `/edu/nicol271/TSEA44/hw'
@@ -540,12 +1462,356 @@ make simfiles; restart -f; run 10us;
 # 	dct
 # Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
 # -- Compiling module q2
-# ** Error: ../jpeg/q2.sv(15): near "x_i": syntax error, unexpected "IDENTIFIER", expecting '''
+# 
+# Top level modules:
+# 	q2
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module jpeg_dma
+# 
+# Top level modules:
+# 	jpeg_dma
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling package jpeg_top_sv_unit
+# -- Compiling module jpeg_top
+# 
+# Top level modules:
+# 	jpeg_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module transpose
+# 
+# Top level modules:
+# 	transpose
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module addrgen
+# 
+# Top level modules:
+# 	addrgen
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module pkmc_sdramctrl_addrgen
+# 
+# Top level modules:
+# 	pkmc_sdramctrl_addrgen
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module pkmc_sdram_refcount
+# 
+# Top level modules:
+# 	pkmc_sdram_refcount
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module pkmc_commanddecoder
+# 
+# Top level modules:
+# 	pkmc_commanddecoder
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module pkmc_sdramctrl_centralctrl
+# 
+# Top level modules:
+# 	pkmc_sdramctrl_centralctrl
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module pkmc_sdramctrl_top
+# 
+# Top level modules:
+# 	pkmc_sdramctrl_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module pkmc_flashctrl
+# 
+# Top level modules:
+# 	pkmc_flashctrl
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module pkmc_all_one_logic
+# 
+# Top level modules:
+# 	pkmc_all_one_logic
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module pkmc_sramctrl
+# 
+# Top level modules:
+# 	pkmc_sramctrl
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module mem_fpga_board_if
+# 
+# Top level modules:
+# 	mem_fpga_board_if
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module pkmc_command_logic
+# 
+# Top level modules:
+# 	pkmc_command_logic
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module pkmc_top
+# 
+# Top level modules:
+# 	pkmc_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module pkmc_rowcheck
+# 
+# Top level modules:
+# 	pkmc_rowcheck
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module pkmc_IRQ_logic
+# 
+# Top level modules:
+# 	pkmc_IRQ_logic
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module pkmc_wbmemctrl_addrdecoder
+# 
+# Top level modules:
+# 	pkmc_wbmemctrl_addrdecoder
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module pkmc_sdram_ackgen
+# 
+# Top level modules:
+# 	pkmc_sdram_ackgen
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module pkmc_sdramctrl_fsm
+# 
+# Top level modules:
+# 	pkmc_sdramctrl_fsm
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module pkmc_wbmemctrl
+# 
+# Top level modules:
+# 	pkmc_wbmemctrl
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module pkmc_sdramctrl_activebanks
+# 
+# Top level modules:
+# 	pkmc_sdramctrl_activebanks
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module pkmc_sdram_initcount
+# 
+# Top level modules:
+# 	pkmc_sdram_initcount
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_clockgen
+# 
+# Top level modules:
+# 	eth_clockgen
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_outputcontrol
+# 
+# Top level modules:
+# 	eth_outputcontrol
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_rxethmac
+# 
+# Top level modules:
+# 	eth_rxethmac
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_txethmac
+# 
+# Top level modules:
+# 	eth_txethmac
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_cop
+# 
+# Top level modules:
+# 	eth_cop
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_random
+# 
+# Top level modules:
+# 	eth_random
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_rxstatem
+# 
+# Top level modules:
+# 	eth_rxstatem
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_txstatem
+# 
+# Top level modules:
+# 	eth_txstatem
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_crc
+# 
+# Top level modules:
+# 	eth_crc
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_receivecontrol
+# 
+# Top level modules:
+# 	eth_receivecontrol
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_shiftreg
+# 
+# Top level modules:
+# 	eth_shiftreg
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_wishbone
+# 
+# Top level modules:
+# 	eth_wishbone
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_fifo
+# 
+# Top level modules:
+# 	eth_fifo
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_registers
+# 
+# Top level modules:
+# 	eth_registers
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_spram_256x32
+# 
+# Top level modules:
+# 	eth_spram_256x32
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_maccontrol
+# 
+# Top level modules:
+# 	eth_maccontrol
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_register
+# 
+# Top level modules:
+# 	eth_register
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_top
+# 
+# Top level modules:
+# 	eth_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module xilinx_dist_ram_16x32
+# 
+# Top level modules:
+# 	xilinx_dist_ram_16x32
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_macstatus
+# 
+# Top level modules:
+# 	eth_macstatus
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_rxaddrcheck
+# 
+# Top level modules:
+# 	eth_rxaddrcheck
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_transmitcontrol
+# 
+# Top level modules:
+# 	eth_transmitcontrol
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_miim
+# 
+# Top level modules:
+# 	eth_miim
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_rxcounters
+# 
+# Top level modules:
+# 	eth_rxcounters
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_txcounters
+# 
+# Top level modules:
+# 	eth_txcounters
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module dpram512w
+# 
+# Top level modules:
+# 	dpram512w
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module dvga_reg
+# 
+# Top level modules:
+# 	dvga_reg
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module dvga_sprite_post
+# 
+# Top level modules:
+# 	dvga_sprite_post
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module dvga_sprite_rend
+# 
+# Top level modules:
+# 	dvga_sprite_rend
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module dvga_top
+# 
+# Top level modules:
+# 	dvga_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module dvga_fifo64x32
+# 
+# Top level modules:
+# 	dvga_fifo64x32
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module dvga_renderer
+# 
+# Top level modules:
+# 	dvga_renderer
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module dvga_sprite_pre
+# 
+# Top level modules:
+# 	dvga_sprite_pre
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module dvga_sprite
+# 
+# Top level modules:
+# 	dvga_sprite
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module generic_dpram
+# 
+# Top level modules:
+# 	generic_dpram
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module leela_cam_cam
+# 
+# Top level modules:
+# 	leela_cam_cam
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module leela_cam_sprite
+# 
+# Top level modules:
+# 	leela_cam_sprite
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module leela_mc
+# 
+# Top level modules:
+# 	leela_mc
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module leela_top
+# 
+# Top level modules:
+# 	leela_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module generic_fifo_sc_a
+# 
+# Top level modules:
+# 	generic_fifo_sc_a
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module leela_cam_sim
+# 
+# Top level modules:
+# 	leela_cam_sim
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module leela_cam
+# 
+# Top level modules:
+# 	leela_cam
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module leela_reg
+# 
+# Top level modules:
+# 	leela_reg
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module dafk
+# 
+# Top level modules:
+# 	dafk
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module jpeg_top_tb
+# -- Compiling module mem
+# -- Compiling program test_jpeg
+# ** Error: ../jpeg/jpeg_top_tb.sv(181): near "endprogram": syntax error, unexpected "endprogram"
 # make[2]: Leaving directory `/edu/nicol271/TSEA44/hw'
 # make[1]: Leaving directory `/edu/nicol271/TSEA44/hw/simulator'
 # make[2]: *** [simfiles] Error 1
 # make[1]: *** [simfiles] Error 2
-make simfiles; restart -f; run 10us;
+make simfiles; restart -f; run 58 us
 # Loading sv_std.std
 # Loading /nobackup/local/nicol271/work.jpeg_top_tb
 # Loading /nobackup/local/nicol271/work.wishbone
@@ -560,7 +1826,624 @@ make simfiles; restart -f; run 10us;
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
 # Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -88   -31     6    -7     3    -2     1     0 
+#    -8     6    -6     4    -3     1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1    -1     1    -1     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+restart -f; run 100 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -88   -31     6    -7     3    -2     1     0 
+#    -8     6    -6     4    -3     1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1    -1     1    -1     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+# 1
+# Simulation stop requested.
+restart -f; run 100 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -88   -31     6    -7     3    -2     1     0 
+#    -8     6    -6     4    -3     1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1    -1     1    -1     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+# 1
+# Simulation stop requested.
+restart -f; run 50 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -88   -31     6    -7     3    -2     1     0 
+#    -8     6    -6     4    -3     1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1    -1     1    -1     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+restart
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+run
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -88   -31     6    -7     3    -2     1     0 
+#    -8     6    -6     4    -3     1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1    -1     1    -1     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+restart -f; run 50 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -88   -31     6    -7     3    -2     1     0 
+#    -8     6    -6     4    -3     1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1    -1     1    -1     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+restart -f; run 50 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -88   -31     6    -7     3    -2     1     0 
+#    -8     6    -6     4    -3     1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1    -1     1    -1     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+make simfiles; restart -f; run 58 us
 # Loading sv_std.std
 # Loading /nobackup/local/nicol271/work.jpeg_top_tb
 # Loading /nobackup/local/nicol271/work.wishbone
@@ -575,7 +2458,73 @@ make simfiles; restart -f; run 10us;
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
 # Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
+#   -94   -24     0    -2     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -94   -24     0    -2     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -82   -39    11   -13     7    -4     1    -1 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -98   -24     0    -2     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -98   -24     0    -2     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -98   -24     0    -2     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+make simfiles; restart -f; run 58 us
 # Loading sv_std.std
 # Loading /nobackup/local/nicol271/work.jpeg_top_tb
 # Loading /nobackup/local/nicol271/work.wishbone
@@ -590,8 +2539,165 @@ make simfiles; restart -f; run 10us;
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
 # Loading /nobackup/local/nicol271/work.glbl
-# Warning in wave window restart: (vish-4014) No objects found matching '/jpeg_top_tb/dut/Q2/x_signed'. 
-make simfiles; restart -f; run 10us;
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -88   -31     6    -7     3    -2     1     0 
+#    -8     6    -6     4    -3     1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1    -1     1    -1     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+restart
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+run
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -88   -31     6    -7     3    -2     1     0 
+#    -8     6    -6     4    -3     1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1    -1     1    -1     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91    -9    12     9     7     4     1     0 
+#     7    14    12     8     5     3     1     0 
+#     0     0     0     0     0     0     0     0 
+#    -3    -3    -2    -2    -1    -1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0    -1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+make simfiles; restart -f; run 58 us
 # Loading sv_std.std
 # Loading /nobackup/local/nicol271/work.jpeg_top_tb
 # Loading /nobackup/local/nicol271/work.wishbone
@@ -606,7 +2712,73 @@ make simfiles; restart -f; run 10us;
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
 # Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
+#   -88   -31     6    -7     3    -2    -1     0 
+#    -8     6    -6     4    -3     1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1    -1     1    -1     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -88   -31     6    -7     3    -2     1     0 
+#    -8     6    -6     4    -3     1     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1    -1     1    -1     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -88   -31    -5     5    -3     2    -1     0 
+#    -8     6     0     0     0     0     0     0 
+#     0     0     2    -1     1     0     0     0 
+#     1    -1     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -85   -21    -2    -1     7    -4     1     0 
+#     7   -14    12    -8     0     0     0     0 
+#     0     0     0     0    -1     1     0     0 
+#    -3     3    -2     2     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1    -1     1     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     1    -1     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -84     7   -24     7     5    -7     1    -1 
+#    -8     1     6    -3    -3     2     0     0 
+#     0     0     0     0     0     0     0     0 
+#     1     0    -1     1     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -83     6   -24     9     4    -7     1     0 
+#     2    -6     1     7    -8     1     3    -2 
+#     0     0     0     0     0     0     0     0 
+#    -2     1     0    -1     1     0    -1     1 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0    -1 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+make simfiles; restart -f; run 58 us
 # Loading sv_std.std
 # Loading /nobackup/local/nicol271/work.jpeg_top_tb
 # Loading /nobackup/local/nicol271/work.wishbone
@@ -621,7 +2793,165 @@ make simfiles; restart -f; run 10us;
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
 # Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -89   -22     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -90    -6   -14    10     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91     8   -18     5     1    -4     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -90     7   -19     6     0    -4     2    -1 
+#     7    -8    -5    10    -5    -1     2    -2 
+#     0     0     0     0     0     0     0     0 
+#    -3     2     1    -2     1     0    -1     0 
+#     0     0     0     0     0     0     0     0 
+#     1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0    -1     0     0     0     0 
+# -----
+# new run
+# 
+restart
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+run
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -89   -22     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -90    -6   -14    10     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91     8   -18     5     1    -4     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -90     7   -19     6     0    -4     2    -1 
+#     7    -8    -5    10    -5    -1     2    -2 
+#     0     0     0     0     0     0     0     0 
+#    -3     2     1    -2     1     0    -1     0 
+#     0     0     0     0     0     0     0     0 
+#     1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0    -1     0     0     0     0 
+# -----
+# new run
+# 
+#   -92    16     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+make simfiles; restart -f; run 58 us
 # Loading sv_std.std
 # Loading /nobackup/local/nicol271/work.jpeg_top_tb
 # Loading /nobackup/local/nicol271/work.wishbone
@@ -636,7 +2966,73 @@ make simfiles; restart -f; run 10us;
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
 # Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+make simfiles; restart -f; run 58 us
 # Loading sv_std.std
 # Loading /nobackup/local/nicol271/work.jpeg_top_tb
 # Loading /nobackup/local/nicol271/work.wishbone
@@ -651,7 +3047,73 @@ make simfiles; restart -f; run 10us;
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
 # Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -89   -22    -2    -1    -1     0     0     0 
+#  -129   -22    -2    -1    -1     0     0     0 
+#  -142   -19    -1    -1     0     0     0     0 
+#   -89   -14    -1     0     0     0     0     0 
+#   -59   -10    -1     0     0     0     0     0 
+#   -35    -5     0     0     0     0     0     0 
+#   -28    -4     0     0     0     0     0     0 
+#   -23    -5     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#    -2     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#    -2     0     0     0     0     0     0     0 
+#    -2     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+make simfiles; restart -f; run 58 us
 # Loading sv_std.std
 # Loading /nobackup/local/nicol271/work.jpeg_top_tb
 # Loading /nobackup/local/nicol271/work.wishbone
@@ -666,7 +3128,73 @@ make simfiles; restart -f; run 10us;
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
 # Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -89   -22    -2    -1    -1     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -90    -6   -14    10    -7     3     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91     8   -18     5     1    -4     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -92    16   -12    -8     7    -2     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -93    19     1   -14    -1     4     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+make simfiles; restart -f; run 58 us
 # Loading sv_std.std
 # Loading /nobackup/local/nicol271/work.jpeg_top_tb
 # Loading /nobackup/local/nicol271/work.wishbone
@@ -681,114 +3209,73 @@ make simfiles; restart -f; run 10us;
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
 # Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us; f
-# Loading sv_std.std
-# Loading /nobackup/local/nicol271/work.jpeg_top_tb
-# Loading /nobackup/local/nicol271/work.wishbone
-# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
-# Loading /nobackup/local/nicol271/work.jpeg_top
-# Loading /nobackup/local/nicol271/work.jpeg_dma
-# Loading /nobackup/local/nicol271/work.addrgen
-# Loading /nobackup/local/nicol271/work.dct
-# Loading /nobackup/local/nicol271/work.q2
-# Loading /nobackup/local/nicol271/work.transpose
-# Loading /nobackup/local/nicol271/work.mem
-# Loading /nobackup/local/nicol271/work.wishbone_tasks
-# Loading /nobackup/local/nicol271/work.test_jpeg
-# Loading /nobackup/local/nicol271/work.glbl
-# ambiguous command name "f": fblocked fconfigure fcopy fcover fcoverClearAll fcoverClearTriggers fcoverContextTracking fcoverDefineMenus fcoverDragVerifyItems fcoverDropHandler fcoverFooter fcoverPopupMenu fcoverPropertyCmd fcoverSetTriggers fcoverUpdateAll fcoverUpdateBrowser fcoverViewDecl fcover_dir_image fe_rename file fileUCDBBrowserSave file_image fileevent filelist find findExec findWidth findWindow find_HDL findwidget flatfsmlist flatlist flatmemlist flush flush_msg_buffer focus font for force foreach foreachGridWindow foreachSignalsWindow foreachTree foreachVariablesWindow foreachWaveWindow foreachWindow format formatTime format_vsim_error frame funcActiveCursorChangedCB function_image
-make simfiles; restart -f; run 10us; f
-# Loading sv_std.std
-# Loading /nobackup/local/nicol271/work.jpeg_top_tb
-# Loading /nobackup/local/nicol271/work.wishbone
-# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
-# Loading /nobackup/local/nicol271/work.jpeg_top
-# Loading /nobackup/local/nicol271/work.jpeg_dma
-# Loading /nobackup/local/nicol271/work.addrgen
-# Loading /nobackup/local/nicol271/work.dct
-# Loading /nobackup/local/nicol271/work.q2
-# Loading /nobackup/local/nicol271/work.transpose
-# Loading /nobackup/local/nicol271/work.mem
-# Loading /nobackup/local/nicol271/work.wishbone_tasks
-# Loading /nobackup/local/nicol271/work.test_jpeg
-# Loading /nobackup/local/nicol271/work.glbl
-# ambiguous command name "f": fblocked fconfigure fcopy fcover fcoverClearAll fcoverClearTriggers fcoverContextTracking fcoverDefineMenus fcoverDragVerifyItems fcoverDropHandler fcoverFooter fcoverPopupMenu fcoverPropertyCmd fcoverSetTriggers fcoverUpdateAll fcoverUpdateBrowser fcoverViewDecl fcover_dir_image fe_rename file fileUCDBBrowserSave file_image fileevent filelist find findExec findWidth findWindow find_HDL findwidget flatfsmlist flatlist flatmemlist flush flush_msg_buffer focus font for force foreach foreachGridWindow foreachSignalsWindow foreachTree foreachVariablesWindow foreachWaveWindow foreachWindow format formatTime format_vsim_error frame funcActiveCursorChangedCB function_image
-make simfiles; restart -f; run 10us;
-# Loading sv_std.std
-# Loading /nobackup/local/nicol271/work.jpeg_top_tb
-# Loading /nobackup/local/nicol271/work.wishbone
-# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
-# Loading /nobackup/local/nicol271/work.jpeg_top
-# Loading /nobackup/local/nicol271/work.jpeg_dma
-# Loading /nobackup/local/nicol271/work.addrgen
-# Loading /nobackup/local/nicol271/work.dct
-# Loading /nobackup/local/nicol271/work.q2
-# Loading /nobackup/local/nicol271/work.transpose
-# Loading /nobackup/local/nicol271/work.mem
-# Loading /nobackup/local/nicol271/work.wishbone_tasks
-# Loading /nobackup/local/nicol271/work.test_jpeg
-# Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
-# Loading sv_std.std
-# Loading /nobackup/local/nicol271/work.jpeg_top_tb
-# Loading /nobackup/local/nicol271/work.wishbone
-# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
-# Loading /nobackup/local/nicol271/work.jpeg_top
-# Loading /nobackup/local/nicol271/work.jpeg_dma
-# Loading /nobackup/local/nicol271/work.addrgen
-# Loading /nobackup/local/nicol271/work.dct
-# Loading /nobackup/local/nicol271/work.q2
-# Loading /nobackup/local/nicol271/work.transpose
-# Loading /nobackup/local/nicol271/work.mem
-# Loading /nobackup/local/nicol271/work.wishbone_tasks
-# Loading /nobackup/local/nicol271/work.test_jpeg
-# Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
-# Loading sv_std.std
-# Loading /nobackup/local/nicol271/work.jpeg_top_tb
-# Loading /nobackup/local/nicol271/work.wishbone
-# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
-# Loading /nobackup/local/nicol271/work.jpeg_top
-# Loading /nobackup/local/nicol271/work.jpeg_dma
-# Loading /nobackup/local/nicol271/work.addrgen
-# Loading /nobackup/local/nicol271/work.dct
-# Loading /nobackup/local/nicol271/work.q2
-# Loading /nobackup/local/nicol271/work.transpose
-# Loading /nobackup/local/nicol271/work.mem
-# Loading /nobackup/local/nicol271/work.wishbone_tasks
-# Loading /nobackup/local/nicol271/work.test_jpeg
-# Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
-# Loading sv_std.std
-# Loading /nobackup/local/nicol271/work.jpeg_top_tb
-# Loading /nobackup/local/nicol271/work.wishbone
-# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
-# Loading /nobackup/local/nicol271/work.jpeg_top
-# Loading /nobackup/local/nicol271/work.jpeg_dma
-# Loading /nobackup/local/nicol271/work.addrgen
-# Loading /nobackup/local/nicol271/work.dct
-# Loading /nobackup/local/nicol271/work.q2
-# Loading /nobackup/local/nicol271/work.transpose
-# Loading /nobackup/local/nicol271/work.mem
-# Loading /nobackup/local/nicol271/work.wishbone_tasks
-# Loading /nobackup/local/nicol271/work.test_jpeg
-# Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
-# Loading sv_std.std
-# Loading /nobackup/local/nicol271/work.jpeg_top_tb
-# Loading /nobackup/local/nicol271/work.wishbone
-# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
-# Loading /nobackup/local/nicol271/work.jpeg_top
-# Loading /nobackup/local/nicol271/work.jpeg_dma
-# Loading /nobackup/local/nicol271/work.addrgen
-# Loading /nobackup/local/nicol271/work.dct
-# Loading /nobackup/local/nicol271/work.q2
-# Loading /nobackup/local/nicol271/work.transpose
-# Loading /nobackup/local/nicol271/work.mem
-# Loading /nobackup/local/nicol271/work.wishbone_tasks
-# Loading /nobackup/local/nicol271/work.test_jpeg
-# Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -89   -22     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -90    -6     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -91     8     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -92    16     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -93    19     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+make simfiles; restart -f; run 58 us
 # make[1]: Entering directory `/edu/nicol271/TSEA44/hw/simulator'
 # make -C .. simfiles
 # make[2]: Entering directory `/edu/nicol271/TSEA44/hw'
@@ -1198,14 +3685,29 @@ make simfiles; restart -f; run 10us;
 # 	dct
 # Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
 # -- Compiling module q2
-# ** Error: ../jpeg/q2.sv(22): Undefined variable: rnd.
-# ** Error: ../jpeg/q2.sv(23): Undefined variable: bits.
-# ** Error: ../jpeg/q2.sv(24): Undefined variable: pos.
+# 
+# Top level modules:
+# 	q2
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module jpeg_dma
+# 
+# Top level modules:
+# 	jpeg_dma
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling package jpeg_top_sv_unit
+# -- Compiling module jpeg_top
+# 
+# Top level modules:
+# 	jpeg_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module transpose
+# ** Error: ../jpeg/transpose.sv(38): near "end": syntax error, unexpected "end"
+# ** Error: ../jpeg/transpose.sv(49): near "<=": syntax error, unexpected "<=", expecting "IDENTIFIER" or "TYPE_IDENTIFIER" or '#' or '('
 # make[2]: Leaving directory `/edu/nicol271/TSEA44/hw'
 # make[1]: Leaving directory `/edu/nicol271/TSEA44/hw/simulator'
 # make[2]: *** [simfiles] Error 1
 # make[1]: *** [simfiles] Error 2
-make simfiles; restart -f; run 10us;
+make simfiles; restart -f; run 58 us
 # Loading sv_std.std
 # Loading /nobackup/local/nicol271/work.jpeg_top_tb
 # Loading /nobackup/local/nicol271/work.wishbone
@@ -1220,111 +3722,72 @@ make simfiles; restart -f; run 10us;
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
 # Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
-# Loading sv_std.std
-# Loading /nobackup/local/nicol271/work.jpeg_top_tb
-# Loading /nobackup/local/nicol271/work.wishbone
-# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
-# Loading /nobackup/local/nicol271/work.jpeg_top
-# Loading /nobackup/local/nicol271/work.jpeg_dma
-# Loading /nobackup/local/nicol271/work.addrgen
-# Loading /nobackup/local/nicol271/work.dct
-# Loading /nobackup/local/nicol271/work.q2
-# Loading /nobackup/local/nicol271/work.transpose
-# Loading /nobackup/local/nicol271/work.mem
-# Loading /nobackup/local/nicol271/work.wishbone_tasks
-# Loading /nobackup/local/nicol271/work.test_jpeg
-# Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
-# Loading sv_std.std
-# Loading /nobackup/local/nicol271/work.jpeg_top_tb
-# Loading /nobackup/local/nicol271/work.wishbone
-# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
-# Loading /nobackup/local/nicol271/work.jpeg_top
-# Loading /nobackup/local/nicol271/work.jpeg_dma
-# Loading /nobackup/local/nicol271/work.addrgen
-# Loading /nobackup/local/nicol271/work.dct
-# Loading /nobackup/local/nicol271/work.q2
-# Loading /nobackup/local/nicol271/work.transpose
-# Loading /nobackup/local/nicol271/work.mem
-# Loading /nobackup/local/nicol271/work.wishbone_tasks
-# Loading /nobackup/local/nicol271/work.test_jpeg
-# Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
-# Loading sv_std.std
-# Loading /nobackup/local/nicol271/work.jpeg_top_tb
-# Loading /nobackup/local/nicol271/work.wishbone
-# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
-# Loading /nobackup/local/nicol271/work.jpeg_top
-# Loading /nobackup/local/nicol271/work.jpeg_dma
-# Loading /nobackup/local/nicol271/work.addrgen
-# Loading /nobackup/local/nicol271/work.dct
-# Loading /nobackup/local/nicol271/work.q2
-# Loading /nobackup/local/nicol271/work.transpose
-# Loading /nobackup/local/nicol271/work.mem
-# Loading /nobackup/local/nicol271/work.wishbone_tasks
-# Loading /nobackup/local/nicol271/work.test_jpeg
-# Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
-# Loading sv_std.std
-# Loading /nobackup/local/nicol271/work.jpeg_top_tb
-# Loading /nobackup/local/nicol271/work.wishbone
-# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
-# Loading /nobackup/local/nicol271/work.jpeg_top
-# Loading /nobackup/local/nicol271/work.jpeg_dma
-# Loading /nobackup/local/nicol271/work.addrgen
-# Loading /nobackup/local/nicol271/work.dct
-# Loading /nobackup/local/nicol271/work.q2
-# Loading /nobackup/local/nicol271/work.transpose
-# Loading /nobackup/local/nicol271/work.mem
-# Loading /nobackup/local/nicol271/work.wishbone_tasks
-# Loading /nobackup/local/nicol271/work.test_jpeg
-# Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
-# Loading sv_std.std
-# Loading /nobackup/local/nicol271/work.jpeg_top_tb
-# Loading /nobackup/local/nicol271/work.wishbone
-# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
-# Loading /nobackup/local/nicol271/work.jpeg_top
-# Loading /nobackup/local/nicol271/work.jpeg_dma
-# Loading /nobackup/local/nicol271/work.addrgen
-# Loading /nobackup/local/nicol271/work.dct
-# Loading /nobackup/local/nicol271/work.q2
-# Loading /nobackup/local/nicol271/work.transpose
-# Loading /nobackup/local/nicol271/work.mem
-# Loading /nobackup/local/nicol271/work.wishbone_tasks
-# Loading /nobackup/local/nicol271/work.test_jpeg
-# Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
-# Loading sv_std.std
-# Loading /nobackup/local/nicol271/work.jpeg_top_tb
-# Loading /nobackup/local/nicol271/work.wishbone
-# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
-# Loading /nobackup/local/nicol271/work.jpeg_top
-# Loading /nobackup/local/nicol271/work.jpeg_dma
-# Loading /nobackup/local/nicol271/work.addrgen
-# Loading /nobackup/local/nicol271/work.dct
-# Loading /nobackup/local/nicol271/work.q2
-# Loading /nobackup/local/nicol271/work.transpose
-# Loading /nobackup/local/nicol271/work.mem
-# Loading /nobackup/local/nicol271/work.wishbone_tasks
-# Loading /nobackup/local/nicol271/work.test_jpeg
-# Loading /nobackup/local/nicol271/work.glbl
-make simfiles; restart -f; run 10us;
-# Loading sv_std.std
-# Loading /nobackup/local/nicol271/work.jpeg_top_tb
-# Loading /nobackup/local/nicol271/work.wishbone
-# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
-# Loading /nobackup/local/nicol271/work.jpeg_top
-# Loading /nobackup/local/nicol271/work.jpeg_dma
-# Loading /nobackup/local/nicol271/work.addrgen
-# Loading /nobackup/local/nicol271/work.dct
-# Loading /nobackup/local/nicol271/work.q2
-# Loading /nobackup/local/nicol271/work.transpose
-# Loading /nobackup/local/nicol271/work.mem
-# Loading /nobackup/local/nicol271/work.wishbone_tasks
-# Loading /nobackup/local/nicol271/work.test_jpeg
-# Loading /nobackup/local/nicol271/work.glbl
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
 restart
 # Loading sv_std.std
 # Loading /nobackup/local/nicol271/work.jpeg_top_tb
@@ -1340,3 +3803,1789 @@ restart
 # Loading /nobackup/local/nicol271/work.wishbone_tasks
 # Loading /nobackup/local/nicol271/work.test_jpeg
 run
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+restart -f; run 58 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+restart
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+run
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+run
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+# 1
+# Simulation stop requested.
+make simfiles; restart -f; run 58 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+#     0     0     0     0     0     0     0     0 
+#  -139   -24     0     0     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#  -139   -24     0     0     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#  -139   -24     0     0     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#  -139   -24     0     0     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#  -139   -24     0     0     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#  -139   -24     0     0     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+restart
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+run
+#     0     0     0     0     0     0     0     0 
+#  -139   -24     0     0     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#  -139   -24     0     0     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#  -139   -24     0     0     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#  -139   -24     0     0     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#  -139   -24     0     0     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#  -139   -24     0     0     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#  -139   -24     0     0     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+make simfiles; restart -f; run 58 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+make simfiles; restart -f; run 58 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+make simfiles; restart -f; run 58 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+#     0     0     0     0     0     0     0     0 
+#  -139   -24     0     0     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#  -139   -24     0     0     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#  -139   -24     0     0     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#  -139   -24     0     0     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#  -139   -24     0     0     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#  -139   -24     0     0     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+make simfiles; restart -f; run 58 us
+# make[1]: Entering directory `/edu/nicol271/TSEA44/hw/simulator'
+# make -C .. simfiles
+# make[2]: Entering directory `/edu/nicol271/TSEA44/hw'
+# cd simulator;vlib /nobackup/local/nicol271/work;vlog -work /nobackup/local/nicol271/work +acc /sw/xilinx/ise_11.1i/ISE/verilog/mti_se/../src/glbl.v;for i in dafk_tb/128Kx8.v dafk_tb/adv_bb.v dafk_tb/eth_phy.v dafk_tb/flash.v dafk_tb/mt48lc16m16a2.v dafk_tb/sdram.v dafk_tb/sram_1MB.v dafk_tb/uart_tasks.sv dafk_tb/dafk_tb.sv dafk_tb/wishbone_tasks.sv or1200/or1200_alu.sv or1200/or1200_except.v or1200/or1200_mem2reg.v or1200/or1200_amultp2_32x32.v or1200/or1200_freeze.v or1200/or1200_mult_mac.v or1200/or1200_sprs.sv or1200/or1200_cfgr.v or1200/or1200_genpc.v or1200/or1200_operandmuxes.v or1200/or1200_top.sv or1200/or1200_cpu.v or1200/or1200_gmultp2_32x32.v or1200/or1200_pic.v or1200/or1200_tt.v or1200/or1200_ctrl.sv or1200/or1200_ic_fsm.v or1200/or1200_pm.v or1200/or1200_dc_fsm.v or1200/or1200_ic_ram.v or1200/or1200_qmem_top.v or1200/or1200_dc_ram.v or1200/or1200_ic_tag.v or1200/or1200_reg2mem.v or1200/or1200_wb_biu.v or1200/or1200_dc_tag.v or1200/or1200_ic_top.v or1200/or1200_wbmux.v or1200/or1200_dc_top.v or1200/or1200_if.v or1200/or1200_rf.v or1200/or1200_dmmu_tlb.v or1200/or1200_immu_tlb.v or1200/or1200_sb_fifo.v  or1200/or1200_dmmu_top.v or1200/or1200_immu_top.v or1200/or1200_sb.v or1200/or1200_dpram_32x32.v or1200/or1200_iwb_biu.v or1200/or1200_du.v or1200/or1200_lsu.sv or1200/or1200_spram_2048x32.v or1200/or1200_spram_2048x32_bw.v or1200/or1200_spram_512x20.v or1200/or1200_vlx_ctrl.sv or1200/or1200_vlx_dp.sv or1200/or1200_vlx_su.sv or1200/or1200_vlx_top.sv monitor/mon_prog_bram.sv  monitor/romram.sv wb/wb_arb_rr.sv wb/wb_arb_prio.sv wb/wb_top.sv interfaces/wishbone.sv parport.sv perf_top.sv uart/raminfr.v uart/uart_receiver.v uart/uart_rfifo.v uart/uart_top.sv uart/uart_wb.v uart/uart_debug_if.v uart/uart_regs.v uart/uart_tfifo.v uart/uart_transmitter.v clk/clkdel.v  clk/clkdiv.v  clk/sys_sig_gen.v jpeg/dct.sv jpeg/q2.sv jpeg/jpeg_dma.sv jpeg/jpeg_top.sv jpeg/transpose.sv jpeg/addrgen.sv pkmc/pkmc_sdramctrl_addgen.v pkmc/pkmc_sdramctrl_refcount.v pkmc/pkmc_commanddecoder.v 
+# pkmc/pkmc_sdramctrl_centralctrl.v pkmc/pkmc_sdramctrl_top.v pkmc/pkmc_flashctrl.v pkmc/pkmc_sdramctrl_fsm_all_one.v pkmc/pkmc_sramctrl.v pkmc/pkmc_mem_fpga_board_if.v pkmc/pkmc_sdramctrl_fsm_command.v pkmc/pkmc_top.sv pkmc/pkmc_rowcheck.v pkmc/pkmc_sdramctrl_fsm_sdramIRQ.v pkmc/pkmc_wbmemctrl_addrdecoder.v pkmc/pkmc_sdramctrl_ackgen.v pkmc/pkmc_sdramctrl_fsm.v pkmc/pkmc_wbmemctrl.v pkmc/pkmc_sdramctrl_activebanks.v pkmc/pkmc_sdramctrl_initcount.v eth/eth_clockgen.v eth/eth_outputcontrol.v eth/eth_rxethmac.v eth/eth_txethmac.v eth/eth_cop.v eth/eth_random.v eth/eth_rxstatem.v eth/eth_txstatem.v eth/eth_crc.v eth/eth_receivecontrol.v eth/eth_shiftreg.v eth/eth_wishbone.v eth/eth_fifo.v eth/eth_registers.v eth/eth_spram_256x32.v eth/timescale.v eth/eth_maccontrol.v eth/eth_register.v eth/eth_top.sv eth/xilinx_dist_ram_16x32.v eth/eth_macstatus.v eth/eth_rxaddrcheck.v eth/eth_transmitcontrol.v eth/eth_miim.v eth/eth_rxcounters.v eth/eth_txcounters.v dvga/dpram512w.v dvga/dvga_reg.v dvga/dvga_sprite_post.v dvga/dvga_sprite_rend.v dvga/dvga_top.sv dvga/dvga_fifo64x32.v dvga/dvga_renderer.v dvga/dvga_sprite_pre.v dvga/dvga_sprite.v leela/generic_dpram.v leela/leela_cam_cam.v leela/leela_cam_sprite.v leela/leela_mc.v leela/leela_top.sv leela/generic_fifo_sc_a.v leela/leela_cam_sim.v leela/leela_cam.v leela/leela_reg.v dafk.sv jpeg/jpeg_top_tb.sv lab1.sv dafk_tb/lab1_tb.sv lab1/lab1_uart_top.sv lab1/uart_tb.sv dafk_tb/lab0_tb.sv lab0.sv; do if ! vlog -work /nobackup/local/nicol271/work +acc -sv +incdir+.. ../$i; then exit 1;fi;done
+# ** Warning: (vlib-34) Library already exists at "/nobackup/local/nicol271/work".
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module A128Kx8
+# 
+# Top level modules:
+# 	A128Kx8
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module fl28f16
+# 
+# Top level modules:
+# 	fl28f16
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module eth_phy
+# 
+# Top level modules:
+# 	eth_phy
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module flash
+# 
+# Top level modules:
+# 	flash
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module mt48lc16m16a2
+# 
+# Top level modules:
+# 	mt48lc16m16a2
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module sdram
+# 
+# Top level modules:
+# 	sdram
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module sram_1MB
+# 
+# Top level modules:
+# 	sram_1MB
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_tasks
+# 
+# Top level modules:
+# 	uart_tasks
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module dafk_tb
+# -- Compiling program testcomputer
+# -- Compiling module computer
+# 
+# Top level modules:
+# 	dafk_tb
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module wishbone_tasks
+# 
+# Top level modules:
+# 	wishbone_tasks
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_alu
+# 
+# Top level modules:
+# 	or1200_alu
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_except
+# 
+# Top level modules:
+# 	or1200_except
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_mem2reg
+# 
+# Top level modules:
+# 	or1200_mem2reg
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_freeze
+# 
+# Top level modules:
+# 	or1200_freeze
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_mult_mac
+# 
+# Top level modules:
+# 	or1200_mult_mac
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_sprs
+# 
+# Top level modules:
+# 	or1200_sprs
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_cfgr
+# 
+# Top level modules:
+# 	or1200_cfgr
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_genpc
+# 
+# Top level modules:
+# 	or1200_genpc
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_operandmuxes
+# 
+# Top level modules:
+# 	or1200_operandmuxes
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_top
+# 
+# Top level modules:
+# 	or1200_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_cpu
+# 
+# Top level modules:
+# 	or1200_cpu
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_gmultp2_32x32
+# 
+# Top level modules:
+# 	or1200_gmultp2_32x32
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_pic
+# 
+# Top level modules:
+# 	or1200_pic
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_tt
+# 
+# Top level modules:
+# 	or1200_tt
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_ctrl
+# 
+# Top level modules:
+# 	or1200_ctrl
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_ic_fsm
+# 
+# Top level modules:
+# 	or1200_ic_fsm
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_pm
+# 
+# Top level modules:
+# 	or1200_pm
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_dc_fsm
+# 
+# Top level modules:
+# 	or1200_dc_fsm
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_ic_ram
+# 
+# Top level modules:
+# 	or1200_ic_ram
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_qmem_top
+# 
+# Top level modules:
+# 	or1200_qmem_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_dc_ram
+# 
+# Top level modules:
+# 	or1200_dc_ram
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_ic_tag
+# 
+# Top level modules:
+# 	or1200_ic_tag
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_reg2mem
+# 
+# Top level modules:
+# 	or1200_reg2mem
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_wb_biu
+# 
+# Top level modules:
+# 	or1200_wb_biu
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_dc_tag
+# 
+# Top level modules:
+# 	or1200_dc_tag
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_ic_top
+# 
+# Top level modules:
+# 	or1200_ic_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_wbmux
+# 
+# Top level modules:
+# 	or1200_wbmux
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_dc_top
+# 
+# Top level modules:
+# 	or1200_dc_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_if
+# 
+# Top level modules:
+# 	or1200_if
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_rf
+# 
+# Top level modules:
+# 	or1200_rf
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_dmmu_tlb
+# 
+# Top level modules:
+# 	or1200_dmmu_tlb
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_immu_tlb
+# 
+# Top level modules:
+# 	or1200_immu_tlb
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_sb_fifo
+# 
+# Top level modules:
+# 	or1200_sb_fifo
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_dmmu_top
+# 
+# Top level modules:
+# 	or1200_dmmu_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_immu_top
+# 
+# Top level modules:
+# 	or1200_immu_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_sb
+# 
+# Top level modules:
+# 	or1200_sb
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_dpram_32x32
+# 
+# Top level modules:
+# 	or1200_dpram_32x32
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_iwb_biu
+# 
+# Top level modules:
+# 	or1200_iwb_biu
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_du
+# 
+# Top level modules:
+# 	or1200_du
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_lsu
+# 
+# Top level modules:
+# 	or1200_lsu
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_spram_2048x32
+# 
+# Top level modules:
+# 	or1200_spram_2048x32
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_spram_2048x32_bw
+# 
+# Top level modules:
+# 	or1200_spram_2048x32_bw
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_spram_512x20
+# 
+# Top level modules:
+# 	or1200_spram_512x20
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_vlx_ctrl
+# 
+# Top level modules:
+# 	or1200_vlx_ctrl
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_vlx_dp
+# 
+# Top level modules:
+# 	or1200_vlx_dp
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_vlx_su
+# 
+# Top level modules:
+# 	or1200_vlx_su
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module or1200_vlx_top
+# 
+# Top level modules:
+# 	or1200_vlx_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module mon_prog_bram
+# 
+# Top level modules:
+# 	mon_prog_bram
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module romram
+# 
+# Top level modules:
+# 	romram
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module wb_arb_rr
+# 
+# Top level modules:
+# 	wb_arb_rr
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module wb_arb_prio
+# 
+# Top level modules:
+# 	wb_arb_prio
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module wb_top
+# 
+# Top level modules:
+# 	wb_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling interface wishbone
+# -- Compiling module dummy_slave
+# -- Compiling module dummy_master
+# 
+# Top level modules:
+# 	dummy_slave
+# 	dummy_master
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module parport
+# 
+# Top level modules:
+# 	parport
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module perf_top
+# 
+# Top level modules:
+# 	perf_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module raminfr
+# 
+# Top level modules:
+# 	raminfr
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_receiver
+# 
+# Top level modules:
+# 	uart_receiver
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_rfifo
+# 
+# Top level modules:
+# 	uart_rfifo
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_top
+# 
+# Top level modules:
+# 	uart_top
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_wb
+# 
+# Top level modules:
+# 	uart_wb
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_debug_if
+# 
+# Top level modules:
+# 	uart_debug_if
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_regs
+# 
+# Top level modules:
+# 	uart_regs
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_tfifo
+# 
+# Top level modules:
+# 	uart_tfifo
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module uart_transmitter
+# 
+# Top level modules:
+# 	uart_transmitter
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module clkdel
+# 
+# Top level modules:
+# 	clkdel
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module clkdiv
+# 
+# Top level modules:
+# 	clkdiv
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module sys_sig_gen
+# 
+# Top level modules:
+# 	sys_sig_gen
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module dct
+# 
+# Top level modules:
+# 	dct
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module q2
+# 
+# Top level modules:
+# 	q2
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# -- Compiling module jpeg_dma
+# 
+# Top level modules:
+# 	jpeg_dma
+# Model Technology ModelSim SE vlog 6.5c Compiler 2009.08 Aug 27 2009
+# ** Error: ../jpeg/jpeg_top.sv(449): near "end": syntax error, unexpected "end", expecting ';'
+# make[2]: Leaving directory `/edu/nicol271/TSEA44/hw'
+# make[1]: Leaving directory `/edu/nicol271/TSEA44/hw/simulator'
+# make[2]: *** [simfiles] Error 1
+# make[1]: *** [simfiles] Error 2
+make simfiles; restart -f; run 58 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+make simfiles; restart -f; run 58 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+make simfiles; restart -f; run 58 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+restart
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+run
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+run
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+# 1
+# Simulation stop requested.
+make simfiles; restart -f; run 58 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+restart
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+run
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+run
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#     0     0     0     0     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+# 1
+# Simulation stop requested.
+make simfiles; restart -f; run 58 us
+# Loading sv_std.std
+# Loading /nobackup/local/nicol271/work.jpeg_top_tb
+# Loading /nobackup/local/nicol271/work.wishbone
+# Loading /nobackup/local/nicol271/work.jpeg_top_sv_unit
+# Loading /nobackup/local/nicol271/work.jpeg_top
+# Loading /nobackup/local/nicol271/work.jpeg_dma
+# Loading /nobackup/local/nicol271/work.addrgen
+# Loading /nobackup/local/nicol271/work.dct
+# Loading /nobackup/local/nicol271/work.q2
+# Loading /nobackup/local/nicol271/work.transpose
+# Loading /nobackup/local/nicol271/work.mem
+# Loading /nobackup/local/nicol271/work.wishbone_tasks
+# Loading /nobackup/local/nicol271/work.test_jpeg
+# Loading /nobackup/local/nicol271/work.glbl
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+# -----
+# new run
+# 

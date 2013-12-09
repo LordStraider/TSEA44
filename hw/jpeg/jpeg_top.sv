@@ -1,4 +1,4 @@
-    //////////////////////////////////////////////////////////////////////
+   //////////////////////////////////////////////////////////////////////
     ////                                                              ////
     ////  DAFK JPEG Accelerator top                                   ////
     ////                                                              ////
@@ -170,6 +170,8 @@
     reg mux2_enable;
     reg [1:0] mux2_counter;
     reg [31:0] mux2_out;
+    reg [31:0] mux2_flipflop;
+    reg wren_flipflop;
 
 
     const reg [63:0][15:0] reciprocals = '{16'd2048,   16'd2731,   16'd2341,   16'd2341,   16'd1820,   16'd1365,  16'd669,   16'd455,
@@ -182,32 +184,31 @@
         16'd537,    16'd596,    16'd585,    16'd529,    16'd426,    16'd356,   16'd324,   16'd331};
 
 
-/*        16'd2048,	16'd1820,	16'd3277,	16'd819,	16'd512,	16'd819,	16'd585,	16'd290,
-        16'd2979,	16'd1489,	16'd2048,	16'd1489,	16'd405,	16'd643,	16'd377,	16'd356,
-        16'd2731,	16'd1365,	16'd1365,	16'd1130,	16'd420,	16'd537,	16'd410,	16'd271,
-        16'd2731,	16'd936,	16'd2341,	16'd643,	16'd377,	16'd565,	16'd529,	16'd273,
-        16'd2341,	16'd669,	16'd1725,	16'd886,	16'd318,	16'd546,	16'd301,	16'd324,
-        16'd2521,	16'd512,	16'd1260,	16'd585,	16'd345,	16'd596,	16'd318,	16'd328,
-        16'd2341,	16'd455,	16'd2048,	16'd482,	16'd334,	16'd575,	16'd426,	16'd318,
-        16'd1928,	16'd356,	16'd1365,	16'd596,	16'd293,	16'd475,	16'd315,	16'd331};*/
-
-    /*2048,	2979,	2731,	2731,	2341,	2521,	2341,	1928,
-    1820,	1489,	1365,	936,	669,	512,	455,	356,
-    3277,	2048,	1365,	2341,	1725,	1260,	2048,	1365,
-    819,	1489,	1130,	643,	886,	585,	482,	596,
-    512,	405,	420,	377,	318,	345,	334,	293,
-    819,	643,	537,	565,	546,	596,	575,	475,
-    585,	377,	410,	529,	301,	318,	426,	315,
-    290,	356,	271,	273,	324,	328,	318,	331};*/
+/*
+static const int reciprocals[] = {
+          2048, 2979, 3277, 2048, 1365, 819, 643, 537,
+          2731, 2731, 2341, 1725, 1260, 565, 546, 596,
+          2341, 2521, 2048, 1365,  819, 575, 475, 585,
+          2341, 1928, 1489, 1130,  643, 377, 410, 529,
+          1820, 1489,  886,  585,  482, 301, 318, 426,
+          1365,  936,  596,  512,  405, 315, 290, 356,
+          669,   512,  420,  377,  318, 271, 273, 324,
+          455,   356,  345,  334,  293, 328, 318, 331};*/
 
 
     // You must create the signals to the block ram somewhere...
 
     always @(posedge wb.clk) begin
+      if(wb.rst)
+        bram_addr <= 32'b0;
+      else
+        bram_addr <= wb.adr;
+    end
+
+    always @(posedge wb.clk) begin
       if (wb.rst) begin
          read_enable <= 1'b0;
          bram_data <= 32'b0;
-         bram_addr <= 32'b0;
          bram_ce <= 1'b0;
          bram_we <= 1'b0;
          rdc <= 9'b0;
@@ -232,7 +233,6 @@
          in_counter <= in_counter + 1;
 
          bram_data <= wb.dat_o;
-         bram_addr <= wb.adr;
       end else if (in_counter == 5'd16) begin
          // when the write is finished
          in_counter <= 5'd0;
@@ -241,15 +241,16 @@
          bram_ce <= 1'b0;
       end else if (ce_ut) begin
          bram_data <= wb.dat_o;
-         bram_addr <= wb.adr;
       end
+
+
 
 
     end
 
     //Mux till dct
     always_comb begin
-        if (~mmem.mux1 && divcounter == 3'h2) begin
+        if (~mmem.mux1 && divcounter == 2'h0 && ctrl_control) begin
             x = {{4{dflipflop[31]}}, dflipflop[31:24],
                  {4{dflipflop[23]}}, dflipflop[23:16],
                  {4{dflipflop[15]}}, dflipflop[15:8],
@@ -266,14 +267,7 @@
 
     //setting clk_div2...
 
-    always @(posedge wb.clk) begin
-        if (wb.rst) begin
-            divcounter <= 3'b0;
-        end else begin
-            divcounter <= divcounter + 1;
 
-        end
-    end
 
     //div2clk
     always @(posedge wb.clk) begin
@@ -323,7 +317,7 @@
       .CLKA(wb.clk), .SSRA(wb.rst),
       .ADDRA(bram_addr),
       .DIA(bram_data), .DIPA(4'h0),
-      .ENA(bram_ce), .WEA(bram_we),
+      .ENA(1'b1), .WEA(bram_we),
       .DOA(doa), .DOPA(),
       // DCT read
       .CLKB(wb.clk), .SSRB(wb.rst),
@@ -339,7 +333,7 @@
       .CLKA(wb.clk), .SSRA(wb.rst),
       .ADDRA({4'h0,wrc}),
       .DIA(q), .DIPA(4'h0), .ENA(1'b1),
-      .WEA(mmem.wren), .DOA(ut_doa), .DOPA(),
+      .WEA(wren_flipflop), .DOA(ut_doa), .DOPA(),
       // WB read & write
       .CLKB(wb.clk), .SSRB(wb.rst),
       .ADDRB(wb.adr[10:2]),
@@ -354,7 +348,9 @@
     always_comb begin
       if(csren)
         toDatI = csr;
-      else
+      else if (ce_in)
+        toDatI = doa;
+      else if (ce_ut)
         toDatI = dout_res;
     end
 
@@ -381,7 +377,9 @@
          mmem.wren <= 1'b0;
          mux2_enable <= 1'b0;
          DC2_ctrl_counter <= 8'b0;
+         divcounter <= 2'h0;
       end else if (ctrl_control) begin
+        divcounter <= divcounter + 1;
          if (clk_div4)
             DC2_ctrl_counter <= DC2_ctrl_counter + 1;
          if(divcounter == 3'h2) begin
@@ -403,23 +401,27 @@
             mmem.mux1 <= 1'b1;
 
          // the first row transpose arrives out from DCT
-         end else if (DC2_ctrl_counter == 8'd12) begin
+         end else if (DC2_ctrl_counter == 8'd11) begin
             // begin writing result
             mux2_enable <= 1'b1;
             mmem.wren <= 1'b1;
 
          // 8 cc later, all rows are out of transpose memory
-         end else if (DC2_ctrl_counter == 8'd20) begin
+         end else if (DC2_ctrl_counter == 8'd19) begin
             // stop reading from transpose
             mmem.trd <= 1'b0;
+            mmem.wren <= 1'b0;
+         end else if (DC2_ctrl_counter == 8'd20) begin
 
             // turn off DCT
-            mmem.dcten <= 1'b0;
+            //mmem.dcten <= 1'b0;
             mmem.wren <= 1'b0;
 
+            csr <= 32'd128;
          end
+      end else if (csren && wb.we) begin
+          csr <= wb.dat_o;
       end else begin
-         csr <= 32'd128;
          mmem.rden <= 1'b0;
          mmem.reg1en <= 1'b0;
          mmem.mux1 <= 1'b0;
@@ -429,22 +431,32 @@
          mmem.wren <= 1'b0;
          mux2_enable <= 1'b0;
          DC2_ctrl_counter <= 8'b0;
+         divcounter <= 2'h0;
       end
     end
+
+
+
+
     //reciprocal_counter!!!
     always @(posedge wb.clk) begin
       if (wb.rst)
         reciprocal_counter <= 8'd63;
-      else if(mux2_enable)
+      else if(mux2_flipflop)
         reciprocal_counter <= reciprocal_counter - 8'd2;
       else
         reciprocal_counter <= 8'd63;
 
     end
 
+
+    always @(posedge wb.clk) begin
+      mux2_flipflop <= mux2_enable;
+      wren_flipflop <= mmem.wren;
+    end
     //mux2
     always_comb begin
-      case(mmem.mux2)
+      case(mux2_counter) //mmem.mux2
          2'h1:    mux2_out = y[2:3];
          2'h2:    mux2_out = y[4:5];
          2'h3:    mux2_out = y[6:7];
@@ -458,7 +470,7 @@
       if(wb.rst) begin
          mux2_counter <= 2'd0;
          wrc <= 1'b0;
-      end else if(mux2_enable) begin
+      end else if(mux2_flipflop) begin
          mux2_counter <= mux2_counter + 1;
          wrc <= wrc + 1;
       end else begin
@@ -468,7 +480,7 @@
     end
 
     //mux2 styrsignal
-    always_comb begin
+    /*always_comb begin
         case(mux2_counter)
         2'd1:    mmem.mux2 = 2'd1;
         2'd2:    mmem.mux2 = 2'd2;
@@ -476,7 +488,7 @@
         default: mmem.mux2 = 2'd0;
      endcase
 
-    end
+    end*/
 
     //set reciprocals
     always_comb begin
