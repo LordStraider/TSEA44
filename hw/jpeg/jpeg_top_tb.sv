@@ -108,21 +108,24 @@ endmodule // mem
 
 program test_jpeg();
    int result = 0;
-   int d;   // subtract 128 => d = {-127,-126,-125,-124}
+   // int d = 32'h807F807F;   // subtract 128 => d = {-127,-126,-125,-124}
+
+int d;
 
    initial begin
         for (int run=0; run<10; run++) begin
           result = 0;
-//          d = 32'h81828384;
-
+          d = 32'h81828384;
+          //d = 32'h807F807F;
             for (int i=0; i<16; i++) begin
                 jpeg_top_tb.wb0.m_write(32'h96000000 + 4*i, d);
-//                d += 32'h04040404;
+                d += 32'h04040404;
 
-                if(i % 2)
-                    d = 32'hFF00FF00;
-                else
-                   d = 32'h00FF00FF;
+          /*       if((i +1)% 4 < 2)
+
+                    d = 32'h807F807F;
+                 else
+                    d = 32'h7F807F80;*/
             end
 
             jpeg_top_tb.wb0.m_write(32'h96001000, 32'h01000000);
@@ -140,7 +143,6 @@ program test_jpeg();
                 end
             $fwrite(1,"\n");
             end
-
 
            $fwrite(1,"-----\n");
            $fwrite(1,"new run\n");
