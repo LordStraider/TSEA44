@@ -35,7 +35,7 @@ all:  jpegtest
 # sample programs:
 
 jpegtest: jpegtest.o $(CLIBOBJECTS) $(INCLUDES)
-	$(LN) $(LDFLAGS) jpegtest.o $(CLIBOBJECTS) -o jpegtest 
+	$(LN) $(LDFLAGS) jpegtest.o $(CLIBOBJECTS) -o j 
 
 webcam.cgi: webcam.o $(CLIBOBJECTS) $(COMOBJECTS) 
 	$(LN) $(LDFLAGS) webcam.o $(CLIBOBJECTS) $(COMOBJECTS) -o webcam.cgi

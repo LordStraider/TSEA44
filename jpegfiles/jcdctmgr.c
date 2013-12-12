@@ -91,18 +91,45 @@ void forward_DCT (short coef_block[DCTSIZE2])
   #endif
 #else
   #ifdef HW_DCT
-
+// tftp 192.168.0.102
     int prbplus = 0x96000000;
     int prbplusread = 0x96000800;
-    char compress[2];
-    short *pc_tmp;
-    for (y = 0; y < DCTSIZE; y++, pb += (width - DCTSIZE)) {
+    int tmp;
+
+    tmp = 0x81828384;//*pim ^ 0x80808080;
+
+    /*for (i=0; i<16; i++) {
+      REG32(0x96000000 + 4*i) = tmp;
+      //printf("%8X\n", tmp);
+      tmp += 0x04040404;
+    }*/
+     // printf("width: %d, DCTSIZE: %d, div: %d\n", width, DCTSIZE, (width - DCTSIZE)/4);
+   //   printf("%X : %08X\n", pim, *(pim+100) ^ 0x80808080);
+    /*for (i=0; i<16; i++) {
+      //printf("%X : %08X\n", pim, *pim);// ^ 0x80808080);
+      REG32(0x96000000 + 4*i) = *pim;// ^ 0x80808080;
+      //tmp += 0x04040404;
+      if ((i % 2) < 1)
+        pim++;
+      else 
+        pim += (width - DCTSIZE)/4; //100 bra tal
+    }*/
+        //int *pc_tmp = (int*) malloc(DCTSIZE*DCTSIZE*sizeof(char));
+    for (y = 0; y < DCTSIZE; y++) {
+
       for (x = 0; x < DCTSIZE; x += 4) {
-        REG32(prbplus) = *pb ^ 0x80808080;
-        prbplus += 4;
-        pb += 4;
+    //    printf("%X = %08X skrivs pa :%X  \n", pim, tmp, prbplus);
+        REG32(prbplus) = *pim ^ 0x80808080;
+      //  tmp += 0x04040404;
+        //printf("%08X ", tmp);
+
+        prbplus+=4;
+        pim++;
       }
-    }
+      pim += (width - DCTSIZE)/4;
+      //printf("\n pim: %X  %d  %X    %d\n", pim, sizeof(long), prbplus, (width - DCTSIZE));
+    }//*/
+
     col += DCTSIZE;
     if (col >= width){
       col = 0;
@@ -113,22 +140,37 @@ void forward_DCT (short coef_block[DCTSIZE2])
     while (REG32(0x96001000) != 128) { REG32(0x96001000) = 0; } 
 
     //read
-    for (y = 0; y < DCTSIZE; y++, pb += (width - DCTSIZE)) {
-      for (x = 0; x < DCTSIZE; x += 2) {
+    for (i=0; i<16; i++) {
+      tmp = REG32(0x96000000 + 4*i);
+      printf("%08X = %08X \n", 0x96000000 + 4*i, tmp);
+    }
 
-        *pc_tmp = REG32(prbplusread);
-        prbplusread += 2;
-        pc_tmp += 2;
+    for (y=0; y<8; y++) {
+      for (x=0; x<4; x++) {
+        tmp = REG32(0x96000800 + 4*x + y*16);
+        printf("%5d ", tmp >> 16);
+        printf("%5d ", (tmp << 16) >> 16);
       }
+      printf("\n");
+    }
+
+    for (y = 0; y < DCTSIZE; y++, pc += (width - DCTSIZE)/2) {
+      for (x = 0; x < DCTSIZE; x+=4) {
+        *pc++ = REG32(prbplusread++);
+        //*pc++ = tmp >> 16;
+        //*pc++ = tmp & 0x0000ffff;
+      }
+      printf("\n");
     }
 
     //transpose
-    for (y = 0; y < DCTSIZE; y++) {
+/*    for (y = 0; y < DCTSIZE; y++) {
       for (x = 0; x < DCTSIZE; x++) {
-        *(pc + (y + x*sizeof(char))) = *(pc_tmp + (x + y*sizeof(char)));
+        *pc++ = (short)*pc_tmp++;
+        //*(pc + (y + x*sizeof(char))) = (short)*(pc_tmp + (x + y*sizeof(char)));
       }
     }
-    
+    free(pc_tmp);*/
   // 1) copy values from image to block RAM instead
   // 2) subtract 128 in SW
   // 3) start DCT_Q
@@ -183,14 +225,12 @@ void encode_image(void)
    int MCU_count = width * height / DCTSIZE2;
    short MCU_block[DCTSIZE2];
    
-   for(i = 0; i < MCU_count; i++)
+   for(i = 0; i < 1; i++) //MCU_count; i++)
    {
       forward_DCT(MCU_block);
       encode_mcu_huff(MCU_block);
-      printf("i: %d , mcu_count: %d\n", i, MCU_count);
    }
 
-   printf("10000 german gays have arrived...\n");
 }
 
 /* Initialize the encoder */

@@ -198,12 +198,7 @@ static const int reciprocals[] = {
 
     // You must create the signals to the block ram somewhere...
 
-    always @(posedge wb.clk) begin
-      if(wb.rst)
-        bram_addr <= 32'b0;
-      else
-        bram_addr <= wb.adr;
-    end
+    assign bram_addr = wb.adr[8:0];
 
     always @(posedge wb.clk) begin
       if (wb.rst) begin
@@ -242,16 +237,12 @@ static const int reciprocals[] = {
       end else if (ce_ut) begin
          bram_data <= wb.dat_o;
       end
-
-
-
-
     end
 
     //Mux till dct
     always_comb begin
         if (~mmem.mux1 && divcounter == 2'h0 && ctrl_control) begin
-            x = {{4{dflipflop[31]}}, dflipflop[31:24],
+          x = {{4{dflipflop[31]}}, dflipflop[31:24],
                  {4{dflipflop[23]}}, dflipflop[23:16],
                  {4{dflipflop[15]}}, dflipflop[15:8],
                  {4{dflipflop[7]}}, dflipflop[7:0],
@@ -260,6 +251,16 @@ static const int reciprocals[] = {
                  {4{dob[15]}}, dob[15:8],
                  {4{dob[7]}}, dob[7:0]};
 
+              /*x = {4'h0, dflipflop[31:24],
+                 4'h0, dflipflop[23:16],
+                 4'h0, dflipflop[15:8],
+                 4'h0, dflipflop[7:0],
+                 4'h0, dob[31:24],
+                 4'h0, dob[23:16],
+                 4'h0, dob[15:8],
+                 4'h0, dob[7:0]};
+*/
+             //= {32'h0,dflipflop,dob};
 
         end else if (mmem.mux1)
             x = ut;
@@ -274,7 +275,7 @@ static const int reciprocals[] = {
       if (wb.rst)
         clk_div2 <= 1'b0;
       else
-      clk_div2 <= divcounter[0];
+        clk_div2 <= divcounter[0];
     end
 
      //div4clk
