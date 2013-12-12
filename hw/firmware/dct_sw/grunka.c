@@ -11,14 +11,17 @@ int main() {
 		//printf("%8X\n", d);
 		d += 0x04040404;
     }
+	for (i=0; i<16; i++) {
+		result = REG32(0x96000000 + i);
+		printf("%08X = %08X \n", 0x96000000 + i, result);
+    }
 
     //printf("Waiting... \n");
 
     int csr = REG32(0x96001000);
-    int k = 0;
-    while (csr != 128) { csr = REG32(0x96001000); k++; }
+    while (csr != 128) { csr = REG32(0x96001000); }
 	REG32(0x96001000) = 0;
-	printf("we waited %d\n", k);
+	//printf("we waited %d\n", k);
 
     printf("---------- Finished ----------\n");
 
@@ -31,5 +34,11 @@ int main() {
 		printf("\n");
     }
 
+    printf("---------- Finished ----------\n");
+
+	for (i=0; i<16; i++) {
+		result = REG32(0x96000000 + 4*i);
+		printf("%08X = %08X \n", 0x96000000 + 4*i, result);
+    }
     return 0;
 }
