@@ -1,4 +1,4 @@
-    //////////////////////////////////////////////////////////////////////
+   //////////////////////////////////////////////////////////////////////
     ////                                                              ////
     ////  DAFK JPEG Accelerator top                                   ////
     ////                                                              ////
@@ -68,7 +68,11 @@
 
     logic [31:0] 	 dob, dob2, ut_doa;
 
-    logic [0:7][11:0] 	 x, in, ut;
+    logic [0:7][11:0] 	 x, ut;
+    logic [23:0] x1;
+    logic [23:0] x2;
+    logic [23:0] dflipflophalf1;
+    logic [23:0] dflipflophalf2;
 
     logic [0:7][15:0] 	 y;
 
@@ -77,7 +81,7 @@
     logic [31:0] 	 q, dia;
     logic [31:0] 	 doa;
     logic 		 csren;
-    logic [7:0] 		 csr;
+    logic [31:0] 		 csr;
     logic 		 clr;
     mmem_t 	mmem;
 
@@ -86,7 +90,7 @@
     logic [15:0] rec_o1;
     logic 		 dct_busy;
     logic 		 dma_start_dct;
-    logic [31:0]  reciprocal_counter;
+    logic [7:0]  reciprocal_counter;
     logic         dff1;
     logic         dff2;
     logic         dff1rst;
@@ -126,7 +130,7 @@
     begin
         if (wb.rst)
             dff1 <= 1'b0;
-        else 
+        else
             dff1 <= wb.we;
         dff2 <= dff1;
     end
@@ -135,7 +139,7 @@
     begin
         dff1rst <= wb.rst;
         dff2rst <= dff1rst;
-    end    
+    end
 
     assign wb.ack = ack;
 
@@ -162,115 +166,129 @@
     reg [7:0] DC2_ctrl_counter;
     reg clk_div2;
     reg clk_div4;
-    reg [2:0] divcounter;
+    reg [1:0] divcounter;
     reg mux2_enable;
     reg [1:0] mux2_counter;
     reg [31:0] mux2_out;
+    reg [31:0] mux2_flipflop;
+    reg wren_flipflop;
 
 
-    int reciprocals [] = {2048,	1820,	3277,	819,	512,	819,	585,	290,
-        2979,	1489,	2048,	1489,	405,	643,	377,	356,
-        2731,	1365,	1365,	1130,	420,	537,	410,	271,
-        2731,	936,	2341,	643,	377,	565,	529,	273,
-        2341,	669,	1725,	886,	318,	546,	301,	324,
-        2521,	512,	1260,	585,	345,	596,	318,	328,
-        2341,	455,	2048,	482,	334,	575,	426,	318,
-        1928,	356,	1365,	596,	293,	475,	315,	331};
+    const reg [63:0][15:0] reciprocals = '{16'd2048,   16'd2731,   16'd2341,   16'd2341,   16'd1820,   16'd1365,  16'd669,   16'd455,
+        16'd2979,   16'd2731,   16'd2521,   16'd1928,   16'd1489,   16'd936,   16'd512,   16'd356,
+        16'd3277,   16'd2341,   16'd2048,   16'd1489,   16'd886,    16'd596,   16'd420,   16'd345,
+        16'd2048,   16'd1725,   16'd1365,   16'd1130,   16'd585,    16'd512,   16'd377,   16'd334,
+        16'd1365,   16'd1260,   16'd819,    16'd643,    16'd482,    16'd405,   16'd318,   16'd293,
+        16'd819,    16'd565,    16'd575,    16'd377,    16'd301,    16'd315,   16'd271,   16'd328,
+        16'd643,    16'd546,    16'd475,    16'd410,    16'd318,    16'd290,   16'd273,   16'd318,
+        16'd537,    16'd596,    16'd585,    16'd529,    16'd426,    16'd356,   16'd324,   16'd331};
 
-    /*2048,	2979,	2731,	2731,	2341,	2521,	2341,	1928,
-    1820,	1489,	1365,	936,	669,	512,	455,	356,
-    3277,	2048,	1365,	2341,	1725,	1260,	2048,	1365,
-    819,	1489,	1130,	643,	886,	585,	482,	596,
-    512,	405,	420,	377,	318,	345,	334,	293,
-    819,	643,	537,	565,	546,	596,	575,	475,
-    585,	377,	410,	529,	301,	318,	426,	315,
-    290,	356,	271,	273,	324,	328,	318,	331};*/
+
+/*
+static const int reciprocals[] = {
+          2048, 2979, 3277, 2048, 1365, 819, 643, 537,
+          2731, 2731, 2341, 1725, 1260, 565, 546, 596,
+          2341, 2521, 2048, 1365,  819, 575, 475, 585,
+          2341, 1928, 1489, 1130,  643, 377, 410, 529,
+          1820, 1489,  886,  585,  482, 301, 318, 426,
+          1365,  936,  596,  512,  405, 315, 290, 356,
+          669,   512,  420,  377,  318, 271, 273, 324,
+          455,   356,  345,  334,  293, 328, 318, 331};*/
 
 
     // You must create the signals to the block ram somewhere...
 
+    assign bram_addr = wb.adr[8:0];
+
     always @(posedge wb.clk) begin
       if (wb.rst) begin
          read_enable <= 1'b0;
-         bram_data <= 32'b0;
-         bram_addr <= 32'b0;
-         bram_ce <= 1'b0;  
-         bram_we <= 1'b0;
          rdc <= 9'b0;
-         in_counter <= 5'h0;
          dflipflop <= 32'b0;
-
+      end else if (csr == 32'h1) begin
+         read_enable <= 1'b1;
       // if write is finished and we are reading from the memory
       end else if (read_enable) begin
-         // count up address memory on every second clock cycle
-         if (clk_div2) begin
-            rdc <= rdc + 4;
-            dflipflop <= dob;
-            if (rdc == 9'h40) begin
-               rdc <= 9'd0;
-               read_enable <= 1'b0;
-            end
-         end
-      // if we want to write to the in block memory
-      end else if (dff1 && ~dff2 && ce_in) begin
+        // count up address memory on every second clock cycle
+        if (clk_div2) begin
+          rdc <= rdc + 4;
+          dflipflop <= dob;
+          if (rdc == 9'h40) begin
+            rdc <= 9'd0;
+            read_enable <= 1'b0;
+          end
+        end
+      end
+    end
+
+    always @(posedge wb.clk) begin
+      if (wb.rst) begin
+         bram_data <= 32'b0;
+         bram_ce <= 1'b0;
+         bram_we <= 1'b0;
+      end else if (ce_in) begin
          bram_we <= wb.we;
          bram_ce <= 1'b1;
-         in_counter <= in_counter + 1;
-
          bram_data <= wb.dat_o;
-         bram_addr <= wb.adr;
-      end else if (in_counter == 5'd16) begin
-         // when the write is finished
-         in_counter <= 5'd0;
-         read_enable <= 1'b1;
-         bram_we <= 1'b0;
-         bram_ce <= 1'b0;
+      end else begin
+        bram_we <= 1'b0;
       end
     end
 
     //Mux till dct
     always_comb begin
-        if (~mmem.mux1 && divcounter == 3'h3)
-            x = {32'd0,dflipflop,dob};
-        else if (mmem.mux1)
+        if (~mmem.mux1 && divcounter == 2'h0 && ctrl_control) begin
+          x = {{4{dflipflop[31]}}, dflipflop[31:24],
+                 {4{dflipflop[23]}}, dflipflop[23:16],
+                 {4{dflipflop[15]}}, dflipflop[15:8],
+                 {4{dflipflop[7]}}, dflipflop[7:0],
+                 {4{dob[31]}}, dob[31:24],
+                 {4{dob[23]}}, dob[23:16],
+                 {4{dob[15]}}, dob[15:8],
+                 {4{dob[7]}}, dob[7:0]};
+
+              /*x = {4'h0, dflipflop[31:24],
+                 4'h0, dflipflop[23:16],
+                 4'h0, dflipflop[15:8],
+                 4'h0, dflipflop[7:0],
+                 4'h0, dob[31:24],
+                 4'h0, dob[23:16],
+                 4'h0, dob[15:8],
+                 4'h0, dob[7:0]};
+*/
+             //= {32'h0,dflipflop,dob};
+
+        end else if (mmem.mux1)
             x = ut;
     end
 
-    always @(posedge wb.clk) begin
-      if (wb.rst) begin
-         bram_data <= 32'b0;
-         bram_addr <= 32'b0;
-      end else if (ce_ut) begin
-         bram_data <= wb.dat_o;
-         bram_addr <= wb.adr;
-      end
-    end
-
     //setting clk_div2...
+
+
+
+    //div2clk
     always @(posedge wb.clk) begin
-        if (wb.rst) begin
-            clk_div2 <= 1'b0;
-            clk_div4 <= 1'b0;
-            divcounter <= 3'b0;
-        end else begin
-            divcounter <= divcounter + 1;
-            clk_div2 <= ~clk_div2;
-            if (divcounter == 3'h3) begin
-                clk_div4 <= 1'b1;
-                divcounter <= 3'b0;
-            end else begin
-                clk_div4 <= 1'b0;
-            end
-        end
+      if (wb.rst)
+        clk_div2 <= 1'b0;
+      else
+        clk_div2 <= divcounter[0];
+    end
+
+     //div4clk
+    always @(posedge wb.clk) begin
+      if (wb.rst)
+          clk_div4 <= 1'b0;
+      else
+        clk_div4 <= ~divcounter[1] && divcounter[0];
     end
 
     always @(posedge wb.clk) begin
-        if(clock_counter == 2'h3) 
+        if(clock_counter == 2'h3)
             clock_counter <= 2'h0;
         else
             clock_counter <= clock_counter + 1;
     end
-    
+
     jpeg_dma dma
      (
       .clk_i(wb.clk), .rst_i(wb.rst),
@@ -296,7 +314,7 @@
       .CLKA(wb.clk), .SSRA(wb.rst),
       .ADDRA(bram_addr),
       .DIA(bram_data), .DIPA(4'h0),
-      .ENA(bram_ce), .WEA(bram_we),
+      .ENA(1'b1), .WEA(bram_we),
       .DOA(doa), .DOPA(),
       // DCT read
       .CLKB(wb.clk), .SSRB(wb.rst),
@@ -304,36 +322,49 @@
       .DIB(32'h0), .DIPB(4'h0),
       .ENB(1'b1),.WEB(1'b0),
       .DOB(dob2), .DOPB());
-      
+
     assign dob = dob2;
-    
+
     RAMB16_S36_S36 #(.SIM_COLLISION_CHECK("NONE")) utmem
      (// DCT write
       .CLKA(wb.clk), .SSRA(wb.rst),
       .ADDRA({4'h0,wrc}),
       .DIA(q), .DIPA(4'h0), .ENA(1'b1),
-      .WEA(mmem.wren), .DOA(ut_doa), .DOPA(),
+      .WEA(wren_flipflop), .DOA(ut_doa), .DOPA(),
       // WB read & write
       .CLKB(wb.clk), .SSRB(wb.rst),
       .ADDRB(wb.adr[10:2]),
       .DIB(wb.dat_o), .DIPB(4'h0), .ENB(ce_ut),
       .WEB(wb.we), .DOB(dout_res), .DOPB());
 
+    reg [31:0] toDatI;
     // You must create the wb.dat_i signal somewhere...
-    assign wb.dat_i = dout_res;
+    assign wb.dat_i = toDatI;
+
+    //outmux
+    always_comb begin
+      if(csren)
+        toDatI = csr;
+      else if (ce_in)
+        toDatI = doa;
+      else if (ce_ut)
+        toDatI = dout_res;
+    end
+
 
     always @(posedge wb.clk) begin
         if (wb.rst)
             ctrl_control <= 1'b0;
         else if (read_enable)
             ctrl_control <= 1'b1;
-        else if (DC2_ctrl_counter == 8'd29) 
+        else if (DC2_ctrl_counter == 8'd20)
             ctrl_control <= 1'b0;
     end
 
     // the control logic
     always @(posedge wb.clk) begin
       if(wb.rst) begin
+         csr <= 32'd0;
          mmem.rden <= 1'b0;
          mmem.reg1en <= 1'b0;
          mmem.mux1 <= 1'b0;
@@ -343,21 +374,23 @@
          mmem.wren <= 1'b0;
          mux2_enable <= 1'b0;
          DC2_ctrl_counter <= 8'b0;
+         divcounter <= 2'h0;
       end else if (ctrl_control) begin
-         if (clk_div4) 
+        divcounter <= divcounter + 1;
+         if (clk_div4)
             DC2_ctrl_counter <= DC2_ctrl_counter + 1;
-         if(divcounter == 3'h3) begin
+         if(divcounter == 3'h2) begin
             // Enable DCT and get its input from block RAM
-            mmem.dcten <= 1'b1;
-            //mmem.mux1 <= 1'b0;
+            if(DC2_ctrl_counter < 8'd18)
+              mmem.dcten <= 1'b1;
+            //fulhaxfulhaxheladan!!
+            if(mmem.dcten == 1'b1 && DC2_ctrl_counter < 8'd8)
+              mmem.twr <= 1'b1;
 
-         // DCT takes 4 cs, so when ready...
-         end else if (DC2_ctrl_counter == 8'd5) begin
-            // ...begin write to transpose memory
-            mmem.twr <= 1'b1;
+
 
          // transpose write takes 8 cs
-         end else if (DC2_ctrl_counter == 8'd13) begin
+         end else if (DC2_ctrl_counter == 8'd10) begin
             // stop write, begin read
             mmem.twr <= 1'b0;
             mmem.trd <= 1'b1;
@@ -365,23 +398,28 @@
             mmem.mux1 <= 1'b1;
 
          // the first row transpose arrives out from DCT
-         end else if (DC2_ctrl_counter == 8'd17) begin
+         end else if (DC2_ctrl_counter == 8'd11) begin
             // begin writing result
             mux2_enable <= 1'b1;
             mmem.wren <= 1'b1;
 
          // 8 cc later, all rows are out of transpose memory
-         end else if (DC2_ctrl_counter == 8'd25) begin
+         end else if (DC2_ctrl_counter == 8'd19) begin
             // stop reading from transpose
             mmem.trd <= 1'b0;
             mmem.wren <= 1'b0;
-            
+         end else if (DC2_ctrl_counter == 8'd20) begin
 
-         end else if (DC2_ctrl_counter == 8'd29) begin
             // turn off DCT
-            mmem.dcten <= 1'b0;
-            
+            //mmem.dcten <= 1'b0;
+            mmem.wren <= 1'b0;
+
+            csr <= 32'd128;
          end
+      end else if (csren && wb.we) begin
+          csr <= wb.dat_o;
+      end else if (csr == 32'h1) begin
+         csr <= 32'h0;
       end else begin
          mmem.rden <= 1'b0;
          mmem.reg1en <= 1'b0;
@@ -392,22 +430,32 @@
          mmem.wren <= 1'b0;
          mux2_enable <= 1'b0;
          DC2_ctrl_counter <= 8'b0;
+         divcounter <= 2'h0;
       end
     end
+
+
+
+
     //reciprocal_counter!!!
     always @(posedge wb.clk) begin
-      if (wb.rst) 
-        reciprocal_counter <= 0;
-      else if(mux2_enable)
-        reciprocal_counter <= reciprocal_counter + 2;
-      else if(reciprocal_counter == 32'h40)
-        reciprocal_counter <= 0;
-        
-    end 
+      if (wb.rst)
+        reciprocal_counter <= 8'd63;
+      else if(mux2_flipflop)
+        reciprocal_counter <= reciprocal_counter - 8'd2;
+      else
+        reciprocal_counter <= 8'd63;
 
+    end
+
+
+    always @(posedge wb.clk) begin
+      mux2_flipflop <= mux2_enable;
+      wren_flipflop <= mmem.wren;
+    end
     //mux2
     always_comb begin
-      case(mmem.mux2)
+      case(mux2_counter) //mmem.mux2
          2'h1:    mux2_out = y[2:3];
          2'h2:    mux2_out = y[4:5];
          2'h3:    mux2_out = y[6:7];
@@ -419,10 +467,9 @@
     //count mux2 counter and output memory.
     always @(posedge wb.clk) begin
       if(wb.rst) begin
-
          mux2_counter <= 2'd0;
          wrc <= 1'b0;
-      end else if(mux2_enable) begin
+      end else if(mux2_flipflop) begin
          mux2_counter <= mux2_counter + 1;
          wrc <= wrc + 1;
       end else begin
@@ -432,7 +479,7 @@
     end
 
     //mux2 styrsignal
-    always_comb begin
+    /*always_comb begin
         case(mux2_counter)
         2'd1:    mmem.mux2 = 2'd1;
         2'd2:    mmem.mux2 = 2'd2;
@@ -440,25 +487,25 @@
         default: mmem.mux2 = 2'd0;
      endcase
 
-    end
+    end*/
 
     //set reciprocals
     always_comb begin
         rec_o1 = reciprocals[reciprocal_counter];
-        rec_o2 = reciprocals[reciprocal_counter+1];
+        rec_o2 = reciprocals[reciprocal_counter - 8'd1];
     end
 
     // 8 point DCT
     // control: dcten //ändrat ny långsammare klocka.
     dct dct0
      (.y(y), .x(x),
-      .clk_i(clk_div4), .en(mmem.dcten)
+      .clk_i(wb.clk), .en(mmem.dcten)
     );
     //Paul: Jag gillar inte eclipse.
     q2 Q2 (
       .x_i(mux2_out), .x_o(q),
       .rec_i1(rec_o1),
-      .rec_i2(rec_o2) // !! TODO, rec_i shoud be something better
+      .rec_i2(rec_o2)
     );
 
     // transpose memory

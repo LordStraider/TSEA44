@@ -40,7 +40,8 @@ Q = [16 11 10 16 24 40 51 61;
 reciprocals = round(2^15 ./ Q);
 */
 
-static const int reciprocals[] = {2048, 2979, 3277, 2048, 1365, 819, 643, 537,
+static const int reciprocals[] = {
+          2048, 2979, 3277, 2048, 1365, 819, 643, 537,
 				  2731, 2731, 2341, 1725, 1260, 565, 546, 596,
 				  2341, 2521, 2048, 1365,  819, 575, 475, 585,
 				  2341, 1928, 1489, 1130,  643, 377, 410, 529,
@@ -60,8 +61,6 @@ void init_image(unsigned char *t,unsigned int image_width, unsigned int image_he
    width = image_width;
    height = image_height;
 
-#endif
-
 }
 
 
@@ -80,7 +79,7 @@ void forward_DCT (short coef_block[DCTSIZE2])
   int *pim = (int *) pb;
   int *pr=reciprocals;
   short *pc=coef_block;
-  int y,x; // The current position within the MCU
+  int y, x, j; // The current position within the MCU
   int temp, i,rval;
   unsigned int startcycle = gettimer();
 
@@ -92,11 +91,117 @@ void forward_DCT (short coef_block[DCTSIZE2])
   #endif
 #else
   #ifdef HW_DCT
+// tftp 192.168.0.102
+    int prbplus = 0x96000000;
+    int prbplusread = 0x96000800;
+    int tmp;
+    int transpose[8][8];
+    //tmp = *pim ^ 0x80808080; // 0x81828384;
+
+    /*for (i=0; i<16; i++) {
+      REG32(0x96000000 + 4*i) = tmp;
+      //printf("%8X\n", tmp);
+      tmp += 0x04040404;
+    }*/
+     // printf("width: %d, DCTSIZE: %d, div: %d\n", width, DCTSIZE, (width - DCTSIZE)/4);
+   //   printf("%X : %08X\n", pim, *(pim+100) ^ 0x80808080);
+    /*for (i=0; i<16; i++) {
+      //printf("%X : %08X\n", pim, *pim);// ^ 0x80808080);
+      REG32(0x96000000 + 4*i) = *pim;// ^ 0x80808080;
+      //tmp += 0x04040404;
+      if ((i % 2) < 1)
+        pim++;
+      else 
+        pim += (width - DCTSIZE)/4; //100 bra tal
+    }*/
+        //int *pc_tmp = (int*) malloc(DCTSIZE*DCTSIZE*sizeof(char));
+
+  //printf("trying written to inmem\n");
+    for (y = 0; y < DCTSIZE; y++, pim += (width - DCTSIZE)/4) {
+      for (x = 0; x < DCTSIZE; x += 4) {
+     //   tmp = *pim;// ^ 0x80808080;
+    //    printf("%X = %08X skrivs pa :%X  \n", pim, tmp, prbplus);
+        REG32(prbplus) = *pim ^ 0x80808080;
+      //  tmp += 0x04040404;
+        //printf("%08X ", tmp);
+        prbplus+=4;
+        pim++;
+      }
+      //printf("\n pim: %X  %d  %X    %d\n", pim, sizeof(long), prbplus, (width - DCTSIZE));
+    }//*/
+ // printf("has written to inmem\n");
+    col += DCTSIZE;
+    if (col >= width){
+      col = 0;
+      row += DCTSIZE;
+    }
+
+    perf_copy += gettimer() - startcycle;
+
+  //printf("pressing start\n");
+    REG32(0x96001000) = 1; //start
+    //REG32(0x96001000) = 0x01000000; //start
+
+    int csr = REG32(0x96001000);
+    while (csr != 128) { csr = REG32(0x96001000); }
+    REG32(0x96001000) = 0;
+ // printf("hw is done\n");
+    //read
+    /*printf("---------- inmem---------- \n");
+    for (i=0; i<16; i++) {
+      tmp = REG32(0x96000000 + 4*i);
+      printf("%08X = %08X \n", 0x96000000 + 4*i, tmp);
+    }
+    
+    printf("---------- Finished ----------\n");*/
+    int trans = 0;
+    int result;
+    for (j=0; j<8; j++) {
+        trans = 0;
+		for (i=0; i<4; i++) {
+			result = REG32(0x96000800 + 4*i + j*16);
+			transpose[trans++][j] = result >> 16;
+			transpose[trans++][j] = (result << 16) >> 16;
+			
+//            printf("%5d ", result >> 16);
+ //           printf("%5d ", (result << 16) >>16);
+			
+		}
+	// 	printf("\n");
+    }
+
+   // printf("---------- transposed ----------\n");
+    for (j=0; j<8; j++) {
+		for (i=0; i<8; i++) {
+		    *pc++ = transpose[j][i];
+    	//	printf("%5d ", transpose[j][i]);
+    	}
+    //	printf("\n");
+    }
+    
+  /*  for (y = 0; y < DCTSIZE; y++, pc += (width - DCTSIZE)/2) {
+      for (x = 0; x < DCTSIZE; x+=4) {
+        *pc++ = REG32(prbplusread++);
+        //*pc++ = tmp >> 16;
+        //*pc++ = tmp & 0x0000ffff;
+      }
+     // printf("\n");
+    }
+
+    //transpose
+/*    for (y = 0; y < DCTSIZE; y++) {
+      for (x = 0; x < DCTSIZE; x++) {
+        *pc++ = (short)*pc_tmp++;
+        //*(pc + (y + x*sizeof(char))) = (short)*(pc_tmp + (x + y*sizeof(char)));
+      }
+    }
+    free(pc_tmp);*/
   // 1) copy values from image to block RAM instead
   // 2) subtract 128 in SW
   // 3) start DCT_Q
   // 4) wait for it to finish
   // 5) read out, transpose, convert from 16 to 32 bit 
+
   #else
   // 1) Load data into workspace, applying unsigned->signed conversion
   // 2) subtract 128 (JPEG)
@@ -145,11 +250,12 @@ void encode_image(void)
    int MCU_count = width * height / DCTSIZE2;
    short MCU_block[DCTSIZE2];
    
-   for(i = 0; i < MCU_count; i++)
+   for(i = 0; i < MCU_count; i++) //1; i++) 
    {
       forward_DCT(MCU_block);
       encode_mcu_huff(MCU_block);
    }
+
 }
 
 /* Initialize the encoder */

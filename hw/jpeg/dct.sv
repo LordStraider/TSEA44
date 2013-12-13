@@ -44,9 +44,9 @@
 
 module dct(/*AUTOARG*/
 	   // Outputs
-	   output logic [0:7][15:0] y, 
+	   output logic [0:7][15:0] y,
 	   // Inputs
-	   input logic [0:7][11:0] x, 
+	   input logic [0:7][11:0] x,
 	   input logic clk_i, en
 	   );
    // 16-bit Fixpoint representation on [-4,4[
@@ -68,23 +68,23 @@ module dct(/*AUTOARG*/
 
    // First stage
    logic signed [11:0]  x0[0:7];
-   logic signed [12:0]  x1[0:7]; 
+   logic signed [12:0]  x1[0:7];
 
    // Second stage
-   logic signed [13:0]  x2[0:7]; 
+   logic signed [13:0]  x2[0:7];
 
-   logic signed [13:0]  z1; 
+   logic signed [13:0]  z1;
    logic signed [13:0]  z2;
    logic signed [13:0]  z3;
    logic signed [13:0]  z4;
    logic signed [15:0] 	z5;
 
    // Third stage
-   logic signed [14:0]  x3_0; 
+   logic signed [14:0]  x3_0;
    logic signed [14:0]  x3_1;
    logic signed [28:0]  x3_2;
    logic signed [28:0]  x3_3;
-   
+
    logic signed [27:0]  x3_4;
    logic signed [27:0]  x3_5;
    logic signed [27:0]  x3_6;
@@ -93,8 +93,8 @@ module dct(/*AUTOARG*/
    logic signed [27:0]  x3_9;
 
    // Fourth stage
-   logic signed [14:0]  x4_0; 
-   logic signed [14:0]  x4_4; 
+   logic signed [14:0]  x4_0;
+   logic signed [14:0]  x4_4;
    logic signed [27:0]  x4_2;
    logic signed [28:0]  x4_6;
 
@@ -133,20 +133,20 @@ module dct(/*AUTOARG*/
    // ********* Second stage ************
    always_ff @(posedge clk_i) begin
       if (en) begin
-	 x2[0] <= x1[0] + x1[3];
-	 x2[3] <= x1[0] - x1[3];
-	 x2[1] <= x1[1] + x1[2];
-	 x2[2] <= x1[1] - x1[2];
+   	 x2[0] <= x1[0] + x1[3];
+   	 x2[3] <= x1[0] - x1[3];
+   	 x2[1] <= x1[1] + x1[2];
+   	 x2[2] <= x1[1] - x1[2];
 
-	 x2[4] <= x1[4];
-	 x2[5] <= x1[5];
-	 x2[6] <= x1[6];
-	 x2[7] <= x1[7];
+   	 x2[4] <= x1[4];
+   	 x2[5] <= x1[5];
+   	 x2[6] <= x1[6];
+   	 x2[7] <= x1[7];
 
-	 z1 <= x1[4] + x1[7];
-	 z2 <= x1[5] + x1[6];
-	 z3 <= x1[4] + x1[6];
-	 z4 <= x1[5] + x1[7];
+   	 z1 <= x1[4] + x1[7];
+   	 z2 <= x1[5] + x1[6];
+   	 z3 <= x1[4] + x1[6];
+   	 z4 <= x1[5] + x1[7];
       end
    end // always @ (posedge clk_i)
    assign z5 = z3 + z4;
@@ -155,7 +155,7 @@ module dct(/*AUTOARG*/
    logic signed [27:0] foo;
    logic signed [27:0] bar;
 
-   assign 	      foo = x2[2] * S6;   
+   assign 	      foo = x2[2] * S6;
    assign 	      bar = x2[3] * C6;
 
    // ********* Third stage ************
@@ -183,7 +183,7 @@ module dct(/*AUTOARG*/
 	 x4_4 <= x3_1;
 	 x4_2 <= x3_2;
 	 x4_6 <= x3_3;
-	 
+
 	 x4_7 <= x3_4 + x3_8;
 	 x4_5 <= x3_5 + x3_9;
 	 x4_3 <= x3_6 + x3_8;
@@ -192,14 +192,14 @@ module dct(/*AUTOARG*/
    end
 
    // ********* Output stage ************
-   assign y[0] = {x4_0[14],x4_0}; 
-   assign y[1] = {x4_1[27],x4_1[27:13]}; 
-   assign y[2] = {x4_2[27],x4_2[27:13]}; 
-   assign y[3] = {x4_3[27],x4_3[27:13]}; 
-   assign y[4] = {x4_4[14],x4_4};	 
-   assign y[5] = {x4_5[27],x4_5[27:13]}; 
+   assign y[0] = {x4_0[14],x4_0};
+   assign y[1] = {x4_1[27],x4_1[27:13]};
+   assign y[2] = {x4_2[27],x4_2[27:13]};
+   assign y[3] = {x4_3[27],x4_3[27:13]};
+   assign y[4] = {x4_4[14],x4_4};
+   assign y[5] = {x4_5[27],x4_5[27:13]};
    assign y[6] = {x4_6[28:13]};
-   assign y[7] = {x4_7[27],x4_7[27:13]}; 
+   assign y[7] = {x4_7[27],x4_7[27:13]};
 
 endmodule //
 // Local Variables:
