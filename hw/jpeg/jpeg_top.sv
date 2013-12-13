@@ -203,39 +203,35 @@ static const int reciprocals[] = {
     always @(posedge wb.clk) begin
       if (wb.rst) begin
          read_enable <= 1'b0;
+         rdc <= 9'b0;
+         dflipflop <= 32'b0;
+      end else if (csr == 32'h1) begin
+         read_enable <= 1'b1;
+      // if write is finished and we are reading from the memory
+      end else if (read_enable) begin
+        // count up address memory on every second clock cycle
+        if (clk_div2) begin
+          rdc <= rdc + 4;
+          dflipflop <= dob;
+          if (rdc == 9'h40) begin
+            rdc <= 9'd0;
+            read_enable <= 1'b0;
+          end
+        end
+      end
+    end
+
+    always @(posedge wb.clk) begin
+      if (wb.rst) begin
          bram_data <= 32'b0;
          bram_ce <= 1'b0;
          bram_we <= 1'b0;
-         rdc <= 9'b0;
-         in_counter <= 5'h0;
-         dflipflop <= 32'b0;
-
-      // if write is finished and we are reading from the memory
-      end else if (read_enable) begin
-         // count up address memory on every second clock cycle
-         if (clk_div2) begin
-            rdc <= rdc + 4;
-            dflipflop <= dob;
-            if (rdc == 9'h40) begin
-               rdc <= 9'd0;
-               read_enable <= 1'b0;
-            end
-         end
-      // if we want to write to the in block memory
-      end else if (dff1 && ~dff2 && ce_in) begin
+      end else if (ce_in) begin
          bram_we <= wb.we;
          bram_ce <= 1'b1;
-         in_counter <= in_counter + 1;
-
          bram_data <= wb.dat_o;
-      end else if (in_counter == 5'd16) begin
-         // when the write is finished
-         in_counter <= 5'd0;
-         read_enable <= 1'b1;
-         bram_we <= 1'b0;
-         bram_ce <= 1'b0;
-      end else if (ce_ut) begin
-         bram_data <= wb.dat_o;
+      end else begin
+        bram_we <= 1'b0;
       end
     end
 
@@ -422,6 +418,8 @@ static const int reciprocals[] = {
          end
       end else if (csren && wb.we) begin
           csr <= wb.dat_o;
+      end else if (csr == 32'h1) begin
+         csr <= 32'h0;
       end else begin
          mmem.rden <= 1'b0;
          mmem.reg1en <= 1'b0;

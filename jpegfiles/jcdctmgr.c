@@ -96,7 +96,7 @@ void forward_DCT (short coef_block[DCTSIZE2])
     int prbplusread = 0x96000800;
     int tmp;
 
-    tmp = 0x81828384;//*pim ^ 0x80808080;
+    //tmp = *pim ^ 0x80808080; // 0x81828384;
 
     /*for (i=0; i<16; i++) {
       REG32(0x96000000 + 4*i) = tmp;
@@ -115,38 +115,45 @@ void forward_DCT (short coef_block[DCTSIZE2])
         pim += (width - DCTSIZE)/4; //100 bra tal
     }*/
         //int *pc_tmp = (int*) malloc(DCTSIZE*DCTSIZE*sizeof(char));
-    for (y = 0; y < DCTSIZE; y++) {
 
+  //printf("trying written to inmem\n");
+    for (y = 0; y < DCTSIZE; y++, pim += (width - DCTSIZE)/4) {
       for (x = 0; x < DCTSIZE; x += 4) {
+     //   tmp = *pim;// ^ 0x80808080;
     //    printf("%X = %08X skrivs pa :%X  \n", pim, tmp, prbplus);
         REG32(prbplus) = *pim ^ 0x80808080;
       //  tmp += 0x04040404;
         //printf("%08X ", tmp);
-
         prbplus+=4;
         pim++;
       }
-      pim += (width - DCTSIZE)/4;
       //printf("\n pim: %X  %d  %X    %d\n", pim, sizeof(long), prbplus, (width - DCTSIZE));
     }//*/
-
+  //printf("has written to inmem\n");
     col += DCTSIZE;
     if (col >= width){
       col = 0;
       row += DCTSIZE;
     }
+
     perf_copy += gettimer() - startcycle;
 
-    while (REG32(0x96001000) != 128) { REG32(0x96001000) = 0; } 
+  //printf("pressing start\n");
+    //REG32(0x96001000) = 1; //start
+    REG32(0x96001000) = 0x01000000; //start
 
+    int csr = REG32(0x96001000);
+    while (csr != 128) { csr = REG32(0x96001000); }
+    REG32(0x96001000) = 0;
+ // printf("hw is done\n");
     //read
     for (i=0; i<16; i++) {
       tmp = REG32(0x96000000 + 4*i);
       printf("%08X = %08X \n", 0x96000000 + 4*i, tmp);
     }
 
-    for (y=0; y<8; y++) {
-      for (x=0; x<4; x++) {
+    for (y=0; y<DCTSIZE; y++) {
+      for (x=0; x<DCTSIZE; x+=2) {
         tmp = REG32(0x96000800 + 4*x + y*16);
         printf("%5d ", tmp >> 16);
         printf("%5d ", (tmp << 16) >> 16);

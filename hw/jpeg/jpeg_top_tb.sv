@@ -111,13 +111,15 @@ program test_jpeg();
    // int d = 32'h807F807F;   // subtract 128 => d = {-127,-126,-125,-124}
 
 int d;
+int i = 0;
 
    initial begin
         for (int run=0; run<10; run++) begin
           result = 0;
           d = 32'h81828384;
+
           //d = 32'h807F807F;
-            for (int i=0; i<16; i++) begin
+           for (int i=0; i<16; i++) begin //16
                 jpeg_top_tb.wb0.m_write(32'h96000000 + 4*i, d);
                 d += 32'h04040404;
 
@@ -126,9 +128,14 @@ int d;
                     d = 32'h807F807F;
                  else
                     d = 32'h7F807F80;*/
-            end
+           end
+           for (int i=0; i<16; i++) begin //16
+              jpeg_top_tb.wb0.m_read(32'h96000000 + 4*i, result);
+              $fwrite(1,"%08X\n ", result);
+           end
+           $fwrite(1,"-----\n");
 
-            jpeg_top_tb.wb0.m_write(32'h96001000, 32'h01000000);
+            jpeg_top_tb.wb0.m_write(32'h96001000, 32'h1);
 
             while (result != 32'd128)
                 jpeg_top_tb.wb0.m_read(32'h96001000,result);
