@@ -110,8 +110,8 @@ program test_jpeg();
    int result = 0;
    // int d = 32'h807F807F;   // subtract 128 => d = {-127,-126,-125,-124}
 
-int d;
-int i = 0;
+    int d;
+    int i = 0;
 
    initial begin
         for (int run=0; run<10; run++) begin

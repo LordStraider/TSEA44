@@ -95,7 +95,7 @@ void forward_DCT (short coef_block[DCTSIZE2])
     int prbplus = 0x96000000;
     int prbplusread = 0x96000800;
     int tmp;
-
+    int transpose[8][8];
     //tmp = *pim ^ 0x80808080; // 0x81828384;
 
     /*for (i=0; i<16; i++) {
@@ -129,7 +129,7 @@ void forward_DCT (short coef_block[DCTSIZE2])
       }
       //printf("\n pim: %X  %d  %X    %d\n", pim, sizeof(long), prbplus, (width - DCTSIZE));
     }//*/
-  //printf("has written to inmem\n");
+ // printf("has written to inmem\n");
     col += DCTSIZE;
     if (col >= width){
       col = 0;
@@ -139,35 +139,53 @@ void forward_DCT (short coef_block[DCTSIZE2])
     perf_copy += gettimer() - startcycle;
 
   //printf("pressing start\n");
-    //REG32(0x96001000) = 1; //start
-    REG32(0x96001000) = 0x01000000; //start
+    REG32(0x96001000) = 1; //start
+    //REG32(0x96001000) = 0x01000000; //start
 
     int csr = REG32(0x96001000);
     while (csr != 128) { csr = REG32(0x96001000); }
     REG32(0x96001000) = 0;
  // printf("hw is done\n");
     //read
+    /*printf("---------- inmem---------- \n");
     for (i=0; i<16; i++) {
       tmp = REG32(0x96000000 + 4*i);
       printf("%08X = %08X \n", 0x96000000 + 4*i, tmp);
     }
-
-    for (y=0; y<DCTSIZE; y++) {
-      for (x=0; x<DCTSIZE; x+=2) {
-        tmp = REG32(0x96000800 + 4*x + y*16);
-        printf("%5d ", tmp >> 16);
-        printf("%5d ", (tmp << 16) >> 16);
-      }
-      printf("\n");
+    
+    printf("---------- Finished ----------\n");*/
+    int trans = 0;
+    int result;
+    for (j=0; j<8; j++) {
+        trans = 0;
+		for (i=0; i<4; i++) {
+			result = REG32(0x96000800 + 4*i + j*16);
+			transpose[trans++][j] = result >> 16;
+			transpose[trans++][j] = (result << 16) >> 16;
+			
+//            printf("%5d ", result >> 16);
+ //           printf("%5d ", (result << 16) >>16);
+			
+		}
+	// 	printf("\n");
     }
 
-    for (y = 0; y < DCTSIZE; y++, pc += (width - DCTSIZE)/2) {
+   // printf("---------- transposed ----------\n");
+    for (j=0; j<8; j++) {
+		for (i=0; i<8; i++) {
+		    *pc++ = transpose[j][i];
+    	//	printf("%5d ", transpose[j][i]);
+    	}
+    //	printf("\n");
+    }
+    
+  /*  for (y = 0; y < DCTSIZE; y++, pc += (width - DCTSIZE)/2) {
       for (x = 0; x < DCTSIZE; x+=4) {
         *pc++ = REG32(prbplusread++);
         //*pc++ = tmp >> 16;
         //*pc++ = tmp & 0x0000ffff;
       }
-      printf("\n");
+     // printf("\n");
     }
 
     //transpose
@@ -232,7 +250,7 @@ void encode_image(void)
    int MCU_count = width * height / DCTSIZE2;
    short MCU_block[DCTSIZE2];
    
-   for(i = 0; i < 1; i++) //MCU_count; i++)
+   for(i = 0; i < MCU_count; i++) //1; i++) 
    {
       forward_DCT(MCU_block);
       encode_mcu_huff(MCU_block);
