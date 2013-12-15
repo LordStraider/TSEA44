@@ -91,7 +91,7 @@ void forward_DCT (short coef_block[DCTSIZE2])
   #endif
 #else
   #ifdef HW_DCT
-// tftp 192.168.0.102
+// tftp 192.168.0.103
     int prbplus = 0x96000000;
     int prbplusread = 0x96000800;
     int tmp;
@@ -120,7 +120,7 @@ void forward_DCT (short coef_block[DCTSIZE2])
     for (y = 0; y < DCTSIZE; y++, pim += (width - DCTSIZE)/4) {
       for (x = 0; x < DCTSIZE; x += 4) {
      //   tmp = *pim;// ^ 0x80808080;
-    //    printf("%X = %08X skrivs pa :%X  \n", pim, tmp, prbplus);
+ //       printf("%X = %08X skrivs pa :%X  \n", pim, *pim, prbplus);
         REG32(prbplus) = *pim ^ 0x80808080;
       //  tmp += 0x04040404;
         //printf("%08X ", tmp);
@@ -145,7 +145,7 @@ void forward_DCT (short coef_block[DCTSIZE2])
     int csr = REG32(0x96001000);
     while (csr != 128) { csr = REG32(0x96001000); }
     REG32(0x96001000) = 0;
- // printf("hw is done\n");
+  //printf("hw is done\n");
     //read
     /*printf("---------- inmem---------- \n");
     for (i=0; i<16; i++) {
@@ -158,16 +158,16 @@ void forward_DCT (short coef_block[DCTSIZE2])
     int result;
     for (j=0; j<8; j++) {
         trans = 0;
-		for (i=0; i<4; i++) {
-			result = REG32(0x96000800 + 4*i + j*16);
-			transpose[trans++][j] = result >> 16;
-			transpose[trans++][j] = (result << 16) >> 16;
-			
-//            printf("%5d ", result >> 16);
- //           printf("%5d ", (result << 16) >>16);
-			
-		}
-	// 	printf("\n");
+  		for (i=0; i<4; i++) {
+  			result = REG32(0x96000800 + 4*i + j*16);
+  			transpose[trans++][j] = result >> 16;
+  			transpose[trans++][j] = (result << 16) >> 16;
+  			
+  //      printf("%5d ", result >> 16);
+  //      printf("%5d ", (result << 16) >>16);
+  			
+  		}
+  //	 	printf("\n");
     }
 
    // printf("---------- transposed ----------\n");
@@ -250,8 +250,9 @@ void encode_image(void)
    int MCU_count = width * height / DCTSIZE2;
    short MCU_block[DCTSIZE2];
    
-   for(i = 0; i < MCU_count; i++) //1; i++) 
+   for(i = 0; i < MCU_count; i++) //i < MCU_count
    {
+
       forward_DCT(MCU_block);
       encode_mcu_huff(MCU_block);
    }

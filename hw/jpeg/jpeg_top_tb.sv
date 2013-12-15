@@ -116,18 +116,22 @@ program test_jpeg();
    initial begin
         for (int run=0; run<10; run++) begin
           result = 0;
-          d = 32'h81828384;
+          //d = 32'h81828384;
 
-          //d = 32'h807F807F;
+          d = 32'h807F807F;
            for (int i=0; i<16; i++) begin //16
-                jpeg_top_tb.wb0.m_write(32'h96000000 + 4*i, d);
-                d += 32'h04040404;
 
-          /*       if((i +1)% 4 < 2)
+          //      d += 32'h04040404;
 
+                 if((i +1)% 4 < 2)
                     d = 32'h807F807F;
                  else
-                    d = 32'h7F807F80;*/
+                    d = 32'h7F807F80;
+
+                  if(i % 2)
+                    d = 32'h80808080;
+
+                  jpeg_top_tb.wb0.m_write(32'h96000000 + 4*i, d);
            end
            for (int i=0; i<16; i++) begin //16
               jpeg_top_tb.wb0.m_read(32'h96000000 + 4*i, result);

@@ -2,13 +2,23 @@
 #include <common.h>
 
 int main() {
-	int d = 0x81828384;
+	//int d = 0x81828384;
+	int d = 0x807f807f;
 	int result, i, j;
     int pc[8][8];
     printf("starting, trying to write\n");
 	for (i=0; i<16; i++) {
+		if ((i % 4) < 2)
+			d = 0x807f807f;
+		else
+			d = 0x7f807f80;
+
+		if(i % 2)
+			d = 0x80808080;
+
 		REG32(0x96000000 + 4*i) = d;
-		d += 0x04040404;
+		// d += 0x04040404;		
+
     }
 	for (i=0; i<16; i++) {
 		result = REG32(0x96000000 + 4*i);

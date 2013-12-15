@@ -29,7 +29,7 @@ module transpose(
     always @(posedge clk) begin
         if (rst) begin
             row_count[7:0] <= 8'd0;
-        end else if(t_wr && clk_counter == 3'h3) begin
+        end else if(t_wr && clk_counter == 3'h1) begin
             memory[row_count] <= data_in;
             row_count <= row_count + 1;
             end else if (row_count == 8'd8) begin

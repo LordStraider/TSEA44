@@ -59,20 +59,14 @@
 
     module jpeg_top(wishbone.slave wb, wishbone.master wbm);
 
-    logic 		 state;
-    logic [6:0] 		 mpc;
     logic [31:0] 	 dout_res;
     logic 		 ce_in, ce_ut;
     logic [8:0] 		 rdc;
-    logic [4:0] 		 wrc;
+    logic [8:0] 		 wrc;
 
     logic [31:0] 	 dob, dob2, ut_doa;
 
     logic [0:7][11:0] 	 x, ut;
-    logic [23:0] x1;
-    logic [23:0] x2;
-    logic [23:0] dflipflophalf1;
-    logic [23:0] dflipflophalf2;
 
     logic [0:7][15:0] 	 y;
 
@@ -82,7 +76,6 @@
     logic [31:0] 	 doa;
     logic 		 csren;
     logic [31:0] 		 csr;
-    logic 		 clr;
     mmem_t 	mmem;
 
     logic 		 dmaen, ctrl_control;
@@ -237,15 +230,17 @@ static const int reciprocals[] = {
 
     //Mux till dct
     always_comb begin
-        if (~mmem.mux1 && divcounter == 2'h0 && ctrl_control) begin
-          x = {{4{dflipflop[31]}}, dflipflop[31:24],
-                 {4{dflipflop[23]}}, dflipflop[23:16],
-                 {4{dflipflop[15]}}, dflipflop[15:8],
-                 {4{dflipflop[7]}}, dflipflop[7:0],
-                 {4{dob[31]}}, dob[31:24],
-                 {4{dob[23]}}, dob[23:16],
-                 {4{dob[15]}}, dob[15:8],
-                 {4{dob[7]}}, dob[7:0]};
+      if (mmem.mux1)
+        x = ut;
+      else begin
+        x = {{4{dflipflop[31]}}, dflipflop[31:24],
+             {4{dflipflop[23]}}, dflipflop[23:16],
+             {4{dflipflop[15]}}, dflipflop[15:8],
+             {4{dflipflop[7]}}, dflipflop[7:0],
+             {4{dob[31]}}, dob[31:24],
+             {4{dob[23]}}, dob[23:16],
+             {4{dob[15]}}, dob[15:8],
+             {4{dob[7]}}, dob[7:0]};
 
               /*x = {4'h0, dflipflop[31:24],
                  4'h0, dflipflop[23:16],
@@ -257,9 +252,7 @@ static const int reciprocals[] = {
                  4'h0, dob[7:0]};
 */
              //= {32'h0,dflipflop,dob};
-
-        end else if (mmem.mux1)
-            x = ut;
+      end
     end
 
     //setting clk_div2...
@@ -329,12 +322,12 @@ static const int reciprocals[] = {
     RAMB16_S36_S36 #(.SIM_COLLISION_CHECK("NONE")) utmem
      (// DCT write
       .CLKA(wb.clk), .SSRA(wb.rst),
-      .ADDRA({4'h0,wrc}),
+      .ADDRA(wrc),
       .DIA(q), .DIPA(4'h0), .ENA(1'b1),
       .WEA(wren_flipflop), .DOA(ut_doa), .DOPA(),
       // WB read & write
       .CLKB(wb.clk), .SSRB(wb.rst),
-      .ADDRB(wb.adr[8:0]),
+      .ADDRB(wb.adr[10:2]),
       .DIB(wb.dat_o), .DIPB(4'h0), .ENB(ce_ut),
       .WEB(wb.we), .DOB(dout_res), .DOPB());
 
