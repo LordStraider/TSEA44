@@ -309,6 +309,7 @@ static const int reciprocals[] = {
       .dct_busy (dct_busy)
       );
 
+    //INMEM!!!!!!!!
     RAMB16_S36_S36 #(.SIM_COLLISION_CHECK("NONE")) inmem
      (// WB read & write
       .CLKA(wb.clk), .SSRA(wb.rst),
@@ -324,7 +325,7 @@ static const int reciprocals[] = {
       .DOB(dob2), .DOPB());
 
     assign dob = dob2;
-
+    //UTMEM!!!!!!!
     RAMB16_S36_S36 #(.SIM_COLLISION_CHECK("NONE")) utmem
      (// DCT write
       .CLKA(wb.clk), .SSRA(wb.rst),
@@ -333,7 +334,7 @@ static const int reciprocals[] = {
       .WEA(wren_flipflop), .DOA(ut_doa), .DOPA(),
       // WB read & write
       .CLKB(wb.clk), .SSRB(wb.rst),
-      .ADDRB(wb.adr[10:2]),
+      .ADDRB(wb.adr[8:0]),
       .DIB(wb.dat_o), .DIPB(4'h0), .ENB(ce_ut),
       .WEB(wb.we), .DOB(dout_res), .DOPB());
 
