@@ -189,16 +189,13 @@ static const int reciprocals[] = {
           455,   356,  345,  334,  293, 328, 318, 331};*/
 
 
-    // You must create the signals to the block ram somewhere...
-
-    assign bram_addr = wb.adr[8:0];
 
     always @(posedge wb.clk) begin
       if (wb.rst) begin
          read_enable <= 1'b0;
          rdc <= 9'b0;
          dflipflop <= 32'b0;
-      end else if (csr == 32'h1) begin
+      end else if (csr == 32'h1 || dma_start_dct) begin
          read_enable <= 1'b1;
       // if write is finished and we are reading from the memory
       end else if (read_enable) begin
@@ -213,16 +210,24 @@ static const int reciprocals[] = {
         end
       end
     end
-
+    
+    
     always @(posedge wb.clk) begin
       if (wb.rst) begin
+         bram_addr <= 9'b0;
          bram_data <= 32'b0;
          bram_ce <= 1'b0;
          bram_we <= 1'b0;
-      end else if (ce_in) begin
+      end else if (ce_in && ~dma_bram_we) begin
          bram_we <= wb.we;
          bram_ce <= 1'b1;
          bram_data <= wb.dat_o;
+         bram_addr <= wb.adr[8:0];
+      end else if (dma_bram_we) begin
+         bram_we <= dma_bram_we;
+         bram_ce <= 1'b1;
+         bram_data <= dma_bram_data;      
+         bram_addr <= dma_bram_addr;
       end else begin
         bram_we <= 1'b0;
       end
@@ -337,7 +342,9 @@ static const int reciprocals[] = {
 
     //outmux
     always_comb begin
-      if(csren)
+      if(dmaen)
+        toDatI = wb_dma_dat;
+      else if (csren)
         toDatI = csr;
       else if (ce_in)
         toDatI = doa;
@@ -369,6 +376,9 @@ static const int reciprocals[] = {
          mux2_enable <= 1'b0;
          DC2_ctrl_counter <= 8'b0;
          divcounter <= 2'h0;
+         dct_busy <= 1'b0;
+      end else if (dma_start_dct) begin
+         dct_busy <= 1'b1;
       end else if (ctrl_control) begin
         divcounter <= divcounter + 1;
          if (clk_div4)
@@ -407,11 +417,12 @@ static const int reciprocals[] = {
             // turn off DCT
             //mmem.dcten <= 1'b0;
             mmem.wren <= 1'b0;
-
+            dct_busy <= 1'b0;
+            
             csr <= 32'd128;
          end
       end else if (csren && wb.we) begin
-          csr <= wb.dat_o;
+         csr <= wb.dat_o;
       end else if (csr == 32'h1) begin
          csr <= 32'h0;
       end else begin

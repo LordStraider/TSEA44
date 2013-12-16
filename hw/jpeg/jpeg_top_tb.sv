@@ -81,7 +81,7 @@ module mem(wishbone.slave wbm);
     for (blockx=0; blockx<`WIDTH; blockx++)
       for (i=1, y=0; y<8; y++)
     for (x=0; x<8; x++)
-      rom[blockx*8+x+(blocky*8+y)*`PITCH] = i++;
+      rom[blockx*8+x+(blocky*8+y)*`PITCH] = i++ - 128;
    end
 
    assign wbm.err = 1'b0;
@@ -114,16 +114,48 @@ program test_jpeg();
     int i = 0;
 
    initial begin
-        for (int run=0; run<10; run++) begin
+        //SRCADDR
+        jpeg_top_tb.wb0.m_write(32'h96001800, 0);
+        //PITCH
+        jpeg_top_tb.wb0.m_write(32'h96001804, `PITCH);
+        //ENDBLOCK_X
+        jpeg_top_tb.wb0.m_write(32'h96001808, `WIDTH);
+        //ENDBLOCK_Y
+        jpeg_top_tb.wb0.m_write(32'h9600180c, `HEIGHT);
+        //CONTROL
+        jpeg_top_tb.wb0.m_write(32'h96001810, 1);
+        
+        for (int run=0; run<`HEIGHT; run++) begin
+          
+
           result = 0;
+          while (!result[1]) 
+              jpeg_top_tb.wb0.m_read(32'h96001810,result);
+         
+         
+           
+            for (int j=0; j<8; j++) begin
+                for (int i=0; i<4; i++) begin
+                    jpeg_top_tb.wb0.m_read(32'h96000800 + 4*i + j*16,result);
+                    $fwrite(1,"%5d ", result >>> 16);
+                    $fwrite(1,"%5d ", (result << 16) >>>16);
+                end
+                $fwrite(1,"\n");
+            end
+            
+          //CONTROL
+          jpeg_top_tb.wb0.m_write(32'h96001810, 2);
+            
+                       
           //d = 32'h81828384;
 
-          d = 32'h807F807F;
+  /*      for (int run=0; run<10; run++) begin
+          //d = 32'h807F807F;
+          d = 32'h81828384;
            for (int i=0; i<16; i++) begin //16
 
-          //      d += 32'h04040404;
 
-                 if((i +1)% 4 < 2)
+             /*    if((i +1)% 4 < 2)
                     d = 32'h807F807F;
                  else
                     d = 32'h7F807F80;
@@ -132,6 +164,7 @@ program test_jpeg();
                     d = 32'h80808080;
 
                   jpeg_top_tb.wb0.m_write(32'h96000000 + 4*i, d);
+                d += 32'h04040404;
            end
            for (int i=0; i<16; i++) begin //16
               jpeg_top_tb.wb0.m_read(32'h96000000 + 4*i, result);
@@ -158,7 +191,7 @@ program test_jpeg();
            $fwrite(1,"-----\n");
            $fwrite(1,"new run\n");
            $fwrite(1,"\n");
-
+*/
         end
     end
 

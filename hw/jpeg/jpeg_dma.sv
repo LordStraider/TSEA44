@@ -36,17 +36,27 @@ module jpeg_dma(
    reg [3:0] 	       state;
    wire 	       dma_is_running;
 
-   reg [3:0] 	       next_dma_bram_addr;
+   reg [8:0] 	       next_dma_bram_addr;
    wire [3:0] 	       dma_bram_addr_plus1;
 
    wire 	       endframe;
    wire 	       endblock;
+   reg  	       endblock_reached;
    wire 	       endline;
    reg [9:0] 	       ctr;
 
+   reg [1:0]      goToRelease;
+   
+  //  reg [31:0] toDatI;
+    // You must create the wb.dat_i signal somewhere...
+//    assign wb_dat_i = toDatI;
+
+
+    reg [31:0] jpeg_data;
+
    
    assign    wbm.dat_o = 32'b0; // We never write from this module
-   assign    dma_bram_data = 32'h0; // You need to create this signal...
+   assign    dma_bram_data = jpeg_data; 
 
    assign    dma_bram_addr_plus1 = dma_bram_addr + 1;
    
@@ -87,6 +97,13 @@ module jpeg_dma(
 	   3'b011: dma_endblock_y <= wb_dat_i;
 	 endcase // case(wb_adr_i[4:2])
       end
+   end
+   
+   always_ff @(posedge clk_i) begin
+      if(rst_i)
+        endblock_reached <= 1'b0;
+      else
+        endblock_reached <= endblock;
    end
 
    // Decode the control bit that starts the DMA engine
@@ -137,46 +154,108 @@ module jpeg_dma(
       incaddr = 0;
 
       // By default we don't try to access the WB bus
+
       wbm.stb = 0;
       wbm.cyc = 0;
-
       start_dct = 0;
+      dma_bram_we = 0;
+      goToRelease = 0;
 
       wbm.sel = 4'b1111; // We always want to read all bytes
       wbm.we = 0; // We never write to the bus
 
-      dma_bram_we = 0;
 
       fetch_ready = 0;
 
       if(rst_i) begin
-	 next_state = DMA_IDLE;
-	 next_dma_bram_addr = 0;
+	      next_state = DMA_IDLE;
+        next_dma_bram_addr = 0;
+        jpeg_data = 32'h0;
+        start_dct = 0;
+        dma_bram_we = 0;
+        wbm.stb = 0;
+        wbm.cyc = 0;
+        goToRelease = 0;
       end else begin
 	 case(state)
 	   DMA_IDLE: begin
 	      if(startfsm) begin
-		 next_state = DMA_GETBLOCK;
-		 resetaddr = 1; // Start from the beginning of the frame
-		 next_dma_bram_addr = 0;
-	      end
+		       next_state = DMA_GETBLOCK;
+		       resetaddr = 1; // Start from the beginning of the frame
+		       next_dma_bram_addr = 0;
+		       jpeg_data = 32'h0;
+           start_dct = 0;
+           wbm.stb = 0;
+           wbm.cyc = 0;
+        end
 	   end
 
 
 	   DMA_GETBLOCK: begin
 	      // Hint: look at endframe, endblock, endline and wbm_ack_i...
+	      
+	      if (endframe) begin
+           start_dct = 1;
+           next_state = DMA_WAITREADY_LAST;
+           
+        end else if (endblock_reached) begin
+           start_dct = 1;
+           next_state = DMA_WAITREADY;
+           
+        end else if(endline) begin
+	          next_state = DMA_RELEASEBUS;
+	          
+	      end else begin
+      		  next_state = DMA_GETBLOCK;
+	      end
+	      
+	      
+	      if (wbm.ack) begin
+	          jpeg_data = wbm.dat_i;
+	          wbm.stb = 1'b0;
+	          wbm.cyc = 1'b0;
+	          
+            dma_bram_we = 1;
+	          
+	          next_dma_bram_addr = next_dma_bram_addr + 4;
+            incaddr = 1;
+
+         end else begin
+	          wbm.stb = 1'b1;
+	          wbm.cyc = 1'b1;
+	       end
 	   end
 
 	   DMA_RELEASEBUS: begin
 	      // Hint: Just wait a clock cycle so that someone else can access the bus if necessary
+   		  next_state = DMA_GETBLOCK;
 	   end
 
 	   DMA_WAITREADY: begin
 	      // Hint: Need to tell the status register that we are waiting here...
+	      if (!dct_busy) begin
+           fetch_ready = 1;
+        end
+        
+        if (startnextblock) begin
+      	   next_state = DMA_GETBLOCK;
+        end else begin
+           next_state = DMA_WAITREADY;
+        end
+        
 	   end
 
 	   DMA_WAITREADY_LAST: begin
 	      // Hint: Need to tell the status register that we are waiting here...
+	      if (!dct_busy) begin
+           fetch_ready = 1;
+        end
+        
+        if (startnextblock) begin
+      	   next_state = DMA_IDLE;
+        end else begin
+           next_state = DMA_WAITREADY;
+        end
 	   end
 
 	 endcase // case(state)

@@ -57,18 +57,33 @@ int main(int argc,char **argv)
     fprintf(stderr,"Could not open output file\n");
     exit(1);
   }
+  
+  printf("Preparing to encode\n");
 
   drawimage(); // Create the image we are going to encode 
+  
+  printf("Init encoder\n");
 
   init_encoder(WIDTH,HEIGHT,theimage,fp); // Init the encoder
+  
+  printf("Perf init\n");
 
   perf_init += gettimer() - startcycle;
+  
+  printf("Perf init done\n");
 
 #ifdef HW_DMA
-  /* Initialize the DMA */
-  //REG32(JPG_BASE_ADDR + ...) = ...
-  //   ...
+    printf("Initializing DMA...");
+
+    REG32(0x96001800) = (int) &theimage;
+    REG32(0x96001804) = WIDTH;
+    REG32(0x96001808) = (WIDTH / DCTSIZE) - 1;
+    REG32(0x9600180c) = (HEIGHT / DCTSIZE) - 1;
+  
+    printf("done\n");
 #endif
+
+  //printf("Encoding stuffz\n");
   
   encode_image();
   
