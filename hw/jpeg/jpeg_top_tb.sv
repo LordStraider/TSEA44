@@ -127,12 +127,15 @@ program test_jpeg();
         
         for (int run=0; run<`HEIGHT; run++) begin
           
-
+          
           result = 0;
-          while (!result[1]) 
+          while (!result[1]) begin
               jpeg_top_tb.wb0.m_read(32'h96001810,result);
+              
+              #200;
+          end
          
-         
+          #2000
            
             for (int j=0; j<8; j++) begin
                 for (int i=0; i<4; i++) begin
@@ -192,7 +195,9 @@ program test_jpeg();
            $fwrite(1,"new run\n");
            $fwrite(1,"\n");
 */
+
         end
+        #20000000;
     end
 
 

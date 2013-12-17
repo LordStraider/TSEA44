@@ -130,7 +130,7 @@ module jpeg_dma(
    // FIXME - what is ctr? Should the students create this?
    
    always_ff @(posedge clk_i) begin
-      if(startfsm | startnextblock)
+      if(startfsm | startnextblock | rst_i)
 	ctr <= 10'h0;
       else if ( dma_is_running | dct_busy)
 	ctr <= ctr + 1;
@@ -165,6 +165,7 @@ module jpeg_dma(
       wbm.we = 0; // We never write to the bus
 
 
+      jpeg_data = 32'h0;
       fetch_ready = 0;
 
       if(rst_i) begin
@@ -229,6 +230,8 @@ module jpeg_dma(
 	   DMA_RELEASEBUS: begin
 	      // Hint: Just wait a clock cycle so that someone else can access the bus if necessary
    		  next_state = DMA_GETBLOCK;
+        wbm.stb = 1'b0;
+        wbm.cyc = 1'b0;
 	   end
 
 	   DMA_WAITREADY: begin

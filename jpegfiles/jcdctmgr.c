@@ -89,17 +89,21 @@ void forward_DCT (short coef_block[DCTSIZE2])
   // 2) Read out data, transpose, convert from 16 to 32 bit
   // 3) Continue with the next block
   int transpose[8][8];
-  
-  
+    
   //printf("Waiting until finished\n");
 
   int csr = REG32(0x96001810);
-  while (csr % 4 == 0  || csr % 4 == 1) { csr = REG32(0x96001810); }
+  while ((csr & 0x00000010 ) != 0x00000010) { csr = REG32(0x96001810); }
   
   printf("Begin reading result\n");
-  
-  int trans = 0;
   int result;
+    printf("-----------inmem---------\n");
+  	for (i=0; i<16; i++) {
+		  result = REG32(0x96000000 + 4*i);
+		  printf("%08X = %08X\n", 0x96000000 + 4*i, result);
+    }
+    
+  int trans = 0;
   for (j=0; j<8; j++) {
       trans = 0;
     for (i=0; i<4; i++) {
@@ -222,10 +226,10 @@ void encode_image(void)
    int MCU_count = width * height / DCTSIZE2;
    short MCU_block[DCTSIZE2];
 
-   printf("Starting the Grunka...\n");
+   //printf("Starting the Grunka...\n");
    REG32(0x96001810) = 1;
 
-   for(i = 0; i < MCU_count; i++)
+   for(i = 0; i < 1; i++) //MCU_count; i++)
    {
       forward_DCT(MCU_block);
       encode_mcu_huff(MCU_block);

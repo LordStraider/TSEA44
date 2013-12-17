@@ -75,10 +75,10 @@ int main(int argc,char **argv)
 #ifdef HW_DMA
     printf("Initializing DMA...");
 
-    REG32(0x96001800) = (int) &theimage;
+    /*REG32(0x96001800) = theimage;
     REG32(0x96001804) = WIDTH;
     REG32(0x96001808) = (WIDTH / DCTSIZE) - 1;
-    REG32(0x9600180c) = (HEIGHT / DCTSIZE) - 1;
+    REG32(0x9600180c) = (HEIGHT / DCTSIZE) - 1;*/
   
     printf("done\n");
 #endif
