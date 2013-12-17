@@ -81,7 +81,7 @@
     logic 		 dmaen, ctrl_control;
     logic [15:0] rec_o2;
     logic [15:0] rec_o1;
-    logic 		 dct_busy;
+    reg 		 dct_busy;
     logic 		 dma_start_dct;
     logic [7:0]  reciprocal_counter;
     logic         dff1;
@@ -153,7 +153,6 @@
     logic [31:0] wb_dma_dat;
     logic [8:0] clock_counter;
 
-    reg [5:0] in_counter;
     reg [31:0] dflipflop;
     reg read_enable;
     reg [7:0] DC2_ctrl_counter;
@@ -211,26 +210,19 @@ static const int reciprocals[] = {
       end
     end
     
-    
-    always @(posedge wb.clk) begin
-      if (wb.rst) begin
-         bram_addr <= 9'b0;
-         bram_data <= 32'b0;
-         bram_ce <= 1'b0;
-         bram_we <= 1'b0;
-      end else if (ce_in && ~dma_bram_we) begin
-         bram_we <= wb.we;
-         bram_ce <= 1'b1;
-         bram_data <= wb.dat_o;
-         bram_addr <= wb.adr[8:0];
-      end else if (dma_bram_we) begin
+    //mux till inmem
+    always_comb begin
+       if (dma_bram_we) begin
          bram_we <= dma_bram_we;
-         bram_ce <= 1'b1;
+         //bram_ce <= 1'b1;
          bram_data <= dma_bram_data;      
          bram_addr <= dma_bram_addr;
       end else begin
-        bram_we <= 1'b0;
-      end
+         bram_we <= wb.we && ce_in;
+         //bram_ce <= 1'b1;
+         bram_data <= wb.dat_o;
+         bram_addr <= wb.adr[8:0];
+      end 
     end
 
     //Mux till dct
@@ -246,23 +238,8 @@ static const int reciprocals[] = {
              {4{dob[23]}}, dob[23:16],
              {4{dob[15]}}, dob[15:8],
              {4{dob[7]}}, dob[7:0]};
-
-              /*x = {4'h0, dflipflop[31:24],
-                 4'h0, dflipflop[23:16],
-                 4'h0, dflipflop[15:8],
-                 4'h0, dflipflop[7:0],
-                 4'h0, dob[31:24],
-                 4'h0, dob[23:16],
-                 4'h0, dob[15:8],
-                 4'h0, dob[7:0]};
-*/
-             //= {32'h0,dflipflop,dob};
       end
     end
-
-    //setting clk_div2...
-
-
 
     //div2clk
     always @(posedge wb.clk) begin
@@ -450,7 +427,6 @@ static const int reciprocals[] = {
         reciprocal_counter <= reciprocal_counter - 8'd2;
       else
         reciprocal_counter <= 8'd63;
-
     end
 
 
