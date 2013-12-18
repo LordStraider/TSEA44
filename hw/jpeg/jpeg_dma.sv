@@ -179,7 +179,7 @@ end
       
       nextStbCyc = 1'b0;
 
-      jpeg_data = 32'h81;
+      jpeg_data = 32'h73;
       fetch_ready = 1'b0;
       
       if(rst_i) begin
@@ -206,12 +206,12 @@ end
 	   DMA_GETBLOCK: begin
 	      // Hint: look at endframe, endblock, endline and wbm_ack_i...
 	      
-	      if (endframe) begin
+	      if (endframe && wbm.ack) begin
            start_dct = 1;
 		       next_dma_bram_addr = -4;
            next_state = DMA_WAITREADY_LAST;
            
-        end else if (endblock_reached && wbm.ack) begin
+        end else if (endblock && wbm.ack) begin
            start_dct = 1;
 		       next_dma_bram_addr = -4;
            next_state = DMA_WAITREADY;
@@ -225,7 +225,7 @@ end
 	      
 	      
 	      if (wbm.ack) begin
-	          jpeg_data = wbm.dat_i;
+	          jpeg_data = wbm.dat_i ^ 32'h80808080;
 	          
             nextStbCyc = 1'b0;
 	          
@@ -269,7 +269,7 @@ end
         if (startnextblock) begin
       	   next_state = DMA_IDLE;
         end else begin
-           next_state = DMA_WAITREADY;
+           next_state = DMA_WAITREADY_LAST;
         end
 	   end
 

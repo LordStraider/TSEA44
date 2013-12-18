@@ -93,34 +93,33 @@ void forward_DCT (short coef_block[DCTSIZE2])
   //printf("Waiting until finished\n");
 
   int csr = REG32(0x96001810);
-  while ((csr & 0x00000010 ) != 0x00000010) { csr = REG32(0x96001810); }
+  while ((csr & 0x00000002 ) != 0x00000002) { csr = REG32(0x96001810); usleep(5);}
   
-  printf("Begin reading result\n");
+  //printf("Begin reading result\n");
   int result;
-    printf("-----------inmem---------\n");
+/*    printf("-----------inmem---------\n");
   	for (i=0; i<16; i++) {
 		  result = REG32(0x96000000 + 4*i);
 		  printf("%08X = %08X\n", 0x96000000 + 4*i, result);
-    }
+    }*/
     
   int trans = 0;
   for (j=0; j<8; j++) {
-      trans = 0;
+    trans = 0;
     for (i=0; i<4; i++) {
 	    result = REG32(0x96000800 + 4*i + j*16);
 	    transpose[trans++][j] = result >> 16;
 	    transpose[trans++][j] = (result << 16) >> 16;
     }
   }
+  
+  REG32(0x96001810) = 2;
 
   for (j=0; j<8; j++) {
     for (i=0; i<8; i++) {
       *pc++ = transpose[j][i];
   	}
-  }
-  
-  REG32(0x96001810) = 2;
-  
+  }  
   
  // printf("All done, continuing\n");
   
@@ -229,7 +228,7 @@ void encode_image(void)
    //printf("Starting the Grunka...\n");
    REG32(0x96001810) = 1;
 
-   for(i = 0; i < 1; i++) //MCU_count; i++)
+   for(i = 0; i < MCU_count; i++)
    {
       forward_DCT(MCU_block);
       encode_mcu_huff(MCU_block);

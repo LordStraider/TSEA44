@@ -81,7 +81,7 @@ module mem(wishbone.slave wbm);
     for (blockx=0; blockx<`WIDTH; blockx++)
       for (i=1, y=0; y<8; y++)
     for (x=0; x<8; x++)
-      rom[blockx*8+x+(blocky*8+y)*`PITCH] = i++ - 128;
+      rom[blockx*8+x+(blocky*8+y)*`PITCH] = i++;
    end
 
    assign wbm.err = 1'b0;
@@ -163,7 +163,7 @@ program test_jpeg();
             end
             
           //CONTROL
-          if (run != `HEIGHT-1 && run2 != `WIDTH-1)
+          //if (run != `HEIGHT-1 && run2 != `WIDTH-1)
               jpeg_top_tb.wb0.m_write(32'h96001810, 2);
             
                        

@@ -2644,3 +2644,445 @@ make simfiles;restart -f;run 100 us
 #     0     0     0     0     0     0     0     0 
 #     0     0     0     0     0     0     0     0 
 #     0     0     0     0     0     0     0     0 
+make simfiles;restart -f;run 100 us
+# Loading sv_std.std
+# Loading /nobackup/local/jonka293/work.jpeg_top_tb
+# Loading /nobackup/local/jonka293/work.wishbone
+# Loading /nobackup/local/jonka293/work.jpeg_top_sv_unit
+# Loading /nobackup/local/jonka293/work.jpeg_top
+# Loading /nobackup/local/jonka293/work.jpeg_dma
+# Loading /nobackup/local/jonka293/work.addrgen
+# Loading /nobackup/local/jonka293/work.dct
+# Loading /nobackup/local/jonka293/work.q2
+# Loading /nobackup/local/jonka293/work.transpose
+# Loading /nobackup/local/jonka293/work.mem
+# Loading /nobackup/local/jonka293/work.wishbone_tasks
+# Loading /nobackup/local/jonka293/work.test_jpeg
+# Loading /nobackup/local/jonka293/work.glbl
+#   -96   -24     0    -2     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+run 50 us
+make simfiles;restart -f;run 100 us
+# Loading sv_std.std
+# Loading /nobackup/local/jonka293/work.jpeg_top_tb
+# Loading /nobackup/local/jonka293/work.wishbone
+# Loading /nobackup/local/jonka293/work.jpeg_top_sv_unit
+# Loading /nobackup/local/jonka293/work.jpeg_top
+# Loading /nobackup/local/jonka293/work.jpeg_dma
+# Loading /nobackup/local/jonka293/work.addrgen
+# Loading /nobackup/local/jonka293/work.dct
+# Loading /nobackup/local/jonka293/work.q2
+# Loading /nobackup/local/jonka293/work.transpose
+# Loading /nobackup/local/jonka293/work.mem
+# Loading /nobackup/local/jonka293/work.wishbone_tasks
+# Loading /nobackup/local/jonka293/work.test_jpeg
+# Loading /nobackup/local/jonka293/work.glbl
+#   -96   -24     0    -2     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -4     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#    -1     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+make simfiles;restart -f;run 100 us
+# Loading sv_std.std
+# Loading /nobackup/local/jonka293/work.jpeg_top_tb
+# Loading /nobackup/local/jonka293/work.wishbone
+# Loading /nobackup/local/jonka293/work.jpeg_top_sv_unit
+# Loading /nobackup/local/jonka293/work.jpeg_top
+# Loading /nobackup/local/jonka293/work.jpeg_dma
+# Loading /nobackup/local/jonka293/work.addrgen
+# Loading /nobackup/local/jonka293/work.dct
+# Loading /nobackup/local/jonka293/work.q2
+# Loading /nobackup/local/jonka293/work.transpose
+# Loading /nobackup/local/jonka293/work.mem
+# Loading /nobackup/local/jonka293/work.wishbone_tasks
+# Loading /nobackup/local/jonka293/work.test_jpeg
+# Loading /nobackup/local/jonka293/work.glbl
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+make simfiles;restart -f;run 100 us
+# Loading sv_std.std
+# Loading /nobackup/local/jonka293/work.jpeg_top_tb
+# Loading /nobackup/local/jonka293/work.wishbone
+# Loading /nobackup/local/jonka293/work.jpeg_top_sv_unit
+# Loading /nobackup/local/jonka293/work.jpeg_top
+# Loading /nobackup/local/jonka293/work.jpeg_dma
+# Loading /nobackup/local/jonka293/work.addrgen
+# Loading /nobackup/local/jonka293/work.dct
+# Loading /nobackup/local/jonka293/work.q2
+# Loading /nobackup/local/jonka293/work.transpose
+# Loading /nobackup/local/jonka293/work.mem
+# Loading /nobackup/local/jonka293/work.wishbone_tasks
+# Loading /nobackup/local/jonka293/work.test_jpeg
+# Loading /nobackup/local/jonka293/work.glbl
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+make simfiles;restart -f;run 100 us
+# Loading sv_std.std
+# Loading /nobackup/local/jonka293/work.jpeg_top_tb
+# Loading /nobackup/local/jonka293/work.wishbone
+# Loading /nobackup/local/jonka293/work.jpeg_top_sv_unit
+# Loading /nobackup/local/jonka293/work.jpeg_top
+# Loading /nobackup/local/jonka293/work.jpeg_dma
+# Loading /nobackup/local/jonka293/work.addrgen
+# Loading /nobackup/local/jonka293/work.dct
+# Loading /nobackup/local/jonka293/work.q2
+# Loading /nobackup/local/jonka293/work.transpose
+# Loading /nobackup/local/jonka293/work.mem
+# Loading /nobackup/local/jonka293/work.wishbone_tasks
+# Loading /nobackup/local/jonka293/work.test_jpeg
+# Loading /nobackup/local/jonka293/work.glbl
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+make simfiles;restart -f;run 100 us
+# Loading sv_std.std
+# Loading /nobackup/local/jonka293/work.jpeg_top_tb
+# Loading /nobackup/local/jonka293/work.wishbone
+# Loading /nobackup/local/jonka293/work.jpeg_top_sv_unit
+# Loading /nobackup/local/jonka293/work.jpeg_top
+# Loading /nobackup/local/jonka293/work.jpeg_dma
+# Loading /nobackup/local/jonka293/work.addrgen
+# Loading /nobackup/local/jonka293/work.dct
+# Loading /nobackup/local/jonka293/work.q2
+# Loading /nobackup/local/jonka293/work.transpose
+# Loading /nobackup/local/jonka293/work.mem
+# Loading /nobackup/local/jonka293/work.wishbone_tasks
+# Loading /nobackup/local/jonka293/work.test_jpeg
+# Loading /nobackup/local/jonka293/work.glbl
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+make simfiles;restart -f;run 100 us
+# Loading sv_std.std
+# Loading /nobackup/local/jonka293/work.jpeg_top_tb
+# Loading /nobackup/local/jonka293/work.wishbone
+# Loading /nobackup/local/jonka293/work.jpeg_top_sv_unit
+# Loading /nobackup/local/jonka293/work.jpeg_top
+# Loading /nobackup/local/jonka293/work.jpeg_dma
+# Loading /nobackup/local/jonka293/work.addrgen
+# Loading /nobackup/local/jonka293/work.dct
+# Loading /nobackup/local/jonka293/work.q2
+# Loading /nobackup/local/jonka293/work.transpose
+# Loading /nobackup/local/jonka293/work.mem
+# Loading /nobackup/local/jonka293/work.wishbone_tasks
+# Loading /nobackup/local/jonka293/work.test_jpeg
+# Loading /nobackup/local/jonka293/work.glbl
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#   -96   -24     0    -2     0     0     0     0 
+#    -3     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
+#     0     0     0     0     0     0     0     0 
