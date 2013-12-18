@@ -8,6 +8,7 @@ int main() {
     int transpose[8][8];
 	  int d = 0x81828384;
 	  int result, i, j, k;
+	  int tmp1, tmp2, tmp3;
     
     for (i=0; i<48; i++) {
 		    mem[i] = d;
@@ -17,7 +18,7 @@ int main() {
     REG32(0x96001800) = mem;
     REG32(0x96001804) = 24;
     REG32(0x96001808) = 2;
-    REG32(0x9600180c) = 2;
+    REG32(0x9600180c) = 0;
     
 //    printf("Starting the Grunka...\n");
    /* result = REG32(0x96001800);
@@ -30,7 +31,7 @@ int main() {
     printf(" %08X\n", result);
     
     int i1, i2, i3;*/
-    
+    sleep(1);
     for (k=0; k < 2; k++) {
       printf("run %d\n", k);
       REG32(0x96001810) = 1; // start
@@ -47,7 +48,10 @@ int main() {
       //sleep(2);
       while ((csr & 0x00000002 ) != 0x00000002) { 
           csr = REG32(0x96001810);
-          printf("csr: %08X, csr && 2: %08X\n", csr, (csr & 0x00000002 ));
+          tmp1 = REG32(0x96001800);
+          tmp2 = REG32(0x96001804);
+          tmp3 = REG32(0x96001808);
+          printf("csr: %08X, ptr: %08X, pitch: %08X, width: %08X\n", csr, tmp1, tmp2, tmp3);
           //sleep(1);
       }
 

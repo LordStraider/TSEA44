@@ -120,34 +120,35 @@ program test_jpeg();
         //PITCH
         jpeg_top_tb.wb0.m_write(32'h96001804, `PITCH);
         //ENDBLOCK_X
-        jpeg_top_tb.wb0.m_write(32'h96001808, `WIDTH);
+        jpeg_top_tb.wb0.m_write(32'h96001808, `WIDTH-1);
         //ENDBLOCK_Y
-        jpeg_top_tb.wb0.m_write(32'h9600180c, `HEIGHT);
+        jpeg_top_tb.wb0.m_write(32'h9600180c, `HEIGHT-1);
         //CONTROL
         jpeg_top_tb.wb0.m_write(32'h96001810, 1);
         
     
-    jpeg_top_tb.wb0.m_read(32'h96001800, result);
+    /*jpeg_top_tb.wb0.m_read(32'h96001800, result);
     $fwrite(1," %08X, ", result);
     jpeg_top_tb.wb0.m_read(32'h96001804, result);
     $fwrite(1," %08X, ", result);
     jpeg_top_tb.wb0.m_read(32'h96001808, result);
     $fwrite(1," %08X, ", result);
     jpeg_top_tb.wb0.m_read(32'h9600180c, result);
-    $fwrite(1," %08X\n", result);
+    $fwrite(1," %08X\n", result);*/
    
-       for (int run=0; run<`HEIGHT; run++) begin
+    for (int run=0; run<`HEIGHT; run++) begin
+      for (int run2=0; run2<`WIDTH; run2++) begin
           
           
           result = 0;
           while ((csr & 32'h00000002 ) != 32'h00000002) begin
-              jpeg_top_tb.wb0.m_read(32'h96001000, result);
+             // jpeg_top_tb.wb0.m_read(32'h96001000, result);
               
               jpeg_top_tb.wb0.m_read(32'h96001810, csr);
-              jpeg_top_tb.wb0.m_read(32'h96001814, i1);
+              /*jpeg_top_tb.wb0.m_read(32'h96001814, i1);
               jpeg_top_tb.wb0.m_read(32'h96001818, i2);
               jpeg_top_tb.wb0.m_read(32'h9600181c, i3);
-              $fwrite(1,"csr: %08X, result: %08X, i1: %08X, i2: %08X, i3: %08X\n", csr, result, i1, i2, i3);
+              $fwrite(1,"csr: %08X, result: %08X, i1: %08X, i2: %08X, i3: %08X\n", csr, result, i1, i2, i3);*/
           end
          
           #2000
@@ -162,7 +163,8 @@ program test_jpeg();
             end
             
           //CONTROL
-          jpeg_top_tb.wb0.m_write(32'h96001810, 2);
+          if (run != `HEIGHT-1 && run2 != `WIDTH-1)
+              jpeg_top_tb.wb0.m_write(32'h96001810, 2);
             
                        
           //d = 32'h81828384;
@@ -211,6 +213,7 @@ program test_jpeg();
            $fwrite(1,"\n");
 */
 
+          end
         end
         #20000000;
     end
