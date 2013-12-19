@@ -2,18 +2,18 @@
 
 module or1200_vlx_top(/*AUTOARG*/
    // Outputs
-   spr_dat_o, stall_cpu_o, vlx_addr_o, dat_o, store_byte_o, 
+   spr_dat_o, stall_cpu_o, vlx_addr_o, dat_o, store_byte_o,
    // Inputs
-   clk_i, rst_i, ack_i, dat_i, set_bit_op_i, num_bits_to_write_i, 
+   clk_i, rst_i, ack_i, dat_i, set_bit_op_i, num_bits_to_write_i,
    spr_cs, spr_write, spr_addr, spr_dat_i
    );
    input clk_i;
    input rst_i;
-   
+
    input  ack_i; //ack
    input [31:0] dat_i; //data to be written
 
-   input 	set_bit_op_i; //high if a set bit operation is in progress 
+   input 	set_bit_op_i; //high if a set bit operation is in progress
    input [4:0]	num_bits_to_write_i; //number of bits to write.
    input  spr_cs; //sprs chip select
    input  spr_write; //sprs write
@@ -21,12 +21,12 @@ module or1200_vlx_top(/*AUTOARG*/
    input [31:0] spr_dat_i; //sprs data in
 
    output [31:0] spr_dat_o; //sprs data out
-   output 	stall_cpu_o; //if set high the cpu will be staled
+   output 	stall_cpu_o; //if set high the cpu will be stalled
    output [31:0] vlx_addr_o; //the address to store vlx data
    output [31:0] dat_o; //data vlx data to be stored
    output 	 store_byte_o; //high when storing a byte
 
-   wire 	 set_init_addr;   
+   wire 	 set_init_addr;
    wire 	 store_reg;
    wire [31:0] 	 bit_reg;
    wire 	 last_byte;
@@ -45,7 +45,7 @@ module or1200_vlx_top(/*AUTOARG*/
    assign 	stall_cpu_o = 0;
 
    assign 	spr_dat_o = spr_addr[1] ? vlx_addr_o : spr_dp_dat_o;
-   
+
    or1200_vlx_su vlx_su
      (
       .vlx_addr_o	(vlx_addr_o),
@@ -57,16 +57,18 @@ module or1200_vlx_top(/*AUTOARG*/
       .ack_i		(ack_i),
       .dat_i		(su_data_in),
       .set_init_addr_i  (set_init_addr),
-      .store_byte_i     (store_reg)
+      .store_byte_i     (ready_to_send_o),
       );
 
-   or1200_vlx_ctrl vlx_ctrl 
+
+/* behövs nog ej.
+   or1200_vlx_ctrl vlx_ctrl
      (
       //Here you must extend the interface.
-      .clk_i             (clk_i), 
+      .clk_i             (clk_i),
       .rst_i             (rst_i),
       .dummy_o           ()
-      );
+      );*/
 
    or1200_vlx_dp vlx_dp
      (
@@ -79,6 +81,7 @@ module or1200_vlx_top(/*AUTOARG*/
       .spr_addr(spr_addr[0]),
       .spr_dat_o(spr_dp_dat_o),
       .spr_dat_i(spr_dat_i),
+      .ready_to_send_o(ready_to_send_o)
       .write_dp_spr_i(write_dp_spr)
       );
 
