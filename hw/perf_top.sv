@@ -54,21 +54,15 @@ module perf_top (
         end
     end
     
-    always @(posedge wb.clk) begin
-        if (rd) begin
-            if (wb.adr == 32'h99000000)
-                rx_reg <= counter1;
-            else if (wb.adr == 32'h99000004)
-                rx_reg <= counter2;
-            else if (wb.adr == 32'h99000008)
-                rx_reg <= counter3;
-            else if (wb.adr == 32'h9900000c)
-                rx_reg <= counter4;
-            else
-                rx_reg <= 32'h0;
-        end else
-            rx_reg <= 32'h0;
+    always_comb begin
+        case (wb.adr[3:2])
+            2'b00:  rx_reg = counter1;
+            2'b01:  rx_reg = counter2;
+            2'b10:  rx_reg = counter3;
+            2'b11:  rx_reg = counter4;
+        endcase
     end
+    
 
     //set ack
     always @(posedge wb.clk)

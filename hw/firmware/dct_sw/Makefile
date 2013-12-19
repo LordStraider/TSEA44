@@ -1,5 +1,5 @@
 # The name of the program we want to compile
-PROGRAM  = dct_sw
+PROGRAM  = grunka
 
 # The directory containing the open risc supportdir
 LIBDIR=../lib

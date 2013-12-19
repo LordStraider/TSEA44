@@ -9,7 +9,9 @@
 CC = or32-uclibc-gcc
 
 # You may need to adjust these cc options:
-CFLAGS=  -I. -r -d  -O2 -Wall  -DHW_DCT -DHW_DMA -DHW_INST 
+#CFLAGS=  -I. -r -d  -O2 -Wall  -DHW_DCT -DHW_DMA -DHW_INST 
+CFLAGS=  -I. -r -d  -O2 -Wall  -DHW_DCT -DHW_DMA
+#CFLAGS=  -I. -r -d  -O2 -Wall
 LDFLAGS= -r -d
 
 # Use these values if you are not cross compiling to the OR1200
@@ -33,7 +35,7 @@ all:  jpegtest
 # sample programs:
 
 jpegtest: jpegtest.o $(CLIBOBJECTS) $(INCLUDES)
-	$(LN) $(LDFLAGS) jpegtest.o $(CLIBOBJECTS) -o jpegtest 
+	$(LN) $(LDFLAGS) jpegtest.o $(CLIBOBJECTS) -o j 
 
 webcam.cgi: webcam.o $(CLIBOBJECTS) $(COMOBJECTS) 
 	$(LN) $(LDFLAGS) webcam.o $(CLIBOBJECTS) $(COMOBJECTS) -o webcam.cgi

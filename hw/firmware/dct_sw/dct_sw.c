@@ -61,15 +61,15 @@ int main()
     printf("\n");
   }
     
-  ctr1 = REG32(0x99000000);
-  ctr2 = REG32(0x99000000);
-  ctr3 = REG32(0x99000000);
-  ctr4 = REG32(0x99000000);
+  REG32(0x99000000) = 0;
+  REG32(0x99000004) = 0;
+  REG32(0x99000008) = 0;
+  REG32(0x9900000C) = 0;
   dct2(image);
-  ctr1 = REG32(0x99000000) - ctr1;
-  ctr2 = REG32(0x99000000) - ctr2;
-  ctr3 = REG32(0x99000000) - ctr3;
-  ctr4 = REG32(0x99000000) - ctr4;
+  ctr1 = REG32(0x99000000);
+  ctr2 = REG32(0x99000004);
+  ctr3 = REG32(0x99000008);
+  ctr4 = REG32(0x9900000C);
   
   image[0] -= 8192;
 
