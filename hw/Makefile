@@ -155,6 +155,8 @@ all: dafk
 # built before dafk.bit
 
 dafk: | check_workdirs fw buildnum dafk.bit
+lab3: | check_workdirs fw buildnum lab1.bit
+lab2: | check_workdirs fw buildnum lab1.bit
 lab1: | check_workdirs fw buildnum lab1.bit
 lab0: | check_workdirs fw buildnum lab0.bit
 
