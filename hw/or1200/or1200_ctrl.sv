@@ -60,14 +60,14 @@
 // Merged branch_qmem into main tree.
 //
 // Revision 1.8.4.1  2004/02/11 01:40:11  lampret
-// preliminary HW breakpoints support in debug unit (by default disabled). 
+// preliminary HW breakpoints support in debug unit (by default disabled).
 // To enable define OR1200_DU_HWBKPTS.
 //
 // Revision 1.8  2003/04/24 00:16:07  lampret
 // No functional changes. Added defines to disable implementation of multiplier/MAC
 //
 // Revision 1.7  2002/09/07 05:42:02  lampret
-// Added optional SR[CY]. Added define to enable additional (compare) flag modifiers. 
+// Added optional SR[CY]. Added define to enable additional (compare) flag modifiers.
 // Defines are OR1200_IMPL_ADDC and OR1200_ADDITIONAL_FLAG_MODIFIERS.
 //
 // Revision 1.6  2002/03/29 15:16:54  lampret
@@ -77,9 +77,9 @@
 // Fixed combinational loops.
 //
 // Revision 1.4  2002/01/28 01:15:59  lampret
-// Changed 'void' nop-ops instead of insn[0] to use insn[16]. 
-// Debug unit stalls the tick timer. Prepared new flag generation for add and and insns. 
-// Blocked DC/IC while they are turned off. Fixed I/D MMU SPRs layout except WAYs. 
+// Changed 'void' nop-ops instead of insn[0] to use insn[16].
+// Debug unit stalls the tick timer. Prepared new flag generation for add and and insns.
+// Blocked DC/IC while they are turned off. Fixed I/D MMU SPRs layout except WAYs.
 // TODO: smart IC invalidate, l.j 2 and TLB ways.
 //
 // Revision 1.3  2002/01/18 14:21:43  lampret
@@ -110,7 +110,7 @@
 // Fixed exceptions.
 //
 // Revision 1.8  2001/10/21 17:57:16  lampret
-// Removed params from generic_XX.v. Added translate_off/on in sprs.v and id.v. 
+// Removed params from generic_XX.v. Added translate_off/on in sprs.v and id.v.
 // Removed spr_addr from dc.v and ic.v. Fixed CR+LF.
 //
 // Revision 1.7  2001/10/14 13:12:09  lampret
@@ -199,7 +199,7 @@ module or1200_ctrl
    `ifdef OR1200_SBIT_IMPL
    output					new_ex_insn_o;
    `endif
-   
+
    //
    // Internal wires and regs
    //
@@ -334,7 +334,7 @@ module or1200_ctrl
       else if (!ex_freeze) begin
 	 case (id_insn[31:26])	// synopsys parallel_case
 	   // l.mfspr
-	   `OR1200_OR32_MFSPR: 
+	   `OR1200_OR32_MFSPR:
 	     spr_addrimm <= id_insn[15:0];
 	   // l.mtspr
 	   default:
@@ -352,46 +352,46 @@ module or1200_ctrl
 	// l.lwz
 	`OR1200_OR32_LWZ:
 	  multicycle = `OR1200_TWO_CYCLES;
-	
+
 	// l.lbz
 	`OR1200_OR32_LBZ:
 	  multicycle = `OR1200_TWO_CYCLES;
-	
+
 	// l.lbs
 	`OR1200_OR32_LBS:
 	  multicycle = `OR1200_TWO_CYCLES;
-	
+
 	// l.lhz
 	`OR1200_OR32_LHZ:
 	  multicycle = `OR1200_TWO_CYCLES;
-	
+
 	// l.lhs
 	`OR1200_OR32_LHS:
 	  multicycle = `OR1200_TWO_CYCLES;
-	
+
 	// l.sw
 	`OR1200_OR32_SW:
 	  multicycle = `OR1200_TWO_CYCLES;
-	
+
 	// l.sb
 	`OR1200_OR32_SB:
 	  multicycle = `OR1200_TWO_CYCLES;
-	
+
 	// l.sh
 	`OR1200_OR32_SH:
 	  multicycle = `OR1200_TWO_CYCLES;
-   `endif    
+   `endif
 	// ALU instructions except the one with immediate
 	`OR1200_OR32_ALU:
 	  multicycle = id_insn[`OR1200_ALUMCYC_POS];
-	
+
 	// Single cycle instructions
 	default: begin
 	   multicycle = `OR1200_ONE_CYCLE;
 	end
-	
+
       endcase
-      
+
    end
 
    //
@@ -446,9 +446,9 @@ module or1200_ctrl
    `ifdef OR1200_SBIT_IMPL
 	`OR1200_LSUOP_SBIT,
    `endif
-	  `OR1200_LSUOP_SW, `OR1200_LSUOP_SH, `OR1200_LSUOP_SB : 
+	  `OR1200_LSUOP_SW, `OR1200_LSUOP_SH, `OR1200_LSUOP_SB :
 	    lsu_addrofs[31:11] = {{16{ex_insn[25]}}, ex_insn[25:21]};
-	default : 
+	default :
 	  lsu_addrofs[31:11] = {{16{ex_insn[15]}}, ex_insn[15:11]};
       endcase
    end
@@ -518,7 +518,7 @@ module or1200_ctrl
 
    `ifdef OR1200_SBIT_IMPL
    reg old_ex_freeze;
-   
+
    always_ff @(posedge clk or posedge rst) begin
       if(rst) begin
 	 old_ex_freeze <= 0;
@@ -556,27 +556,27 @@ module or1200_ctrl
 	   // j.jalr
 	   `OR1200_OR32_JALR:
 	     sel_imm <= 1'b0;
-	   
+
 	   // l.jr
 	   `OR1200_OR32_JR:
 	     sel_imm <= 1'b0;
-	   
+
 	   // l.rfe
 	   `OR1200_OR32_RFE:
 	     sel_imm <= 1'b0;
-	   
+
 	   // l.mfspr
 	   `OR1200_OR32_MFSPR:
 	     sel_imm <= 1'b0;
-	   
+
 	   // l.mtspr
 	   `OR1200_OR32_MTSPR:
 	     sel_imm <= 1'b0;
-	   
+
 	   // l.sys, l.brk and all three sync insns
 	   `OR1200_OR32_XSYNC:
 	     sel_imm <= 1'b0;
-	   
+
 	   // l.mac/l.msb
    `ifdef OR1200_MAC_IMPLEMENTED
 	   `OR1200_OR32_MACMSB:
@@ -586,22 +586,25 @@ module or1200_ctrl
 	   // l.sw
 	   `OR1200_OR32_SW:
 	     sel_imm <= 1'b0;
-	   
+
 	   // l.sb
 	   `OR1200_OR32_SB:
 	     sel_imm <= 1'b0;
-	   
+
 	   // l.sh
 	   `OR1200_OR32_SH:
 	     sel_imm <= 1'b0;
    `ifdef OR1200_SBIT_IMPL
 	   // l.sbit (l.sd)
 	   //Here you must add code for the sel_imm signal.
+       `OR1200_OR32_SBIT:
+         sel_imm <= 1'b0;
+
    `endif
 	   // ALU instructions except the one with immediate
 	   `OR1200_OR32_ALU:
 	     sel_imm <= 1'b0;
-	   
+
 	   // SFXX instructions
 	   `OR1200_OR32_SFXX:
 	     sel_imm <= 1'b0;
@@ -611,7 +614,7 @@ module or1200_ctrl
 	   `OR1200_OR32_CUST5:
 	     sel_imm <= 1'b0;
    `endif
-	   
+
 	   // l.nop
 	   `OR1200_OR32_NOP:
 	     sel_imm <= 1'b0;
@@ -620,9 +623,9 @@ module or1200_ctrl
 	   default: begin
 	      sel_imm <= 1'b1;
 	   end
-	   
+
 	 endcase
-	 
+
       end
    end
 
@@ -656,7 +659,8 @@ module or1200_ctrl
 	     `OR1200_OR32_LHZ,
 	     `OR1200_OR32_LHS,
    `ifdef OR1200_SBIT_IMPL
-	       //Here you must add code to avoid an illegal instruction exception	       
+         `OR1200_OR32_SBIT,
+	       //Here you must add code to avoid an illegal instruction exception
    `endif
 	       `OR1200_OR32_ADDI,
 	     `OR1200_OR32_ADDIC,
@@ -688,7 +692,7 @@ module or1200_ctrl
 	     except_illegal <= 1'b1;
 
 	 endcase
-	 
+
       end
    end
 
@@ -702,73 +706,73 @@ module or1200_ctrl
 	alu_op <=  `OR1200_ALUOP_NOP;
       else if (!ex_freeze) begin
 	 case (id_insn[31:26])		// synopsys parallel_case
-	   
+
 	   // l.j
 	   `OR1200_OR32_J:
 	     alu_op <=  `OR1200_ALUOP_IMM;
-	   
+
 	   // j.jal
 	   `OR1200_OR32_JAL:
 	     alu_op <=  `OR1200_ALUOP_IMM;
-	   
+
 	   // l.bnf
 	   `OR1200_OR32_BNF:
 	     alu_op <=  `OR1200_ALUOP_NOP;
-	   
+
 	   // l.bf
 	   `OR1200_OR32_BF:
 	     alu_op <=  `OR1200_ALUOP_NOP;
-	   
+
 	   // l.movhi
 	   `OR1200_OR32_MOVHI:
 	     alu_op <=  `OR1200_ALUOP_MOVHI;
-	   
+
 	   // l.mfspr
 	   `OR1200_OR32_MFSPR:
 	     alu_op <=  `OR1200_ALUOP_MFSR;
-	   
+
 	   // l.mtspr
 	   `OR1200_OR32_MTSPR:
 	     alu_op <=  `OR1200_ALUOP_MTSR;
-	   
+
 	   // l.addi
 	   `OR1200_OR32_ADDI:
 	     alu_op <=  `OR1200_ALUOP_ADD;
-	   
+
 	   // l.addic
 	   `OR1200_OR32_ADDIC:
 	     alu_op <=  `OR1200_ALUOP_ADDC;
-	   
+
 	   // l.andi
 	   `OR1200_OR32_ANDI:
 	     alu_op <=  `OR1200_ALUOP_AND;
-	   
+
 	   // l.ori
 	   `OR1200_OR32_ORI:
 	     alu_op <=  `OR1200_ALUOP_OR;
-	   
+
 	   // l.xori
 	   `OR1200_OR32_XORI:
 	     alu_op <=  `OR1200_ALUOP_XOR;
-	   
+
 	   // l.muli
    `ifdef OR1200_MULT_IMPLEMENTED
 	   `OR1200_OR32_MULI:
 	     alu_op <=  `OR1200_ALUOP_MUL;
    `endif
-	   
+
 	   // Shift and rotate insns with immediate
 	   `OR1200_OR32_SH_ROTI:
 	     alu_op <=  `OR1200_ALUOP_SHROT;
-	   
+
 	   // SFXX insns with immediate
 	   `OR1200_OR32_SFXXI:
 	     alu_op <=  `OR1200_ALUOP_COMP;
-	   
+
 	   // ALU instructions except the one with immediate
 	   `OR1200_OR32_ALU:
 	     alu_op <=  id_insn[3:0];
-	   
+
 	   // SFXX instructions
 	   `OR1200_OR32_SFXX:
 	     alu_op <=  `OR1200_ALUOP_COMP;
@@ -778,14 +782,14 @@ module or1200_ctrl
 	   `OR1200_OR32_CUST5:
 	     alu_op <=  `OR1200_ALUOP_CUST5;
    `endif
-	   
+
 	   // Default
 	   default: begin
 	      alu_op <=  `OR1200_ALUOP_NOP;
 	   end
-	   
+
 	 endcase
-	 
+
       end
    end
 
@@ -812,7 +816,7 @@ module or1200_ctrl
 	  // Illegal and OR1200 unsupported instructions
 	  default: begin
 	     mac_op <=  `OR1200_MACOP_NOP;
-	  end	      
+	  end
 
 	endcase
       else
@@ -849,68 +853,68 @@ module or1200_ctrl
 	   // j.jal
 	   `OR1200_OR32_JAL:
 	     rfwb_op <=  `OR1200_RFWBOP_LR;
-	   
+
 	   // j.jalr
 	   `OR1200_OR32_JALR:
 	     rfwb_op <=  `OR1200_RFWBOP_LR;
-	   
+
 	   // l.movhi
 	   `OR1200_OR32_MOVHI:
 	     rfwb_op <=  `OR1200_RFWBOP_ALU;
-	   
+
 	   // l.mfspr
 	   `OR1200_OR32_MFSPR:
 	     rfwb_op <=  `OR1200_RFWBOP_SPRS;
-	   
+
 	   // l.lwz
 	   `OR1200_OR32_LWZ:
 	     rfwb_op <=  `OR1200_RFWBOP_LSU;
-	   
+
 	   // l.lbz
 	   `OR1200_OR32_LBZ:
 	     rfwb_op <=  `OR1200_RFWBOP_LSU;
-	   
+
 	   // l.lbs
 	   `OR1200_OR32_LBS:
 	     rfwb_op <=  `OR1200_RFWBOP_LSU;
-	   
+
 	   // l.lhz
 	   `OR1200_OR32_LHZ:
 	     rfwb_op <=  `OR1200_RFWBOP_LSU;
-	   
+
 	   // l.lhs
 	   `OR1200_OR32_LHS:
 	     rfwb_op <=  `OR1200_RFWBOP_LSU;
 	   // l.addi
 	   `OR1200_OR32_ADDI:
 	     rfwb_op <=  `OR1200_RFWBOP_ALU;
-	   
+
 	   // l.addic
 	   `OR1200_OR32_ADDIC:
 	     rfwb_op <=  `OR1200_RFWBOP_ALU;
-	   
+
 	   // l.andi
 	   `OR1200_OR32_ANDI:
 	     rfwb_op <=  `OR1200_RFWBOP_ALU;
-	   
+
 	   // l.ori
 	   `OR1200_OR32_ORI:
 	     rfwb_op <=  `OR1200_RFWBOP_ALU;
-	   
+
 	   // l.xori
 	   `OR1200_OR32_XORI:
 	     rfwb_op <=  `OR1200_RFWBOP_ALU;
-	   
+
 	   // l.muli
    `ifdef OR1200_MULT_IMPLEMENTED
 	   `OR1200_OR32_MULI:
 	     rfwb_op <=  `OR1200_RFWBOP_ALU;
    `endif
-	   
+
 	   // Shift and rotate insns with immediate
 	   `OR1200_OR32_SH_ROTI:
 	     rfwb_op <=  `OR1200_RFWBOP_ALU;
-	   
+
 	   // ALU instructions except the one with immediate
 	   `OR1200_OR32_ALU:
 	     rfwb_op <=  `OR1200_RFWBOP_ALU;
@@ -940,35 +944,35 @@ module or1200_ctrl
 	pre_branch_op <=  `OR1200_BRANCHOP_NOP;
       else if (!id_freeze) begin
 	 case (if_insn[31:26])		// synopsys parallel_case
-	   
+
 	   // l.j
 	   `OR1200_OR32_J:
 	     pre_branch_op <=  `OR1200_BRANCHOP_BAL;
-	   
+
 	   // j.jal
 	   `OR1200_OR32_JAL:
 	     pre_branch_op <=  `OR1200_BRANCHOP_BAL;
-	   
+
 	   // j.jalr
 	   `OR1200_OR32_JALR:
 	     pre_branch_op <=  `OR1200_BRANCHOP_JR;
-	   
+
 	   // l.jr
 	   `OR1200_OR32_JR:
 	     pre_branch_op <=  `OR1200_BRANCHOP_JR;
-	   
+
 	   // l.bnf
 	   `OR1200_OR32_BNF:
 	     pre_branch_op <=  `OR1200_BRANCHOP_BNF;
-	   
+
 	   // l.bf
 	   `OR1200_OR32_BF:
 	     pre_branch_op <=  `OR1200_BRANCHOP_BF;
-	   
+
 	   // l.rfe
 	   `OR1200_OR32_RFE:
 	     pre_branch_op <=  `OR1200_BRANCHOP_RFE;
-	   
+
 	   // Non branch instructions
 	   default: begin
 	      pre_branch_op <=  `OR1200_BRANCHOP_NOP;
@@ -984,7 +988,7 @@ module or1200_ctrl
      if (rst)
        branch_op <=  `OR1200_BRANCHOP_NOP;
      else if (!ex_freeze & id_freeze | flushpipe)
-       branch_op <=  `OR1200_BRANCHOP_NOP;		
+       branch_op <=  `OR1200_BRANCHOP_NOP;
      else if (!ex_freeze)
        branch_op <=  pre_branch_op;
 
@@ -998,41 +1002,46 @@ module or1200_ctrl
 	lsu_op <=  `OR1200_LSUOP_NOP;
       else if (!ex_freeze)  begin
 	 case (id_insn[31:26])		// synopsys parallel_case
-	   
+
 	   // l.lwz
 	   `OR1200_OR32_LWZ:
 	     lsu_op <=  `OR1200_LSUOP_LWZ;
-	   
+
 	   // l.lbz
 	   `OR1200_OR32_LBZ:
 	     lsu_op <=  `OR1200_LSUOP_LBZ;
-	   
+
 	   // l.lbs
 	   `OR1200_OR32_LBS:
 	     lsu_op <=  `OR1200_LSUOP_LBS;
-	   
+
 	   // l.lhz
 	   `OR1200_OR32_LHZ:
 	     lsu_op <=  `OR1200_LSUOP_LHZ;
-	   
+
 	   // l.lhs
 	   `OR1200_OR32_LHS:
 	     lsu_op <=  `OR1200_LSUOP_LHS;
-	   
+
 	   // l.sw
 	   `OR1200_OR32_SW:
 	     lsu_op <=  `OR1200_LSUOP_SW;
-	   
+
 	   // l.sb
 	   `OR1200_OR32_SB:
 	     lsu_op <=  `OR1200_LSUOP_SB;
-	   
+
 	   // l.sh
 	   `OR1200_OR32_SH:
 	     lsu_op <=  `OR1200_LSUOP_SH;
 
    `ifdef OR1200_SBIT_IMPL
-	   //Here you must att code to get the right lsu_op.	   
+	   //Here you must att code to get the right lsu_op.
+
+       // l.sd
+       `OR1200_OR32_SBIT:
+         lsu_op <=  `OR1200_LSUOP_SBIT;
+
    `endif
 	   // Non load/store instructions
 	   default: begin
