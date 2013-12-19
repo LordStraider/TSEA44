@@ -103,7 +103,7 @@ module mem(wishbone.slave wbm);
      adr <= wbm.adr[8:0];
 
    assign wbm.dat_i = {rom[adr], rom[adr+1], rom[adr+2], rom[adr+3]};
-endmodule // mem
+endmodule // me
 
 
 program test_jpeg();
@@ -125,34 +125,23 @@ program test_jpeg();
         jpeg_top_tb.wb0.m_write(32'h9600180c, `HEIGHT-1);
         //CONTROL
         jpeg_top_tb.wb0.m_write(32'h96001810, 1);
-        
-    
-    /*jpeg_top_tb.wb0.m_read(32'h96001800, result);
-    $fwrite(1," %08X, ", result);
-    jpeg_top_tb.wb0.m_read(32'h96001804, result);
-    $fwrite(1," %08X, ", result);
-    jpeg_top_tb.wb0.m_read(32'h96001808, result);
-    $fwrite(1," %08X, ", result);
-    jpeg_top_tb.wb0.m_read(32'h9600180c, result);
-    $fwrite(1," %08X\n", result);*/
-   
+
+
+
     for (int run=0; run<`HEIGHT; run++) begin
       for (int run2=0; run2<`WIDTH; run2++) begin
-          
-          
+
+
           result = 0;
           while ((csr & 32'h00000002 ) != 32'h00000002) begin
              // jpeg_top_tb.wb0.m_read(32'h96001000, result);
-              
+
               jpeg_top_tb.wb0.m_read(32'h96001810, csr);
-              /*jpeg_top_tb.wb0.m_read(32'h96001814, i1);
-              jpeg_top_tb.wb0.m_read(32'h96001818, i2);
-              jpeg_top_tb.wb0.m_read(32'h9600181c, i3);
-              $fwrite(1,"csr: %08X, result: %08X, i1: %08X, i2: %08X, i3: %08X\n", csr, result, i1, i2, i3);*/
+
           end
-         
+
           #2000
-           
+
             for (int j=0; j<8; j++) begin
                 for (int i=0; i<4; i++) begin
                     jpeg_top_tb.wb0.m_read(32'h96000800 + 4*i + j*16,result);
@@ -161,57 +150,14 @@ program test_jpeg();
                 end
                 $fwrite(1,"\n");
             end
-            
+
           //CONTROL
           //if (run != `HEIGHT-1 && run2 != `WIDTH-1)
               jpeg_top_tb.wb0.m_write(32'h96001810, 2);
-            
-                       
-          //d = 32'h81828384;
-
-  /*      for (int run=0; run<10; run++) begin
-          //d = 32'h807F807F;
-          d = 32'h81828384;
-           for (int i=0; i<16; i++) begin //16
 
 
-             /*    if((i +1)% 4 < 2)
-                    d = 32'h807F807F;
-                 else
-                    d = 32'h7F807F80;
 
-                  if(i % 2)
-                    d = 32'h80808080;
 
-                  jpeg_top_tb.wb0.m_write(32'h96000000 + 4*i, d);
-                d += 32'h04040404;
-           end
-           for (int i=0; i<16; i++) begin //16
-              jpeg_top_tb.wb0.m_read(32'h96000000 + 4*i, result);
-              $fwrite(1,"%08X\n ", result);
-           end
-           $fwrite(1,"-----\n");
-
-            jpeg_top_tb.wb0.m_write(32'h96001000, 32'h1);
-
-            while (result != 32'd128)
-                jpeg_top_tb.wb0.m_read(32'h96001000,result);
-
-            jpeg_top_tb.wb0.m_write(32'h96001000, 32'h0);
-
-            for (int j=0; j<8; j++) begin
-                for (int i=0; i<4; i++) begin
-                    jpeg_top_tb.wb0.m_read(32'h96000800 + 4*i + j*16,result);
-                    $fwrite(1,"%5d ", result >>> 16);
-                    $fwrite(1,"%5d ", (result << 16) >>>16);
-                end
-            $fwrite(1,"\n");
-            end
-
-           $fwrite(1,"-----\n");
-           $fwrite(1,"new run\n");
-           $fwrite(1,"\n");
-*/
 
           end
         end
@@ -219,38 +165,6 @@ program test_jpeg();
     end
 
 
-
-//d = 32'h81828384;
-//
-//      for (int i=0; i<16; i++) begin
-//       jpeg_top_tb.wb0.m_write(32'h96000000 + 4*i, d);
-//       d += 32'h04040404;
-//      end
-//
-//      jpeg_top_tb.wb0.m_write(32'h96001000, 32'h01000000);
-//
-//      while (result != 32'd128)
-//  jpeg_top_tb.wb0.m_read(32'h96001000,result);
-//
-//    jpeg_top_tb.wb0.m_write(32'h96001000, 32'h0);
-//
-//      for (int j=0; j<8; j++) begin
-//   for (int i=0; i<4; i++) begin
-//      jpeg_top_tb.wb0.m_read(32'h96000800 + 4*i + j*16,result);
-//      $fwrite(1,"%5d ", result >>> 16);
-//      $fwrite(1,"%5d ", (result << 16) >>> 16);
-//   end
-//   $fwrite(1,"\n");
-//      end
-//
-//   $fwrite(1,"-----\n");
-//   $fwrite(1,"in inmem\n");
-//
-//      for (int i=0; i<16; i++) begin
-//        jpeg_top_tb.wb0.m_read(32'h96000000 + 4*i, d);
-//        $fwrite(1,"%d\n ", d);
-//      end
-//   end
 
 endprogram // tester
 
