@@ -36,17 +36,28 @@ module jpeg_dma(
    reg [3:0] 	       state;
    wire 	       dma_is_running;
 
-   reg [3:0] 	       next_dma_bram_addr;
+   reg [8:0] 	       next_dma_bram_addr;
    wire [3:0] 	       dma_bram_addr_plus1;
 
    wire 	       endframe;
    wire 	       endblock;
+   logic  	       endblock_reached;
    wire 	       endline;
    reg [9:0] 	       ctr;
+   reg nextStbCyc;
+
+   reg [1:0]      goToRelease;
+   
+  //  reg [31:0] toDatI;
+    // You must create the wb.dat_i signal somewhere...
+//    assign wb_dat_i = toDatI;
+
+
+    reg [31:0] jpeg_data;
 
    
    assign    wbm.dat_o = 32'b0; // We never write from this module
-   assign    dma_bram_data = 32'h0; // You need to create this signal...
+   assign    dma_bram_data = jpeg_data; 
 
    assign    dma_bram_addr_plus1 = dma_bram_addr + 1;
    
@@ -70,8 +81,7 @@ module jpeg_dma(
 		.dma_endblock_x		(dma_endblock_x),
 		.dma_endblock_y		(dma_endblock_y)
 		);
-
-
+   
    // Memory address registers
    always_ff @(posedge clk_i) begin
       if(rst_i) begin
@@ -88,6 +98,14 @@ module jpeg_dma(
 	 endcase // case(wb_adr_i[4:2])
       end
    end
+   
+   always_ff @(posedge clk_i) begin
+      if(rst_i)
+        endblock_reached <= 1'b0;
+      else
+        endblock_reached <= endblock;
+   end   
+   
 
    // Decode the control bit that starts the DMA engine
    assign startfsm = dmaen_i && wb_we_i && (wb_adr_i[4:2] == 3'b100)
@@ -96,9 +114,21 @@ module jpeg_dma(
 	  && (wb_dat_i[1] == 1'b1);
 
    reg fetch_ready;
+   reg been_in_wait_ready;
    wire dct_ready;
 
    assign dct_ready = !dct_busy && fetch_ready;
+   
+   
+   
+always @(posedge clk_i) begin
+if (incaddr == 1 || been_in_wait_ready)
+    been_in_wait_ready = 1'b1;
+    else
+    been_in_wait_ready = 1'b0;
+end
+
+
 
    always_comb begin
       wb_dat_o = 32'h00000000; // Default value
@@ -107,15 +137,17 @@ module jpeg_dma(
 	3'b001: wb_dat_o = dma_pitch;
 	3'b010: wb_dat_o = dma_endblock_x;
 	3'b011: wb_dat_o = dma_endblock_y;
-	3'b100: wb_dat_o = {20'b0, ctr, dct_ready, dma_is_running};
+	3'b100: wb_dat_o = {ctr, 12'b0, dmaen_i, been_in_wait_ready, state, start_dct, dct_busy, dct_ready, dma_is_running}; //{20'b0, ctr, dct_ready, dma_is_running};
+	3'b101: wb_dat_o = next_dma_bram_addr;
+	3'b110: wb_dat_o = dma_bram_data;
+	3'b111: wb_dat_o = jpeg_data;
       endcase // case(wb_adr_i[4:2])
    end
-   // FIXME - what is ctr? Should the students create this?
    
    always_ff @(posedge clk_i) begin
-      if(startfsm | startnextblock)
+      if(startfsm | startnextblock | rst_i)
 	ctr <= 10'h0;
-      else if ( dma_is_running | dct_busy)
+      else if ( wbm.ack )
 	ctr <= ctr + 1;
    end
 
@@ -137,46 +169,108 @@ module jpeg_dma(
       incaddr = 0;
 
       // By default we don't try to access the WB bus
-      wbm.stb = 0;
-      wbm.cyc = 0;
 
       start_dct = 0;
+      dma_bram_we = 1;
+      goToRelease = 0;
 
       wbm.sel = 4'b1111; // We always want to read all bytes
       wbm.we = 0; // We never write to the bus
+      
+      nextStbCyc = 1'b0;
 
-      dma_bram_we = 0;
-
-      fetch_ready = 0;
-
+      jpeg_data = 32'h73;
+      fetch_ready = 1'b0;
+      
       if(rst_i) begin
-	 next_state = DMA_IDLE;
-	 next_dma_bram_addr = 0;
+	      next_state = DMA_IDLE;
+        next_dma_bram_addr = 0;
+        jpeg_data = 32'h0;
+        start_dct = 0;
+        dma_bram_we = 0;
+        goToRelease = 0;
       end else begin
 	 case(state)
 	   DMA_IDLE: begin
+	      dma_bram_we = 0;
 	      if(startfsm) begin
-		 next_state = DMA_GETBLOCK;
-		 resetaddr = 1; // Start from the beginning of the frame
-		 next_dma_bram_addr = 0;
-	      end
+		       next_state = DMA_GETBLOCK;
+		       resetaddr = 1; // Start from the beginning of the frame
+		       next_dma_bram_addr = 0;
+		       jpeg_data = 32'h0;
+           start_dct = 0;
+        end
 	   end
 
 
 	   DMA_GETBLOCK: begin
 	      // Hint: look at endframe, endblock, endline and wbm_ack_i...
+	      
+	      if (endframe && wbm.ack) begin
+           start_dct = 1;
+		       next_dma_bram_addr = -4;
+           next_state = DMA_WAITREADY_LAST;
+           
+        end else if (endblock && wbm.ack) begin
+           start_dct = 1;
+		       next_dma_bram_addr = -4;
+           next_state = DMA_WAITREADY;
+           
+        end else if(endline && wbm.ack) begin
+	         next_state = DMA_RELEASEBUS;
+	          
+	      end else begin
+      		 next_state = DMA_GETBLOCK;
+	      end
+	      
+	      
+	      if (wbm.ack) begin
+	          jpeg_data = wbm.dat_i ^ 32'h80808080;
+	          
+            nextStbCyc = 1'b0;
+	          
+	          
+	          next_dma_bram_addr = next_dma_bram_addr + 4;
+            incaddr = 1;
+
+         end else begin
+            nextStbCyc = 1'b1;
+	       end
 	   end
 
 	   DMA_RELEASEBUS: begin
 	      // Hint: Just wait a clock cycle so that someone else can access the bus if necessary
+   		  next_state = DMA_GETBLOCK;
+        nextStbCyc = 1'b0;
 	   end
 
 	   DMA_WAITREADY: begin
 	      // Hint: Need to tell the status register that we are waiting here...
+	      dma_bram_we = 0;
+	      if (!dct_busy) begin
+           fetch_ready = 1;
+        end
+        
+        if (startnextblock) begin
+      	   next_state = DMA_GETBLOCK;
+        end else begin
+           next_state = DMA_WAITREADY;
+        end
+        
 	   end
 
 	   DMA_WAITREADY_LAST: begin
+	      dma_bram_we = 0;
 	      // Hint: Need to tell the status register that we are waiting here...
+	      if (!dct_busy) begin
+           fetch_ready = 1;
+        end
+        
+        if (startnextblock) begin
+      	   next_state = DMA_IDLE;
+        end else begin
+           next_state = DMA_WAITREADY_LAST;
+        end
 	   end
 
 	 endcase // case(state)
@@ -185,6 +279,8 @@ module jpeg_dma(
    
    // The flip flops for the FSM
    always_ff @(posedge clk_i) begin
+      wbm.stb = nextStbCyc;
+      wbm.cyc = nextStbCyc;
       state         <= next_state;
       dma_bram_addr <= next_dma_bram_addr;
    end
