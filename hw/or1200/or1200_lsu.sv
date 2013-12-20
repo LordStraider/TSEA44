@@ -194,12 +194,13 @@ module or1200_lsu
 
    always_comb begin
       if(set_bit_op) begin
-	 //Here you must add code to handle the dcpu_cycstb_o correctly. It should be high
-	 //when data is written to memory.
-	 dcpu_cycstb_o <= 0;
+	     //Here you must add code to handle the dcpu_cycstb_o correctly. It should be high
+	     //when data is written to memory.
+	     dcpu_cycstb_o <= 0;
+       
       end
       else begin
-	 dcpu_cycstb_o <= du_stall | lsu_unstall | (except_align ? 1'b0 : |lsu_op);
+	     dcpu_cycstb_o <= du_stall | lsu_unstall | (except_align ? 1'b0 : |lsu_op);
       end
    end
 
@@ -228,9 +229,18 @@ module or1200_lsu
        {`OR1200_LSUOP_LHZ, 2'b00}, {`OR1200_LSUOP_LHS, 2'b00} : dcpu_sel_o = 4'b1100;
        {`OR1200_LSUOP_LHZ, 2'b10}, {`OR1200_LSUOP_LHS, 2'b10} : dcpu_sel_o = 4'b0011;
        {`OR1200_LSUOP_LWZ, 2'b00}, {`OR1200_LSUOP_LWS, 2'b00} : dcpu_sel_o = 4'b1111;
+       
    `ifdef OR1200_SBIT_IMPL
-       //Here you must add code to set the dcpu_sel_o correctly. 
+        //Here you must add code to set the dcpu_sel_o correctly. 
        //It has the same semantics as a normal wishbone sel_o signal.
+       
+       {`OR1200_LSUOP_SBIT, 2'b00} : dcpu_sel_o = 4'b1000;
+       {`OR1200_LSUOP_SBIT, 2'b01} : dcpu_sel_o = 4'b0100;
+       {`OR1200_LSUOP_SBIT, 2'b10} : dcpu_sel_o = 4'b0010;
+       {`OR1200_LSUOP_SBIT, 2'b11} : dcpu_sel_o = 4'b0001;
+        
+        
+       
 `endif
        default : dcpu_sel_o = 4'b0000;
      endcase

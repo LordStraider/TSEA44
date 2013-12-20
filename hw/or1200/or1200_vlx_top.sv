@@ -14,7 +14,7 @@ module or1200_vlx_top(/*AUTOARG*/
     input [31:0] dat_i; //data to be written
 
     input 	set_bit_op_i; //high if a set bit operation is in progress
-    input [4:0]	num_bits_to_write_i; //number of bits to write.
+    input [4:0]	num_bits_to_write_i; //.size
     input  spr_cs; //sprs chip select
     input  spr_write; //sprs write
     input [1:0] spr_addr; //sprs address
@@ -43,7 +43,7 @@ module or1200_vlx_top(/*AUTOARG*/
     reg [31:0] address_counter;
 
     reg [1:0] ack_counter;
-    reg stall;
+    reg stall, next_stall, grunkan_er_igang_signal;
 
     assign 	set_init_addr = spr_cs & spr_addr[1] & spr_write;
     assign 	write_dp_spr = spr_cs & spr_write & ~spr_addr[1];
@@ -63,9 +63,12 @@ module or1200_vlx_top(/*AUTOARG*/
 
    always_ff @(posedge clk_i or posedge rst_i) begin
     if(rst_i) begin
+        
+        ack_counter     <= 0;
         bit_reg         <= 0;
         bit_reg_wr_pos  <= 0;
         data_to_be_sent <= 0;
+        grunkan_er_igang_signal <= 0;
         ready_to_send <= 0;
         address_counter <= 0; //spr_address shofräs egentligen
 
@@ -74,30 +77,21 @@ module or1200_vlx_top(/*AUTOARG*/
         if(set_bit_op_i) begin
          //packning av data.
           //bit_reg <= spr_dat_i;
-
-            if (bit_reg == 0) begin
-                bit_reg = dat_i;
-                bit_reg_wr_pos += num_bits_to_write_i;
-
-
-            end else if (bit_reg_wr_pos <= 7) begin
+        
+            grunkan_er_igang_signal <= 1;
+            if (bit_reg_wr_pos <= 7) begin
             //keep shifting in bits
                 ready_to_send <= 0;
                 //bit_reg[bit_reg_wr_pos + num_bits_to_write_i:bit_reg_wr_pos] = dat_i;
-                bit_reg_wr_pos -= 16;
 
-                if (bit_reg_wr_pos + num_bits_to_write_i > 15)
-                    ack_counter <= 2;
-                else if (bit_reg_wr_pos + num_bits_to_write_i > 7)
-                    ack_counter <= 1;
-
+              bit_reg_wr_pos += num_bits_to_write_i;
             end
         end else if (bit_reg_wr_pos > 7) begin
             //write data to Store Unit
-
+            bit_reg_wr_pos -= 8;
             bit_reg <= bit_reg >> 8;
-            ack_counter -=1;
-
+            
+            
             /*we want to send ff00 if ff is encountered in bitreg [8:0]*/
             if (bit_reg[8:0] == 8'hff) begin
                 data_to_be_sent <= 16'hff00;
@@ -107,16 +101,38 @@ module or1200_vlx_top(/*AUTOARG*/
                 ready_to_send <= 1;
                 address_counter += 1;
             end
+            
+            if (ack_counter == 0)
+                grunkan_er_igang_signal <= 0; 
         end
     end
+    
+    
+    always @(posedge clk_i) begin
+      if (rst_i) 
+        ack_counter <= 0;
+      else if (ack_i == 1 && grunkan_er_igang_signal) 
+        ack_counter -=1;
+      else if (bit_reg_wr_pos + num_bits_to_write_i > 15 && set_bit_op_i)
+        ack_counter <= 2;
+      else if (bit_reg_wr_pos + num_bits_to_write_i > 7  && set_bit_op_i)
+        ack_counter <= 1;
+    end
+                
 
-
-    always_comb begin
-        if (set_bit_op_i == 1) begin
-            stall = 1;
+    always @(posedge clk_i) begin
+        if (rst_i) begin
+            next_stall <= 0;
+        end else if (set_bit_op_i == 1 || ack_counter != 0) begin
+            next_stall <= 1;
         end else if (ack_counter == 0) begin
-            stall = 0;
+            next_stall <= 0;
         end
+    end
+    
+    
+    always_comb begin
+        stall = next_stall | set_bit_op_i;
     end
 
 /*    always @(posedge clk_i) begin

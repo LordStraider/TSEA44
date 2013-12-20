@@ -23,6 +23,8 @@ int main(void) {
   int sadr = 0;
   int c;
   int debug = 0;
+  int code;
+  int size;
   unsigned char *bufptr;
   int (*pf)(void);
   int tmp;
@@ -54,6 +56,13 @@ int main(void) {
   // dct_sw();
   // dma_dct_hw();
   // jpegtest();
+  size = 16;
+  code = 0x4444;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+  
+  size = 3;
+  code = 0x0004;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
 
   REG32(PAR_BASE_ADDR) = 5;
 
