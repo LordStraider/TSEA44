@@ -57,7 +57,7 @@ int main(void) {
   // dma_dct_hw();
   // jpegtest();
   size = 16;
-  code = 0x4444;
+  code = 0x1235;
   asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
   
   size = 3;

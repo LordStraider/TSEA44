@@ -52,24 +52,24 @@
 // Some of the warnings fixed.
 //
 // Revision 1.3  2002/02/11 04:33:17  lampret
-// Speed optimizations (removed duplicate _cyc_ and _stb_). 
+// Speed optimizations (removed duplicate _cyc_ and _stb_).
 // Fixed D/IMMU cache-inhibit attr.
 //
 // Revision 1.2  2002/01/18 07:56:00  lampret
-// No more low/high priority interrupts (PICPR removed). 
-// Added tick timer exception. 
+// No more low/high priority interrupts (PICPR removed).
+// Added tick timer exception.
 // Added exception prefix (SR[EPH]). Fixed single-step bug whenreading NPC.
 //
 // Revision 1.1  2002/01/03 08:16:15  lampret
-// New prefixes for RTL files, prefixed module names. 
+// New prefixes for RTL files, prefixed module names.
 // Updated cache controllers and MMUs.
 //
 // Revision 1.9  2001/11/30 18:59:47  simons
 // *** empty log message ***
 //
 // Revision 1.8  2001/10/21 17:57:16  lampret
-// Removed params from generic_XX.v. 
-// Added translate_off/on in sprs.v and id.v. 
+// Removed params from generic_XX.v.
+// Added translate_off/on in sprs.v and id.v.
 // Removed spr_addr from dc.v and ic.v. Fixed CR+LF.
 //
 // Revision 1.7  2001/10/14 13:12:09  lampret
@@ -99,7 +99,7 @@ module or1200_lsu
    // Internal i/f
    addrbase, addrofs, lsu_op, lsu_datain, lsu_dataout, lsu_stall, lsu_unstall,
    du_stall, except_align, except_dtlbmiss, except_dmmufault, except_dbuserr,
-		  
+
    // External i/f to DC
    dcpu_adr_o, dcpu_cycstb_o, dcpu_we_o, dcpu_sel_o, dcpu_tag_o, dcpu_dat_o,
    dcpu_dat_i, dcpu_ack_i, dcpu_rty_i, dcpu_err_i, dcpu_tag_i
@@ -165,7 +165,7 @@ module or1200_lsu
    wire [dw-1:0] 		   vlx_dataout;
    wire [dw-1:0] 		   vlx_datain;
    wire 			   set_bit_op;
-   
+
    wire [31:0] 			   vlx_addr;
    wire [dw-1:0] 		   reg2mem_data;
    wire 			   store_byte_strobe;
@@ -187,7 +187,7 @@ module or1200_lsu
    //
    // External I/F assignments
    //
-   
+
    `ifdef OR1200_SBIT_IMPL
    assign 			   lsu_stall = (dcpu_rty_i & dcpu_cycstb_o) | vlx_stall_cpu;
    assign 			   dcpu_adr_o = set_bit_op ? vlx_addr : addrbase + addrofs;
@@ -197,7 +197,7 @@ module or1200_lsu
 	     //Here you must add code to handle the dcpu_cycstb_o correctly. It should be high
 	     //when data is written to memory.
 	     dcpu_cycstb_o <= 0;
-       
+
       end
       else begin
 	     dcpu_cycstb_o <= du_stall | lsu_unstall | (except_align ? 1'b0 : |lsu_op);
@@ -219,9 +219,12 @@ module or1200_lsu
        {`OR1200_LSUOP_SB, 2'b01} : dcpu_sel_o = 4'b0100;
        {`OR1200_LSUOP_SB, 2'b10} : dcpu_sel_o = 4'b0010;
        {`OR1200_LSUOP_SB, 2'b11} : dcpu_sel_o = 4'b0001;
+
        {`OR1200_LSUOP_SH, 2'b00} : dcpu_sel_o = 4'b1100;
        {`OR1200_LSUOP_SH, 2'b10} : dcpu_sel_o = 4'b0011;
+
        {`OR1200_LSUOP_SW, 2'b00} : dcpu_sel_o = 4'b1111;
+
        {`OR1200_LSUOP_LBZ, 2'b00}, {`OR1200_LSUOP_LBS, 2'b00} : dcpu_sel_o = 4'b1000;
        {`OR1200_LSUOP_LBZ, 2'b01}, {`OR1200_LSUOP_LBS, 2'b01} : dcpu_sel_o = 4'b0100;
        {`OR1200_LSUOP_LBZ, 2'b10}, {`OR1200_LSUOP_LBS, 2'b10} : dcpu_sel_o = 4'b0010;
@@ -229,28 +232,28 @@ module or1200_lsu
        {`OR1200_LSUOP_LHZ, 2'b00}, {`OR1200_LSUOP_LHS, 2'b00} : dcpu_sel_o = 4'b1100;
        {`OR1200_LSUOP_LHZ, 2'b10}, {`OR1200_LSUOP_LHS, 2'b10} : dcpu_sel_o = 4'b0011;
        {`OR1200_LSUOP_LWZ, 2'b00}, {`OR1200_LSUOP_LWS, 2'b00} : dcpu_sel_o = 4'b1111;
-       
+
    `ifdef OR1200_SBIT_IMPL
-        //Here you must add code to set the dcpu_sel_o correctly. 
+        //Here you must add code to set the dcpu_sel_o correctly.
        //It has the same semantics as a normal wishbone sel_o signal.
-       
+
        {`OR1200_LSUOP_SBIT, 2'b00} : dcpu_sel_o = 4'b1000;
        {`OR1200_LSUOP_SBIT, 2'b01} : dcpu_sel_o = 4'b0100;
        {`OR1200_LSUOP_SBIT, 2'b10} : dcpu_sel_o = 4'b0010;
        {`OR1200_LSUOP_SBIT, 2'b11} : dcpu_sel_o = 4'b0001;
-        
-        
-       
+
+
+
 `endif
        default : dcpu_sel_o = 4'b0000;
      endcase
 
 `ifdef OR1200_SBIT_IMPL
-   
+
    assign set_bit_op = (lsu_op == `OR1200_LSUOP_SBIT);
 
-   assign vlx_datain = {16'b0,addrbase[15:0]}; 
-   
+   assign vlx_datain = {16'b0,addrbase[15:0]};
+
    or1200_vlx_top or1200_vlx_top
      (
       .stall_cpu_o(vlx_stall_cpu),
@@ -263,7 +266,7 @@ module or1200_lsu
       .dat_i	(vlx_datain),
       .set_bit_op_i(vlx_set_bit_op),
       .num_bits_to_write_i(lsu_datain[4:0]),
-         
+
       .spr_cs(spr_cs),
       .spr_write(spr_write),
       .spr_addr(spr_addr[1:0]),
@@ -272,8 +275,8 @@ module or1200_lsu
       );
 
    assign vlx_set_bit_op = set_bit_op & pc_advance_i;
-   
-   
+
+
    or1200_mem2reg or1200_mem2reg(
 				 .addr(dcpu_adr_o[1:0]),
 				 .lsu_op(lsu_op),
@@ -282,7 +285,7 @@ module or1200_lsu
 				 );
 
 
-   
+
    or1200_reg2mem or1200_reg2mem(
 				 .addr(dcpu_adr_o[1:0]),
 				 .lsu_op(reg2mem_op),
@@ -292,9 +295,9 @@ module or1200_lsu
 
    assign reg2mem_data = set_bit_op ? vlx_dataout : lsu_datain;
    assign reg2mem_op   = set_bit_op ? `OR1200_LSUOP_SB : lsu_op;
-   
+
    `else
-   
+
    //
    // Instantiation of Memory-to-regfile aligner
    //
@@ -314,7 +317,7 @@ module or1200_lsu
 				 );
 
    `endif // !`ifdef OR1200_SBIT_IMPL
-   
+
    //
    // Instantiation of Regfile-to-memory aligner
    //
