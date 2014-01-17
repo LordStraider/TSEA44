@@ -141,9 +141,11 @@ static void write_header (int width,int height)
    buffer[97] = (width & 0xff) >> 0;
    next_buffer = sizeof(header);
 
+  printf("Address is %p\n", buffer);
+
 #ifdef HW_INST
    /* Initialize the vlx unit (Phase 1)*/
-   printf("%p\n", buffer);
+
 #endif
 
 }
