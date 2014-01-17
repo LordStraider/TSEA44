@@ -56,13 +56,13 @@ int main(void) {
   // dct_sw();
   // dma_dct_hw();
   // jpegtest();
-  size = 16;
-  code = 0x1235;
-  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+  // size = 16;
+  // code = 0x1235;
+  // asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
   
-  size = 3;
-  code = 0x0004;
-  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+  // size = 3;
+  // code = 0x0004;
+  // asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
 
   REG32(PAR_BASE_ADDR) = 5;
 
