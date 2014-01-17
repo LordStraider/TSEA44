@@ -1,0 +1,18 @@
+\select@language {swedish}
+\contentsline {section}{\numberline {1}Labb 2}{3}
+\contentsline {subsection}{\numberline {1.1}Introduktion}{3}
+\contentsline {subsection}{\numberline {1.2}Tillst\IeC {\r a}ndsgraf och arkitektur}{3}
+\contentsline {subsection}{\numberline {1.3}Resultat}{3}
+\contentsline {subsection}{\numberline {1.4}Sammanfattning}{3}
+\contentsline {subsection}{\numberline {1.5}Filer}{4}
+\contentsline {section}{\numberline {2}Labb 3}{4}
+\contentsline {subsection}{\numberline {2.1}Introduktion}{4}
+\contentsline {subsection}{\numberline {2.2}Design}{4}
+\contentsline {subsection}{\numberline {2.3}Resultat}{4}
+\contentsline {subsection}{\numberline {2.4}Sammanfattning}{4}
+\contentsline {section}{\numberline {3}What to Include in the Lab Report 2}{4}
+\contentsline {section}{\numberline {4}What to Include in the Lab Report 3}{5}
+\contentsline {section}{Appendices}{6}
+\contentsline {section}{\numberline {A}kod.sv}{6}
+\contentsline {section}{\numberline {B}kod.sv}{6}
+\contentsline {section}{\numberline {C}kod.sv}{6}
