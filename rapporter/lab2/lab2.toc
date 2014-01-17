@@ -13,6 +13,7 @@
 \contentsline {section}{\numberline {3}What to Include in the Lab Report 2}{4}
 \contentsline {section}{\numberline {4}What to Include in the Lab Report 3}{5}
 \contentsline {section}{Appendices}{6}
-\contentsline {section}{\numberline {A}kod.sv}{6}
-\contentsline {section}{\numberline {B}kod.sv}{6}
-\contentsline {section}{\numberline {C}kod.sv}{6}
+\contentsline {section}{\numberline {A}jpegtop.sv}{6}
+\contentsline {section}{\numberline {B}transpose.sv}{16}
+\contentsline {section}{\numberline {C}Q2.sv}{17}
+\contentsline {section}{\numberline {D}jpegdma.sv}{19}

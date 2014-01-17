@@ -188,20 +188,20 @@
         end
       end
     end
-    
+
     //mux till inmem
     always_comb begin
        if (dma_bram_we) begin
          bram_we <= dma_bram_we;
          //bram_ce <= 1'b1;
-         bram_data <= dma_bram_data;      
+         bram_data <= dma_bram_data;
          bram_addr <= dma_bram_addr;
       end else begin
          bram_we <= wb.we && ce_in;
          //bram_ce <= 1'b1;
          bram_data <= wb.dat_o;
          bram_addr <= wb.adr[8:0];
-      end 
+      end
     end
 
     //Mux till dct
@@ -263,6 +263,10 @@
       .dct_busy (dct_busy)
       );
 
+
+    assign dob = dob2;
+
+
     //INMEM!!!!!!!!
     RAMB16_S36_S36 #(.SIM_COLLISION_CHECK("NONE")) inmem
      (// WB read & write
@@ -278,7 +282,6 @@
       .ENB(1'b1),.WEB(1'b0),
       .DOB(dob2), .DOPB());
 
-    assign dob = dob2;
     //UTMEM!!!!!!!
     RAMB16_S36_S36 #(.SIM_COLLISION_CHECK("NONE")) utmem
      (// DCT write
@@ -374,7 +377,7 @@
             //mmem.dcten <= 1'b0;
             mmem.wren <= 1'b0;
             dct_busy <= 1'b0;
-            
+
             csr <= 32'd128;
          end
       end else if (csren && wb.we) begin
@@ -456,12 +459,12 @@
     end
 
     // 8 point DCT
-    // control: dcten //ändrat ny långsammare klocka.
+    // control: dcten
     dct dct0
      (.y(y), .x(x),
       .clk_i(wb.clk), .en(mmem.dcten)
     );
-    //Paul: Jag gillar inte eclipse.
+
     q2 Q2 (
       .x_i(mux2_out), .x_o(q),
       .rec_i1(rec_o1),

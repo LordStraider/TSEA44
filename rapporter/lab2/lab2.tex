@@ -10,12 +10,15 @@
 \usepackage{float}
 \usepackage{fancyhdr}
 \usepackage[toc,page]{appendix}
+\usepackage{listings}
 \usepackage{booktabs} % for much better looking tables
 \usepackage{array} % for better arrays (eg matrices) in maths
 \usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
 \usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
 \usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
 
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
 
 %%% HEADERS & FOOTERS
 \author{Jonathan Karlsson, Niclas Olofsson, Paul Nedstrand\\jonka293, nicol, paune\\Grupp 2}
@@ -122,7 +125,7 @@ And of course, the normal parts of a lab report such as a table of contents, an 
 \end{itemize}
 
 
-\begin{table}[h]
+\begin{table}[ht]
 	\centering
  	\begin{tabular}{l l l l}
 		stakeholders 			& change1 	& change2  	& change3 \\
@@ -135,7 +138,7 @@ And of course, the normal parts of a lab report such as a table of contents, an 
 	\label{tab:table1}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[ht]
 	\centering
  	\begin{tabular}{l l l}
 	    change1 & description & description \\
@@ -144,13 +147,27 @@ And of course, the normal parts of a lab report such as a table of contents, an 
 	\end{tabular}
 	
 	\caption{Describes the changes and why they effect the stakeholders.}
-	\label{tab:table1}
+	\label{tab:table2}
 \end{table}
 
+
+
+\newpage
 \begin{appendices}
-\section{kod.sv}
-\section{kod.sv}
-\section{kod.sv}
+\begin{changemargin}{-3cm}{-3cm} 
+\section{jpegtop.sv}
+\lstinputlisting[language=Verilog,caption={Kod för labb 2},label=jpeg_top]{jpeg_top.sv}
+
+\section{transpose.sv}
+\lstinputlisting[language=Verilog,caption={Kod för transponeringen},label=selection-sort]{transpose.sv}
+
+\section{Q2.sv}
+\lstinputlisting[language=Verilog,caption={Kod för kvantiseringen},label=q2]{q2.sv}
+
+\section{jpegdma.sv}
+\lstinputlisting[language=Verilog,caption={Kod för labb 3},label=jpeg_dma]{jpeg_dma.sv}
+\end{changemargin}
 \end{appendices}
+
 
 \end{document}
