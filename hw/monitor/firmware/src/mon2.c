@@ -57,22 +57,52 @@ int main(void) {
   // dma_dct_hw();
   // jpegtest();
 
-  size = 3;
-  code = 0x0004;
-  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
-  
-  size = 16;
-  code = 0x1235;
+  // size = 8;
+  // code = 0x11;
+  // asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  // size = 8;
+  // code = 0x22;
+  // asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  // size = 8;
+  // code = 0x33;
+  // asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  // size = 8;
+  // code = 0xFF;
+  // asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  // size = 8;
+  // code = 0x55;
+  // asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  // size = 8;
+  // code = 0x66;
+  // asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  // size = 8;
+  // code = 0x77;
+  // asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+
+  size = 8;
+  code = 0xf0;
   asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
 
-  size = 5;
-  code = 0x0007;
-  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
-  
   size = 8;
-  code = 0xff;
+  code = 0xf0;
   asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
-  
+
+  size = 8;
+  code = 0x0f;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  size = 8;
+  code = 0x0f;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+
 
   REG32(PAR_BASE_ADDR) = 5;
 
@@ -137,6 +167,23 @@ int main(void) {
 	fl_program(src, dst, len);
       }else if(c == 'b'){
 	boot(0x0, 0x10000); /* never returns */
+      }else if(c == 't'){
+        size = 3;
+        code = 0x0004;
+        asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+        
+        size = 16;
+        code = 0x1235;
+        asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+        size = 5;
+        code = 0x0007;
+        asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+        
+        size = 8;
+        code = 0xff;
+        asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+        printf("done sending stuff\n");
       }else if(c == 'u'){
 	boot(0x100000, 0x300000);  /* never returns */
       }else if(c == 'x'){
@@ -227,6 +274,7 @@ int checksyntax(unsigned char *buf,char cmd,int debug)
     'd',0, /* Magic to let display take one default argument */
     'g',1, /* go */
     'g',0, /* go */
+    't',0, /* test lab4 */
     'l',0, /* load intel hex file*/
     'm',2, /* modify mem*/
     'c',3, /* copy */

@@ -66,7 +66,9 @@ module or1200_vlx_top(/*AUTOARG*/
 
     always_comb begin
         if (bit_reg[8:0] == 8'hff) begin
-            data_to_be_sent <= 16'hff00;
+            //Here we send 00ff (should be ff00) but it will be shifted
+            //to ff00 in or1200_reg2mem.v
+            data_to_be_sent <= 16'h00ff;
         end else begin
             data_to_be_sent <= {8'h0, bit_reg[bit_reg_wr_pos-1 -: 8]};
         end
