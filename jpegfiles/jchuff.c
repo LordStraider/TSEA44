@@ -143,6 +143,7 @@ static void write_header (int width,int height)
 
 #ifdef HW_INST
    /* Initialize the vlx unit (Phase 1)*/
+   printf("%p\n", buffer);
 #endif
 
 }

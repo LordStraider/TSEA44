@@ -58,17 +58,13 @@ module or1200_vlx_top(/*AUTOARG*/
     assign 	stall_cpu_o = stall;
     assign 	spr_dat_o = spr_addr[1] ? vlx_addr_o : spr_dp_dat_o;
 
-
-
-    assign spr_dat_o = 0; //hur använder vi denna????
+   // assign spr_dat_o = 0; //hur använder vi denna????
     assign vlx_addr_o = address_counter;
-    assign dat_o = data_to_be_sent;
+    assign dat_o = {16'b0, data_to_be_sent};
 
    always_ff @(posedge clk_i or posedge rst_i) begin
     if(rst_i) begin
-
         is_sending      <= 0;
-        ack_counter     <= 0;
         bit_reg         <= 0;
         bit_reg_wr_pos  <= 0;
         data_to_be_sent <= 0;
@@ -79,9 +75,7 @@ module or1200_vlx_top(/*AUTOARG*/
     end else begin
 
         if(set_bit_op_i) begin
-         //packning av data.
-          //bit_reg <= spr_dat_i;
-
+        //packning av data.
             running <= 1;
             if (bit_reg_wr_pos <= 7) begin
             //keep shifting in bits
@@ -89,7 +83,7 @@ module or1200_vlx_top(/*AUTOARG*/
 
                 bit_reg <= (bit_reg << num_bits_to_write_i) | dat_i;
 
-                bit_reg_wr_pos += num_bits_to_write_i;
+                bit_reg_wr_pos <= bit_reg_wr_pos + num_bits_to_write_i;
             end
         end else if (bit_reg_wr_pos > 7) begin
             //write data to Store Unit
@@ -100,13 +94,13 @@ module or1200_vlx_top(/*AUTOARG*/
             /*we want to send ff00 if ff is encountered in bitreg [8:0]*/
             if (bit_reg[8:0] == 8'hff) begin
                 data_to_be_sent <= 16'hff00;
-                address_counter += 2;
-                bit_reg_wr_pos -= 8;
+                address_counter <= address_counter + 2;
+                bit_reg_wr_pos <= bit_reg_wr_pos - 8;
             end else
                 data_to_be_sent <= bit_reg[bit_reg_wr_pos-1 -: 8];
                 ready_to_send <= 1;
-                address_counter += 1;
-                bit_reg_wr_pos -= 8;
+                address_counter <= address_counter + 1;
+                bit_reg_wr_pos <= bit_reg_wr_pos - 8;
             end
 
             is_sending <= 1;
@@ -123,7 +117,7 @@ module or1200_vlx_top(/*AUTOARG*/
       if (rst_i)
         ack_counter <= 0;
       else if (ack_i == 1 && running)
-        ack_counter -=1;
+        ack_counter <= ack_counter - 1;
       else if (bit_reg_wr_pos + num_bits_to_write_i > 15 && set_bit_op_i)
         ack_counter <= 2;
       else if (bit_reg_wr_pos + num_bits_to_write_i > 7  && set_bit_op_i)
