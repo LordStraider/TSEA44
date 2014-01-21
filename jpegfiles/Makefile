@@ -5,12 +5,12 @@
 # The name of your C compiler. You can change this to plain gcc if
 # you don't want to cross compile your application
 #
-# Uncomment this for or32  
+# Uncomment this for or32
 CC = or32-uclibc-gcc
 
 # You may need to adjust these cc options:
-#CFLAGS=  -I. -r -d  -O2 -Wall  -DHW_DCT -DHW_DMA -DHW_INST 
-CFLAGS=  -I. -r -d  -O2 -Wall  -DHW_DCT -DHW_DMA
+CFLAGS=  -I. -r -d  -O2 -Wall  -DHW_DCT -DHW_DMA -DHW_INST
+#CFLAGS=  -I. -r -d  -O2 -Wall  -DHW_DCT -DHW_DMA
 #CFLAGS=  -I. -r -d  -O2 -Wall
 LDFLAGS= -r -d
 
@@ -30,14 +30,14 @@ CLIBOBJECTS= jchuff.o jcdctmgr.o jdct.o perfctr.o
 # files included by source files
 INCLUDES= jchuff.h my_encoder.h perfctr.h jdct.h
 
-all:  jpegtest 
+all:  jpegtest
 
 # sample programs:
 
 jpegtest: jpegtest.o $(CLIBOBJECTS) $(INCLUDES)
-	$(LN) $(LDFLAGS) jpegtest.o $(CLIBOBJECTS) -o j 
+	$(LN) $(LDFLAGS) jpegtest.o $(CLIBOBJECTS) -o j
 
-webcam.cgi: webcam.o $(CLIBOBJECTS) $(COMOBJECTS) 
+webcam.cgi: webcam.o $(CLIBOBJECTS) $(COMOBJECTS)
 	$(LN) $(LDFLAGS) webcam.o $(CLIBOBJECTS) $(COMOBJECTS) -o webcam.cgi
 
 # Installation rules:
