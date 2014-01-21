@@ -155,7 +155,7 @@ module or1200_vlx_top(/*AUTOARG*/
         else if (recieved_set_bit) begin
             if (bit_reg_wr_pos > 15)
                 ack_counter <= 2;
-            else
+            else if (bit_reg_wr_pos > 7)
                 ack_counter <= 1;
             end
         end else if ((ack_counter != ack_counter_flopp) && data_to_be_sent == 8'hff) begin
