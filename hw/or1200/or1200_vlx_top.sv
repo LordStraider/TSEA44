@@ -69,21 +69,34 @@ module or1200_vlx_top(/*AUTOARG*/
             //Here we send 00ff (should be ff00) but it will be shifted
             //to ff00 in or1200_reg2mem.v
             data_to_be_sent <= 16'h00ff;
+        end else if (bit_reg_wr_pos < 8) begin
+            data_to_be_sent <= 0;
         end else begin
             data_to_be_sent <= {8'h0, bit_reg[bit_reg_wr_pos-1 -: 8]};
         end
     end
 
 
+    always @(posedge clk_i) begin
+        if(rst_i) begin
+            is_sending      <= 0;
+        end else if (bit_reg_wr_pos > 7 && ~ack_i && ack_counter > 0) begin
+            is_sending <= 1;
+        end else begin
+            is_sending <= 0;
+        end
+    end
+
+//Uber commando i modelsim:: do slave0.do - lägger till en minnes mojj på bussen..
+
    always_ff @(posedge clk_i or posedge rst_i) begin
     if(rst_i) begin
-        is_sending      <= 0;
         bit_reg         <= 0;
         bit_reg_wr_pos  <= 0;
         running <= 0;
         ready_to_send <= 0;
         this_ack <= ack_counter;
-        address_counter <= 32'h383c2d0; //spr_address shofräs egentligen
+        address_counter <= 32'h383c2d0;
 
     end else begin
 
@@ -94,6 +107,7 @@ module or1200_vlx_top(/*AUTOARG*/
             //keep shifting in bits
                 ready_to_send <= 0;
 
+                //bit_reg <= 32'h55;
                 bit_reg <= (bit_reg << num_bits_to_write_i) | dat_i;
 
                 if (bit_reg_wr_pos + num_bits_to_write_i > 15)
@@ -121,11 +135,8 @@ module or1200_vlx_top(/*AUTOARG*/
                 bit_reg_wr_pos <= bit_reg_wr_pos - 8;
             end
 
-            is_sending <= 1;
-
             if (ack_counter == 0) begin
                 running <= 0;
-                is_sending <= 0;
             end
         end
     end

@@ -86,20 +86,24 @@ int main(void) {
   // asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
 
 
-  size = 8;
-  code = 0xf0;
+  size = 3;
+  code = 0x5;
   asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
 
-  size = 8;
-  code = 0xf0;
+  size = 11;
+  code = 0x25;
   asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
 
-  size = 8;
-  code = 0x0f;
+  size = 1;
+  code = 0x1;
   asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
 
-  size = 8;
-  code = 0x0f;
+  size = 9;
+  code = 0x6;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  size = 17;
+  code = 0x31;
   asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
 
 
