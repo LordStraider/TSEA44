@@ -179,8 +179,9 @@ static void emit_bits (unsigned int code, int size)
    //i &= 0xEEEE;
 //for (i = 0; i < 100; i++) {printf("im in emitbits");}
    /* Emit bits using the vlx unit (Phase 2)*/
-   printf("code: %X, size: %i \n", i, size);
-  asm volatile("l.sd 0x0(%0),%1" : : "r"(i), "r"(size));
+
+  printf("  size = %d;\n  code = 0x%X;\n  asm volatile(\"l.sd 0x0(%%0), %%1\" : : \"r\"(code), \"r\"(size)", size, i);
+  //asm volatile("l.sd 0x0(%0),%1" : : "r"(i), "r"(size));
 
 #else
    new_put_buffer = (int) code;

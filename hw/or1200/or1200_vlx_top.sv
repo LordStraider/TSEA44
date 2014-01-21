@@ -43,6 +43,7 @@ module or1200_vlx_top(/*AUTOARG*/
     reg [31:0] address_counter;
 
     reg [2:0] ack_counter;
+    reg [2:0] ack_counter_flopp;
     reg stall, next_stall;
     reg send_00;
     reg recieved_set_bit;
@@ -148,20 +149,13 @@ module or1200_vlx_top(/*AUTOARG*/
         else if (ack_i == 1 && is_sending)
             ack_counter <= ack_counter - 1;
         else if (recieved_set_bit) begin
-            if (bit_reg_wr_pos > 15) begin
-                if (bit_reg[bit_reg_wr_pos-1 -: 16] == 16'hffff)
-                    ack_counter <= 4;
-                else if (bit_reg[bit_reg_wr_pos-1 -: 8] == 8'hff ||
-                         bit_reg[bit_reg_wr_pos-9 -: 8] == 8'hff)
-                    ack_counter <= 3;
-                else
-                    ack_counter <= 2;
-            end else if (bit_reg_wr_pos > 7) begin
-                if (bit_reg[bit_reg_wr_pos-1 -: 8] == 8'hff)
-                    ack_counter <= 2;
-                else
-                    ack_counter <= 1;
+            if (bit_reg_wr_pos > 15)
+                ack_counter <= 2;
+            else
+                ack_counter <= 1;
             end
+        end else if ((ack_counter != ack_counter_flopp) && data_to_be_sent == 8'hff) begin
+            ack_counter <= ack_counter + 1;
         end
     end
 
