@@ -228,7 +228,7 @@ void encode_image(void)
    //printf("Starting the Grunka...\n");
    REG32(0x96001810) = 1;
 
-   for(i = 0; i < MCU_count; i++)
+   for(i = 0; i < 1; i++)
    {
       forward_DCT(MCU_block);
       encode_mcu_huff(MCU_block);

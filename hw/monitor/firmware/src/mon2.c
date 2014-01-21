@@ -56,31 +56,66 @@ int main(void) {
   // dct_sw();
   // dma_dct_hw();
   // jpegtest();
-  size = 16;
-  code = 0x55ff;
+  size = 3;
+  code = 0x7;
   asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
   size = 16;
-  code = 0xff55;
+  code = 0xffee;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  size = 10;
+  code = 0xf;
   asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
 
   size = 8;
   code = 0xff;
   asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
 
-  size = 8;
-  code = 0x22;
+  size = 1;
+  code = 0x1;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+  size = 2;
+  code = 0x3;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+  size = 5;
+  code = 0x3;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+  size = 7;
+  code = 0x3;
   asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
 
-  size = 2;
-  code = 0x3;
+  size = 8;
+  code = 0x33;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  size = 16;
+  code = 0xffff;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+    size = 3;
+  code = 0x7;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+  size = 16;
+  code = 0xffee;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  size = 10;
+  code = 0xf;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  size = 8;
+  code = 0xff;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  size = 1;
+  code = 0x1;
   asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
   size = 2;
   code = 0x3;
   asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
-  size = 2;
+  size = 5;
   code = 0x3;
   asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
-  size = 2;
+  size = 7;
   code = 0x3;
   asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
 

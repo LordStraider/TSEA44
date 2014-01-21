@@ -39,7 +39,7 @@ module or1200_vlx_top(/*AUTOARG*/
 
     reg [31:0]  bit_reg;
     reg [5:0]   bit_reg_wr_pos;
-    reg [15:0] data_to_be_sent;
+    reg [7:0] data_to_be_sent;
     reg [31:0] address_counter;
 
     reg [2:0] ack_counter;
@@ -62,7 +62,7 @@ module or1200_vlx_top(/*AUTOARG*/
 
    // assign spr_dat_o = 0; //hur använder vi denna????
     assign vlx_addr_o = address_counter;
-    assign dat_o = {16'b0, data_to_be_sent};
+    assign dat_o = {24'b0, data_to_be_sent};
 
 
     always @(posedge clk_i) begin
@@ -78,7 +78,15 @@ module or1200_vlx_top(/*AUTOARG*/
             data_to_be_sent <= 8'hff;
             send_00 <= 1;
         end else begin
-            data_to_be_sent <= {8'h0, bit_reg[bit_reg_wr_pos-1 -: 8]};
+            //data_to_be_sent <= bit_reg[bit_reg_wr_pos-1 -: 8];
+            data_to_be_sent[7] <= bit_reg[bit_reg_wr_pos-1];
+            data_to_be_sent[6] <= bit_reg[bit_reg_wr_pos-2];
+            data_to_be_sent[5] <= bit_reg[bit_reg_wr_pos-3];
+            data_to_be_sent[4] <= bit_reg[bit_reg_wr_pos-4];
+            data_to_be_sent[3] <= bit_reg[bit_reg_wr_pos-5];
+            data_to_be_sent[2] <= bit_reg[bit_reg_wr_pos-6];
+            data_to_be_sent[1] <= bit_reg[bit_reg_wr_pos-7];
+            data_to_be_sent[0] <= bit_reg[bit_reg_wr_pos-8];
         end
     end
 
@@ -93,13 +101,13 @@ module or1200_vlx_top(/*AUTOARG*/
         end
     end
 
-//Uber commando i modelsim:: do slave0.do - lägger till en minnes mojj på bussen..
+//Uber commando i modelsim:: do slave0.do - lägger till en minnesmojj på bussen..
 
    always_ff @(posedge clk_i or posedge rst_i) begin
     if(rst_i) begin
         bit_reg         <= 0;
         bit_reg_wr_pos  <= 0;
-        address_counter <= 32'h383c2d0;
+        address_counter <= 32'h383c1d0;
     end else begin
         if(set_bit_op_i) begin
         //packning av data.
@@ -140,18 +148,20 @@ module or1200_vlx_top(/*AUTOARG*/
         else if (ack_i == 1 && is_sending)
             ack_counter <= ack_counter - 1;
         else if (recieved_set_bit) begin
-            if (bit_reg[15:0] == 16'hffff)
-                ack_counter <= 4;
-            else if (bit_reg[15:8] == 8'hff)
-                ack_counter <= 3;
-            else if (bit_reg[7:0] == 8'hff && num_bits_to_write_i > 15)
-                ack_counter <= 3;
-            else if (bit_reg[7:0] == 8'hff)
-                ack_counter <= 2;
-            else if (bit_reg_wr_pos > 15)
-                ack_counter <= 2;
-            else if (bit_reg_wr_pos > 7 )
-                ack_counter <= 1;
+            if (bit_reg_wr_pos > 15) begin
+                if (bit_reg[bit_reg_wr_pos-1 -: 16] == 16'hffff)
+                    ack_counter <= 4;
+                else if (bit_reg[bit_reg_wr_pos-1 -: 8] == 8'hff ||
+                         bit_reg[bit_reg_wr_pos-9 -: 8] == 8'hff)
+                    ack_counter <= 3;
+                else
+                    ack_counter <= 2;
+            end else if (bit_reg_wr_pos > 7) begin
+                if (bit_reg[bit_reg_wr_pos-1 -: 8] == 8'hff)
+                    ack_counter <= 2;
+                else
+                    ack_counter <= 1;
+            end
         end
     end
 
