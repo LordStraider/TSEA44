@@ -144,6 +144,10 @@ module or1200_vlx_top(/*AUTOARG*/
     end
 
     always @(posedge clk_i) begin
+        ack_counter_flopp <= ack_counter;
+    end
+
+    always @(posedge clk_i) begin
         if (rst_i)
             ack_counter <= 0;
         else if (ack_i == 1 && is_sending)
