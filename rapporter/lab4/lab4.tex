@@ -1,0 +1,111 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[a4paper]{article}
+
+\usepackage[swedish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[pdftex]{graphicx}
+\usepackage{float}
+\usepackage{fancyhdr}
+
+
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+
+
+%%% HEADERS & FOOTERS
+\author{Jonathan Karlsson, Niclas Olofsson, Paul Nedstrand\\jonka293, nicol271, paune\\Grupp 2}
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{1pt} % customise the layout...
+\fancyhead[LO,LE]{Jonathan, Niclas, Paul\\Rapportmall}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%%% SECTION TITLE APPEARANCE
+%\usepackage{sectsty}
+%\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+%% (This matches ConTeXt defaults)
+%
+%%%% ToC (table of contents) APPEARANCE
+%\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+%\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+%\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+%\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{Labrapport 4\\ \vspace{2 mm} {\large TSEA44}}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed
+
+\begin{document}
+\maketitle
+
+\section{Inledning}
+Det fjärde och sista miniprojektet i kursen, lab 4, handlar om att skapa en egen assembler-instruktion
+för skrivning till minnet. Syftet med denna instruktion är att snabba upp koden för att
+Huffman-koda den resulterade bilden från vår jpeg-accelerator.\\
+Instruktionen tar en längd samt ett data som argument, och sparar all inkommen data
+i en buffer tills minst 8 bitar erhållits. I detta fall skrivs den buffrade datan till minnet;
+en byte åt gången och så många bytes som möjligt (maximalt två).
+
+
+\section{Design}
+\begin{itemize}
+\item How does your hardware work?
+\end{itemize}
+
+\section{Resultat}
+\subsection{Verifiering av hårdvarans funktion}
+För att kontrollera att vår hårdvara fungerade, började vi med att anropa vår instruktion från det
+montor-program som körs när datorn startar. Efter en del felsökning och justering övergick vi till att testa
+koden på en FPGA med samma monitor-program. Vi använde monitorns inbyggda kommando för att visa minnesadresser
+för att verifiera att rätt data skrevs till minnet. Ganska snabbt insåg vi behovet av att kunna felsöka
+även i denna miljö utan att behöva syntetisera om koden varje gång, och skrev därför testprogrammet asm.c
+som vi kunne ladda in i minnet och köra via monitorn.\\
+Det största problem vi hade under denna lab, och även det svåraste vi fått under labkursen,
+var att sista biten i varje byte vi skrev till minnet blev fel. Till skillnad från de tidigare fel
+vi fått under kursen så fick vi varken några varningar av värde vid syntetiseringen, konstiga
+odefinierade signaler eller märkliga läs/skrivcykler vid simulering.\\
+Till sist testades även hårdvaran genom att instruktionen användes i jpegtest. jchuff.c modifierades,
+för att använda set bit-instruktionen för skrivning till minnet, och en korrekt bild genererades.
+
+\subsection{Prestanda och FPGA-användning}
+Vi använde vårt testprogram och den prestandaräknare vi gjorde i lab 1 för att mäta prestandan på
+vår set bit-instruktion. Resultatet var att...% TODO
+
+\begin{itemize}
+\item What is the performance with and without the set bit hardware? This should include measurements of both the entire application and the set bit instruction by itself, assuming good code in a software implementation (take a look at how the software solution in jpegfiles).
+\item How much of the FPGA does your hardware use?
+\item What is the performance of your final system?
+\end{itemize}
+
+\section{Slutsats}
+
+
+\section{Appendix: Källkod}
+
+
+\section{What to Include in the Lab Report 4}
+The lab report should contain all source code that you have written. (The source code should of course be commented.) We would also like you to include a block diagram of your hardware. If you have written any FSM you should include a state graph of the FSM.
+We would also like you to discuss the following questions in detail somewhere in your lab report:
+\begin{itemize}
+%\item How did you verify that your set bit hardware worked?
+%\item What was the hardest problems you encountered during the entire lab course?
+
+\item How would your design change if you had to achieve even higher speed using more hardware?
+\item How would your design change if you had to use less hardware at the cost of a slower solution?
+\item What are the problems with using your new hardware in a multitasking operating system? How can the problem(s) be solved?
+
+And of course, the normal parts of a lab report such as a table of contents, an introduction, a conclusion, etc. The source code that you have written should be included in appendices and referred to from the main document.
+
+\end{itemize}
+
+
+\end{document}
