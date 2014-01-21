@@ -163,3 +163,6 @@
 # Loading /sw/xilinx/ise_11.1i/ISE/verilog/mti_se/unisims_ver.dcm_clock_lost
 # Loading /nobackup/local/nicol271/work.wb_arb_rr
 # Loading /nobackup/local/nicol271/work.pkmc_rowcheck
+do slave0.do
+run 300 us
+#  Warning : Input clock period of, 1362.500 ns, on the CLKIN port of instance dafk_tb.computer0.dafk_top.sys_sig_gen.del0.DCM_INST.genblk1.i_max_clkin exceeds allotted value of 1000.000 ns at simulation time 1402.500 ns.

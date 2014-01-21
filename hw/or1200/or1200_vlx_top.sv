@@ -36,18 +36,17 @@ module or1200_vlx_top(/*AUTOARG*/
 
     // own defined signal registerzzzzzzz
     reg     is_sending;
-    reg [1:0]   this_ack;
 
     reg [31:0]  bit_reg;
     reg [5:0]   bit_reg_wr_pos;
     reg [15:0] data_to_be_sent;
-    reg ready_to_send;
     reg [31:0] address_counter;
 
-    reg [1:0] ack_counter;
-    reg [1:0] nxt_ack_counter;
-    reg stall, next_stall, running;
+    reg [2:0] ack_counter;
+    reg stall, next_stall;
     reg send_00;
+    reg recieved_set_bit;
+    reg ack_flopp;
 
     assign store_byte_o = is_sending;
 
@@ -66,18 +65,18 @@ module or1200_vlx_top(/*AUTOARG*/
     assign dat_o = {16'b0, data_to_be_sent};
 
 
-    always_comb begin
+    always @(posedge clk_i) begin
         if (rst_i) begin
-            send_00 <= 0;
-        end else if (send_00) begin
             data_to_be_sent <= 0;
-            if (ack_counter == 0)
-                send_00 <= 0;
-        end else if (bit_reg[8:0] == 8'hff) begin
-            data_to_be_sent <= 8'hff;
-            send_00 <= 1;
+            send_00 <= 0;
+        end else if (ack_flopp && send_00) begin
+            data_to_be_sent <= 0;
+            send_00 <= 0;
         end else if (bit_reg_wr_pos < 8) begin
             data_to_be_sent <= 0;
+        end else if (bit_reg[bit_reg_wr_pos-1 -: 8] == 8'hff) begin
+            data_to_be_sent <= 8'hff;
+            send_00 <= 1;
         end else begin
             data_to_be_sent <= {8'h0, bit_reg[bit_reg_wr_pos-1 -: 8]};
         end
@@ -87,9 +86,7 @@ module or1200_vlx_top(/*AUTOARG*/
     always @(posedge clk_i) begin
         if(rst_i) begin
             is_sending <= 0;
-        end else if (send_00 && ~ack_i && ack_counter > 0) begin
-            is_sending <= 1;
-        end else if (bit_reg_wr_pos > 7 && ~ack_i && ack_counter > 0) begin
+        end else if ((send_00 || bit_reg_wr_pos > 7) && ~ack_i && ack_counter > 0) begin
             is_sending <= 1;
         end else begin
             is_sending <= 0;
@@ -102,81 +99,67 @@ module or1200_vlx_top(/*AUTOARG*/
     if(rst_i) begin
         bit_reg         <= 0;
         bit_reg_wr_pos  <= 0;
-        running <= 0;
-        ready_to_send <= 0;
-        this_ack <= ack_counter;
         address_counter <= 32'h383c2d0;
-
     end else begin
-
         if(set_bit_op_i) begin
         //packning av data.
-            running <= 1;
             if (bit_reg_wr_pos <= 7) begin
             //keep shifting in bits
-                ready_to_send <= 0;
 
                 //bit_reg <= 32'h55;
                 bit_reg <= (bit_reg << num_bits_to_write_i) | dat_i;
 
-                if (dat_i[8:0] == 8'hff)
-                    this_ack <= 2;
-                else if (bit_reg[8:0] == 8'hff)
-                    this_ack <= 2;
-                else if (bit_reg_wr_pos + num_bits_to_write_i > 15)
-                    this_ack <= 2;
-                else if (bit_reg_wr_pos + num_bits_to_write_i > 7)
-                    this_ack <= 1;
-                else
-                    this_ack <= 0;
-
                 bit_reg_wr_pos <= bit_reg_wr_pos + num_bits_to_write_i;
             end
-        end else if ((send_00 || bit_reg_wr_pos > 7) && this_ack != ack_counter) begin
+        end else if ((send_00 || bit_reg_wr_pos > 7) && ack_flopp) begin
             //write data to Store Unit
             bit_reg[bit_reg_wr_pos-1 -: 8] <= 8'h0;
-//            bit_reg <= bit_reg >> 8;
-            this_ack <= ack_counter;
 
             /*we want to send ff00 if ff is encountered in bitreg [8:0]*/
             if (send_00) begin
                 address_counter <= address_counter + 1;
-            end else if (bit_reg[8:0] == 8'hff) begin
-                address_counter <= address_counter + 1;
             end else begin
-                ready_to_send <= 1;
                 address_counter <= address_counter + 1;
                 bit_reg_wr_pos <= bit_reg_wr_pos - 8;
             end
-
-            if (ack_counter == 0) begin
-                running <= 0;
-            end
         end
+      end
     end
-    end
-
 
     always @(posedge clk_i) begin
-      if (rst_i)
-        ack_counter <= 0;
-      else if (ack_i == 1 && is_sending)
-        ack_counter <= ack_counter - 1;
-      else if (dat_i[8:0] == 8'hff && set_bit_op_i)
-        ack_counter <= 2;
-      else if (bit_reg[8:0] == 8'hff && set_bit_op_i)
-        ack_counter <= 2;
-      else if (bit_reg_wr_pos + num_bits_to_write_i > 15 && set_bit_op_i)
-        ack_counter <= 2;
-      else if (bit_reg_wr_pos + num_bits_to_write_i > 7  && set_bit_op_i)
-        ack_counter <= 1;
+        ack_flopp <= ack_i;
+    end
+
+    always @(posedge clk_i) begin
+        recieved_set_bit <= set_bit_op_i;
+    end
+
+    always @(posedge clk_i) begin
+        if (rst_i)
+            ack_counter <= 0;
+        else if (ack_i == 1 && is_sending)
+            ack_counter <= ack_counter - 1;
+        else if (recieved_set_bit) begin
+            if (bit_reg[15:0] == 16'hffff)
+                ack_counter <= 4;
+            else if (bit_reg[15:8] == 8'hff)
+                ack_counter <= 3;
+            else if (bit_reg[7:0] == 8'hff && num_bits_to_write_i > 15)
+                ack_counter <= 3;
+            else if (bit_reg[7:0] == 8'hff)
+                ack_counter <= 2;
+            else if (bit_reg_wr_pos > 15)
+                ack_counter <= 2;
+            else if (bit_reg_wr_pos > 7 )
+                ack_counter <= 1;
+        end
     end
 
 
     always @(posedge clk_i) begin
         if (rst_i) begin
             next_stall <= 0;
-        end else if (set_bit_op_i == 1 || ack_counter != 0) begin
+        end else if (set_bit_op_i == 1 || recieved_set_bit == 1) begin
             next_stall <= 1;
         end else if (ack_counter == 0) begin
             next_stall <= 0;

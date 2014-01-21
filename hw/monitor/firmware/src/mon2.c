@@ -71,12 +71,25 @@ int main(void) {
   code = 0x22;
   asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
 
+  size = 2;
+  code = 0x3;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+  size = 2;
+  code = 0x3;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+  size = 2;
+  code = 0x3;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+  size = 2;
+  code = 0x3;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
   size = 8;
   code = 0x33;
   asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
 
-  size = 8;
-  code = 0xFF;
+  size = 16;
+  code = 0xffff;
   asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
 
 
