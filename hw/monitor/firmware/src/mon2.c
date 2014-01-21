@@ -56,13 +56,100 @@ int main(void) {
   // dct_sw();
   // dma_dct_hw();
   // jpegtest();
-  // size = 16;
-  // code = 0x1235;
-  // asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
-  
-  // size = 3;
-  // code = 0x0004;
-  // asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+  size = 3;
+  code = 0x7;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+  size = 16;
+  code = 0xffee;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  size = 10;
+  code = 0xf;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  size = 8;
+  code = 0xff;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  size = 1;
+  code = 0x1;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+  size = 2;
+  code = 0x3;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+  size = 5;
+  code = 0x3;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+  size = 7;
+  code = 0x3;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  size = 8;
+  code = 0x33;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  size = 16;
+  code = 0xffff;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+    size = 3;
+  code = 0x7;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+  size = 16;
+  code = 0xffee;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  size = 10;
+  code = 0xf;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  size = 8;
+  code = 0xff;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  size = 1;
+  code = 0x1;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+  size = 2;
+  code = 0x3;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+  size = 5;
+  code = 0x3;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+  size = 7;
+  code = 0x3;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  size = 8;
+  code = 0x33;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  size = 16;
+  code = 0xffff;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+
+/*
+  size = 3;
+  code = 0x5;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  size = 11;
+  code = 0x25;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  size = 1;
+  code = 0x1;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  size = 9;
+  code = 0x6;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+  size = 17;
+  code = 0x31;
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+*/
 
   REG32(PAR_BASE_ADDR) = 5;
 
@@ -127,6 +214,23 @@ int main(void) {
 	fl_program(src, dst, len);
       }else if(c == 'b'){
 	boot(0x0, 0x10000); /* never returns */
+      }else if(c == 't'){
+        size = 3;
+        code = 0x0004;
+        asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+        
+        size = 16;
+        code = 0x1235;
+        asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+
+        size = 5;
+        code = 0x0007;
+        asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+        
+        size = 8;
+        code = 0xff;
+        asm volatile("l.sd 0x0(%0),%1" : : "r"(code), "r"(size));
+        printf("done sending stuff\n");
       }else if(c == 'u'){
 	boot(0x100000, 0x300000);  /* never returns */
       }else if(c == 'x'){
@@ -217,6 +321,7 @@ int checksyntax(unsigned char *buf,char cmd,int debug)
     'd',0, /* Magic to let display take one default argument */
     'g',1, /* go */
     'g',0, /* go */
+    't',0, /* test lab4 */
     'l',0, /* load intel hex file*/
     'm',2, /* modify mem*/
     'c',3, /* copy */

@@ -39,12 +39,14 @@ module or1200_vlx_top(/*AUTOARG*/
 
     reg [31:0]  bit_reg;
     reg [5:0]   bit_reg_wr_pos;
-    reg [15:0] data_to_be_sent;
-    reg ready_to_send;
+    reg [7:0] data_to_be_sent;
     reg [31:0] address_counter;
 
-    reg [1:0] ack_counter;
-    reg stall, next_stall, running;
+    reg [2:0] ack_counter;
+    reg stall, next_stall;
+    reg send_00;
+    reg recieved_set_bit;
+    reg ack_flopp;
 
     assign store_byte_o = is_sending;
 
@@ -60,75 +62,114 @@ module or1200_vlx_top(/*AUTOARG*/
 
    // assign spr_dat_o = 0; //hur använder vi denna????
     assign vlx_addr_o = address_counter;
-    assign dat_o = {16'b0, data_to_be_sent};
+    assign dat_o = {24'b0, data_to_be_sent};
+
+
+    always @(posedge clk_i) begin
+        if (rst_i) begin
+            data_to_be_sent <= 0;
+            send_00 <= 0;
+        end else if (ack_flopp && send_00) begin
+            data_to_be_sent <= 0;
+            send_00 <= 0;
+        end else if (bit_reg_wr_pos < 8) begin
+            data_to_be_sent <= 0;
+        end else if (bit_reg[bit_reg_wr_pos-1 -: 8] == 8'hff) begin
+            data_to_be_sent <= 8'hff;
+            send_00 <= 1;
+        end else begin
+            //data_to_be_sent <= bit_reg[bit_reg_wr_pos-1 -: 8];
+            data_to_be_sent[7] <= bit_reg[bit_reg_wr_pos-1];
+            data_to_be_sent[6] <= bit_reg[bit_reg_wr_pos-2];
+            data_to_be_sent[5] <= bit_reg[bit_reg_wr_pos-3];
+            data_to_be_sent[4] <= bit_reg[bit_reg_wr_pos-4];
+            data_to_be_sent[3] <= bit_reg[bit_reg_wr_pos-5];
+            data_to_be_sent[2] <= bit_reg[bit_reg_wr_pos-6];
+            data_to_be_sent[1] <= bit_reg[bit_reg_wr_pos-7];
+            data_to_be_sent[0] <= bit_reg[bit_reg_wr_pos-8];
+        end
+    end
+
+
+    always @(posedge clk_i) begin
+        if(rst_i) begin
+            is_sending <= 0;
+        end else if ((send_00 || bit_reg_wr_pos > 7) && ~ack_i && ack_counter > 0) begin
+            is_sending <= 1;
+        end else begin
+            is_sending <= 0;
+        end
+    end
+
+//Uber commando i modelsim:: do slave0.do - lägger till en minnesmojj på bussen..
 
    always_ff @(posedge clk_i or posedge rst_i) begin
     if(rst_i) begin
-        is_sending      <= 0;
         bit_reg         <= 0;
         bit_reg_wr_pos  <= 0;
-        data_to_be_sent <= 0;
-        running <= 0;
-        ready_to_send <= 0;
-        address_counter <= 0; //spr_address shofräs egentligen
-
+        address_counter <= 32'h383c1d0;
     end else begin
-
         if(set_bit_op_i) begin
         //packning av data.
-            running <= 1;
             if (bit_reg_wr_pos <= 7) begin
             //keep shifting in bits
-                ready_to_send <= 0;
 
+                //bit_reg <= 32'h55;
                 bit_reg <= (bit_reg << num_bits_to_write_i) | dat_i;
 
                 bit_reg_wr_pos <= bit_reg_wr_pos + num_bits_to_write_i;
             end
-        end else if (bit_reg_wr_pos > 7) begin
+        end else if ((send_00 || bit_reg_wr_pos > 7) && ack_flopp) begin
             //write data to Store Unit
-
-            bit_reg <= bit_reg >> 8;
-
+            bit_reg[bit_reg_wr_pos-1 -: 8] <= 8'h0;
 
             /*we want to send ff00 if ff is encountered in bitreg [8:0]*/
-            if (bit_reg[8:0] == 8'hff) begin
-                data_to_be_sent <= 16'hff00;
-                address_counter <= address_counter + 2;
-                bit_reg_wr_pos <= bit_reg_wr_pos - 8;
-            end else
-                data_to_be_sent <= bit_reg[bit_reg_wr_pos-1 -: 8];
-                ready_to_send <= 1;
+            if (send_00) begin
+                address_counter <= address_counter + 1;
+            end else begin
                 address_counter <= address_counter + 1;
                 bit_reg_wr_pos <= bit_reg_wr_pos - 8;
             end
+        end
+      end
+    end
 
-            is_sending <= 1;
+    always @(posedge clk_i) begin
+        ack_flopp <= ack_i;
+    end
 
-            if (ack_counter == 0) begin
-                running <= 0;
-                is_sending <= 0;
+    always @(posedge clk_i) begin
+        recieved_set_bit <= set_bit_op_i;
+    end
+
+    always @(posedge clk_i) begin
+        if (rst_i)
+            ack_counter <= 0;
+        else if (ack_i == 1 && is_sending)
+            ack_counter <= ack_counter - 1;
+        else if (recieved_set_bit) begin
+            if (bit_reg_wr_pos > 15) begin
+                if (bit_reg[bit_reg_wr_pos-1 -: 16] == 16'hffff)
+                    ack_counter <= 4;
+                else if (bit_reg[bit_reg_wr_pos-1 -: 8] == 8'hff ||
+                         bit_reg[bit_reg_wr_pos-9 -: 8] == 8'hff)
+                    ack_counter <= 3;
+                else
+                    ack_counter <= 2;
+            end else if (bit_reg_wr_pos > 7) begin
+                if (bit_reg[bit_reg_wr_pos-1 -: 8] == 8'hff)
+                    ack_counter <= 2;
+                else
+                    ack_counter <= 1;
             end
         end
     end
 
 
     always @(posedge clk_i) begin
-      if (rst_i)
-        ack_counter <= 0;
-      else if (ack_i == 1 && running)
-        ack_counter <= ack_counter - 1;
-      else if (bit_reg_wr_pos + num_bits_to_write_i > 15 && set_bit_op_i)
-        ack_counter <= 2;
-      else if (bit_reg_wr_pos + num_bits_to_write_i > 7  && set_bit_op_i)
-        ack_counter <= 1;
-    end
-
-
-    always @(posedge clk_i) begin
         if (rst_i) begin
             next_stall <= 0;
-        end else if (set_bit_op_i == 1 || ack_counter != 0) begin
+        end else if (set_bit_op_i == 1 || recieved_set_bit == 1) begin
             next_stall <= 1;
         end else if (ack_counter == 0) begin
             next_stall <= 0;

@@ -95,7 +95,7 @@ void init_huffman (FILE *fp,int width,int height)
    write_header(width,height);
 }
 
-  
+
 
 static void write_header (int width,int height)
 {
@@ -141,9 +141,11 @@ static void write_header (int width,int height)
    buffer[97] = (width & 0xff) >> 0;
    next_buffer = sizeof(header);
 
+  printf("Address is %p\n", buffer);
+
 #ifdef HW_INST
    /* Initialize the vlx unit (Phase 1)*/
-   printf("%p\n", buffer);
+
 #endif
 
 }
@@ -169,24 +171,33 @@ static void emit_bits (unsigned int code, int size)
    unsigned int startcycle;
 
    startcycle = gettimer();
+
 #ifdef HW_INST
-   /* Emit bits using the vlx unit (Phase 2)*/   
+   int i = (int) code;
+   i &= (1<<size) - 1;
+
+   //i &= 0xEEEE;
+//for (i = 0; i < 100; i++) {printf("im in emitbits");}
+   /* Emit bits using the vlx unit (Phase 2)*/
+   printf("code: %X, size: %i \n", i, size);
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(i), "r"(size));
+
 #else
    new_put_buffer = (int) code;
-   
+
 // Add new bits to old bits. If at least 8 bits then write a char to buffer, save the rest until we get more bits.
-   
+
    new_put_buffer &= (1<<size) - 1; /* mask off any extra bits in code */
-   
+
    current_buffer_bit += size;		/* new number of bits in buffer */
-   
+
    new_put_buffer = new_put_buffer << (24 - current_buffer_bit); /* align incoming bits */
-   
+
    new_put_buffer = new_put_buffer | old_put_buffer; /* and merge with old buffer contents */
 
    while (current_buffer_bit >= 8) {
      int c = ((new_put_buffer >> 16) & 0xFF); // Mask out the 8 bits we want
-    
+
     buffer[next_buffer] = (char) c;
     next_buffer++;
     if (c == 0xFF) {		// 0xFF is a reserved code for tags, if we get image data with an FF value it has to be followed by 0x00.
@@ -208,6 +219,7 @@ static void flush_bits ()
 {
 #ifdef HW_INST
     /* Flush bits remaining in the vlx buffer (Phase 3) */
+    emit_bits(0x00, 7);  // TODO: Should we send something else instead of 0x00?
 #else
    emit_bits( 0x7F, 7);  /* fill any partial byte with ones */
    old_put_buffer = 0; /* and reset bit-buffer to empty */
@@ -225,21 +237,21 @@ void encode_mcu_huff (short MCU_data[DCTSIZE2])
 {
   unsigned int startcycle;
   startcycle = gettimer();
-  
+
   //**************************************************************
   /* Encode the MCU data blocks */
 
   const c_derived_tbl *dctbl = &dc_huffman_code;
   const c_derived_tbl *actbl = &ac_huffman_code;
 
-  
+
   register int temp, temp2;
   register int nbits;
   register int k, r, i;
-  
-    
+
+
   /* Encode the DC coefficient difference per section F.1.2.1 */
-  
+
   temp = temp2 = MCU_data[0] - last_dc_val;
   if (temp < 0) {
     temp = -temp;		/* temp is abs value of input */
@@ -247,7 +259,7 @@ void encode_mcu_huff (short MCU_data[DCTSIZE2])
     /* This code assumes we are on a two's complement machine */
     temp2--;
   }
-  
+
   /* Find the number of bits needed for the magnitude of the coefficient */
   nbits = 0;
   while (temp) {
@@ -263,14 +275,14 @@ void encode_mcu_huff (short MCU_data[DCTSIZE2])
   /* Emit the Huffman-coded symbol for the number of bits */
   emit_bits(dctbl->ehufco[nbits], dctbl->ehufsi[nbits]);
 
-  
+
   /* Emit that number of bits of the value, if positive, */
   /* or the complement of its magnitude, if negative. */
   if (nbits)			/* emit_bits rejects calls with size 0 */
      emit_bits( (unsigned int) temp2, nbits);
 
   /* Encode the AC coefficients per section F.1.2.2 */
-  
+
   r = 0;			/* r = run length of zeros */
 
   for (k = 1; k < DCTSIZE2; k++) {
@@ -292,7 +304,7 @@ void encode_mcu_huff (short MCU_data[DCTSIZE2])
 	/* This code assumes we are on a two's complement machine */
 	temp2--;
       }
-      
+
       /* Find the number of bits needed for the magnitude of the coefficient */
       nbits = 1;		/* there must be at least one 1 bit */
       while ((temp >>= 1))
@@ -305,7 +317,7 @@ void encode_mcu_huff (short MCU_data[DCTSIZE2])
       /* Emit that number of bits of the value, if positive, */
       /* or the complement of its magnitude, if negative. */
       emit_bits( (unsigned int) temp2, nbits);
-	      
+
       r = 0;
     }
   }
@@ -313,7 +325,7 @@ void encode_mcu_huff (short MCU_data[DCTSIZE2])
   /* If the last coef(s) were zero, emit an end-of-block code */
   if (r > 0)
      emit_bits( actbl->ehufco[0], actbl->ehufsi[0]);
-  
+
      /* Update last_dc_val */
   last_dc_val = MCU_data[0];
 
@@ -330,7 +342,7 @@ void finish_pass_huff (void)
 {
   /* Flush out the last data */
    flush_bits();
-   
+
 /* End of file flag */
   buffer[next_buffer] = (char) 0xff;
   next_buffer++;

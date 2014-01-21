@@ -196,7 +196,7 @@ module or1200_lsu
       if(set_bit_op) begin
 	     //Here you must add code to handle the dcpu_cycstb_o correctly. It should be high
 	     //when data is written to memory.
-	     dcpu_cycstb_o <= 0;
+	     dcpu_cycstb_o <= store_byte_strobe;
 
       end
       else begin
