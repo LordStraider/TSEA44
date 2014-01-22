@@ -88,6 +88,7 @@ void finish_pass_huff(void);
 // Our own initilize
 void init_huffman (FILE *fp,int width,int height)
 {
+
    new_put_buffer = 0;
    old_put_buffer = 0;
    current_buffer_bit = 0;
@@ -141,10 +142,20 @@ static void write_header (int width,int height)
    buffer[97] = (width & 0xff) >> 0;
    next_buffer = sizeof(header);
 
-  printf("Address is %p\n", buffer);
+  printf("Address is %p\n", buffer + next_buffer);
 
 #ifdef HW_INST
    /* Initialize the vlx unit (Phase 1)*/
+  int *ptr = buffer + next_buffer;
+  asm volatile("l.mtspr %0,%1,0x0" : : "r"(0xC002),"r"(ptr));
+
+/*  int *result;
+  int result2;
+  asm volatile("l.mfspr %0,%1,0x0" : "=r"(result) : "r"(0xc002));
+  asm volatile("l.mfspr %0,%1,0x0" : "=r"(result2) : "r"(0xc002));
+  printf("before: result is: %X or perhaps %X\n", result, result2);
+*/
+
 
 #endif
 
@@ -152,6 +163,7 @@ static void write_header (int width,int height)
 
 static void write_data(void)
 {
+   printf("reading from %p to %p\n", buffer, buffer + next_buffer);
    // Writes the buffer to the file given to init_huffman
    fwrite(buffer, 1, next_buffer, jpeg_fp);
 }
@@ -180,8 +192,11 @@ static void emit_bits (unsigned int code, int size)
 //for (i = 0; i < 100; i++) {printf("im in emitbits");}
    /* Emit bits using the vlx unit (Phase 2)*/
 
-  printf("  size = %d;\n  code = 0x%X;\n  asm volatile(\"l.sd 0x0(%%0), %%1\" : : \"r\"(code), \"r\"(size)", size, i);
-  //asm volatile("l.sd 0x0(%0),%1" : : "r"(i), "r"(size));
+  //printf("asm volatile(\"l.sd 0x0(%%0), %%1\" : : \"r\"(0x%X), \"r\"(0x%X));\n", i, size);
+  //printf("  size = %d;\n  code = 0x%X;\n  asm volatile(\"l.sd 0x0(%%0), %%1\" : : \"r\"(code), \"r\"(size)", size, i);
+  //printf("Emitting %x, size %d\n", i, size);
+  //asm volatile("l.mtspr %0,%1,0x0" : : "r"(0xc000),"r"(value))
+  asm volatile("l.sd 0x0(%0),%1" : : "r"(i), "r"(size));
 
 #else
    new_put_buffer = (int) code;
@@ -220,7 +235,8 @@ static void flush_bits ()
 {
 #ifdef HW_INST
     /* Flush bits remaining in the vlx buffer (Phase 3) */
-    emit_bits(0x00, 7);  // TODO: Should we send something else instead of 0x00?
+    printf("Flushing...\n");
+    emit_bits(0x7F, 7);  // TODO: Should we send something else instead of 0x00?
 #else
    emit_bits( 0x7F, 7);  /* fill any partial byte with ones */
    old_put_buffer = 0; /* and reset bit-buffer to empty */
@@ -343,6 +359,14 @@ void finish_pass_huff (void)
 {
   /* Flush out the last data */
    flush_bits();
+
+#ifdef HW_INST
+    char *addr;
+    asm volatile("l.mfspr %0,%1,0x0" : "=r"(addr) : "r"(0xc002));
+    next_buffer = (int)addr - (int)buffer;
+    printf("nxt buffer at end: %X\n", next_buffer);
+#endif
+   //printf("next_buffer is %p\n", next_buffer);
 
 /* End of file flag */
   buffer[next_buffer] = (char) 0xff;

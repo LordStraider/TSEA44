@@ -107,9 +107,11 @@ module or1200_vlx_top(/*AUTOARG*/
     if(rst_i) begin
         bit_reg         <= 0;
         bit_reg_wr_pos  <= 0;
-        address_counter <= 32'h383c1d0;
+        address_counter <= 32'h383c240;  // reading from 0x383c240 to 0x3843b7c
     end else begin
-        if(set_bit_op_i) begin
+        if (set_init_addr) begin
+            address_counter <= spr_dat_i;
+        end else if(set_bit_op_i) begin
         //packning av data.
             if (bit_reg_wr_pos <= 7) begin
             //keep shifting in bits
@@ -121,7 +123,14 @@ module or1200_vlx_top(/*AUTOARG*/
             end
         end else if ((send_00 || bit_reg_wr_pos > 7) && ack_flopp) begin
             //write data to Store Unit
-            bit_reg[bit_reg_wr_pos-1 -: 8] <= 8'h0;
+            bit_reg[bit_reg_wr_pos-1] <= 0;
+            bit_reg[bit_reg_wr_pos-2] <= 0;
+            bit_reg[bit_reg_wr_pos-3] <= 0;
+            bit_reg[bit_reg_wr_pos-4] <= 0;
+            bit_reg[bit_reg_wr_pos-5] <= 0;
+            bit_reg[bit_reg_wr_pos-6] <= 0;
+            bit_reg[bit_reg_wr_pos-7] <= 0;
+            bit_reg[bit_reg_wr_pos-8] <= 0;
 
             /*we want to send ff00 if ff is encountered in bitreg [8:0]*/
             if (send_00) begin
@@ -149,17 +158,17 @@ module or1200_vlx_top(/*AUTOARG*/
     always @(posedge clk_i) begin
         if (rst_i)
             ack_counter <= 0;
-        else if (ack_i == 1 && is_sending)
-            ack_counter <= ack_counter - 1;
-        else if (recieved_set_bit) begin
+        else if (ack_i == 1 && is_sending) begin
+            if (data_to_be_sent != 8'hff)
+                ack_counter <= ack_counter - 1;
+        end else if (recieved_set_bit) begin
             if (bit_reg_wr_pos > 15)
                 ack_counter <= 2;
             else if (bit_reg_wr_pos > 7)
                 ack_counter <= 1;
-            end
-        end else if ((ack_counter != ack_counter_flopp) && data_to_be_sent == 8'hff) begin
+        end /*else if (is_sending == 1 && ack_i && data_to_be_sent == 8'hff) begin
             ack_counter <= ack_counter + 1;
-        end
+        end*/
     end
 
 

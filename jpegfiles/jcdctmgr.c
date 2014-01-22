@@ -218,18 +218,19 @@ void forward_DCT (short coef_block[DCTSIZE2])
 
 
 /* This is the main encoding loop */ 
-
+ 
 void encode_image(void)
 {
    int i;
    int MCU_count = width * height / DCTSIZE2;
    short MCU_block[DCTSIZE2];
 
-   //printf("Starting the Grunka...\n");
+   //printf("Width: %d, Height: %d, MCU_count: %d\n", width, height, MCU_count);
    REG32(0x96001810) = 1;
 
-   for(i = 0; i < 1; i++)
+   for(i = 0; i < MCU_count; i++)
    {
+      //printf("i=%d\n", i);
       forward_DCT(MCU_block);
       encode_mcu_huff(MCU_block);
    }

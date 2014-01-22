@@ -51,7 +51,7 @@
 // Exception prefix configuration changed.
 //
 // Revision 1.9  2002/09/07 05:42:02  lampret
-// Added optional SR[CY]. Added define to enable additional (compare) flag modifiers. 
+// Added optional SR[CY]. Added define to enable additional (compare) flag modifiers.
 // Defines are OR1200_IMPL_ADDC and OR1200_ADDITIONAL_FLAG_MODIFIERS.
 //
 // Revision 1.8  2002/08/28 01:44:25  lampret
@@ -67,14 +67,14 @@
 // Fixed combinational loops.
 //
 // Revision 1.4  2002/01/23 07:52:36  lampret
-// Changed default reset values for SR and ESR to match or1ksim's. 
+// Changed default reset values for SR and ESR to match or1ksim's.
 // Fixed flop model in or1200_dpram_32x32 when OR1200_XILINX_RAM32X1D is defined.
 //
 // Revision 1.3  2002/01/19 09:27:49  lampret
 // SR[TEE] should be zero after reset.
 //
 // Revision 1.2  2002/01/18 07:56:00  lampret
-// No more low/high priority interrupts (PICPR removed). Added tick timer exception. 
+// No more low/high priority interrupts (PICPR removed). Added tick timer exception.
 // Added exception prefix (SR[EPH]). Fixed single-step bug whenreading NPC.
 //
 // Revision 1.1  2002/01/03 08:16:15  lampret
@@ -90,7 +90,7 @@
 // Moved flag bit into SR. Changed RF enable from constant enable to dynamic enable for read ports.
 //
 // Revision 1.9  2001/10/21 17:57:16  lampret
-// Removed params from generic_XX.v. Added translate_off/on in sprs.v and id.v. 
+// Removed params from generic_XX.v. Added translate_off/on in sprs.v and id.v.
 // Removed spr_addr from dc.v and ic.v. Fixed CR+LF.
 //
 // Revision 1.8  2001/10/14 13:12:10  lampret
@@ -175,7 +175,7 @@ module or1200_sprs(
    input [31:0] 			spr_dat_cfgr;	// Data from CFGR
    input [31:0] 			spr_dat_rf;	// Data from RF
    input [31:0] 			spr_dat_npc;	// Data from NPC
-   input [31:0] 			spr_dat_ppc;	// Data from PPC   
+   input [31:0] 			spr_dat_ppc;	// Data from PPC
    input [31:0] 			spr_dat_mac;	// Data from MAC
 
    //
@@ -215,7 +215,7 @@ module or1200_sprs(
    wire 				rf_sel;		// Select for RF
    wire 				npc_sel;	// Select for NPC
    wire 				ppc_sel;	// Select for PPC
-   wire 				sr_sel;		// Select for SR	
+   wire 				sr_sel;		// Select for SR
    wire 				epcr_sel;	// Select for EPCR0
    wire 				eear_sel;	// Select for EEAR0
    wire 				esr_sel;	// Select for ESR0
@@ -418,7 +418,7 @@ module or1200_sprs(
 `ifdef OR1200_SBIT_IMPL
 	     `OR1200_SPR_GROUP_VLX:
 	       //Here you must add code to make spr work for the VLX unit.
-	       to_wbmux = 0;
+	       to_wbmux = spr_dat_vlx;
 `endif
 	     default:
 	       to_wbmux = 32'b0;
