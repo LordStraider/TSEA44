@@ -75,8 +75,7 @@ module or1200_vlx_top(/*AUTOARG*/
             send_00 <= 0;
         end else if (bit_reg_wr_pos < 8) begin
             data_to_be_sent <= 0;
-        end else if (bit_reg[bit_reg_wr_pos-1 -: 8] == 8'hff) begin
-            data_to_be_sent <= 8'hff;
+        end else if (data_to_be_sent == 8'hff) begin
             send_00 <= 1;
         end else begin
             //data_to_be_sent <= bit_reg[bit_reg_wr_pos-1 -: 8];
