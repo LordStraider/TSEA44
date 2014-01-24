@@ -80,6 +80,37 @@ för att använda set bit-instruktionen för skrivning till minnet, och en korre
 Vi använde vårt testprogram och den prestandaräknare vi gjorde i lab 1 för att mäta prestandan på
 vår set bit-instruktion. Resultatet var att...% TODO
 
+% Lab 4
+% Cycles spent in main program:             21754287
+% +-- Cycles spent in init:                  6653818
+% +-- Cycles spent in encode_image:         15100469
+%     +-- Cycles spent in forward_DCT:       6396157
+%     |   +-- Cycles spent in copy:                0
+%     |   +-- Cycles spent in DCT kernel:          0
+%     |   +-- Cycles spent in quantization:  6396157
+%     +-- Cycles spent in Huffman encoding:  8126873
+%         +-- Cycles spent in emit_bits:     1306129
+
+
+100x size 2 = 1005
+100x size 8 = 1305
+100x size 16 = 1705
+100x FF size 8 = 1704
+
+
+% Lab 3
+% Performance statistics:
+% Cycles spent in main program:             25847242
+% +-- Cycles spent in init:                  6600044
+% +-- Cycles spent in encode_image:         19247198
+%     +-- Cycles spent in forward_DCT:       6489189
+%      |   +-- Cycles spent in copy:               0
+%     |   +-- Cycles spent in DCT kernel:          0
+%     |   +-- Cycles spent in quantization:  6489189
+%     +-- Cycles spent in Huffman encoding: 12226950
+%         +-- Cycles spent in emit_bits:     4983905
+
+
 \begin{itemize}
 \item What is the performance with and without the set bit hardware? This should include measurements of both the entire application and the set bit instruction by itself, assuming good code in a software implementation (take a look at how the software solution in jpegfiles).
 \item How much of the FPGA does your hardware use?
