@@ -77,8 +77,64 @@ Till sist testades även hårdvaran genom att instruktionen användes i jpegtest
 för att använda set bit-instruktionen för skrivning till minnet, och en korrekt bild genererades.
 
 \subsection{Prestanda och FPGA-användning}
-Vi använde vårt testprogram och den prestandaräknare vi gjorde i lab 1 för att mäta prestandan på
-vår set bit-instruktion. Resultatet var att...% TODO
+Vi använde vårt testprogram och den prestandaräknare som inkluderades i jpegtest för att mäta prestandan på
+några olika slags anrop till vår set bit-instruktion. Dels varierade vi storleken, dels testade vi
+även att enbart skriva 0xFF, vilket i vår implementation gör två minnesskrivningar.\\
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{l l l}
+        Storlek &  Data  &   Antal klockcykler\\
+        \hline
+        2       &  0x00  &   10\\
+        8       &  0x00  &   13\\
+        8       &  0xFF  &   17\\
+        16      &  0x00  &   17\\
+    \end{tabular}
+    \caption{ Antal klockcykler för anrop av vår sbit-instruktion (medelvärde av 100 försök) }
+    \label{tab:sbit_performance}
+\end{table}
+
+Vid användning i JPEG-acceleratorn jämförde vi utskriften av prestandamätningen för en version av
+programmet som kompilerades utan set bit-instruktionen (\ref{tab:jpeg_sw_performance}), mot resultatet med denna instruktion påslagen (\ref{tab:jpeg_sbit_performance}).
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{l l}
+        Beskrivning & Antal klockcykler\\
+        \hline
+        Main program  & 25 847 242 \\
+        Init  &  6 600 044 \\
+        Encode\_image  & 19 247 198 \\
+        Forward\_DCT  & 6 489 189 \\
+        Copy  & 0 \\
+        DCT kernel  & 0 \\
+        Quantization  & 6 489 189 \\
+        Huffman encoding  & 12 226 950 \\
+        Emit\_bits  &  4 983 905 \\
+    \end{tabular}
+    \caption{ Prestanda för jpegtest utan sbit-instruktionen }
+    \label{tab:jpeg_sw_performance}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{l l}
+        Beskrivning & Antal klockcykler\\
+        \hline
+        Main program  & 21 754 287 \\
+        Init  & 6 653 818 \\
+        Encode\_image  & 15 100 469 \\
+        Forward\_DCT  & 6 396 157 \\
+        Copy  & 0 \\
+        DCT kernel  & 0 \\
+        Quantization  & 6 396 157 \\
+        Huffman encoding  & 8 126 873 \\
+        Emit\_bits  & 1 306 129 \\
+    \end{tabular}
+    \caption{ Prestanda för jpegtest med sbit-instruktionen }
+    \label{tab:jpeg_sbit_performance}
+\end{table}
 
 % Lab 4
 % Cycles spent in main program:             21754287
@@ -112,9 +168,9 @@ vår set bit-instruktion. Resultatet var att...% TODO
 
 
 \begin{itemize}
-\item What is the performance with and without the set bit hardware? This should include measurements of both the entire application and the set bit instruction by itself, assuming good code in a software implementation (take a look at how the software solution in jpegfiles).
+%\item What is the performance with and without the set bit hardware? This should include measurements of both the entire application and the set bit instruction by itself, assuming good code in a software implementation (take a look at how the software solution in jpegfiles).
 \item How much of the FPGA does your hardware use?
-\item What is the performance of your final system?
+%\item What is the performance of your final system?
 \end{itemize}
 
 \section{Slutsats}
