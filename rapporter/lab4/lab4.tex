@@ -47,13 +47,17 @@
 \begin{document}
 \maketitle
 
+\tableofcontents
+\newpage
+
 \section{Inledning}
 Det fjärde och sista miniprojektet i kursen, lab 4, handlar om att skapa en egen assembler-instruktion
 för skrivning till minnet. Syftet med denna instruktion är att snabba upp koden för att
 Huffman-koda den resulterade bilden från vår jpeg-accelerator.\\
+
 Instruktionen tar en längd samt ett data som argument, och sparar all inkommen data
 i en buffer tills minst 8 bitar erhållits. I detta fall skrivs den buffrade datan till minnet;
-en byte åt gången och så många bytes som möjligt (maximalt två).
+en byte åt gången och så många bytes som möjligt (maximalt två).\\
 
 
 \section{Design}
@@ -69,17 +73,24 @@ koden på en FPGA med samma monitor-program. Vi använde monitorns inbyggda komm
 för att verifiera att rätt data skrevs till minnet. Ganska snabbt insåg vi behovet av att kunna felsöka
 även i denna miljö utan att behöva syntetisera om koden varje gång, och skrev därför testprogrammet asm.c
 som vi kunne ladda in i minnet och köra via monitorn.\\
+
 Det största problem vi hade under denna lab, och även det svåraste vi fått under labkursen,
 var att sista biten i varje byte vi skrev till minnet blev fel. Till skillnad från de tidigare fel
 vi fått under kursen så fick vi varken några varningar av värde vid syntetiseringen, konstiga
 odefinierade signaler eller märkliga läs/skrivcykler vid simulering.\\
-Till sist testades även hårdvaran genom att instruktionen användes i jpegtest. jchuff.c modifierades,
-för att använda set bit-instruktionen för skrivning till minnet, och en korrekt bild genererades.
 
-\subsection{Prestanda och FPGA-användning}
-Vi använde vårt testprogram och den prestandaräknare som inkluderades i jpegtest för att mäta prestandan på
-några olika slags anrop till vår set bit-instruktion. Dels varierade vi storleken, dels testade vi
-även att enbart skriva 0xFF, vilket i vår implementation gör två minnesskrivningar.\\
+Efter noggrannt studerande av syntesrapporten upptäckte vi att en felaktig ihopslagning av två bitar i ett
+register orsakade problemet. Vi gjorde om koden för skrivning till det aktuella registret. Simuleringen blev
+fortfarande likadan som tidigare, men ingen konstig ihopslagning gjordes vid syntetiseringen,
+vilket löste vårt problem.\\
+
+Till sist testades även hårdvaran genom att instruktionen användes av JPEG-acceleratorn. jchuff.c modifierades,
+för att använda set bit-instruktionen för skrivning till minnet. Efter en rejäl stunds felsökande
+genererades till sist en korrekt bild.\\
+
+\subsection{Prestanda}
+Vi använde vårt testprogram och den prestandaräknare som inkluderades i jpegtest-programmet för att mäta prestandan på
+några olika slags anrop till vår set bit-instruktion (Tabell \ref{tab:sbit_performance}). Dels varierade vi storleken, dels testade vi även att enbart skriva 0xFF, vilket i vår implementation gör två minnesskrivningar.\\
 
 \begin{table}[ht]
     \centering
@@ -91,12 +102,13 @@ några olika slags anrop till vår set bit-instruktion. Dels varierade vi storle
         8       &  0xFF  &   17\\
         16      &  0x00  &   17\\
     \end{tabular}
-    \caption{ Antal klockcykler för anrop av vår sbit-instruktion (medelvärde av 100 försök) }
+    \caption{ Antal klockcykler per anrop av vår sbit-instruktion. Tabellen visar medelvärdet av 100 försök. }
     \label{tab:sbit_performance}
 \end{table}
 
 Vid användning i JPEG-acceleratorn jämförde vi utskriften av prestandamätningen för en version av
-programmet som kompilerades utan set bit-instruktionen (\ref{tab:jpeg_sw_performance}), mot resultatet med denna instruktion påslagen (\ref{tab:jpeg_sbit_performance}).
+programmet som kompilerades utan set bit-instruktionen (Tabell \ref{tab:jpeg_sw_performance}), mot resultatet med denna instruktion påslagen (Tabell \ref{tab:jpeg_sbit_performance}). Båda dessa versioner innehåller alla de tidigare förbättringar
+som gjorts; hårdvaru-DCT samt DMA.
 
 \begin{table}[ht]
     \centering
@@ -113,7 +125,7 @@ programmet som kompilerades utan set bit-instruktionen (\ref{tab:jpeg_sw_perform
         Huffman encoding  & 12 226 950 \\
         Emit\_bits  &  4 983 905 \\
     \end{tabular}
-    \caption{ Prestanda för jpegtest utan sbit-instruktionen }
+    \caption{ Prestanda för JPEG-acceleratorn utan sbit-instruktionen }
     \label{tab:jpeg_sw_performance}
 \end{table}
 
@@ -132,67 +144,63 @@ programmet som kompilerades utan set bit-instruktionen (\ref{tab:jpeg_sw_perform
         Huffman encoding  & 8 126 873 \\
         Emit\_bits  & 1 306 129 \\
     \end{tabular}
-    \caption{ Prestanda för jpegtest med sbit-instruktionen }
+    \caption{ Prestanda för JPEG-acceleratorn med sbit-instruktionen }
     \label{tab:jpeg_sbit_performance}
 \end{table}
 
-% Lab 4
-% Cycles spent in main program:             21754287
-% +-- Cycles spent in init:                  6653818
-% +-- Cycles spent in encode_image:         15100469
-%     +-- Cycles spent in forward_DCT:       6396157
-%     |   +-- Cycles spent in copy:                0
-%     |   +-- Cycles spent in DCT kernel:          0
-%     |   +-- Cycles spent in quantization:  6396157
-%     +-- Cycles spent in Huffman encoding:  8126873
-%         +-- Cycles spent in emit_bits:     1306129
-
-
-100x size 2 = 1005
-100x size 8 = 1305
-100x size 16 = 1705
-100x FF size 8 = 1704
-
-
-% Lab 3
-% Performance statistics:
-% Cycles spent in main program:             25847242
-% +-- Cycles spent in init:                  6600044
-% +-- Cycles spent in encode_image:         19247198
-%     +-- Cycles spent in forward_DCT:       6489189
-%      |   +-- Cycles spent in copy:               0
-%     |   +-- Cycles spent in DCT kernel:          0
-%     |   +-- Cycles spent in quantization:  6489189
-%     +-- Cycles spent in Huffman encoding: 12226950
-%         +-- Cycles spent in emit_bits:     4983905
-
-
-\begin{itemize}
-%\item What is the performance with and without the set bit hardware? This should include measurements of both the entire application and the set bit instruction by itself, assuming good code in a software implementation (take a look at how the software solution in jpegfiles).
-\item How much of the FPGA does your hardware use?
-%\item What is the performance of your final system?
-\end{itemize}
+\subsection{FPGA-användning}
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{l l l}
+        Flip Flops   &      7499 out of   46080  & 16\% \\
+        4 input LUTs &      12519 out of  46080  & 28\% \\
+        MULT18X18s   &      19 out of 120  &   15\% \\
+        RAMB16s      &      42 out of 120  &   35\% \\
+    \end{tabular}
+    \caption{ De mest intressanta delarna ur syntes-rapporten för JPEG-acceleratorn med DCT, DMA samt sbit-instruktionen. }
+    \label{tab:fpga_usage}
+\end{table}
 
 \section{Slutsats}
 
+\subsection{Analys av prestanda}
+Prestandan för set bit-instruktionen beror uteslutande på hur många minnesaccesser som behöver göras
+vid anropet. Vid upprepade anrop med storleken 2 görs en skrivning till minnet var fjärde anrop, vilket gör att
+snitt-tiden blir lägre än i övriga fall. För storleken 8 görs en skrivning vid varje anrop, vilket
+leder till värsta fallet på 13 klockcykler i medel. Vid skrivning av 0xFF görs internt två separata skrivningar,
+vilket gör att detta tar exakt lika lång tid som skrivningar av storleken 16, nämligen 17 cykler.\\
+
+En intressant slutsats vi kan dra av detta är att det tar ganska mycket overhead bara att utföra vår
+instruktion. För storlek 2 görs fyra gånger färre minnesskrivningar jämfört med storlek 8, men tiden
+för dessa skiljer sig bara med en tredjedel. På samma sätt görs dubbelt så många skrivningar för
+storlek 16 som storlek 8 med samma data, men skillnaden dem emellan är mindre än en fjärdedel.\\
+
+Instruktionen gjorde en hel del skillnad när vi använde den i JPEG-acceleratorn. Som synes i Tabell
+\ref{tab:jpeg_sbit_performance} minskade tiden för att skriva data till minnet vid Huffman-kodningen
+(emit\_bits) från 5,0 miljoner cykler till 1,3 miljoner cykler. Den totala tiden minskade
+därigenom med nästan lika mycket, vilket gav en total prestandaökning med 16\%. Gruppen är dock
+enig om att prestandaförbättring-per-timme-spenderad-i-Muxen-indexet troligen är väldigt lågt.\\
+
+
+\subsection{Möjliga förbättringar}
+Ett problem med vår nuvarande hårdvara är att vi alltid skickar en STALL-signal till CPU:n så fort vi
+får in en set bit-instruktion. Detta är i väldigt många fall inte alls nödvändigt (särskilt som vi
+bara skriver till minnet om vi har en hel byte att skicka). Detta är särskilt problematiskt i ett
+operativsystem med multitasking - det blir omöjligt att göra saker parallelt om vi säger åt resten
+av datorn att sluta arbeta så fort någon använder vår instruktion.\\
+
+En möjlig förbättring skulle kunna vara att hårdvaran detekterar i vilka fall som vi behöver skicka
+en STALL-signal och inte. Detta behöver i så fall ske med kombinatorik för att hinna skicka signalen
+tillräckligt fort, i de fall där detta behövs. På så sätt skulle vi kunna lösa problemen med
+dålig paralellism i operativsystem med multitaskning, samt få något bättre prestanda generellt,
+på bekostnad av ganska lite hårdvara.\\
+
+Om målet istället skulle vara att hitta en billigare lösning på bekostnad av prestanda, hade vi kunnat använda
+ett skiftregister för att stegvis skifta in varje bit data i vårt register, istället för vår nuvarande
+lösning som troligen realiseras med en stor samling multiplexrar och OR-grindar för att lyckas göra
+detta på en klockcykel.\\
 
 \section{Appendix: Källkod}
-
-
-\section{What to Include in the Lab Report 4}
-The lab report should contain all source code that you have written. (The source code should of course be commented.) We would also like you to include a block diagram of your hardware. If you have written any FSM you should include a state graph of the FSM.
-We would also like you to discuss the following questions in detail somewhere in your lab report:
-\begin{itemize}
-%\item How did you verify that your set bit hardware worked?
-%\item What was the hardest problems you encountered during the entire lab course?
-
-\item How would your design change if you had to achieve even higher speed using more hardware?
-\item How would your design change if you had to use less hardware at the cost of a slower solution?
-\item What are the problems with using your new hardware in a multitasking operating system? How can the problem(s) be solved?
-
-And of course, the normal parts of a lab report such as a table of contents, an introduction, a conclusion, etc. The source code that you have written should be included in appendices and referred to from the main document.
-
-\end{itemize}
 
 
 \end{document}
