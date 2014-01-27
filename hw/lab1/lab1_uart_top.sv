@@ -14,19 +14,6 @@ module lab1_uart_top (
     // Here you must instantiate lab0_uart or cut and paste
     // You will also have to change the interface of lab0_uart to make this work.
 
-    /*
-     lab0 uart(
-        input clk_i,
-        input rst_i,
-        input rx_i,
-        output tx_o,
-        output [7:0] led_o,
-        input [7:0] switch_i,
-        input send_i, 
-        output end_char_rx, 
-        output ack_o
-     );
-     */
      
     reg rd;
     reg wr;
@@ -41,6 +28,8 @@ module lab1_uart_top (
     reg [7:0] rx_reg;
     lab0 uart(wb.clk, wb.rst, srx_pad_i, stx_pad_o, last_8_rx_bits, tx_reg, wr_o, end_char, uart_ack);
     
+    
+    //the reset signal to the rx_full F/F
     always_comb 
     begin
         if (wb.rst) begin
@@ -52,7 +41,8 @@ module lab1_uart_top (
         end
     end
 
-    always @(posedge wb.clk)
+   //
+   always @(posedge wb.clk)
     begin
         wr_o <= wr;
         //rx_full

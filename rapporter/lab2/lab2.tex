@@ -54,16 +54,18 @@
 \tableofcontents
 
 \newpage
-\section{Labb 2}
-\subsection{Introduktion}
+\section{Lab 1}
+\subsection{Introduction}
+
+
+
 Syftet med denna laboration var att konstruera en accelerator för jpeg-komprimering från raw-filer, i hårdvara. Detta löstes med hjälp av programmeringsspråket system verilog och genom att bygga vidare på det existerande skelettet som gavs med uppgiften. I första delen (labb2) så har vi en dator som styr själva acceleratorn och skickar all data via en bus för att sedan behandlas och lagras i ett blockminne där datorn sedan får läsa av resultatet. Ett register används för att starta grunkan och sedan läsa av att resultatet finns att hämta.
-
 Det jpeg-acceleratorn gör är att ta ett block med 8x8 pixlar, skicka in det i en givet DCT maskin som gör komprimeringar av pixlarna, sedan transponeras de 8x8 pixlarna i ett minne och skickas tillbaka till DCT\rq{}n för att gå igenom en gång till. Alla pixlar multipliceras nu med hårdkodade reciprokaler och läggs i ett utminne. 
-
 Datorn kan nu läsa av minnet, transponera och spara ner till en jpeg fil som kan öppnas på vanligt sätt.
 
-\subsection{Tillståndsgraf och arkitektur}
-En vidare hjälp är att den DCT maskin som gör beräkningar är redan given så problemet som skall lösas innebär att skapa signaler för att styra DCT\rq{}n, ett blockminne för indata och ett för utdata, ett minne där vi transponerar samt en maskin som utför multiplikationerna med reciprokalerna.
+\subsection{Implementation}
+
+
 
 \begin{figure}[h]
 \centering
@@ -71,6 +73,7 @@ En vidare hjälp är att den DCT maskin som gör beräkningar är redan given s�
 \caption{Arkitektur för vår design}
 \label{fig:architecture}
 \end{figure}
+
 
 Figur \ref{fig:architecture} visar den arkitektur som konstruerades för att lösa uppgiften. All data som kommer in från bussen läggs in i minnet och vi väntar sedan på en startsignal från datorn. Då används räknaren tillsammans med en vippa för att skicka in data till DCT\rq{}n för att sedan skriva in 8x8 pixlar till transponeringsminnet, när vi skrivit klart där så läser vi av kolumnerna (och får därigenom transponeringen), skickar in till DCT\rq{}n igen.
 
