@@ -28,7 +28,7 @@
 \author{Jonathan Karlsson, Niclas Olofsson, Paul Nedstrand\\jonka293, nicol271, paune\\Grupp 2}
 \pagestyle{fancy} % options: empty , plain , fancy
 \renewcommand{\headrulewidth}{1pt} % customise the layout...
-\fancyhead[LO,LE]{Jonathan, Niclas, Paul\\Rapportmall}
+\fancyhead[LO,LE]{Jonathan, Niclas, Paul\\Rapport lab 4}
 \lfoot{}\cfoot{\thepage}\rfoot{}
 
 %%%% SECTION TITLE APPEARANCE
@@ -46,7 +46,7 @@
 
 %%% The "real" document content comes below...
 
-\title{Labrapport 4\\ \vspace{2 mm} {\large TSEA44}}
+\title{Rapport lab 4\\ \vspace{2 mm} {\large TSEA44}}
 %\date{} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed
 
@@ -57,23 +57,27 @@
 \tableofcontents
 \newpage
 
-\section{Inledning} Det fjärde och sista miniprojektet i kursen, lab 4,
-handlar om att skapa en egen assembler-instruktion för skrivning till
-minnet (sbit). Instruktionen tar en längd samt ett data som argument,
-och sparar all inkommen data i en buffer. När buffern är fylld skrivs
-denna till minnet. Syftet med denna instruktion är att snabba upp koden
-för att Huffman-koda den resulterade bilden i vår JPEG-accelerator.\\
+\section{Inledning}
 
-\section{Design} Av enkelhetsskäl har vi valt att göra några
-modifikationer av den föreslagna hårdvaruarkitekturen. För det första
-valde vi att ha all hårdvara i en enda modul, istället för de föreslagna
-tre modulerna. Även om detta ger sämre modularitet, tyckte vi att det
-faktum att vi slapp bekymra oss om kommunikation mellan olika moduler
-gjorde detta till en enklare lösning. Vidare valde vi att bara använda
-SPR-registret för lagring av aktuell minnesadress, då detta var det enda
-register vi kunde se någon användning för. Vi upplevde att monitor-
-programmet gav minst lika bra debug-möjligheter som de övriga två
-föreslagna SPR-registren skulle ha gjort.\\
+Det fjärde och sista labben i kursen, lab 4, handlade om att skapa
+en egen assembler-instruktion (kallad sbit) för skrivning till minnet.
+Instruktionen tar en längd samt ett data som argument, och sparar all
+inkommen data i en buffer. När buffern är fylld skrivs denna till
+minnet. Syftet med denna instruktion är att snabba upp koden för att
+Huffman-koda den resulterade bilden i vår JPEG-accelerator.\\
+
+\section{Design}
+
+Av enkelhetsskäl valde vi att göra några modifikationer av den
+föreslagna hårdvaruarkitekturen. För det första valde vi att ha all
+hårdvara i en enda modul, istället för de föreslagna tre modulerna. Även
+om detta ger sämre modularitet, tyckte vi att det faktum att vi slapp
+bekymra oss om kommunikation mellan olika moduler gjorde detta till en
+enklare lösning. Vidare valde vi att bara använda SPR-registret för
+lagring av aktuell minnesadress, då detta var det enda register vi kunde
+se någon användning för. Vi upplevde att monitor-programmet gav minst
+lika bra debug-möjligheter som de övriga två föreslagna SPR-registren
+skulle ha gjort.\\
 
 \begin{figure}[H]
 \centering
@@ -84,15 +88,14 @@ föreslagna SPR-registren skulle ha gjort.\\
 
 \subsection{Data recieve}
 
-Detta block ansvarar för att lägga in mottagen
-data i buffern, och uppdatera pekaren för aktuell position. Adress-
-räknaren är även inkluderad i detta block. Så här i efterhand hade det
-kanske varit mer logiskt att placera den i ett separat block. Läsningen
-från data-bussen sker i en enda klockcykel, genom att vår buffer
-bit\_reg skiftas åt vänster för att göra plats för den nya datan, och
-OR:as med dat\_i. Räknaren bit\_reg\_wr\_pos, som fungerar som en pekare
-till nästa lediga element i buffern, räknas upp med så många bitar som
-just togs emot.\\
+Detta block ansvarar för att lägga in mottagen data i buffern, och
+uppdatera pekaren för aktuell position. Adress- räknaren är även
+inkluderad i detta block. Så här i efterhand hade det kanske varit mer
+logiskt att placera den i ett separat block. Läsningen från data-bussen
+sker i en enda klockcykel, genom att vår buffer bit\_reg skiftas åt
+vänster för att göra plats för den nya datan, och OR:as med dat\_i.
+Räknaren bit\_reg\_wr\_pos, som fungerar som en pekare till nästa lediga
+element i buffern, räknas upp med så många bitar som just togs emot.\\
 
 Eftersom att buffern skiftas åt vänster när den fylls på, befinner sig
 data som nyss skickats någonstans i mitten av buffern. Detta göra att
@@ -195,7 +198,8 @@ vilket i vår implementation gör två minnesskrivningar.\\
         8       &  0xFF  &   17\\
         16      &  0x33  &   17\\
     \end{tabular}
-    \caption{ Antal klockcykler per anrop av vår sbit-instruktion. Tabellen visar medelvärdet av 100 försök. }
+    \caption{ Antal klockcykler per anrop av vår sbit-instruktion.
+              Tabellen visar medelvärdet av 100 försök. }
     \label{tab:sbit_performance}
 \end{table}
 
@@ -253,7 +257,8 @@ de tidigare förbättringar som gjorts; hårdvaru-DCT samt DMA.
         MULT18X18s   &      19 out of 120  &   15\% \\
         RAMB16s      &      42 out of 120  &   35\% \\
     \end{tabular}
-    \caption{ De mest intressanta delarna ur syntes-rapporten för JPEG-acceleratorn med DCT, DMA samt sbit-instruktionen. }
+    \caption{ De mest intressanta delarna ur syntes-rapporten för
+              JPEG-acceleratorn med DCT, DMA samt sbit-instruktionen. }
     \label{tab:fpga_usage}
 \end{table}
 
@@ -317,10 +322,12 @@ klockcykel.\\
 \begin{changemargin}{-3cm}{-3cm}
 
 \section{asm.c}
-\lstinputlisting[language=C,caption={Testprogram för mätning av prestanda av sbit-instruktionen},label=asm]{asm.c}
+\lstinputlisting[language=C,caption={Testprogram för mätning av prestanda
+                                     för sbit-instruktionen},label=asm]{asm.c}
 
 \section{or1200\_vlx\_top.sv}
-\lstinputlisting[language=Verilog,caption={Hårdvaruimplementationen för sbit-instruktionen},label=or1200_vlx_top]{or1200_vlx_top.sv}
+\lstinputlisting[language=Verilog,caption={Hårdvaruimplementationen för
+                                           sbit-instruktionen},label=or1200_vlx_top]{or1200_vlx_top.sv}
 
 \end{changemargin}
 \end{appendices}
