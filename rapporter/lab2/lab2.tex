@@ -54,18 +54,16 @@
 \tableofcontents
 
 \newpage
-\section{Lab 1}
-\subsection{Introduction}
-
-
-
+\section{Labb 2}
+\subsection{Introduktion}
 Syftet med denna laboration var att konstruera en accelerator för jpeg-komprimering från raw-filer, i hårdvara. Detta löstes med hjälp av programmeringsspråket system verilog och genom att bygga vidare på det existerande skelettet som gavs med uppgiften. I första delen (labb2) så har vi en dator som styr själva acceleratorn och skickar all data via en bus för att sedan behandlas och lagras i ett blockminne där datorn sedan får läsa av resultatet. Ett register används för att starta grunkan och sedan läsa av att resultatet finns att hämta.
+
 Det jpeg-acceleratorn gör är att ta ett block med 8x8 pixlar, skicka in det i en givet DCT maskin som gör komprimeringar av pixlarna, sedan transponeras de 8x8 pixlarna i ett minne och skickas tillbaka till DCT\rq{}n för att gå igenom en gång till. Alla pixlar multipliceras nu med hårdkodade reciprokaler och läggs i ett utminne. 
+
 Datorn kan nu läsa av minnet, transponera och spara ner till en jpeg fil som kan öppnas på vanligt sätt.
 
-\subsection{Implementation}
-
-
+\subsection{Tillståndsgraf och arkitektur}
+En vidare hjälp är att den DCT maskin som gör beräkningar är redan given så problemet som skall lösas innebär att skapa signaler för att styra DCT\rq{}n, ett blockminne för indata och ett för utdata, ett minne där vi transponerar samt en maskin som utför multiplikationerna med reciprokalerna.
 
 \begin{figure}[h]
 \centering
@@ -73,7 +71,6 @@ Datorn kan nu läsa av minnet, transponera och spara ner till en jpeg fil som ka
 \caption{Arkitektur för vår design}
 \label{fig:architecture}
 \end{figure}
-
 
 Figur \ref{fig:architecture} visar den arkitektur som konstruerades för att lösa uppgiften. All data som kommer in från bussen läggs in i minnet och vi väntar sedan på en startsignal från datorn. Då används räknaren tillsammans med en vippa för att skicka in data till DCT\rq{}n för att sedan skriva in 8x8 pixlar till transponeringsminnet, när vi skrivit klart där så läser vi av kolumnerna (och får därigenom transponeringen), skickar in till DCT\rq{}n igen.
 
@@ -87,8 +84,25 @@ Ett problem vi hade så här långt var klockningen, när vi skickar in data fr�
 \end{figure}
 Figur \ref{fig:state} visar en tillståndsgraf över maskinen och dess procedur för att komprimera raw-filer till jpeg. Tillståndsgrafen följer precis det schema som arkitekturen i figur \ref{fig:architecture} också visar.
 
-\subsection{Vidare frågor}
+\subsection{Vidare frågor man kan ställa sig}
+\begin{itemize}
+	\item Hur vi verifierade att vår DCT hårdvara fungerade korrekt?
+\end{itemize}
+Vi använde oss av matlab för att räkna ut ett antal exempel som vi kunde simulera i ModelSim, genom att jämföra vad matlab gav för resultat med det som låg i utminnet efter en simulering lyckades vi bekräfta att acceleratorn hade gjort sitt jobb.
 
+\begin{itemize}
+	\item Är storleken på DCT hårdvaran jämförbar med den förbättrade prestandan?
+\end{itemize}
+Hela grunkan tar upp en hel del hårdvara och på grund av att det är så mycket kommunikation, vi måste klocka DCT\rq{}n annorlunda och att Q2 är så långsam så är det frågan om det verkligen är värt det. I de kommande laborationerna gör vi en del förbättringar på systemet som gör att det är mer värdefullt.
+
+\begin{itemize}
+	\item Vidare optimeringar?
+\end{itemize}
+När man använder sig av den algoritm som gjorts i detta projekt så ser man att nästan alla data hamnar i ett sicksackmönster i början av minnet, så om man skulle läsa av minnet i ett sicksackmönster skulle man spara in en hel del kommunikation eftersom det mestadels är nollor i slutet. Man skulle kunna ha ett förutbestämt mönster för hur man läser av minnet där man börjar i det övre vänstra hörnet och sedan förflyttar sig sicksack, under tiden så skriver man ner alla siffror man stöter på och hur många siffror det råkar vara. Stöter man på 3 nollor så antecknar man det och sedan mot slutet bör det bli en hel del nollor. 
+
+Det man i så fall vinner är att man slipper skicka iväg alla siffror utan man skickar bara iväg i vilken ordning man hittade dem och hur många så de sista nollorna skickas som en nolla och antalet nollor vilket är en mycket kortare sändning än att skicka en hel drös med nollor. Detta skulle inte vara jättekomplicerat att implementera men skulle förstås ta upp mer hårdvara, man skulle dock tjäna en hel del kommunikation på systemet så det skulle nog vara värt det om man hade höga krav på hastighet.
+
+När man skriver in pixlarna till sin jpegfil skriver man bara tillbaka siffrorna i samma ordning som man läste dem i, vilket skulle vara lika svårt som när man läste dem i första läget. Läsning och skrivning blir så klart mer komplicerat men det vinner man tillbaka flera gånger om tack vare sparad kommunikation.
 
 \section{Labb 3}
 \subsection{Introduktion}
@@ -97,13 +111,31 @@ Designen från labb 2 visas i figur \ref{fig:architecture} och innebär att dato
 Den flaskhalsen skulle man kunna spara in en del på genom att acceleratorn själv hämtar sin data från minnet istället för att gå genom datorn, där gör den ändå ingen nytta. Så idén är att ha en ytterligare design som hämtar data och skickar in till acceleratorn, sätter igång den självmant. Datorn måste fortfarande läsa av registret för att kontrollera att acceleratorn är färdig samt hämta de färdiga pixlarna, men bussen besparas ändå en hel del data med denna lösning.
 
 \subsection{Design}
+\begin{figure}[h]
+\centering
+\includegraphics[width=280px]{fsmlab3.png}
+\caption{Tillståndsgraf för vår utökade design}
+\label{fig:state}
+\end{figure}
+För att lösa uppgiften så implementerade vi tillståndsgrafen i figur \ref{fig:state2} ganska rakt av med hjälp av en DMA. Maskinen börjar i \lq\lq{}Idle\rq\rq{}, får en startsignal och börjar hämta block med 8x8 pixlar från minnet, skickar iväg pixlarna till acceleratorn och inväntar sedan en signal att den är färdig. Då hämtar den ett nytt block och håller på så tills hela bilden är bearbetad. \lq\lq{}Releasebus\rq\rq{} är till för att då och då släppa bussen så att någon annan i maskinen kan få skicka saker via bussen, annars hade DMA\rq{}n tagit beslag på bussen väldigt länge och inget annat skulle hända i datorn medans DMA\rq{}n hämtade data.
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=280px]{architecturelab3.png}
+\caption{Arkitektur för vår utökade design}
+\label{fig:arch3}
+\end{figure}
+Figur \ref{fig:arch3} visar hur DMA\rq{}n är kopplad till acceleratorn och hur den kontrollerar vilka signaler som kommer in, antingen från bussen eller från DMA\rq{}n. Jämför med figur \ref{fig:architecture} för att se resten av designen. I DMA modulen finns bara register för att hålla koll på vilket tillstånd maskinen befinner sig i, när vissa villkor är uppfyllda byts tillståndet och korrekta åtgärder vidtas. En räknare håller koll på hur många pixlar som har lästs in, när det har lästs 4 pixlar skickas de till acceleratorn, \lq\lq{}Waitready\rq\rq{}. Detta görs om och om igen tills hela bilden är färdig då vi istället går till \lq\lq{}Waitreadylast\rq\rq{} och sedan tillbaka till \lq\lq{}Idle\rq\rq{}.
+
+Verifiering av hårdvaran skedde genom att köra de tidigare testerna i modelsim och när rätt signaler lades på så testade vi att konvertera en raw fil till jpeg vilket fungerade. Mjukvaran som kallade på DMA\rq{}n skickade en startsignal och väntade sedan på att acceleratorn skulle sätta färdigbiten i dess statusregister, därefter läste mjukvaran av utminnet och skickade en fortsätt-signal, detta skedde tills bilden var klar. 
+
+Det som skickas på bussen är således en startsignal från mjukvaran, 8x8 pixlar till DMA\rq{}n, varpå mjukvaran kontinuerligt läser av statusregistret för att se när blocket är färdigt, varpå mjukvaran kan läsa av de 8x8 pixlarna. All den kommunikationen görs tills bilden är färdig.
 
 \section{Resultat}
 
 \subsection{Prestanda}
 
-\begin{table}[ht]
+\begin{table}[H]
     \centering
     \begin{tabular}{l l}
     
@@ -117,14 +149,35 @@ Den flaskhalsen skulle man kunna spara in en del på genom att acceleratorn sjä
         DCT kernel  & 0 \\
         Quantization  & 6 798 366 \\
         Huffman encoding  & 15 246 407 \\
-        Emit\_bits  &  7 904 811 \\
+        Emit\_bits  & 7 904 811 \\
     \end{tabular}
     \caption{ Prestanda för JPEG-acceleratorn }
     \label{tab:jpeg_performance_2}
 \end{table}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l l}
+    
+        Beskrivning & Antal klockcykler\\
+        \hline
+        Main program  & 25 847 242 \\
+        Init  & 6 600 044 \\
+        Encode\_image  & 19 247 198 \\
+        Forward\_DCT  & 6 489 189 \\
+        Copy  & 0 \\
+        DCT kernel  & 0 \\
+        Quantization  & 6 489 189 \\
+        Huffman encoding  & 12 226 950 \\
+        Emit\_bits  & 4 983 905 \\
+    \end{tabular}
+    \caption{ Prestanda för JPEG-acceleratorn med inkopplad DMA }
+    \label{tab:jpeg_performance_3}
+\end{table}
+
+Tabell \ref{tab:jpeg_performance_2} visar prestandan för labb2 och tabell \ref{tab:jpeg_performance_3} för labb3, i \lq\lq{}Copy\rq\rq{} har prestandan sjunkit med 1,5 miljoner klockcykler! Totalt gick labb3 8 miljoner klockcykler.
 
 \subsection{FPGA-användning}
-\begin{table}[ht]
+\begin{table}[H]
     \centering
     \begin{tabular}{l l l}
         Flip Flops   &      7 273 out of   46080  & 15\% \\
@@ -132,126 +185,30 @@ Den flaskhalsen skulle man kunna spara in en del på genom att acceleratorn sjä
         MULT18X18s   &      19 out of 120  &   15\% \\
         RAMB16s      &      42 out of 120  &   35\% \\
     \end{tabular}
-    \caption{ De mest intressanta delarna ur syntes-rapporten för JPEG-acceleratorn med DCT, DMA samt sbit-instruktionen. }
-    \label{tab:fpga_usage}
+    \caption{ De mest intressanta delarna ur syntes-rapporten för JPEG-acceleratorn utan DMA. }
+    \label{tab:fpga_usage2}
 \end{table}
-%Logic Utilization:
-%  Total Number Slice Registers:       7,305 out of  46,080   15%
-%    Number used as Flip Flops:        7,273
-%    Number used as Latches:              32
-%  Number of 4 input LUTs:            11,485 out of  46,080   24%
-%Logic Distribution:
-%  Number of occupied Slices:          8,264 out of  23,040   35%
-%    Number of Slices containing only related logic:   8,264 out of   8,264 100%
-%    Number of Slices containing unrelated logic:          0 out of   8,264   0%
-%      *See NOTES below for an explanation of the effects of unrelated logic.
-%  Total Number of 4 input LUTs:      11,742 out of  46,080   25%
-%    Number used as logic:            11,317
-%    Number used as a route-thru:        257
-%    Number used for Dual Port RAMs:     168
-%      (Two LUTs used per Dual Port RAM)
-%  Number of bonded IOBs:                217 out of     824   26%
-%    IOB Flip Flops:                     246
-%  Number of RAMB16s:                     42 out of     120   35%
-%  Number of MULT18X18s:                  19 out of     120   15%
-%  Number of BUFGMUXs:                     5 out of      16   31%
-%  Number of DCMs:                         2 out of      12   16%
-%
-%labb2 :::
-%Performance statistics:
-%Cycles spent in main program: 33902171
-%+-- Cycles spent in init: 9850924
-%+-- Cycles spent in encode_image: 24051247
-%+-- Cycles spent in forward_DCT: 8317191
-%| +-- Cycles spent in copy: 1518825
-%| +-- Cycles spent in DCT kernel: 0
-%| +-- Cycles spent in quantization: 6798366
-%+-- Cycles spent in Huffman encoding: 15246407
-%+-- Cycles spent in emit_bits: 7904811
-%
-%
-%
-%Device Utilization Summary:
-%
-%Number of BUFGMUXs 5 out of 16 31%
-%Number of DCMs 2 out of 12 16%
-%Number of External IOBs 217 out of 824 26%
-%Number of LOCed IOBs 217 out of 217 100%
-%
-%Number of MULT18X18s 19 out of 120 15%
-%Number of RAMB16s 42 out of 120 35%
-%Number of LOCed RAMB16s 12 out of 42 28%
-%
-%Number of SLICEs 8264 out of 23040 35%
-%
-%
-%labb3 ::: 
-%Performance statistics:
-%Cycles spent in main program:             25847242
-%+-- Cycles spent in init:                  6600044
-%+-- Cycles spent in encode_image:         19247198
-%    +-- Cycles spent in forward_DCT:       6489189
-%    |   +-- Cycles spent in copy:                0
-%    |   +-- Cycles spent in DCT kernel:          0
-%    |   +-- Cycles spent in quantization:  6489189
-%    +-- Cycles spent in Huffman encoding: 12226950
-%        +-- Cycles spent in emit_bits:     4983905
-%
-%
-%Device Utilization Summary:
-%
-%Number of BUFGMUXs 5 out of 16 31%
-%Number of DCMs 2 out of 12 16%
-%Number of External IOBs 217 out of 824 26%
-%Number of LOCed IOBs 217 out of 217 100%
-%
-%Number of MULT18X18s 19 out of 120 15%
-%Number of RAMB16s 42 out of 120 35%
-%Number of LOCed RAMB16s 12 out of 42 28%
-%
-%Number of SLICEs 8604 out of 23040 37%
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l l l}
+        Flip Flops   &      7 408 out of   46080  & 16\% \\
+        4 input LUTs &      11 986 out of  46080  & 26\% \\
+        MULT18X18s   &      19 out of 120  &   15\% \\
+        RAMB16s      &      42 out of 120  &   35\% \\
+    \end{tabular}
+    \caption{ De mest intressanta delarna ur syntes-rapporten för JPEG-acceleratorn med DMA. }
+    \label{tab:fpga_usage3}
+\end{table}
 
+Tabell \ref{tab:fpga_usage2} visar en del ur syntetiseringsrapporten för acceleratorn, jämför man med tabell \ref{tab:fpga_usage3} så ser man att DMA\rq{}n inte gav så stor skillnad i storlek, men gav bra prestandaförbättring så det var värt att implementera den.
 
-
-\section{Sammanfattning}
-
-
-
-\subsection{Filer}
+\section{Filer}
 \begin{itemize}
-	\item [jpegtop.sv] Mestadels av designen skedde här, våra kontrollsignaler ligger här tillsammans med flera räknare och minnen.
-	\item [transpose.sv] Transponeringsminnet fick en egen fil med en kolumnräknare och en radräknare för att hålla koll på vart grunkan håller på att läsa respektive skriva.
-	\item [q2.sv] Denna sköter multipliceringen med reciprokalerna och skickar sedan resultatet till utminnet.
-	\item [jpegdma.sv] Designen för den andra biten där jpeg-acceleratorn själv läser av informationen i minnet.
+        \item [jpegtop.sv] Mestadels av designen skedde här, våra kontrollsignaler ligger här tillsammans med flera räknare och minnen.
+        \item [transpose.sv] Transponeringsminnet fick en egen fil med en kolumnräknare och en radräknare för att hålla koll på vart grunkan håller på att läsa respektive skriva.
+        \item [q2.sv] Denna sköter multipliceringen med reciprokalerna och skickar sedan resultatet till utminnet.
+        \item [jpegdma.sv] Designen för den andra biten där jpeg-acceleratorn själv läser av informationen i minnet.
 \end{itemize}
-
-
-\section{What to Include in the Lab Report 2}
-\begin{itemize}
-\item How did you verify that your 2D DCT hardware works correctly?
-\item Isthesizeofthe2DDCThardwarejustifiedbytheperformanceimprovements?
-\item What would be required in order to implement more functionality like zigzag addressing in the 2D DCT hardware module? Would it be difficult to modify jpegfiles to take advantage of such optimizations?
-And of course, the normal parts of a lab report such as a table of contents, an intro- duction, a conclusion, etc. The source code that you have written should be included in appendices and referred to from the main document.
-\end{itemize}
-
-
-\section{What to Include in the Lab Report 3}
-The lab report should contain all source code that you have written. (The source code should of course be commented.) We would also like you to include a block diagram of your hardware. If you have written any FSM you should include a state diagram graph of the FSM.
-We would also like you to discuss the following questions in detail somewhere in your lab report1:
-\begin{itemize}
-\item How does your hardware work?
-\item How did you verify that your hardware worked?
-\item How did you modify the software?
-\item A timing diagram.
-\item What is the utilization of your accelerator?
-\item What is the performance of jpegtest with DMA enabled?
-\item How long does it take (on average) to read a macroblock into the DCT acceler- ator via DMA?
-\item How much is the wishbone bus used by the DMA unit and how much is the bus used by the CPU?
-And of course, the normal parts of a lab report such as a table of contents, an intro- duction, a conclusion, etc. The source code that you have written should be included in appendices and referred to from the main document.
-\end{itemize}
-
-
-
 
 
 \newpage

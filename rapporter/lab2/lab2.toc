@@ -1,20 +1,17 @@
 \select@language {swedish}
-\contentsline {section}{\numberline {1}Lab 1}{3}
-\contentsline {subsection}{\numberline {1.1}Introduction}{3}
-\contentsline {subsection}{\numberline {1.2}Implementation}{3}
-\contentsline {subsection}{\numberline {1.3}Vidare fr\IeC {\r a}gor}{4}
-\contentsline {section}{\numberline {2}Labb 3}{4}
-\contentsline {subsection}{\numberline {2.1}Introduktion}{4}
+\contentsline {section}{\numberline {1}Labb 2}{3}
+\contentsline {subsection}{\numberline {1.1}Introduktion}{3}
+\contentsline {subsection}{\numberline {1.2}Tillst\IeC {\r a}ndsgraf och arkitektur}{3}
+\contentsline {subsection}{\numberline {1.3}Vidare fr\IeC {\r a}gor man kan st\IeC {\"a}lla sig}{4}
+\contentsline {section}{\numberline {2}Labb 3}{5}
+\contentsline {subsection}{\numberline {2.1}Introduktion}{5}
 \contentsline {subsection}{\numberline {2.2}Design}{5}
-\contentsline {section}{\numberline {3}Resultat}{5}
-\contentsline {subsection}{\numberline {3.1}Prestanda}{5}
-\contentsline {subsection}{\numberline {3.2}FPGA-anv\IeC {\"a}ndning}{5}
-\contentsline {section}{\numberline {4}Sammanfattning}{5}
-\contentsline {subsection}{\numberline {4.1}Filer}{5}
-\contentsline {section}{\numberline {5}What to Include in the Lab Report 2}{6}
-\contentsline {section}{\numberline {6}What to Include in the Lab Report 3}{6}
-\contentsline {section}{Appendices}{7}
-\contentsline {section}{\numberline {A}jpegtop.sv}{7}
-\contentsline {section}{\numberline {B}transpose.sv}{17}
-\contentsline {section}{\numberline {C}Q2.sv}{18}
-\contentsline {section}{\numberline {D}jpegdma.sv}{19}
+\contentsline {section}{\numberline {3}Resultat}{7}
+\contentsline {subsection}{\numberline {3.1}Prestanda}{7}
+\contentsline {subsection}{\numberline {3.2}FPGA-anv\IeC {\"a}ndning}{8}
+\contentsline {section}{\numberline {4}Filer}{8}
+\contentsline {section}{Appendices}{9}
+\contentsline {section}{\numberline {A}jpegtop.sv}{9}
+\contentsline {section}{\numberline {B}transpose.sv}{19}
+\contentsline {section}{\numberline {C}Q2.sv}{20}
+\contentsline {section}{\numberline {D}jpegdma.sv}{21}
