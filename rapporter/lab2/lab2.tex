@@ -19,6 +19,10 @@
 
 \def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
 \let\endchangemargin=\endlist
+\setlength{\parindent}{0pt}
+
+\renewcommand{\appendixtocname}{Appendix}
+\renewcommand{\appendixpagename}{Appendix}
 
 %%% HEADERS & FOOTERS
 \author{Jonathan Karlsson, Niclas Olofsson, Paul Nedstrand\\jonka293, nicol271, paune415\\Grupp 2}
@@ -57,31 +61,30 @@
 \section{Labb 2}
 \subsection{Introduktion}
 
-Syftet med denna laboration var att konstruera en accelerator för jpeg-
-komprimering från raw-filer, i hårdvara. Detta löstes med hjälp av
-programmeringsspråket system verilog och genom att bygga vidare på det
+Syftet med denna laboration var att konstruera en accelerator för JPEG-
+komprimering från raw-filer, i hårdvara. Detta löstes i
+programmeringsspråket System Verilog, genom att bygga vidare på det
 existerande skelettet som gavs med uppgiften. I första delen (labb2) så
 har vi en dator som styr själva acceleratorn och skickar all data via en
 bus för att sedan behandlas och lagras i ett blockminne där datorn sedan
 får läsa av resultatet. Ett register används för att starta grunkan och
 sedan läsa av att resultatet finns att hämta.
 
-Det jpeg-acceleratorn gör är att ta ett block med 8x8 pixlar, skicka in
+Det JPEG-acceleratorn gör är att ta ett block med 8x8 pixlar, skicka in
 det i en givet DCT maskin som gör komprimeringar av pixlarna, sedan
 transponeras de 8x8 pixlarna i ett minne och skickas tillbaka till
-DCT\rq{}n för att gå igenom en gång till. Alla pixlar multipliceras nu
+DCT:n för att gå igenom en gång till. Alla pixlar multipliceras nu
 med hårdkodade reciprokaler och läggs i ett utminne.
 
-Datorn kan nu läsa av minnet, transponera och spara ner till en jpeg fil
-som kan öppnas på vanligt sätt.
+Datorn kan nu läsa av minnet, transponera och spara ner till en JPEG-fil
+som kan öppnas i ett vanligt bildvisningsprogram.
 
 \subsection{Tillståndsgraf och arkitektur}
 
-En vidare hjälp är att den DCT maskin som gör beräkningar är redan given
-så problemet som skall lösas innebär att skapa signaler för att styra
-DCT\rq{}n, ett blockminne för indata och ett för utdata, ett minne där
-vi transponerar samt en maskin som utför multiplikationerna med
-reciprokalerna.
+Den DCT-maskin som gör beräkningar gavs lyckligtvis från början. Vårt
+problem bestod alltså i att skapa signaler för att styra DCT:n,
+blockminnen för in- och utdata, ett minne för transponering samt en
+maskin som utför multiplikationerna med reciprokalerna.
 
 \begin{figure}[h]
 \centering
@@ -93,20 +96,17 @@ reciprokalerna.
 Figur \ref{fig:architecture} visar den arkitektur som konstruerades för
 att lösa uppgiften. All data som kommer in från bussen läggs in i minnet
 och vi väntar sedan på en startsignal från datorn. Då används räknaren
-tillsammans med en vippa för att skicka in data till DCT\rq{}n för att
-sedan skriva in 8x8 pixlar till transponeringsminnet, när vi skrivit
+tillsammans med ett register för att skicka in data till DCT:n, för att
+sedan skriva in 8x8 pixlar till transponeringsminnet. När vi skrivit
 klart där så läser vi av kolumnerna (och får därigenom transponeringen),
-skickar in till DCT\rq{}n igen.
+och skickar in datta data till DCT:n igen.\\
 
-Ett problem vi hade så här långt var klockningen, när vi skickar in data
+Ett problem vi hade så här långt var klockningen. När vi skickar in data
 från inminnet så måste vi göra det 8 pixlar åt gången, men i minnet
-finns bara 4 pixlar per rad, så vi måste läsa två rader (därav vippan),
-vidare måste vi klocka ner DCT\rq{}n en klockcykel för att den ska
-\lq\lq{}hinna med\rq\rq{}. Läsningen från transponeringen var inget
-problem, däremot när pixlarna kommer ut den andra gången måste
-klockningen anpassas till Q2-maskinen då den tar två pixlar per
-klockcykel så DCT\rq{}n måste gå ytterligare långsammare för att detta
-ska fungera.
+finns bara 4 pixlar per rad, så vi måste läsa två rader (därav
+registret). Q2-modulen utgör en flaskhals, då denna bara tar två pixlar
+per klockcykel. Detta gör att DCT:n måste gå ytterligare långsammare för
+att detta ska fungera.\\
 
 \begin{figure}[h]
 \centering
@@ -118,7 +118,7 @@ ska fungera.
 Figur \ref{fig:state} visar en tillståndsgraf över maskinen och dess
 procedur för att komprimera raw-filer till jpeg. Tillståndsgrafen följer
 precis det schema som arkitekturen i figur \ref{fig:architecture} också
-visar.
+visar.\\
 
 \subsection{Vidare frågor man kan ställa sig}
 \begin{itemize}
@@ -128,17 +128,17 @@ visar.
 Vi använde oss av MATLAB för att räkna ut ett antal exempel som vi kunde
 simulera i ModelSim, genom att jämföra vad MATLAB gav för resultat med
 det som låg i utminnet efter en simulering lyckades vi bekräfta att
-acceleratorn hade gjort sitt jobb.
+acceleratorn hade gjort sitt jobb.\\
 
 \begin{itemize}
 	\item Är storleken på DCT hårdvaran jämförbar med den förbättrade prestandan?
 \end{itemize}
 
 Hela grunkan tar upp en hel del hårdvara och på grund av att det är så
-mycket kommunikation, vi måste klocka DCT\rq{}n annorlunda och att Q2 är
+mycket kommunikation, vi måste klocka DCT:n annorlunda och att Q2 är
 så långsam så är det frågan om det verkligen är värt det. I de kommande
 laborationerna gör vi en del förbättringar på systemet som gör att det
-är mer värdefullt.
+är mer värdefullt.\\
 
 \begin{itemize}
 	\item Vidare optimeringar?
@@ -152,7 +152,7 @@ slutet. Man skulle kunna ha ett förutbestämt mönster för hur man läser
 av minnet där man börjar i det övre vänstra hörnet och sedan förflyttar
 sig sicksack, under tiden så skriver man ner alla siffror man stöter på
 och hur många siffror det råkar vara. Stöter man på 3 nollor så
-antecknar man det och sedan mot slutet bör det bli en hel del nollor.
+antecknar man det och sedan mot slutet bör det bli en hel del nollor.\\
 
 Det man i så fall vinner är att man slipper skicka iväg alla siffror
 utan man skickar bara iväg i vilken ordning man hittade dem och hur
@@ -161,13 +161,13 @@ vilket är en mycket kortare sändning än att skicka en hel drös med
 nollor. Detta skulle inte vara jättekomplicerat att implementera men
 skulle förstås ta upp mer hårdvara, man skulle dock tjäna en hel del
 kommunikation på systemet så det skulle nog vara värt det om man hade
-höga krav på hastighet.
+höga krav på hastighet.\\
 
 När man skriver in pixlarna till sin jpegfil skriver man bara tillbaka
 siffrorna i samma ordning som man läste dem i, vilket skulle vara lika
 svårt som när man läste dem i första läget. Läsning och skrivning blir
 så klart mer komplicerat men det vinner man tillbaka flera gånger om
-tack vare sparad kommunikation.
+tack vare sparad kommunikation.\\
 
 \section{Labb 3}
 \subsection{Introduktion}
@@ -179,7 +179,7 @@ pixlar från minnet, via bussen, sedan skicka iväg pixlarna igen via
 bussen till jpeg-acceleratorn för att sedan skicka en startsignal för
 varje 8x8 pixlar. När acceleratorn är färdig måste datorn läsa av det i
 ett register varpå datorn läser av minnet i acceleratorn och skickar
-ännu mer pixlar genom bussen.
+ännu mer pixlar genom bussen.\\
 
 Den flaskhalsen skulle man kunna spara in en del på genom att
 acceleratorn själv hämtar sin data från minnet istället för att gå genom
@@ -187,7 +187,7 @@ datorn, där gör den ändå ingen nytta. Så idén är att ha en ytterligare
 design som hämtar data och skickar in till acceleratorn, sätter igång
 den självmant. Datorn måste fortfarande läsa av registret för att
 kontrollera att acceleratorn är färdig samt hämta de färdiga pixlarna,
-men bussen besparas ändå en hel del data med denna lösning.
+men bussen besparas ändå en hel del data med denna lösning.\\
 
 \subsection{Design}
 \begin{figure}[h]
@@ -204,9 +204,9 @@ pixlar från minnet, skickar iväg pixlarna till acceleratorn och inväntar
 sedan en signal att den är färdig. Då hämtar den ett nytt block och
 håller på så tills hela bilden är bearbetad. \lq\lq{}Releasebus\rq\rq{}
 är till för att då och då släppa bussen så att någon annan i maskinen
-kan få skicka saker via bussen, annars hade DMA\rq{}n tagit beslag på
+kan få skicka saker via bussen, annars hade DMA:n tagit beslag på
 bussen väldigt länge och inget annat skulle hända i datorn medans
-DMA\rq{}n hämtade data.
+DMA:n hämtade data.\\
 
 \begin{figure}[h]
 \centering
@@ -225,7 +225,7 @@ räknare håller koll på hur många pixlar som har lästs in, när det har
 lästs 4 pixlar skickas de till acceleratorn, \lq\lq{}Waitready\rq\rq{}.
 Detta görs om och om igen tills hela bilden är färdig då vi istället går
 till \lq\lq{}Waitreadylast\rq\rq{} och sedan tillbaka till
-\lq\lq{}Idle\rq\rq{}.
+\lq\lq{}Idle\rq\rq{}.\\
 
 Verifiering av hårdvaran skedde genom att köra de tidigare testerna i
 modelsim och när rätt signaler lades på så testade vi att konvertera en
@@ -233,13 +233,13 @@ raw fil till jpeg vilket fungerade. Mjukvaran som kallade på DMA\rq{}n
 skickade en startsignal och väntade sedan på att acceleratorn skulle
 sätta färdigbiten i dess statusregister, därefter läste mjukvaran av
 utminnet och skickade en fortsätt-signal, detta skedde tills bilden var
-klar.
+klar.\\
 
 Det som skickas på bussen är således en startsignal från mjukvaran, 8x8
 pixlar till DMA\rq{}n, varpå mjukvaran kontinuerligt läser av
 statusregistret för att se när blocket är färdigt, varpå mjukvaran kan
 läsa av de 8x8 pixlarna. All den kommunikationen görs tills bilden är
-färdig.
+färdig.\\
 
 \section{Resultat}
 
